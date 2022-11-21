@@ -159,7 +159,7 @@ const Menu = ({ onMenuClick, dense = false }) => {
           isOpen={state.productCategorySection}
           name="sections"
           label={translate("pos.menu.category")}
-          icon={<Attributes.icon/>}
+          icon={<ProductCategory.icon/>}
           dense={dense}
         >
 
@@ -268,7 +268,7 @@ const Menu = ({ onMenuClick, dense = false }) => {
           />
           <MenuItemLink
             to={{
-              pathname: "/gateways",
+              pathname: "/gateway",
               state: { _scrollToTop: true }
             }}
             primaryText={translate(`pos.menu.allGateways`)}

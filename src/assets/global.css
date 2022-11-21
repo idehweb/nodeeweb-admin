@@ -5,6 +5,9 @@ html, body {
 .the-dev-menu li + div{
 padding-right: 30px;
 }
+.the-dev-menu svg{
+    color:var(--primary)
+}
 .grid-box {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

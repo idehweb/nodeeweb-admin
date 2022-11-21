@@ -41,7 +41,7 @@ const PostFilter = (props) => {
     return (
         <Filter {...props}>
             {/*<TextInput label="Search" source="search" alwaysOn/>*/}
-            <SearchInput source="Search" placeholder={translate('resources.category.name')} alwaysOn/>
+            <SearchInput source="Search" placeholder={translate('resources.gateway.name')} alwaysOn/>
             {/*<SearchInput source="firstCategory" placeholder={'نام'} alwaysOn/>*/}
             {/*<SearchInput source="lastName" placeholder={'نام خانوادگی'} alwaysOn/>*/}
             {/*<SelectInput source="firstCategory" label={'دسته بندی اول'}  emptyValue={null} choices={typeChoices4}/>*/}
@@ -59,15 +59,15 @@ const list = (props) => {
     return (
         <List {...props} filters={<PostFilter/>} pagination={<PostPagination/>}>
             <Datagrid>
-                <TextField source={"name."+translate('lan')} label={translate('resources.category.name')}/>
-                <TextField source="slug" label={translate('resources.category.slug')}/>
+                <TextField source={"name."+translate('lan')} label={translate('resources.gateway.name')}/>
+                <TextField source="slug" label={translate('resources.gateway.slug')}/>
                 <ReferenceField
-                    label={translate('resources.category.parent')}
+                    label={translate('resources.gateway.parent')}
                     source="parent"
                     reference="category">
                     <TextField source={"name."+translate('lan')}/>
                 </ReferenceField>
-                <TextField source="order" label={translate('resources.category.order')}/>
+                <TextField source="order" label={translate('resources.gateway.order')}/>
 
                 <EditButton/>
                 <ShowButton/>
@@ -86,20 +86,20 @@ const Form = ({children, ...rest}) => {
             {children}
             <TextInput
                 source={"name."+translate('lan')}
-                label={translate('resources.category.name')}
+                label={translate('resources.gateway.name')}
                 validate={Val.req}
                 formClassName={cls.f2}
                 fullWidth
             />
             <TextInput
                 source="slug"
-                label={translate('resources.category.slug')}
+                label={translate('resources.gateway.slug')}
                 validate={Val.req}
                 formClassName={cls.f2}
                 fullWidth
             />
             <ReferenceInput
-                label={translate('resources.category.parent')}
+                label={translate('resources.gateway.parent')}
                 source="parent"
                 reference="productCategory"
 
@@ -166,22 +166,22 @@ const ChangesForm = ({children, ...rest}) => {
             <NumberInput
                 min={0}
                 source="plusx"
-                label={translate("category.addxpercent")}
+                label={translate("gateway.addxpercent")}
             />
             <NumberInput
                 min={0}
                 source="minusx"
-                label={translate("category.minusxpercent")}
+                label={translate("gateway.minusxpercent")}
             />
             <NumberInput
                 min={0}
                 source="plusxp"
-                label={translate("category.addxprice")}
+                label={translate("gateway.addxprice")}
             />
             <NumberInput
                 min={0}
                 source="minusxp"
-                label={translate("category.minusxprice")}
+                label={translate("gateway.minusxprice")}
             />
 
         </SimpleForm>

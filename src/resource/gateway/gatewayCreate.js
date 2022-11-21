@@ -42,20 +42,20 @@ const Form = ({children, ...rest}) => {
             {children}
             <TextInput
                 source={"name."+translate('lan')}
-                label={translate('resources.category.name')}
+                label={translate('resources.gateway.name')}
                 validate={Val.req}
                 formClassName={cls.f2}
                 fullWidth
             />
             <TextInput
                 source="slug"
-                label={translate('resources.category.slug')}
+                label={translate('resources.gateway.slug')}
                 validate={Val.req}
                 formClassName={cls.f2}
                 fullWidth
             />
             <ReferenceInput
-                label={translate('resources.category.parent')}
+                label={translate('resources.gateway.parent')}
                 source="parent"
                 reference="productCategory"
 
@@ -65,7 +65,7 @@ const Form = ({children, ...rest}) => {
             </ReferenceInput>
             {/*<NumberInput*/}
                 {/*source="order"*/}
-                {/*label={translate('resources.category.order')}*/}
+                {/*label={translate('resources.gateway.order')}*/}
                 {/*fullWidth*/}
             {/*/>*/}
         </SimpleForm>

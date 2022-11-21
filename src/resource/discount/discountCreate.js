@@ -42,30 +42,48 @@ const Form = ({children, ...rest}) => {
             {children}
             <TextInput
                 source={"name."+translate('lan')}
-                label={translate('resources.category.name')}
+                label={translate('resources.discount.name')}
                 validate={Val.req}
                 formClassName={cls.f2}
                 fullWidth
             />
             <TextInput
                 source="slug"
-                label={translate('resources.category.slug')}
+                label={translate('resources.discount.slug')}
                 validate={Val.req}
                 formClassName={cls.f2}
                 fullWidth
             />
-            <ReferenceInput
-                label={translate('resources.category.parent')}
-                source="parent"
-                reference="productCategory"
+          <NumberInput
+                source="percent"
+                label={translate('resources.discount.percent')}
+                formClassName={cls.f2}
+                fullWidth
+            />
+          <NumberInput
+                source="price"
+                label={translate('resources.discount.price')}
+                formClassName={cls.f2}
+                fullWidth
+            />
+          <NumberInput
+                source="count"
+                label={translate('resources.discount.count')}
+                formClassName={cls.f2}
+                fullWidth
+            />
+            {/*<ReferenceInput*/}
+                {/*label={translate('resources.discount.parent')}*/}
+                {/*source="parent"*/}
+                {/*reference="productCategory"*/}
 
-                perPage={1000}
-                formClassName={cls.f2}>
-                <SelectInput optionText={"name."+translate('lan')} optionValue="id"/>
-            </ReferenceInput>
+                {/*perPage={1000}*/}
+                {/*formClassName={cls.f2}>*/}
+                {/*<SelectInput optionText={"name."+translate('lan')} optionValue="id"/>*/}
+            {/*</ReferenceInput>*/}
             {/*<NumberInput*/}
                 {/*source="order"*/}
-                {/*label={translate('resources.category.order')}*/}
+                {/*label={translate('resources.discount.order')}*/}
                 {/*fullWidth*/}
             {/*/>*/}
         </SimpleForm>

@@ -67,11 +67,11 @@ const list = (props) => {
                     reference="category">
                     <TextField source={"name."+translate('lan')}/>
                 </ReferenceField>
-                <TextField source="order" label={translate('resources.category.order')}/>
+                {/*<TextField source="order" label={translate('resources.category.order')}/>*/}
 
                 <EditButton/>
-                <ShowButton/>
-                {/*<DeleteButton/>*/}
+                {/*<ShowButton/>*/}
+                <DeleteButton/>
             </Datagrid>
         </List>
     );

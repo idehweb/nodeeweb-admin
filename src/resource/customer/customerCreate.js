@@ -42,6 +42,7 @@ export const customerCreate = (props) => {
         <TextInput source="phoneNumber" label={translate("resources.customers.phoneNumber")}/>
         <NumberInput source="countryCode" label={translate("resources.customers.countryCode")}/>
         <TextInput source="activationCode" label={translate("resources.customers.activationCode")}/>
+
       </SimpleForm>
     </Create>
   );

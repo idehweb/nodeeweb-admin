@@ -41,7 +41,7 @@ const PostFilter = (props) => {
     return (
         <Filter {...props}>
             {/*<TextInput label="Search" source="search" alwaysOn/>*/}
-            <SearchInput source="Search" placeholder={translate('resources.category.name')} alwaysOn/>
+            <SearchInput source="Search" placeholder={translate('resources.discount.name')} alwaysOn/>
             {/*<SearchInput source="firstCategory" placeholder={'نام'} alwaysOn/>*/}
             {/*<SearchInput source="lastName" placeholder={'نام خانوادگی'} alwaysOn/>*/}
             {/*<SelectInput source="firstCategory" label={'دسته بندی اول'}  emptyValue={null} choices={typeChoices4}/>*/}
@@ -59,19 +59,22 @@ const list = (props) => {
     return (
         <List {...props} filters={<PostFilter/>} pagination={<PostPagination/>}>
             <Datagrid>
-                <TextField source={"name."+translate('lan')} label={translate('resources.category.name')}/>
-                <TextField source="slug" label={translate('resources.category.slug')}/>
-                <ReferenceField
-                    label={translate('resources.category.parent')}
-                    source="parent"
-                    reference="category">
-                    <TextField source={"name."+translate('lan')}/>
-                </ReferenceField>
-                <TextField source="order" label={translate('resources.category.order')}/>
+                <TextField source={"name."+translate('lan')} label={translate('resources.discount.name')}/>
+                <TextField source="slug" label={translate('resources.discount.slug')}/>
+                <TextField source="count" label={translate('resources.discount.count')}/>
+                <TextField source="price" label={translate('resources.discount.price')}/>
+                <TextField source="percent" label={translate('resources.discount.percent')}/>
+                {/*<ReferenceField*/}
+                    {/*label={translate('resources.discount.parent')}*/}
+                    {/*source="parent"*/}
+                    {/*reference="category">*/}
+                    {/*<TextField source={"name."+translate('lan')}/>*/}
+                {/*</ReferenceField>*/}
+                {/*<TextField source="order" label={translate('resources.discount.order')}/>*/}
 
                 <EditButton/>
                 <ShowButton/>
-                {/*<DeleteButton/>*/}
+                <DeleteButton/>
             </Datagrid>
         </List>
     );

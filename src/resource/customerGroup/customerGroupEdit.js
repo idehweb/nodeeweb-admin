@@ -82,7 +82,7 @@ const Form = ({children, ...rest}) => {
     const translate = useTranslate();
 
     return (
-        <SimpleForm {...rest}>
+        <SimpleForm {...rest} onSubmit={v => save(v)}>
             {children}
             <TextInput
                 source={"name."+translate('lan')}
@@ -101,63 +101,45 @@ const Form = ({children, ...rest}) => {
             <ReferenceInput
                 label={translate('resources.category.parent')}
                 source="parent"
-                reference="productCategory"
+                reference="customerGroup"
 
                 perPage={1000}
                 formClassName={cls.f2}>
                 <SelectInput optionText={"name."+translate('lan')} optionValue="id"/>
             </ReferenceInput>
-            <NumberInput
-                source="order"
-                label={translate('resources.category.order')}
-                fullWidth
-            />
+
         </SimpleForm>
     );
 };
-
 function save(record) {
-    console.log('save', record, theID);
+  console.log("save", record, theID);
 
-    // if (record.plusx) {
-    let type = null, number = 0;
-    if (record.plusx) {
-        type = 'plusx';
-        number = record.plusx;
-    }
-    if (record.minusx) {
-        type = 'minusx';
-        number = record.minusx;
+  // if (record.plusx) {
+  let type = null, number = 0;
+  if (record.parent=="") {
+    delete record.parent;
+    //     type = 'plusx';
+    //     number = record.plusx;
+  }
 
-    }
-    if (record.plusxp) {
-        type = 'plusxp';
-        number = record.plusxp;
+  API.put("/customerGroup/"+record._id, JSON.stringify(record))
+    .then(({ data = {} }) => {
+      // const refresh = useRefresh();
+      // refresh();
+      // alert("it is ok");
+      // window.location.reload();
+      // if (data.success) {
+      //     values = [];
+      //     valuess = [];
+      // }
+    })
+    .catch((err) => {
+      console.log("error", err);
+    });
 
-    }
-    if (record.minusxp) {
-        type = 'minusxp';
-        number = record.minusxp;
+  // }
 
-    }
-    if (theID)
-        API.put('/product/modifyPriceByCat/' + theID, JSON.stringify({type: type, number: number}))
-            .then(({data = {}}) => {
-                // const refresh = useRefresh();
-                // refresh();
-                alert('it is ok');
-                window.location.reload();
-                // if (data.success) {
-                //     values = [];
-                //     valuess = [];
-                // }
-            })
-            .catch((err) => {
-                console.log('error', err);
-            });
-    // }
-
-    // return 0;
+  // return 0;
 }
 
 const ChangesForm = ({children, ...rest}) => {

@@ -166,6 +166,10 @@ const customFarsiMessages = {
     }
   },
   resources: {
+    customer: {
+      customerGroup:"گروه"
+    },
+
     action: {
       user: "کاربر",
       title: "عنوان",
@@ -232,6 +236,14 @@ const customFarsiMessages = {
       addxprice: "x مبلغ اضافه کن",
       minusxprice: "x مبلغ کم کن"
     },
+    discount: {
+      slug: "نامک",
+      name: "عنوان کد تخفیف",
+      count: "تعداد",
+      percent: "درصد",
+      price: "هزینه",
+    },
+
     customers: {
       _id: "شناسه",
       phoneNumber: "شماره تماس",
@@ -271,28 +283,17 @@ const customFarsiMessages = {
     },
 
     gateway: {
-      orderNumber: "شماره سفارش",
-      customerData: "اطلاعات مشتری",
-      amountToPay: "مبلغی را وارد کنید",
-      total: "مجموع پرداختی",
-      sum: "جمع کل موارد",
-      amount: "مجموع پرداختی",
-      paid: "پرداخت شده",
-      status: "وضعیت سفارش",
-      paymentStatus: "وضعیت پرداخت",
-      date: "تاریخ",
+      title: "عنوان",
+      name: "عنوان",
+      slug: "نامک",
+      description: "توضیح",
+
       createdAt: "انتشار در",
       updatedAt: "بروزرسانی در",
-      customerFirstName: "نام مشتری",
-      customerLastName: "نام خانوادگی مشتری",
-      allOrders: "همه سفارشات",
-      processing: "در دست بررسی",
-      confirmed: "تایید شده",
-      makingready: "در حال آماده سازی",
-      inpeyk: "ارسال شده",
-      complete: "تکمیل شده",
-      canceled: "لغو شده",
-      orderNumberOrMobileNumber: "order number or mobile number"
+      request: "json request axios",
+      verify: "json verify axios",
+
+      active: "فعال/غیرفعال"
     },
     order: {
       orderNumber: "شماره سفارش",

@@ -6,13 +6,16 @@ import {
     DateField,
     DeleteButton,
     Edit,
+  ReferenceArrayField,
     EditButton,
     EmailField,
     FunctionField,
     Filter,
+  SingleFieldList,
     ImageField,
     ImageInput,
     NumberField,
+  ChipField,
     NumberInput,
     RichTextField,
     SearchInput,
@@ -49,6 +52,26 @@ export const customerList = (props) => {
         <TextField source="lastName" label={translate("resources.customers.lastName")}/>
         <EmailField source="email" label={translate("resources.customers.email")}/>
         <EmailField source="internationalCode" label={translate("resources.customers.internationalCode")}/>
+        <ReferenceArrayField label={translate("resources.customer.customerGroup")} reference="customerGroup" source="customerGroup" >
+          <SingleFieldList>
+            <ChipField source="slug" />
+          </SingleFieldList>
+        </ReferenceArrayField>
+        {/*<FunctionField label={translate("resources.customer.customerGroup")}*/}
+                       {/*render={record => {*/}
+
+
+                         {/*return (*/}
+                           {/*<div className={"categories"}>*/}
+                             {/*{record.customerGroup && record.customerGroup.map((item, it) => <div>*/}
+                               {/*<ChipField source={"customerGroup[" + it + "].slug"} label={item.slug}*/}
+                                          {/*sortable={false}/>*/}
+                             {/*</div>)}*/}
+
+                           {/*</div>*/}
+                         {/*);*/}
+                       {/*}}/>*/}
+
         <FunctionField label={translate("resources.customers.createdAt")}
                        render={record => `${dateFormat(record.createdAt)}`}/>
         <FunctionField label={translate("resources.customers.updatedAt")}

@@ -1313,14 +1313,14 @@ body .rtl .the-order-body-line > span.iii{
   display: inline !important;
 }
 body .rtl .MuiTablePagination-actions button:first-child {
-  transform: rotate(-180deg);
+  /*transform: rotate(-180deg);*/
 }
 
 body .rtl .theobject {
   margin-right: 30px;
 }
 body .rtl .MuiTablePagination-actions button:nth-child(2) {
-  transform: rotate(-180deg);
+  /*transform: rotate(-180deg);*/
 }
 
 body .rtl .MuiTableCell-root {
