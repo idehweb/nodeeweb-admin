@@ -85,7 +85,12 @@ const Login = () => {
     const location = useLocation();
 
     const handleSubmit = (auth) => {
+        console.log('handleSubmit')
         setLoading(true);
+        // if(location.state && location.state.nextPathname){
+            console.log('location.state.nextPathname',location.state.nextPathname)
+
+        // }
         login(auth, location.state ? location.state.nextPathname : '/').catch(
             (error) => {
                 setLoading(false);

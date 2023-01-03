@@ -13,6 +13,7 @@ import API from "@/functions/API";
 import { SettingsApplications as Icon } from "@mui/icons-material";
 import { Val } from "@/Utils";
 import useStyles from "@/styles";
+import { useNotify } from "react-admin";
 
 const typeChoices3 = [
   {
@@ -43,75 +44,84 @@ function returnToHome(values) {
 
 }
 
-function save(values) {
-  // console.log('product values', values);
-  // console.log('product valuess', valuess);
-  // console.log('last values: ', values);
-  if (values._id) {
-    API.put("/settings/" + values._id, JSON.stringify({ ...values }))
-      .then(({ data = {} }) => {
-        alert("it is ok");
-        if (data.success) {
-          values = [];
-          valuess = [];
-        }
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  } else {
-
-    API.post("/settings/", JSON.stringify({ ...values }))
-      .then(({ data = {} }) => {
-        alert("it is ok");
-
-        if (data.success) {
-          values = [];
-          valuess = [];
-        }
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  }
-}
 
 
 const Form = ({ children, ...props }) => {
   const translate = useTranslate();
+  const notify = useNotify();
+  function save(values) {
+    // console.log('product values', values);
+    // console.log('product valuess', valuess);
+    // console.log('last values: ', values);
+    if (values._id) {
+      API.put("/settings/" + values._id, JSON.stringify({ ...values }))
+        .then(({ data = {} }) => {
+          notify(translate("saved successfully."), {
+            type: "success"
+          });
+          if (data.success) {
+            values = [];
+            valuess = [];
+          }
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
+    } else {
+
+      API.post("/settings/", JSON.stringify({ ...values }))
+        .then(({ data = {} }) => {
+          notify(translate("saved successfully."), {
+            type: "success"
+          });
+
+          if (data.success) {
+            values = [];
+            valuess = [];
+          }
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
+    }
+  }
 
   return (
     <SimpleForm {...props} onSubmit={save}>
       <BooleanInput source="siteActive" label={translate("resources.settings.siteActive")}/>
-      <SelectArrayInput label={translate("resources.settings.activeCategory")} source="activeCategory" optionValue="_id" choices={[{
-        "_id": "61d58e37d931414fd78c7fb7",
-        "name": "تبلت",
-        "slug": "tablets"
-      }, {
-        "_id": "61d58e37d931414fd78c7fb8",
-        "name": "رایانه‌های رومیزی",
-        "slug": "all-in-one"
-      }, {
-        "_id": "61d58e37d931414fd78c7fb9",
-        "name": "ساعت و مچ‌بند هوشمند",
-        "slug": "smart-watch"
-      }, {
-        "_id": "61d58e37d931414fd78c7fba",
-        "name": "لوازم جانبی",
-        "slug": "accessories"
-      }, {
-        "_id": "61d58e37d931414fd78c7fbb",
-        "name": "لپ تاپ",
-        "slug": "laptop"
-      }, {
-        "_id": "61d58e37d931414fd78c7fbc",
-        "name": "کنسول های بازی",
-        "slug": "gaming-console"
-      }, {
-        "_id": "61d58e37d931414fd78c7fbd",
-        "name": "گوشی هوشمند",
-        "slug": "smart-phones"
-      }, { "_id": "622d964f8312bb1f3b5f8725", "name": "گیفت کارت", "slug": "gift-card" }]}/>
+      <BooleanInput source="tax" label={translate("resources.settings.tax")}/>
+
+      {/*<SelectArrayInput label={translate("resources.settings.activeCategory")} source="activeCategory" optionValue="_id" choices={[{*/}
+        {/*"_id": "61d58e37d931414fd78c7fb7",*/}
+        {/*"name": "تبلت",*/}
+        {/*"slug": "tablets"*/}
+      {/*}, {*/}
+        {/*"_id": "61d58e37d931414fd78c7fb8",*/}
+        {/*"name": "رایانه‌های رومیزی",*/}
+        {/*"slug": "all-in-one"*/}
+      {/*}, {*/}
+        {/*"_id": "61d58e37d931414fd78c7fb9",*/}
+        {/*"name": "ساعت و مچ‌بند هوشمند",*/}
+        {/*"slug": "smart-watch"*/}
+      {/*}, {*/}
+        {/*"_id": "61d58e37d931414fd78c7fba",*/}
+        {/*"name": "لوازم جانبی",*/}
+        {/*"slug": "accessories"*/}
+      {/*}, {*/}
+        {/*"_id": "61d58e37d931414fd78c7fbb",*/}
+        {/*"name": "لپ تاپ",*/}
+        {/*"slug": "laptop"*/}
+      {/*}, {*/}
+        {/*"_id": "61d58e37d931414fd78c7fbc",*/}
+        {/*"name": "کنسول های بازی",*/}
+        {/*"slug": "gaming-console"*/}
+      {/*}, {*/}
+        {/*"_id": "61d58e37d931414fd78c7fbd",*/}
+        {/*"name": "گوشی هوشمند",*/}
+        {/*"slug": "smart-phones"*/}
+      {/*}, { "_id": "622d964f8312bb1f3b5f8725", "name": "گیفت کارت", "slug": "gift-card" }]}/>*/}
+
+
       <TextInput
         fullWidth
         source={"siteActiveMessage"}
@@ -171,6 +181,8 @@ const Form = ({ children, ...props }) => {
         </SimpleFormIterator>
       </ArrayInput>
 
+      <TextInput fullWidth source={"title."+ translate("lan")} label={translate('resources.settings.title')} />
+      <TextInput fullWidth source="currency" label={translate('resources.settings.currency')} />
       <TextInput multiline fullWidth source="sms_welcome" label={translate('resources.settings.welcome')} />
       <TextInput multiline fullWidth source="sms_register" label={translate('resources.settings.register')} />
       <TextInput multiline fullWidth source="sms_submitOrderNotPaying" label={translate('resources.settings.submitOrderNotPaying')} />

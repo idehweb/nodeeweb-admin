@@ -4,12 +4,13 @@ import {
   DeleteButton,
   FormDataConsumer,
   NumberInput,
+  ReferenceArrayInput,
   SaveButton,
+  SelectArrayInput,
   SelectInput,
   showNotification,
   SimpleFormIterator,
-  SelectArrayInput,
-  ReferenceArrayInput,
+  CheckboxGroupInput,
   TextInput,
   Toolbar,
   useForm,
@@ -21,6 +22,7 @@ import { useFormContext } from "react-hook-form";
 import API from "@/functions/API";
 import { dateFormat } from "@/functions";
 import {
+  AtrRefField,
   CatRefField,
   Combinations,
   EditOptions,
@@ -366,6 +368,7 @@ const Form = ({ children, ...props }) => {
     // console.clear();
     // let values = record;
     console.log("save function ()...");
+    // const redirect = useRedirect();
 
     if (valuess.firstCategory) {
       // console.log('let us set firstCategory');
@@ -414,7 +417,7 @@ const Form = ({ children, ...props }) => {
           // refresh();
           // alert('it is ok');
           notify("saved");
-          redirect(false);
+          // redirect(false);
           // showNotification(translate('product.updated'));
           // window.location.reload();
           if (data.success) {
@@ -433,6 +436,10 @@ const Form = ({ children, ...props }) => {
       if (valuess.files) {
         values.files = valuess.files;
       }
+
+      if (!valuess.status) {
+        values.status = 'draft';
+      }
       API.post("/product/", JSON.stringify({ ...values }))
         .then(({ data = {} }) => {
           // showNotification(translate('product.created'));
@@ -440,8 +447,9 @@ const Form = ({ children, ...props }) => {
           console.log("data", data);
           if (data._id) {
             _The_ID = data._id;
-            window.location.href = "/#/product/" + _The_ID;
-            window.location.reload();
+            // window.location.href = "/#/product/" + _The_ID;
+            // window.location.reload();
+            redirect('/product/'+data._id);
 
             // values = [];
             // valuess = [];
@@ -497,6 +505,7 @@ const Form = ({ children, ...props }) => {
       <div className={"mb-20"}/>
       <BooleanInput source="story" label={translate("resources.product.story")}/>
       <TextInput source={"miniTitle." + translate("lan")} label={translate("resources.product.miniTitle")}/>
+      <TextInput source={"extra_button"} label={translate("resources.product.extra_button")}/>
 
       {/*<CatRefField label={translate("resources.product.firstCategory")} returnToHome={returnToHome}*/}
       {/*returnCatsValues={returnCatsValues}*/}
@@ -505,9 +514,28 @@ const Form = ({ children, ...props }) => {
       {/*reference="category"*/}
       {/*url={"/category/f/0/1000"} surl={"/category/s"}/>*/}
 
-      <ReferenceArrayInput source="productCategory" reference="productCategory">
+      <ReferenceArrayInput
+        label={translate("resources.product.productCategory")}
+        source="productCategory" reference="productCategory">
         <SelectArrayInput optionText="name.fa"/>
       </ReferenceArrayInput>
+      {/*<ReferenceArrayInput*/}
+      {/*label={translate("resources.product.attributes")}*/}
+      {/*source="attributes" reference="attributes">*/}
+      {/*<SelectArrayInput optionText="name.fa" optionValue="_id"/>*/}
+      {/*</ReferenceArrayInput>*/}
+
+      <AtrRefField label={translate("resources.product.attributes")}
+                   source="attributes"
+
+                   reference="attributes"
+                   url={"/attributes/0/1000"}
+                   surl={"/attributes"}
+      />
+
+
+
+
       <div className={"mb-20"}/>
 
       <SelectInput
@@ -527,7 +555,8 @@ const Form = ({ children, ...props }) => {
           console.log("formData.type", formData.type);
           // {/*// console.log('rendering???',formData);*/}
           if (formData.type == "variable")
-            return [<EditOptions key={0} record={formData} onCreateCombinations={onCreateCombinations}
+            return [
+              <EditOptions source={'options'} key={0} record={formData} onCreateCombinations={onCreateCombinations}
                                  formData={formData}
                                  type={formData.type} updater={OptsUpdater}/>,
               <Combinations
@@ -538,7 +567,7 @@ const Form = ({ children, ...props }) => {
               }}/>];
           if (formData.type == "normal")
             return [<div className={"row mb-20"} key={0}>
-              <div className={"col-md-6"}>
+              <div className={"col-md-4"}>
                 <SelectInput
                   fullWidth
 
@@ -551,13 +580,24 @@ const Form = ({ children, ...props }) => {
                   {...rest}
                 />
               </div>
-              <div className={"col-md-6"}>
+              <div className={"col-md-4"}>
                 <NumberInput
                   fullWidth
 
                   source={"quantity"}
 
                   label={translate("resources.product.quantity")}
+                  // record={scopedFormData}
+                  {...rest}
+                />
+              </div>
+              <div className={"col-md-4"}>
+                <NumberInput
+                  fullWidth
+
+                  source={"weight"}
+
+                  label={translate("resources.product.weight")}
                   // record={scopedFormData}
                   {...rest}
                 />
@@ -574,12 +614,12 @@ const Form = ({ children, ...props }) => {
 
                     label={translate("resources.product.price")}
                     format={v => {
-                      if (!v) return;
+                      if (!v) return "";
 
                       return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                     }}
                     parse={v => {
-                      if (!v) return;
+                      if (!v) return "";
 
                       return v.toString().replace(/,/g, "");
 
@@ -597,12 +637,12 @@ const Form = ({ children, ...props }) => {
 
                     label={translate("resources.product.salePrice")}
                     format={v => {
-                      if (!v) return;
+                      if (!v) return "";
 
                       return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                     }}
                     parse={v => {
-                      if (!v) return;
+                      if (!v) return "";
 
                       return v.toString().replace(/,/g, "");
 
@@ -768,6 +808,7 @@ const Form = ({ children, ...props }) => {
         choices={[
           { id: "published", name: translate("resources.product.published") },
           { id: "processing", name: translate("resources.product.processing") },
+          { id: "draft", name: translate("resources.product.draft") },
           { id: "deleted", name: translate("resources.product.deleted") }
         ]}
       />

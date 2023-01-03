@@ -18,6 +18,7 @@ import API from "@/functions/API";
 import { SettingsApplications as Icon } from "@mui/icons-material";
 import { Val } from "@/Utils";
 import useStyles from "@/styles";
+import { useNotify } from "react-admin";
 
 const typeChoices3 = [
   {
@@ -66,41 +67,11 @@ function thelF(values) {
 
 }
 
-function save(values) {
-  // console.log('product values', values);
-  // console.log('product valuess', valuess);
-  // console.log('last values: ', values);
-  if (values._id) {
-    API.put("/settings/" + values._id, JSON.stringify({ ...values }))
-      .then(({ data = {} }) => {
-        alert("it is ok");
-        if (data.success) {
-          values = [];
-          valuess = [];
-        }
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  } else {
-
-    API.post("/settings/", JSON.stringify({ ...values }))
-      .then(({ data = {} }) => {
-        alert("it is ok");
-
-        if (data.success) {
-          values = [];
-          valuess = [];
-        }
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  }
-}
 
 const list = (props) => {
   const translate=useTranslate();
+
+
   return(
     <List {...props}>
       <Datagrid optimized>
@@ -125,9 +96,48 @@ const list = (props) => {
 const Form = ({ children, ...props }) => {
   // console.log('vprops', props);
   const cls = useStyles();
+  const translate=useTranslate();
+  const notify=useNotify();
+  function save(values) {
+    // console.log('product values', values);
+    // console.log('product valuess', valuess);
+    // console.log('last values: ', values);
+    if (values._id) {
+      API.put("/settings/" + values._id, JSON.stringify({ ...values }))
+        .then(({ data = {} }) => {
+          notify(translate("saved successfully."), {
+            type: "success"
+          });
+          if (data.success) {
+            values = [];
+            valuess = [];
+          }
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
+    } else {
+
+      API.post("/settings/", JSON.stringify({ ...values }))
+        .then(({ data = {} }) => {
+          notify(translate("saved successfully."), {
+            type: "success"
+          });
+
+          if (data.success) {
+            values = [];
+            valuess = [];
+          }
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
+    }
+  }
   return (
     <SimpleForm {...props} onSubmit={save}>
       <BooleanInput source="siteActive" label="site status"/>
+      <BooleanInput source="tax" label={translate("resources.settings.tax")}/>
       {/*<ReferenceArrayInput label="دسته های فعال" source="category" reference="category" filter={{f:true}} >*/}
       {/*<SelectArrayInput optionText="name" optionValue="_id">*/}
       {/*/!*<ChipField source="name" />*!/*/}

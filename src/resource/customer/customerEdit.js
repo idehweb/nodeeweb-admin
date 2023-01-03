@@ -1,40 +1,15 @@
-import {
-    BooleanField,
-    BooleanInput,
-    Create,
-    Datagrid,
-    DateField,
-    DeleteButton,
-    Edit,
-    EditButton,
-    EmailField,
-    FunctionField,
-    Filter,
-    ImageField,
-    ImageInput,
-    NumberField,
-    NumberInput,
-    RichTextField,
-    SearchInput,
-    Show,
-    ShowButton,
-    Pagination,
-    SimpleShowLayout,
-    TextField,
-    TextInput,
-} from 'react-admin';
-import { ReferenceArrayInput, SelectArrayInput } from 'react-admin';
+import { BooleanInput, Edit, ReferenceArrayInput, SelectArrayInput, SelectInput, TextInput } from "react-admin";
 
-import {dateFormat} from '@/functions';
-import {CategoryRounded as Icon,Group,GroupAdd} from '@mui/icons-material';
-import {List, SimpleForm} from '@/components';
+import { dateFormat } from "@/functions";
+import { List, ReactAdminJalaliDateInput, SimpleForm } from "@/components";
 import { useTranslate } from "react-admin/dist/index";
+
 const validateUserCreation = (values) => {
   const errors = {};
   if (!values.parent) {
     values.parent = {};
   }
-  if (values.parent=="") {
+  if (values.parent == "") {
     values.parent = {};
   }
   // if (!values.age) {
@@ -47,32 +22,77 @@ const validateUserCreation = (values) => {
   //     args: { min: 18 }
   //   };
   // }
-  return errors
+  return errors;
 };
 
 export const customerEdit = (props) => {
-    console.log('props',props);
-  const translate=useTranslate();
+  console.log("props", props);
+  const translate = useTranslate();
 
-  return(
+  return (
     <Edit {...props}>
       <SimpleForm>
-        <TextInput disabled source="id"  label={translate("resources.customers._id")}/>
-        <TextInput source="firstName"  label={translate("resources.customers.firstName")}/>
-        <TextInput source="lastName"  label={translate("resources.customers.lastName")}/>
-        <TextInput source="internationalCode"  label={translate("resources.customers.internationalCode")}/>
-        <TextInput source="email" type="email"  label={translate("resources.customers.email")}/>
-        <TextInput source="phoneNumber"  label={translate("resources.customers.phoneNumber")}/>
-        <TextInput source="countryCode"  label={translate("resources.customers.countryCode")}/>
-        <TextInput source="activationCode"  label={translate("resources.customers.activationCode")}/>
+        <TextInput
+          fullWidth
+          disabled source="id" label={translate("resources.customers._id")}/>
+        <TextInput
+          fullWidth
+          source="firstName" label={translate("resources.customers.firstName")}/>
+        <TextInput fullWidth
+                   source="lastName" label={translate("resources.customers.lastName")}/>
+        <TextInput fullWidth
+                   source="internationalCode" label={translate("resources.customers.internationalCode")}/>
+        <TextInput fullWidth
+                   source="email" type="email" label={translate("resources.customers.email")}/>
+        <TextInput fullWidth
+                   source="phoneNumber" label={translate("resources.customers.phoneNumber")}/>
+        <TextInput fullWidth
+                   source="countryCode" label={translate("resources.customers.countryCode")}/>
+        <TextInput fullWidth
+                   source="activationCode" label={translate("resources.customers.activationCode")}/>
+        <TextInput fullWidth
+                   source="source" label={translate("resources.customers.source")}/>
+        <TextInput fullWidth
+                   source="birthday" label={translate("resources.customers.birthday")}/>
+        <ReactAdminJalaliDateInput
+          fullWidth
+          source="birthdate" label={translate("resources.customers.birthdate")}/>
+        <SelectInput
+          fullWidth
+          label={translate("resources.customers.sex")}
+          defaultValue={""}
+          source="sex"
+          choices={[
+            { id: "", name: "" },
+            { id: "male", name: translate("resources.customers.male") },
+            { id: "female", name: translate("resources.customers.female") }
+          ]}
+        />
+        <SelectInput
+          label={translate("resources.customers.source")}
+          defaultValue={""}
+          fullWidth
+          source="source"
+          choices={[
+
+            { id: "WEBSITE", name: translate("resources.customers.WEBSITE") },
+            { id: "CRM", name: translate("resources.customers.CRM") }
+          ]}
+        />
         <ReferenceArrayInput source="customerGroup" reference="customerGroup">
-          <SelectArrayInput optionText="name.fa" />
+          <SelectArrayInput
+            fullWidth
+            label={translate("resources.customers.customerGroup")}
+            optionText="name.fa"/>
         </ReferenceArrayInput>
-        <BooleanInput source="active"  label={translate("resources.customers.active")}/>
+        <BooleanInput
+          fullWidth
+
+          source="active" label={translate("resources.customers.active")}/>
       </SimpleForm>
     </Edit>
   );
-}
+};
 
 
 export default customerEdit;

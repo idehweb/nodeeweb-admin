@@ -131,7 +131,8 @@ const Configuration = (props) => {
       logo:theData.logo,
       title:theData.title,
       home:theData.home,
-      ZIBAL_TOKEN:theData.ZIBAL_TOKEN,
+      header_last:theData.header_last,
+      body_first:theData.body_first,
       primaryColor:theData.primaryColor,
       secondaryColor:theData.secondaryColor,
       textColor:theData.textColor,
@@ -172,7 +173,9 @@ const Configuration = (props) => {
       bgColor,
       textColor,
       footerBgColor,
-      ZIBAL_TOKEN
+      ZIBAL_TOKEN,
+      header_last,
+      body_first
     } = getValues();
     return (
       <Form onSubmit={handleSubmit(onSubmit)} noValidate={true} redirect={false}>
@@ -185,7 +188,7 @@ const Configuration = (props) => {
 
 
                   <div className={"col-md-3"}>
-                    <label className={"the-label"}>
+                    <label className={"the-label2"}>
 
                       {translate("resources.settings.currentLogo")}
                     </label>
@@ -193,7 +196,7 @@ const Configuration = (props) => {
                   </div>
                   <div className={"col-md-9"}>
                     <ImageInput
-                      className={"the-label show-image-uploader"}
+                      className={"the-label2 show-image-uploader"}
                       source={"logo"}
                       label={translate("resources.settings.uploadLogo")}
                       accept="image/*"
@@ -214,11 +217,11 @@ const Configuration = (props) => {
                   autoFocus
                   fullWidth
                   label={translate("resources.settings.title")}
-                  source="title"
+                  source={"title."+translate("lan")}
                   disabled={loading}
-                  defaultValue={title}
+                  defaultValue={title[translate("lan")]}
                   onChange={(event) => {
-                    handleChange("title", event.target.value);
+                    handleChange("title."+translate("lan"), event.target.value);
                   }}
                 />
 
@@ -254,23 +257,39 @@ const Configuration = (props) => {
               <Box>
                 <TextInput
                   autoFocus
-                  source="ZIBAL_TOKEN"
+                  source="header_last"
                   className={"ltr"}
-
-                  label={("ZIBAL_TOKEN")}
+                  multiline
+                  label={("header_last")}
                   disabled={loading}
                   // validate={required()}
                   fullWidth
-                  defaultValue={ZIBAL_TOKEN}
+                  defaultValue={header_last}
                   onChange={(event) => {
-                    handleChange("ZIBAL_TOKEN", event.target.value);
+                    handleChange("header_last", event.target.value);
+                  }}
+                />
+              </Box>
+              <Box>
+                <TextInput
+                  autoFocus
+                  source="body_first"
+                  className={"ltr"}
+                  multiline
+                  label={("body_first")}
+                  disabled={loading}
+                  // validate={required()}
+                  fullWidth
+                  defaultValue={body_first}
+                  onChange={(event) => {
+                    handleChange("body_first", event.target.value);
                   }}
                 />
               </Box>
               <Box>
                 <div className={"row"}>
                   <div className={"col-md-2"}>
-                    <label className={"the-label"}>
+                    <label className={"the-label2"}>
 
                       {translate("resources.settings.primaryColor")}
                     </label>
@@ -283,7 +302,7 @@ const Configuration = (props) => {
                     />
                   </div>
                   <div className={"col-md-2"}>
-                    <label className={"the-label"}>
+                    <label className={"the-label2"}>
 
                       {translate("resources.settings.secondaryColor")}
                     </label>
@@ -297,7 +316,7 @@ const Configuration = (props) => {
                     />
                   </div>
                   <div className={"col-md-2"}>
-                    <label className={"the-label"}>
+                    <label className={"the-label2"}>
                       {translate("resources.settings.textColor")}
                     </label>
                     <ColorPicker
@@ -309,7 +328,7 @@ const Configuration = (props) => {
                     />
                   </div>
                   <div className={"col-md-2"}>
-                    <label className={"the-label"}>
+                    <label className={"the-label2"}>
                       {translate("resources.settings.bgColor")}
                     </label>
                     <ColorPicker
@@ -322,7 +341,7 @@ const Configuration = (props) => {
                     />
                   </div>
                   <div className={"col-md-2"}>
-                    <label className={"the-label"}>
+                    <label className={"the-label2"}>
                       {translate("resources.settings.footerBgColor")}
                     </label>
                     <ColorPicker

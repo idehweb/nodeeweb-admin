@@ -245,6 +245,7 @@ const Form = ({children, ...props}) => {
             delete values.category;
             delete values.catChoosed;
             delete values.files;
+            delete values.elements;
             console.log("last values (edit): ", values);
 
             API.put("/post/" + _The_ID, JSON.stringify({...values}))
@@ -302,8 +303,8 @@ const Form = ({children, ...props}) => {
 
             <TextInput source="slug" fullWidth label={translate("resources.post.slug")}
                        className={"width100 mb-20 ltr"}/>
-            <TextInput multiline fullWidth source="excerpt" label={translate("resources.post.excerpt")}/>
-            <RichTextInput multiline fullWidth source="description" label={translate("resources.post.description")}/>
+            <TextInput multiline fullWidth source={"excerpt."+translate("lan")} label={translate("resources.post.excerpt")}/>
+            <RichTextInput multiline fullWidth source={"description."+translate("lan")} label={translate("resources.post.description")}/>
 
             <div className={"mb-20"}></div>
             <UploaderField

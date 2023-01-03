@@ -7,6 +7,7 @@ import {
     Edit,
     EditButton,
     ReferenceField,
+    ReferenceInput,
     RefreshButton,
     SelectInput,
     ShowButton,
@@ -36,6 +37,25 @@ export const notificationCreate = (props) => {
   return(
     <Create {...props}>
       <SimpleForm>
+        <ReferenceInput
+fullWidth
+          source="customerGroup" reference="customerGroup">
+          <SelectInput
+            fullWidth
+
+            label={translate("resources.notification.customerGroup")} optionText="name.fa"/>
+        </ReferenceInput>
+
+        <SelectInput
+          label={translate("resources.notification.source")}
+          fullWidth
+
+          source="source"
+          choices={[
+            { id: "CRM", name: translate("resources.notification.CRM") },
+            { id: "WEBSITE", name: translate("resources.notification.WEBSITE") },
+          ]}
+        />
         <TextInput source="phoneNumber" label={translate("resources.notification.phoneNumber")} fullWidth/>
         <TextInput multiline source="message" label={translate("resources.notification.message")} fullWidth/>
       </SimpleForm>

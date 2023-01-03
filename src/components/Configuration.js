@@ -8,7 +8,7 @@ import { useLocale, useSetLocale, useTranslate } from "react-admin";
 // import {AppState} from '../types';
 import { DollarPrice } from "@/components";
 import { changeLocale } from "@/functions";
-
+import LanguageIcon from '@mui/icons-material/Language';
 //
 // const useStyles = makeStyles({
 //     label: {width: '10em', display: 'inline-block'},
@@ -62,6 +62,7 @@ const Configuration = () => {
         >
           fa
         </Button>
+        <LanguageIcon/>
 
         <DollarPrice/>
 

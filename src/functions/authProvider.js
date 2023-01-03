@@ -25,10 +25,16 @@ export default {
         localStorage.setItem('nickname', obj.user.nickname);
         localStorage.setItem('username', obj.user.username);
         localStorage.setItem('token', obj.user.token);
+        localStorage.setItem('user_id', obj.user._id);
       });
   },
   // called when the user clicks on the logout button
   logout: () => {
+    localStorage.removeItem('email');
+    localStorage.removeItem('active');
+    localStorage.removeItem('nickname');
+    localStorage.removeItem('username');
+    localStorage.removeItem('user_id');
     localStorage.removeItem('token');
     return Promise.resolve();
   },

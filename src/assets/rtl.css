@@ -65,6 +65,14 @@ body .layout.rtl a,
     direction: rtl;
 }
 
+.ltr .MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root {
+    text-align: left;
+    direction: ltr;
+}
+#header_last,#header_last *{
+    direction: ltr !important;
+    text-align: left !important;
+}
 body .layout.rtl .MuiSelect-select {
     padding-left: 32px;
     padding-right: 10px;

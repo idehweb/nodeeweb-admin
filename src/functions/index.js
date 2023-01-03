@@ -6,6 +6,7 @@ import {useTranslate} from 'react-admin';
 // import {MainUrl, savePost} from "../../../main/src/client/functions";
 import API from "./API";
 import API_BASE_URL from "./API_BASE_URL";
+import axios from 'axios';
 
 const ADMIN_ROUTE = window.ADMIN_ROUTE;
 export const MainUrl = window.BASE_URL;
@@ -63,6 +64,32 @@ export const changeThemeDataFunc = () => {
   });
 
 
+};
+export const restartSystem = () => {
+  return new Promise(function (resolve, reject) {
+    API.post(`/settings/restart`, {}, true)
+      .then((data) => {
+        let mainD = data["data"];
+
+        resolve(mainD);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+export const upgradeSystem = () => {
+  return new Promise(function (resolve, reject) {
+    API.post(`/settings/update`, {}, true)
+      .then((data) => {
+        let mainD = data["data"];
+
+        resolve(mainD);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 };
 export const changeThemeData = (payload) => {
 console.log('changeThemeData')
@@ -168,7 +195,7 @@ export const uploadMedia = (file = {}, onUploadProgress, id) => {
     const config = {
       headers: {
         "content-type": "multipart/form-data",
-        token: store.getState().store.token
+        token: localStorage.getItem('token')
       },
       cancelToken: new axios.CancelToken((c) => {
         cancel = c;
@@ -179,7 +206,7 @@ export const uploadMedia = (file = {}, onUploadProgress, id) => {
       }
     };
     return axios
-      .post(`${AdminRoute}/media/fileUpload`, formData, config)
+      .post(`${ADMIN_ROUTE}/media/fileUpload`, formData, config)
       .then((res) => {
         return resolve(res.data);
       })

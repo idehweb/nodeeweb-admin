@@ -91,6 +91,7 @@ export default (props) => {
     valuesoptions = options;
     console.log('valuesoptions',valuesoptions);
     console.log('valuescombinations',valuescombinations);
+    setValue('options',valuesoptions);
     setValue('combinations',valuescombinations);
 
     // setCombinations(valuescombinations);
@@ -177,7 +178,7 @@ export default (props) => {
   };
   const getData = () => {
 
-    API.get("/attributes/", {}, true)
+    API.get("/attributes/0/1000", {}, true)
       .then(({ data = [] }) => {
         var cds = [];
         data.forEach((uf, s) => {
@@ -228,7 +229,7 @@ console.log("React.useEffect")
   if (valuestype === "variable") {
     console.log("valuestype ==>",valuestype)
     return ([
-      <div key="0" className={"width100"}>
+      <div key="0" className={"width1000"}>
 
         {options.map((option, op) => {
       let tchild = [], tchildname;
@@ -261,7 +262,7 @@ console.log("React.useEffect")
       console.log("#combinations ");
 
       return (
-        [<div key={op} className={"row mb-20 width100"}>
+        [<div key={op} className={"row mb-20 width1000"}>
           <div style={{ direction: "rtl" }}>#{op}</div>
           <div className={"col-md-5"}>
 

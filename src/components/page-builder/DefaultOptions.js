@@ -298,5 +298,162 @@ const DefaultOptions = [
       },
       "design": [{"name": "padding", "type": "string"}],
     }
+  }, {
+    "label": "Pagination",
+    "name": "pagination",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {"entity": "", "include": "","perPage":1,"offset":0,"limit":10,"breakpoints":{},"classess":"","customQuery":{},"populateQuery":{},...fields},
+        "rules": [
+          {"name": "entity", "type": "string"},
+          {"name": "include", "type": "string","class":"ltr"},
+          {"name": "perPage", "type": "number"},
+          {"name": "offset", "type": "number"},
+          {"name": "limit", "type": "number"},
+          {"name": "breakpoints", "type": "object"},
+          {"name": "customQuery", "type": "object"},
+          {"name": "populateQuery", "type": "object"},
+          ...rules
+        ]
+      },
+      "design": [{"name": "padding", "type": "string"}],
+    }
+  },{
+    "label": "Side Menu",
+    "name": "sidemenu",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {"entity": "", "include": "","perPage":1,"offset":0,"limit":10,"breakpoints":{},"classess":"","customQuery":{},"populateQuery":{},...fields},
+        "rules": [
+          {"name": "entity", "type": "string"},
+          {"name": "include", "type": "string","class":"ltr"},
+          {"name": "perPage", "type": "number"},
+          {"name": "offset", "type": "number"},
+          {"name": "limit", "type": "number"},
+          {"name": "breakpoints", "type": "object"},
+          {"name": "customQuery", "type": "object"},
+          {"name": "populateQuery", "type": "object"},
+          ...rules
+        ]
+      },
+      "design": [{"name": "padding", "type": "string"}],
+    }
+  },{
+    "label": "Galleries",
+    "name": "galleries",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {},
+        "rules": []
+      },
+      "design": [],
+    }
+  },{
+    "label": "Sort",
+    "name": "sort",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {},
+        "rules": []
+      },
+      "design": [],
+    }
+  },{
+    "label": "ChooseLayout",
+    "name": "chooselayout",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {},
+        "rules": []
+      },
+      "design": [],
+    }
+  },{
+    "label": "Prices",
+    "name": "prices",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {},
+        "rules": []
+      },
+      "design": [],
+    }
+  },{
+    "label": "AddToCartButton",
+    "name": "addtocartbutton",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {},
+        "rules": []
+      },
+      "design": [],
+    }
+  },{
+    "label": "ProductCategories",
+    "name": "productcategories",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {},
+        "rules": []
+      },
+      "design": [],
+    }
+  }, {
+    "label": "Form",
+    "name": "form",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {"_id": "",...fields},
+        "rules": [
+          {"name": "_id", "type": "string"},
+          ...rules
+        ]
+      },
+      "design": [],
+    }
+  },{
+    "label": "Input",
+    "name": "input",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {"name": "", "value": "","placeholder": "","require": "",...fields},
+        "rules": [
+          {"name": "name", "type": "string"},
+          {"name": "value", "type": "string"},
+          {"name": "placeholder", "type": "string"},
+          {"name": "require", "type": "boolean","value":false},
+
+          ...rules
+        ]
+      },
+      "design": [],
+    }
+  }, {
+    "label": "Textarea",
+    "name": "textarea",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {"name": "", "value": "", "placeholder": "","require": "",...fields},
+        "rules": [
+          {"name": "name", "type": "string"},
+          {"name": "value", "type": "string"},
+          {"name": "placeholder", "type": "string"},
+          {"name": "require", "type": "boolean","value":false},
+          ...rules
+        ]
+      },
+      "design": [],
+    }
   }];
 export default DefaultOptions

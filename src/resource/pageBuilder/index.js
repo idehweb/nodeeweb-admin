@@ -43,7 +43,8 @@ const Builder = () => {
 // const Button=()=>{
 //   return <button ></button>
 // }
-const CreatePage = ({}) => {
+const CreatePage = (props) => {
+  // const translate = useTranslate();
 
   const [c, setC] = useState(0);
   const [data, setData] = useState({});
@@ -449,7 +450,7 @@ const CreatePage = ({}) => {
   console.log("components", components);
   return (
 
-    <div className={"nodeeweb-page-builder-wrapper"}>
+    <div className={"nodeeweb-page-builder-wrapper "+translate('direction')}>
       <div id="nodeeweb-page-builder" style={{ height: "100vh", width: "100vw !important" }}>
         {components && components.map((component, index) => {
           if (!component) {
@@ -488,7 +489,7 @@ const CreatePage = ({}) => {
         </div>
       </div>
 
-      <OptionBox defaultOptions={DefaultOptions} onClose={(e) => {
+      <OptionBox {...props} defaultOptions={DefaultOptions} onClose={(e) => {
         console.log("setExcludeArray");
         toggleOptionBox();
       }} exclude={excludeArray} open={state.optionBox} addToComponents={addToComponents}/>

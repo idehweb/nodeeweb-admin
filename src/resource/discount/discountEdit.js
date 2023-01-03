@@ -19,12 +19,14 @@ import {
     SimpleShowLayout,
     TextField,
     TextInput,
+  SelectArrayInput,
+  ReferenceArrayInput,
     useResourceContext, useTranslate
 } from 'react-admin';
 import React, {Fragment} from 'react';
 import {useParams} from 'react-router';
 import {CategoryRounded as Icon, LibraryAdd} from '@mui/icons-material';
-import {CustomResetViewsButton, List, SimpleForm} from '@/components';
+import {CustomResetViewsButton, List, SimpleForm,ReactAdminJalaliDateInput} from '@/components';
 import useStyles from '@/styles';
 import {Val} from '@/Utils';
 import API, {BASE_URL} from '@/functions/API';
@@ -76,6 +78,20 @@ const Form = ({children, ...rest}) => {
             formClassName={cls.f2}
             fullWidth
           />
+          <ReferenceArrayInput
+            label={translate("resources.discount.excludeProductCategory")}
+            source="excludeProductCategory" reference="productCategory">
+            <SelectArrayInput optionText="name.fa"/>
+          </ReferenceArrayInput>
+          <ReferenceArrayInput
+            label={translate("resources.discount.excludeProduct")}
+            source="excludeProduct" reference="product">
+            <SelectArrayInput optionText="title.fa"/>
+          </ReferenceArrayInput>
+          <div>{translate("resources.discount.expire")}</div>
+          <ReactAdminJalaliDateInput
+            fullWidth
+            source="expire" label={translate("resources.discount.expire")}/>
         </SimpleForm>
     );
 };

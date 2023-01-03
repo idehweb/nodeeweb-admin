@@ -27,7 +27,9 @@ import {
   UploaderField
 } from "@/components";
 import { Button } from "@mui/material";
-
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import NoteAltIcon from '@mui/icons-material/NoteAlt';
 import React from "react";
 
 
@@ -88,7 +90,7 @@ const list = (props) => {
                          <div>
                            {/*+"?token="+localStorage.getItem('token')*/}
                            <a target={"_blank"}
-                              href={"/#/builder" + "/page/" + record._id}>{translate("resources.page.pagebuilder")}</a>
+                              href={"/admin/#/builder" + "/page/" + record._id}><NoteAltIcon/><span  className={'ml-2 mr-2'}>{translate("resources.page.pagebuilder")}</span></a>
                          </div>
                          <div>
                            <EditButton/>
@@ -99,7 +101,7 @@ const list = (props) => {
                              size="small"
                              onClick={() => {
                                // console.log('data', record._id);
-                               API.post("/post/copy/" + record._id, null)
+                               API.post("/page/copy/" + record._id, null)
                                  .then(({ data = {} }) => {
                                    // console.log('data', data._id);
                                    props.history.push("/post/" + data._id);
@@ -109,7 +111,8 @@ const list = (props) => {
                                    console.log("error", err);
                                  });
                              }}>
-                             {translate("resources.page.copy")}
+                             <ContentCopyIcon /><span className={'ml-2 mr-2'}>{translate("resources.page.copy")}</span>
+
                            </Button>
                          </div>
                          <div>
@@ -121,7 +124,7 @@ const list = (props) => {
                              onClick={() => {
 
                              }}>
-                             {translate("resources.page.activities")}
+                             <PendingActionsIcon /><span className={'ml-2 mr-2'}>{translate("resources.page.activities")}</span>
                            </a>
                          </div>
                          <div>

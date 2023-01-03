@@ -64,7 +64,7 @@ const list = (props) => {
                 <ReferenceField
                     label={translate('resources.category.parent')}
                     source="parent"
-                    reference="category">
+                    reference="productCategory">
                     <TextField source={"name."+translate('lan')}/>
                 </ReferenceField>
                 {/*<TextField source="order" label={translate('resources.category.order')}/>*/}

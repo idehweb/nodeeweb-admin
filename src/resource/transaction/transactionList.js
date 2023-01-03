@@ -7,6 +7,7 @@ import {
   SearchInput,
   SimpleShowLayout,
   TextField,
+  EditButton,
   SelectField,
   useTranslate
 } from "react-admin";
@@ -31,7 +32,8 @@ export const transactionList = (props) => {
         {/*<TextField source="id"/>*/}
         <TextField source="Authority" label={translate("resources.transaction.authority")}/>
         <NumberField source="amount" label={translate("resources.transaction.amount")}/>
-        <TextField source="RefID" label={translate("resources.transaction.referenceId")}/>
+        <TextField source="method" label={translate("resources.transaction.gateway")}/>
+        {/*<TextField source="orderNumber" label={translate("resources.transaction.orderNumber")}/>*/}
 
         <FunctionField label={translate("resources.transaction.orderNumber")}
                        render={record => (
@@ -39,7 +41,7 @@ export const transactionList = (props) => {
 
 
                            {record.order &&
-                           <a href={"/#/order/" + record.order._id} target={"_blank"}>{record.order.orderNumber}</a>}
+                           <a href={"/#/order/" + record.order} target={"_blank"}>{record.orderNumber}</a>}
 
                          </div>
                        )}/>
@@ -60,6 +62,19 @@ export const transactionList = (props) => {
 
                          </div>
                        )}/>
+        <FunctionField label={translate("resources.transaction.edit")}
+                       render={record => (
+                         <>
+                           <div>
+                             <EditButton label={"resources.transaction.edit"} key={"00"}/>
+                           </div>
+
+                           {/*<EditButton label={"resources.product.content"} key={'11'}/>,*/}
+                           {/*<ShowButton label={"resources.product.analytics"} key={'22'}/>,*/}
+
+                         </>
+                       )}/>
+
       </Datagrid>
     </List>
   );

@@ -1,4 +1,4 @@
-import { ArrayInput, Edit,SaveButton,DeleteButton,  Toolbar, SelectInput, SimpleFormIterator, TextInput, useTranslate,FormDataConsumer } from "react-admin";
+import { ArrayInput,BooleanInput, Edit,SaveButton,DeleteButton,  Toolbar, SelectInput, SimpleFormIterator, TextInput, useTranslate,FormDataConsumer } from "react-admin";
 import { Divider } from "@mui/material";
 import { AttrType, List, SimpleForm, UploaderField } from "@/components";
 import useStyles from "@/styles";
@@ -30,6 +30,7 @@ const Form = ({ children, ...props }) => {
     <SimpleForm {...props} toolbar={<CustomToolbar/>} defaultValues={defaultValues}>
       <TextInput source="name.fa" label={translate("resources.attributes.name")}/>
       <TextInput source="slug" label={translate("resources.attributes.slug")}/>
+      <BooleanInput source="useInFilter" label={translate("resources.attributes.useInFilter")}/>
 
 
       <SelectInput

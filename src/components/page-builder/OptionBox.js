@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 // import {withTranslation} from "react-i18next";
-import {dFormat, PriceFormat} from "@/functions/utils";
-import CustomModal from "@/components/Modal";
-// import {ListGroup, ListGroupItem} from "shards-react";
-// import "@/assets/nodeeweb-page-builder.css";
+import { useParams } from "react-router";
 
+import { dFormat, PriceFormat } from "@/functions/utils";
+import CustomModal from "@/components/Modal";
 import {
   addBookmark,
   clearPost,
@@ -15,36 +14,34 @@ import {
   loveIt,
   MainUrl,
   SaveBuilder,
-  savePost,
+  savePost
 } from "@/functions/index";
-import {useSelector,useDispatch} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+// import {ListGroup, ListGroupItem} from "shards-react";
+// import "@/assets/nodeeweb-page-builder.css";
 
-const ListGroup=({children})=>{
-  return <div>{children}</div>
-}
-const ListGroupItem=({children})=>{
-  return <div>{children}</div>
-}
-const OptionBox = ({onClose, open, addToComponents, t, exclude, defaultOptions}) => {
+const ListGroup = ({ children }) => {
+  return <div>{children}</div>;
+};
+const ListGroupItem = ({ children }) => {
+  return <div>{children}</div>;
+};
+const OptionBox = (props) => {
+  let { onClose, open, addToComponents, t, exclude, defaultOptions } = props;
 // console.clear();
+  let para = useParams();
+  let { model } = para;
+  // console.log('props',para)
 //   let Options=defaultOptions;
   // console.log('exclude',exclude);
   const themeData = useSelector((st) => st.themeData);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [Options, SetOptions] = useState(defaultOptions);
-//   const createOption=()=> {
-//
-//     defaultOptions.forEach((dO) => {
-//       if (exclude.indexOf(dO.name) === -1) {
-//         tempOption.push(dO);
-//       }
-//     });
-//     SetOptions([...tempOption])
-//   };
-//   Options
+
+
   useEffect(() => {
-    console.log('use Effect Option box')
+    console.log("use Effect Option box");
     let tempOption = [];
 
     defaultOptions.forEach((dO) => {
@@ -68,26 +65,30 @@ const OptionBox = ({onClose, open, addToComponents, t, exclude, defaultOptions})
     //
 
   }, [themeData]);
-  console.log('exclude', exclude)
+  console.log("Options", Options);
+  if(model=='form'){
+    // SetOptions([])
+  }
+  console.log("exclude", exclude);
   return (
 
-    <CustomModal onClose={onClose} open={open} className={'width50vw sdfghyjuikol kiuytgfhjuyt modal'}
-                 title={('Choose Element')}>
+    <CustomModal onClose={onClose} open={open} className={"width50vw sdfghyjuikol kiuytgfhjuyt modal"}
+                 title={("Choose Element")}>
       <ListGroup flush>
 
         {Options && Options.map((option, key) => {
 
           return <ListGroupItem className="" key={key}>
-            <div className={'block clickable p-3'} onClick={(e) => {
+            <div className={"block clickable p-3"} onClick={(e) => {
               // console.log('theCom choosed',onClose)
               // onClose();
 
-              addToComponents(option, {optionBox: false});
+              addToComponents(option, { optionBox: false });
 
             }}>
               {JSON.stringify(option.label)}
             </div>
-          </ListGroupItem>
+          </ListGroupItem>;
         })}
 
       </ListGroup>

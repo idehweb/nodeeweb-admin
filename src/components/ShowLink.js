@@ -4,7 +4,7 @@ import API from '@/functions/API';
 
 API.defaults.headers.common['Content-Type'] = 'multipart/form-data';
 
-export default ({base="p"}) => {
+export default ({base="product"}) => {
   const record = useRecordContext();
   const translate = useTranslate();
 

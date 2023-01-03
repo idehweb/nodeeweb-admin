@@ -47,11 +47,11 @@ export const orderEdit = (props) => {
                         <TextField source="orderNumber" label={'شماره سفارش'}/>
                         ,
                         <FunctionField label="نام"
-                                       render={record => `${record.customer && (record.customer.firstName || record.customer_data.firstName)}`}/>
+                                       render={record => `${record.customer_data && (record.customer_data.firstName)}`}/>
 
                         ,
                         <FunctionField label="نام خانوادگی"
-                                       render={record => `${record.customer && (record.customer.lastName || record.customer_data.firstName)}`}/>
+                                       render={record => `${record.customer_data && (record.customer_data.firstName)}`}/>
                         ,
                         <ArrayField source="card" label={'محتوای سبد خرید'}>
                             <Datagrid optimized>
@@ -64,7 +64,7 @@ export const orderEdit = (props) => {
                                                        link = c[0];
                                                    }
                                                    return (<a target={'_blank'}
-                                                              href={'/#/product/' + link + '/show'}>{record.title.fa}</a>)
+                                                              href={'/#/product/' + link + '/show'}>{record.title && (record.title.fa ? record.title.fa : record.title)}</a>)
                                                }}/>
 
                                 <FunctionField label="قیمت"
@@ -90,7 +90,7 @@ export const orderEdit = (props) => {
                         <TextInput source="customer_data.internationalCode" label={'کد ملی'}/>
                         ,
                         <FunctionField label="شماره تماس مشتری"
-                                       render={record => `${record.customer && (record.customer.phoneNumber || record.customer_data.phoneNumber)}`}/>
+                                       render={record => `${record.customer_data && (record.customer_data.phoneNumber)}`}/>
                         ,
 
                         <FunctionField label="پرداختی کل"

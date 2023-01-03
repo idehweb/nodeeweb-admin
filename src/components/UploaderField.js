@@ -42,7 +42,7 @@ export default (props) => {
     let formData = new FormData();
     formData.append("file", file);
     formData.append("type", file.type);
-    API.post("/product/fileUpload", formData, {
+    API.post("/media/fileUpload", formData, {
       onUploadProgress: (e) => {
         let p = Math.floor((e.loaded * 100) / e.total);
         setProgress(p);

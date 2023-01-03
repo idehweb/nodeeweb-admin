@@ -2,32 +2,108 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73028272-49ca-4f2c-b8f1-dff263286de5" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/build/site_setting/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/site_setting/theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/site_setting/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/site_setting/theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/AddProductsField.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Notifications.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Orders.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ReactAdminJalaliDateField.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ReactAdminJalaliDateInput.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RenderDatePicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ToggleConfigButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Transactions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dashboard/NotifChart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/product/AtrRefField.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/configuration/Messages.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/entry/entryCreate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/entry/entryEdit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/entry/entryForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/entry/entryList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/entry/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/form/formCreate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/form/formEdit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/form/formForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/form/formList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/form/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/plugins/Messages.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/plugins/Plugins.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/plugins/PrivateConfiguration.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/plugins/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resource/transaction/transactionCreate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/main.238ae82d.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/main.b8d88044.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.539c20e7.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.539c20e7.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.80bb2972.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/theme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/variables.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/variables.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/shards-dashboards.1.1.0.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/shards-dashboards.1.1.0.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Configuration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Configuration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GridList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GridList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ShowLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowLink.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ToggleThemeButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ToggleThemeButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UploaderField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UploaderField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/NewCustomers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/NewCustomers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-builder/DefaultOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-builder/DefaultOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-builder/OptionBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-builder/OptionBox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/product/EditOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/EditOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/authProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/authProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/i18n/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/en.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/i18n/fa.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/fa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/AppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/AppBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layout/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/Menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/attributes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/attributes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/attributes/attributesForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/attributes/attributesForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/attributes/attributesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/attributes/attributesList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/configuration/Configuration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/configuration/Configuration.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resource/customer/customerCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/customer/customerCreate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resource/customer/customerEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/customer/customerEdit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resource/customer/customerList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/customer/customerList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/customerGroup/customerGroupCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/customerGroup/customerGroupCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/customerGroup/customerGroupEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/customerGroup/customerGroupEdit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/customer/customerShow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/customer/customerShow.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resource/customerGroup/customerGroupList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/customerGroup/customerGroupList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/dashboard/MainDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/dashboard/MainDashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resource/discount/discountCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/discount/discountCreate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resource/discount/discountEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/discount/discountEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/discount/discountList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/discount/discountList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/gateway/gatewayCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/gateway/gatewayCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/gateway/gatewayEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/gateway/gatewayEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/gateway/gatewayList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/gateway/gatewayList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/gateway/gatewayShow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/gateway/gatewayShow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/notification/notificationCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/notification/notificationCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/notification/notificationList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/notification/notificationList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/order/orderCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/order/orderCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/order/orderEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/order/orderEdit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/order/orderList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/order/orderList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/page/pageForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/page/pageForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/page/pageList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/page/pageList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/pageBuilder/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/pageBuilder/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/post/postForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/post/postForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/post/postList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/post/postList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resource/product/productForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/product/productForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resource/product/productList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/product/productList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/productCategory/categoryCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/productCategory/categoryCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/productCategory/categoryEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/productCategory/categoryEdit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resource/productCategory/categoryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/productCategory/categoryList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/template/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/template/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/setting/settingsCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/setting/settingsCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/setting/settingsEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/setting/settingsEdit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/template/templateForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/template/templateForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/template/templateList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/template/templateList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/transaction/transactionList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/transaction/transactionList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/transaction/transactionShow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/transaction/transactionShow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/user/userEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/user/userEdit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/rootReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/themeReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/themeReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/updateBack.sh" beforeDir="false" afterPath="$PROJECT_DIR$/updateBack.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,24 +114,92 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="customerList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resource/customer/customerList.js">
+      <file leaf-file-name="discountEdit.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resource/discount/discountEdit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="58" selection-end-column="30" />
+            <state relative-caret-position="264">
+              <caret line="80" column="30" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="30" />
               <folding>
-                <element signature="e#0#423#0" expanded="true" />
+                <element signature="e#0#404#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReferenceArrayInput.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/react-admin/docs/ReferenceArrayInput.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="-20" />
-              <second_editor />
+      <file leaf-file-name="discountCreate.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resource/discount/discountCreate.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="46" selection-start-column="46" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="productList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resource/product/productList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="82">
+              <caret line="105" column="28" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#263#0" expanded="true" />
+                <element signature="e#17647#20134#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="609" selection-start-column="609" selection-end-column="609" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resource/product/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="productForm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resource/product/productForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="356">
+              <caret line="512" column="18" selection-start-line="512" selection-start-column="18" selection-end-line="512" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fa.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/i18n/fa.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="398">
+              <caret line="290" column="20" selection-start-line="290" selection-start-column="20" selection-end-line="290" selection-end-column="20" />
+              <folding>
+                <element signature="e#993#5286#0" />
+                <element signature="e#1147#1216#0" />
+                <element signature="e#1233#2042#0" />
+                <element signature="e#5302#5397#0" />
+                <element signature="e#5429#5658#0" />
+                <element signature="e#5671#5755#0" />
+                <element signature="e#5768#5852#0" />
+                <element signature="e#5867#6172#0" />
+                <element signature="e#6190#7239#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="discountList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resource/discount/discountList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -63,92 +207,8 @@
       <file leaf-file-name="customerEdit.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resource/customer/customerEdit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="68" column="32" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#394#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="productCreate.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resource/product/productCreate.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="productForm.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/resource/product/productForm.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="customerCreate.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resource/customer/customerCreate.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="44" selection-start-line="44" selection-end-line="44" />
-              <folding>
-                <element signature="e#0#409#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SaveButton.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/react-admin/docs/SaveButton.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="291">
-                <caret line="75" column="23" selection-start-line="75" selection-start-column="6" selection-end-line="75" selection-end-column="23" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="customerGroupCreate.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resource/customerGroup/customerGroupCreate.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="25" column="68" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="68" />
-              <folding>
-                <element signature="e#0#112#0" expanded="true" />
-                <element signature="n#!!block;n#save#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="customerGroupList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resource/customerGroup/customerGroupList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="74" column="23" lean-forward="true" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#404#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="customerGroupEdit.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resource/customerGroup/customerGroupEdit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
-              <folding>
-                <element signature="e#0#404#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="81">
+              <caret line="3" column="40" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -158,50 +218,49 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>changeThemeData</find>
-      <find>post: {</find>
-      <find>page/</find>
-      <find>post.</find>
-      <find>pos</find>
-      <find>Template</find>
-      <find>customerG</find>
-      <find>discou</find>
-      <find>همه گ</find>
-      <find>گل افشان</find>
-      <find>./</find>
-      <find>varo</find>
-      <find>templa</find>
-      <find>--</find>
-      <find>--primary</find>
-      <find>gat</find>
-      <find>category.</find>
-      <find>gatewa</find>
-      <find>productCategory</find>
-      <find>select</find>
-      <find>PostCreateToolbar</find>
-      <find>save(</find>
-      <find>DeleteButton</find>
       <find>customer:</find>
-      <find>post</find>
-      <find>chipFiel</find>
-      <find>referenceArra</find>
-      <find>SingleFieldList</find>
-      <find>ChipField</find>
-      <find>ReferenceArrayInput</find>
+      <find>translate('</find>
+      <find>fetchPriceDollar</find>
+      <find>DataGrid</find>
+      <find>xs={4}</find>
+      <find>fun</find>
+      <find>customers:</find>
+      <find>http://localhost:3000</find>
+      <find>product:</find>
+      <find>allpros</find>
+      <find>messagesSettings</find>
+      <find>ImportButton</find>
+      <find>ListActions</find>
+      <find>alwa</find>
+      <find>useRedire</find>
+      <find>useRe</find>
+      <find>https://fixche.shop</find>
+      <find>ShowImageField</find>
+      <find>site_se</find>
+      <find>notify</find>
+      <find>success</find>
+      <find>it is</find>
+      <find>save</find>
+      <find>useNotify</find>
+      <find>./</find>
+      <find>resources</find>
+      <find>BooleanIn</find>
+      <find>BooleanInput</find>
+      <find>ReactAdminJalaliDateInput</find>
+      <find>SelectArrayInput</find>
     </findStrings>
     <replaceStrings>
       <replace />
       <replace>https://parts.arvandguarantee.shop</replace>
       <replace>page</replace>
       <replace>st.themeData</replace>
-      <replace>http://localhost:3000</replace>
       <replace>@</replace>
       <replace>discount</replace>
       <replace>.notification.</replace>
@@ -210,16 +269,29 @@
       <replace>gateway</replace>
       <replace>page.</replace>
       <replace>گیل بانو</replace>
-      <replace>/</replace>
       <replace>discount.</replace>
       <replace>gateway.</replace>
       <replace>customerGroup</replace>
+      <replace>/</replace>
+      <replace>the-label2</replace>
+      <replace>form</replace>
+      <replace>entry</replace>
+      <replace>localhost:3000</replace>
+      <replace>https://v2.golafshan.ir</replace>
+      <replace>https://fa.idehweb.com</replace>
+      <replace>lg={4} md={6} xs={12}</replace>
+      <replace>https://arvandguarantee.shop</replace>
+      <replace>https://fixche.shop</replace>
+      <replace>http://localhost:3000</replace>
+      <replace>/admin/</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>$PROJECT_DIR$/src/components/page-builder</dir>
       <dir>$PROJECT_DIR$/src/components/form/fields</dir>
-      <dir>$PROJECT_DIR$/src/</dir>
+      <dir>$PROJECT_DIR$/src/assets</dir>
       <dir>$PROJECT_DIR$/src/components</dir>
+      <dir>$PROJECT_DIR$/src/</dir>
+      <dir>$PROJECT_DIR$/src/components/page-builder</dir>
+      <dir>$PROJECT_DIR$/src/resource/product</dir>
       <dir>$PROJECT_DIR$/src</dir>
       <dir>$PROJECT_DIR$/src/resource</dir>
     </dirStrings>
@@ -230,57 +302,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/resource/pageBuilder/index.js" />
-        <option value="$PROJECT_DIR$/src/functions/index.js" />
-        <option value="$PROJECT_DIR$/craco.config.js" />
-        <option value="$PROJECT_DIR$/src/resource/productCategory/categoryShow.js" />
-        <option value="$PROJECT_DIR$/src/resource/productCategory/categoryEdit.js" />
-        <option value="$PROJECT_DIR$/src/resource/productCategory/categoryCreate.js" />
-        <option value="$PROJECT_DIR$/src/resource/post/postList.js" />
-        <option value="$PROJECT_DIR$/src/resource/notification/index.js" />
-        <option value="$PROJECT_DIR$/src/resource/notification/notificationList.js" />
-        <option value="$PROJECT_DIR$/src/resource/notification/notificationCreate.js" />
-        <option value="$PROJECT_DIR$/src/resource/gateway/index.js" />
-        <option value="$PROJECT_DIR$/src/resource/template/templateCreate.js" />
-        <option value="$PROJECT_DIR$/src/resource/customerGroup/index.js" />
-        <option value="$PROJECT_DIR$/src/resource/index.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/resource/page/pageList.js" />
-        <option value="$PROJECT_DIR$/src/resource/template/templateList.js" />
-        <option value="$PROJECT_DIR$/src/resource/template/templateEdit.js" />
-        <option value="$PROJECT_DIR$/src/resource/page/pageForm.js" />
-        <option value="$PROJECT_DIR$/src/resource/page/pageEdit.js" />
-        <option value="$PROJECT_DIR$/src/resource/template/templateForm.js" />
-        <option value="$PROJECT_DIR$/src/resource/discount/index.js" />
-        <option value="&lt;ce39571c-90df-4e04-b94e-47ff272b5444&gt;/home/gilbanu/domains/gilbanu.ir/public_html/.env.local" />
-        <option value="$PROJECT_DIR$/src/resource/menu/index.js" />
-        <option value="$PROJECT_DIR$/updateBack.sh" />
-        <option value="$PROJECT_DIR$/build/index.html" />
-        <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/src/resource/attributes/index.js" />
-        <option value="$PROJECT_DIR$/src/resource/template/index.js" />
-        <option value="$PROJECT_DIR$/src/assets/global.css" />
-        <option value="$PROJECT_DIR$/build/theme.css" />
-        <option value="$PROJECT_DIR$/public/theme.css" />
-        <option value="$PROJECT_DIR$/src/resource/product/productList.js" />
-        <option value="$PROJECT_DIR$/src/assets/shards-dashboards.1.1.0.min.css" />
-        <option value="$PROJECT_DIR$/src/resource/productCategory/categoryList.js" />
-        <option value="$PROJECT_DIR$/src/resource/discount/discountCreate.js" />
-        <option value="$PROJECT_DIR$/src/resource/discount/discountEdit.js" />
-        <option value="$PROJECT_DIR$/src/resource/discount/discountList.js" />
-        <option value="$PROJECT_DIR$/src/layout/Menu.js" />
-        <option value="$PROJECT_DIR$/src/resource/gateway/gatewayList.js" />
-        <option value="$PROJECT_DIR$/src/resource/gateway/gatewayCreate.js" />
-        <option value="$PROJECT_DIR$/src/resource/gateway/gatewayShow.js" />
-        <option value="$PROJECT_DIR$/src/resource/gateway/gatewayEdit.js" />
-        <option value="$PROJECT_DIR$/src/i18n/fa.js" />
-        <option value="$PROJECT_DIR$/src/resource/customerGroup/customerGroupCreate.js" />
-        <option value="$PROJECT_DIR$/src/resource/customerGroup/customerGroupList.js" />
-        <option value="$PROJECT_DIR$/src/resource/customerGroup/customerGroupEdit.js" />
+        <option value="$PROJECT_DIR$/src/resource/index.js" />
+        <option value="$PROJECT_DIR$/src/resource/plugins/Plugins.js" />
+        <option value="$PROJECT_DIR$/src/resource/post/postForm.js" />
+        <option value="&lt;ce39571c-90df-4e04-b94e-47ff272b5444&gt;/home/gamiha/domains/gamiha.co/public_html/dev/.env.local" />
+        <option value="&lt;ce39571c-90df-4e04-b94e-47ff272b5444&gt;/home/gamiha/domains/gamiha.co/public_html/dev/public_media/site_setting/config.js" />
+        <option value="&lt;ce39571c-90df-4e04-b94e-47ff272b5444&gt;/home/admin/domains/idehweb.com/public_html/wedding/index.html" />
+        <option value="$PROJECT_DIR$/src/components/product/AtrRefField.js" />
+        <option value="$PROJECT_DIR$/src/resource/notification/notificationCreate.js" />
+        <option value="$PROJECT_DIR$/src/components/RenderDatePicker.js" />
+        <option value="$PROJECT_DIR$/src/components/ReactAdminJalaliDateField.js" />
         <option value="$PROJECT_DIR$/src/resource/customer/customerEdit.js" />
+        <option value="$PROJECT_DIR$/src/components/ReactAdminJalaliDateInput.js" />
+        <option value="$PROJECT_DIR$/src/components/product/EditOptions.js" />
+        <option value="$PROJECT_DIR$/src/resource/transaction/transactionCreate.js" />
+        <option value="$PROJECT_DIR$/src/resource/order/orderCreate.js" />
+        <option value="$PROJECT_DIR$/src/components/AddProductsField.js" />
+        <option value="$PROJECT_DIR$/src/resource/order/orderEdit.js" />
+        <option value="$PROJECT_DIR$/src/resource/form/formForm.js" />
+        <option value="$PROJECT_DIR$/src/layout/Menu.js" />
+        <option value="$PROJECT_DIR$/src/resource/page/pageForm.js" />
+        <option value="$PROJECT_DIR$/src/resource/pageBuilder/index.js" />
+        <option value="$PROJECT_DIR$/src/resource/form/formList.js" />
+        <option value="$PROJECT_DIR$/src/components/page-builder/OptionBox.js" />
+        <option value="$PROJECT_DIR$/src/functions/index.js" />
+        <option value="$PROJECT_DIR$/src/layout/AppBar.js" />
+        <option value="&lt;03e84c5a-b1e8-40fe-8f2e-8ab7a9f7d778&gt;/root/updateserver.sh" />
+        <option value="&lt;ce39571c-90df-4e04-b94e-47ff272b5444&gt;/root/updateserver.sh" />
+        <option value="$PROJECT_DIR$/src/resource/order/orderList.js" />
         <option value="$PROJECT_DIR$/src/resource/customer/customerList.js" />
-        <option value="$PROJECT_DIR$/src/resource/customer/customerCreate.js" />
+        <option value="$PROJECT_DIR$/src/components/Orders.js" />
+        <option value="$PROJECT_DIR$/src/components/Notifications.js" />
+        <option value="$PROJECT_DIR$/src/components/Transactions.js" />
+        <option value="$PROJECT_DIR$/src/resource/customer/customerShow.js" />
+        <option value="$PROJECT_DIR$/src/components/index.js" />
         <option value="$PROJECT_DIR$/src/resource/product/productForm.js" />
+        <option value="$PROJECT_DIR$/public/site_setting/config.js" />
+        <option value="$PROJECT_DIR$/src/resource/transaction/transactionList.js" />
+        <option value="$PROJECT_DIR$/src/resource/transaction/transactionShow.js" />
+        <option value="$PROJECT_DIR$/src/components/page-builder/DefaultOptions.js" />
+        <option value="$PROJECT_DIR$/src/resource/setting/settingsEdit.js" />
+        <option value="$PROJECT_DIR$/src/resource/setting/settingsCreate.js" />
+        <option value="&lt;03e84c5a-b1e8-40fe-8f2e-8ab7a9f7d778&gt;/root/ipforward.sh" />
+        <option value="$PROJECT_DIR$/src/resource/attributes/attributesList.js" />
+        <option value="$PROJECT_DIR$/src/resource/attributes/attributesForm.js" />
+        <option value="$PROJECT_DIR$/src/resource/customer/customerCreate.js" />
+        <option value="$PROJECT_DIR$/src/resource/discount/discountEdit.js" />
+        <option value="$PROJECT_DIR$/src/i18n/fa.js" />
+        <option value="$PROJECT_DIR$/src/resource/discount/discountCreate.js" />
+        <option value="$PROJECT_DIR$/src/resource/product/productList.js" />
+        <option value="$PROJECT_DIR$/build/index.html" />
       </list>
     </option>
   </component>
@@ -300,7 +372,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1680" />
     <option name="height" value="1050" />
   </component>
@@ -325,89 +397,24 @@
             <path>
               <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
               <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="react-admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="react-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
               <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="site_setting" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
               <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="form" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="form" type="462c0819:PsiDirectoryNode" />
-              <item name="fields" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="page-builder" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="product" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="functions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
               <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="i18n" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
@@ -427,14 +434,14 @@
               <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="resource" type="462c0819:PsiDirectoryNode" />
-              <item name="customer" type="462c0819:PsiDirectoryNode" />
+              <item name="configuration" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
               <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="resource" type="462c0819:PsiDirectoryNode" />
-              <item name="customerGroup" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
@@ -448,27 +455,6 @@
               <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="resource" type="462c0819:PsiDirectoryNode" />
-              <item name="gateway" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="resource" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="resource" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="resource" type="462c0819:PsiDirectoryNode" />
               <item name="product" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -476,21 +462,7 @@
               <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="resource" type="462c0819:PsiDirectoryNode" />
-              <item name="productCategory" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="resource" type="462c0819:PsiDirectoryNode" />
-              <item name="setting" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nodeeweb-admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nodeeweb-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="resource" type="462c0819:PsiDirectoryNode" />
-              <item name="template" type="462c0819:PsiDirectoryNode" />
+              <item name="transaction" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -519,11 +491,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
+      <recent name="$PROJECT_DIR$/src/components/product" />
       <recent name="$PROJECT_DIR$/src/resource" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/src/functions" />
-      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/components/dashboard" />
+      <recent name="$PROJECT_DIR$/build" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -561,33 +533,53 @@
       <workItem from="1662371422367" duration="2441000" />
       <workItem from="1662975125363" duration="2000" />
       <workItem from="1668933210807" duration="8651000" />
-      <workItem from="1668952588527" duration="22401000" />
+      <workItem from="1668952588527" duration="47123000" />
+      <workItem from="1669400957405" duration="2138000" />
+      <workItem from="1669465298192" duration="599000" />
+      <workItem from="1669473421324" duration="46000" />
+      <workItem from="1669799273274" duration="1043000" />
+      <workItem from="1669887945896" duration="4694000" />
+      <workItem from="1669969031120" duration="14896000" />
+      <workItem from="1670153736221" duration="15382000" />
+      <workItem from="1670339320512" duration="557000" />
+      <workItem from="1670405770753" duration="2164000" />
+      <workItem from="1670502794682" duration="19045000" />
+      <workItem from="1670674588287" duration="6383000" />
+      <workItem from="1670743352124" duration="15415000" />
+      <workItem from="1671270682992" duration="4307000" />
+      <workItem from="1671443362680" duration="3002000" />
+      <workItem from="1671539875298" duration="18588000" />
+      <workItem from="1671725391258" duration="3909000" />
+      <workItem from="1672046156045" duration="2725000" />
+      <workItem from="1672050424709" duration="2987000" />
+      <workItem from="1672226033014" duration="1912000" />
+      <workItem from="1672518018811" duration="5207000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46645000" />
+    <option name="totallyTimeSpent" value="196366000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50061053" side_tool="true" weight="0.3697479" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="File Transfer" weight="0.32983193" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4993895" weight="0.46953782" />
-      <window_info anchor="right" id="Remote Host" order="3" weight="0.32967034" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.4993895" visible="true" weight="0.4222689" />
+      <window_info anchor="right" id="Remote Host" order="3" weight="0.22649573" />
       <window_info anchor="bottom" id="TypeScript" order="8" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2899878" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17582418" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32983193" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -597,26 +589,27 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" id="Remote Host" order="3" weight="0.32967034" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2899878" />
+      <window_info anchor="right" id="Remote Host" order="3" weight="0.22649573" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17582418" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="TypeScript" order="12" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32983193" />
+      <window_info anchor="bottom" id="File Transfer" order="0" weight="0.32983193" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TypeScript" order="13" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.32983193" />
       <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4993895" visible="true" weight="0.46953782" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50061053" side_tool="true" weight="0.3697479" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4993895" visible="true" weight="0.4222689" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50061053" side_tool="true" weight="0.3697479" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="1" />
       <window_info id="Favorites" order="3" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -631,498 +624,426 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/resource/pageBuilder/index.js</url>
-          <line>359</line>
+          <line>360</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/i18n/fa.js</url>
-          <line>528</line>
+          <line>622</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/layout/Menu.js</url>
-          <line>156</line>
-          <properties lambdaOrdinal="-1" />
+          <line>208</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>remoteDeploymentFS://&lt;ce39571c-90df-4e04-b94e-47ff272b5444&gt;/home/arvand/domains/arvandguarantee.shop/public_html/main/src/controllers/settings.mjs</url>
+          <line>299</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/resource/configuration/Configuration.js</url>
+          <line>152</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="15" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/resource/gateway/index.js">
+    <entry file="file://$PROJECT_DIR$/src/resource/form/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
+        <state relative-caret-position="297">
           <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/customerGroup/index.js">
+    <entry file="file://$PROJECT_DIR$/src/resource/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="97">
+          <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
+    <entry file="file://$PROJECT_DIR$/src/layout/Menu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="57" column="76" selection-start-line="57" selection-start-column="76" selection-end-line="57" selection-end-column="76" />
+        <state relative-caret-position="14067">
+          <caret line="521" column="10" selection-start-line="521" selection-start-column="10" selection-end-line="521" selection-end-column="10" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/template/templateList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="105" column="11" selection-start-line="105" selection-start-column="11" selection-end-line="105" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#156#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/template/templateCreate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="38" column="10" lean-forward="true" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#155#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/page/pageList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="65" column="46" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#156#0" expanded="true" />
+            <element signature="e#0#33#0" expanded="true" />
+            <element signature="e#770#832#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resource/page/pageEdit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="26" column="72" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/page/pageCreate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="41" column="11" lean-forward="true" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#155#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/template/templateEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="26" column="76" selection-start-line="26" selection-start-column="76" selection-end-line="26" selection-end-column="76" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/template/templateForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="301" selection-start-line="301" selection-end-line="301" />
-          <folding>
-            <element signature="e#0#193#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="459">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resource/page/pageForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="246" column="32" lean-forward="true" selection-start-line="246" selection-start-column="32" selection-end-line="246" selection-end-column="32" />
+        <state relative-caret-position="7398">
+          <caret line="308" column="57" selection-start-line="308" selection-start-column="57" selection-end-line="308" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="47" column="37" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/form/formList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1269">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page-builder/OptionBox.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page-builder/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/pageBuilder/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12582">
+          <caret line="492" column="23" selection-start-line="492" selection-start-column="23" selection-end-line="492" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page-builder/DefaultGeneral.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="16" selection-start-line="16" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/orderCart/orderList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/productCategory/categoryShow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="144" column="16" lean-forward="true" selection-start-line="144" selection-start-column="16" selection-end-line="144" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1998">
+          <caret line="80" column="26" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layout/AppBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2376">
+          <caret line="109" column="15" selection-start-line="109" selection-start-column="15" selection-end-line="109" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/order/orderList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="142" column="11" selection-start-line="142" selection-start-column="11" selection-end-line="143" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/DollarPrice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="26" selection-start-column="15" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AddProductsField.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2191">
+          <caret line="93" column="45" selection-start-line="93" selection-start-column="45" selection-end-line="93" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Notifications.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="51" column="10" lean-forward="true" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Transactions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Orders.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="83" column="16" lean-forward="true" selection-start-line="83" selection-start-column="16" selection-end-line="83" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/customer/customerShow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="153" column="73" selection-start-line="153" selection-start-column="61" selection-end-line="153" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/customer/customerList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="22" selection-start-line="22" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/product/productCreate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/site_setting/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/configuration/PrivateConfiguration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3653">
+          <caret line="67" column="32" lean-forward="true" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/configuration/Configuration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="36" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="36" />
           <folding>
-            <element signature="e#0#193#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/index.js">
+    <entry file="file://$PROJECT_DIR$/src/resource/logout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="24" column="30" lean-forward="true" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/menu/menuList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="804">
-          <caret line="60" column="22" lean-forward="true" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#404#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/discount/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/menu/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/updateBack.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="1674">
+          <caret line="82" column="8" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/index.html">
-      <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="414" selection-start-column="414" selection-end-column="414" />
+          <caret column="15" selection-start-column="15" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/attributes/index.js">
+    <entry file="file://$PROJECT_DIR$/src/components/SimpleImageField.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="81">
+          <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/productCategory/index.js">
+    <entry file="file://$PROJECT_DIR$/src/resource/transaction/transactionList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="23" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1431">
+          <caret line="68" column="75" selection-start-line="68" selection-start-column="71" selection-end-line="68" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/template/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/global.css">
+    <entry file="file://$PROJECT_DIR$/src/resource/transaction/transactionCreate.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build/theme.css">
+    <entry file="file://$PROJECT_DIR$/src/resource/transaction/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="41" lean-forward="true" selection-start-column="41" selection-end-column="41" />
+        <state relative-caret-position="108">
+          <caret line="6" column="23" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/theme.css">
+    <entry file="file://$PROJECT_DIR$/src/resource/transaction/transactionShow.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="40" selection-start-column="40" selection-end-column="40" />
+        <state relative-caret-position="27">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/shards-dashboards.1.1.0.min.css">
+    <entry file="file://$PROJECT_DIR$/src/components/page-builder/DefaultOptions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="1317" lean-forward="true" selection-start-line="1317" selection-end-line="1317" />
+        <state relative-caret-position="261">
+          <caret line="387" column="11" selection-start-line="387" selection-start-column="11" selection-end-line="387" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/productCategory/categoryList.js">
+    <entry file="file://$PROJECT_DIR$/src/resource/setting/settingsEdit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="73" selection-start-line="73" selection-end-line="74" />
+        <state relative-caret-position="2052">
+          <caret line="91" column="73" selection-start-line="91" selection-start-column="73" selection-end-line="91" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/setting/settingsCreate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3213">
+          <caret line="139" column="73" selection-start-line="139" selection-start-column="73" selection-end-line="139" selection-end-column="73" />
           <folding>
-            <element signature="e#0#404#0" expanded="true" />
+            <element signature="e#0#221#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resource/attributes/attributesList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-603">
-          <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/discount/discountShow.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="158">
+          <caret line="34" column="98" selection-start-line="34" selection-start-column="98" selection-end-line="34" selection-end-column="98" />
           <folding>
-            <element signature="e#0#404#0" expanded="true" />
+            <element signature="e#0#320#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/discount/discountCreate.js">
+    <entry file="file://$PROJECT_DIR$/src/resource/attributes/attributesEdit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="56" column="10" selection-start-line="56" selection-start-column="10" selection-end-line="73" selection-end-column="14" />
+        <state relative-caret-position="-405">
           <folding>
-            <element signature="e#0#404#0" expanded="true" />
+            <element signature="e#0#122#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/discount/discountEdit.js">
+    <entry file="file://$PROJECT_DIR$/src/resource/attributes/attributesForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="88" column="2" lean-forward="true" selection-start-line="88" selection-start-column="2" selection-end-line="88" selection-end-column="2" />
+        <state relative-caret-position="102">
+          <caret line="32" column="39" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="39" />
           <folding>
-            <element signature="e#0#404#0" expanded="true" />
-            <element signature="e#2794#3953#0" />
+            <element signature="e#0#156#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resource/discount/discountList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="63" column="61" selection-start-line="63" selection-start-column="61" selection-end-line="63" selection-end-column="61" />
+        <state relative-caret-position="270">
+          <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/customer/customerEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="40" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/customer/customerCreate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="73" column="30" lean-forward="true" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/discount/discountEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="80" column="30" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="30" />
           <folding>
             <element signature="e#0#404#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/layout/Menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="270" column="33" selection-start-line="270" selection-start-column="33" selection-end-line="270" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/setting/settingsList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="21" selection-start-line="21" selection-end-line="22" />
-          <folding>
-            <element signature="e#0#103#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/gateway/gatewayCreate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1753">
-          <caret line="67" column="56" selection-start-line="67" selection-start-column="56" selection-end-line="67" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#404#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/gateway/gatewayShow.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4885">
-          <caret line="183" column="43" selection-start-line="183" selection-start-column="43" selection-end-line="183" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#404#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/gateway/gatewayList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="70" column="22" lean-forward="true" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#404#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/gateway/gatewayEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="95" column="63" selection-start-line="95" selection-start-column="63" selection-end-line="95" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#404#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/product/productList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="318" selection-start-line="318" selection-end-line="332" />
-          <folding>
-            <element signature="e#0#240#0" expanded="true" />
-            <element signature="e#10426#11024#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/i18n/fa.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="173" column="11" selection-start-line="173" selection-start-column="11" selection-end-line="173" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-admin/docs/Validation.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="108">
-            <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-admin/docs/Edit.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-admin/docs/ReferenceArrayInput.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-20" />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-admin/docs/SaveButton.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="291">
-            <caret line="75" column="23" selection-start-line="75" selection-start-column="6" selection-end-line="75" selection-end-column="23" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/customerGroup/customerGroupList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="74" column="23" lean-forward="true" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="23" />
+        <state relative-caret-position="398">
+          <caret line="290" column="20" selection-start-line="290" selection-start-column="20" selection-end-line="290" selection-end-column="20" />
           <folding>
-            <element signature="e#0#404#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/customerGroup/customerGroupCreate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="25" column="68" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#112#0" expanded="true" />
-            <element signature="n#!!block;n#save#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/customerGroup/customerGroupEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
-          <folding>
-            <element signature="e#0#404#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/customer/customerList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="58" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#423#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/customer/customerCreate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="e#0#409#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/customer/customerEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="68" column="32" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#394#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/product/productCreate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#993#5286#0" />
+            <element signature="e#1147#1216#0" />
+            <element signature="e#1233#2042#0" />
+            <element signature="e#5302#5397#0" />
+            <element signature="e#5429#5658#0" />
+            <element signature="e#5671#5755#0" />
+            <element signature="e#5768#5852#0" />
+            <element signature="e#5867#6172#0" />
+            <element signature="e#6190#7239#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resource/product/productForm.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="512" column="18" selection-start-line="512" selection-start-column="18" selection-end-line="512" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/discount/discountCreate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="46" selection-start-column="46" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/product/index.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/product/productList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="105" column="28" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#263#0" expanded="true" />
+            <element signature="e#17647#20134#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="609" selection-start-column="609" selection-end-column="609" />
         </state>
       </provider>
     </entry>

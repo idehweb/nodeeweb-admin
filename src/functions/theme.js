@@ -13,4 +13,7 @@ export default createTheme({
     ].join(','),
       isRtl: true
   },
+  palette: {
+    mode: 'dark', // Switching the dark mode on is a single property value change.
+  },
 });

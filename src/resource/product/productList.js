@@ -8,14 +8,18 @@ import {
   ExportButton,
   Filter,
   FunctionField,
+  ListContextProvider,
   Pagination,
   ReferenceInput,
   SearchInput,
   TopToolbar,
   useTranslate
 } from "react-admin";
-import jsonExport from "jsonexport/dist";
+import { ImportButton } from "react-admin-import-csv";
 
+import jsonExport from "jsonexport/dist";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import API, { BASE_URL } from "@/functions/API";
 import { dateFormat } from "@/functions";
 import {
@@ -32,9 +36,11 @@ import {
   SimpleImageField,
   UploaderField
 } from "@/components";
-import { Button, Chip } from "@mui/material";
+import { Button, Chip, Divider, Tab, Tabs } from "@mui/material";
 
-import React from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
+import { useListContext } from "react-admin/dist/index";
+import { makeStyles } from "@mui/styles/index";
 
 
 const PostPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100]} {...props} />;
@@ -73,9 +79,10 @@ const PostFilter = (props) => {
   );
 };
 const exporter = posts => {
-  console.clear();
+  // console.clear();
   let allpros = [];
-  const postsForExport = posts.map(post => {
+  console.log('posts.length',posts.length)
+  const postsForExport = posts.map((post,i) => {
     const { backlinks, author, ...postForExport } = post; // omit backlinks and author
 
     postForExport._id = post._id; // add a field
@@ -84,24 +91,7 @@ const exporter = posts => {
     if (post.title)
       postForExport.title = post.title.fa; // add a field
     postForExport.type = post.type; // add a field
-    if (post.firstCategory) {
-      //     postForExport.firstCategory = post.firstCategory._id; // add a field
-      //     postForExport.firstCategory = post.firstCategory.name.fa; // add a field
-      // delete post.firstCategory;
-    }
-    if (post.secondCategory) {
-      // postForExport.secondCategory = post.secondCategory._id; // add a field
-      postForExport.secondCategory = post.secondCategory.name.fa; // add a field
-      delete post.secondCategory;
-
-    }
-    if (post.thirdCategory) {
-
-      // postForExport.thirdCategory = post.thirdCategory._id; // add a field
-      postForExport.thirdCategory = post.thirdCategory.name.fa; // add a field
-      delete post.thirdCategory;
-
-    }
+console.log('i',i)
     // postForExport.combinations = post.combinations; // add a field
     if (post.type == "variable") {
       // postForExport.price=[];
@@ -112,83 +102,39 @@ const exporter = posts => {
       post.combinations.map((com, i) => {
         allpros.push({
           _id: post._id,
+          slug: postForExport.slug,
           title: postForExport.title,
           price: com.price,
           salePrice: com.salePrice,
           in_stock: com.in_stock,
           quantity: com.quantity,
           type: post.type,
-          views: post.views.length,
           options: com.options ? Object.values(com.options).toString() : "",
-          combination_id: (i + 1),
-          firstCategory: post.firstCategory.name.fa || ""
+          combination_id: (i + 1)
         });
-        // delete postForExport.combinations[i].id;
-        // delete postForExport.combinations[i]['id'];
-        // delete postForExport.combinations[i].product_id;
-        // delete postForExport.combinations[i].inventory_status;
-        // delete postForExport.combinations[i].oversell;
-        // delete postForExport.combinations[i].sku;
-        // delete postForExport.combinations[i].barcode;
-        // delete postForExport.combinations[i].weight;
-        // delete postForExport.combinations[i].visible;
-        // delete postForExport.combinations[i].optionsId;
-        // delete postForExport.combinations[i].sale_type;
-        // delete postForExport.combinations[i].sale_price;
-        // delete postForExport.combinations[i].sale_amount;
-        // delete postForExport.combinations[i].scheduled_discount_start;
-        // delete postForExport.combinations[i].scheduled_discount_start_utc;
-
-
       });
-    } else if (post.type == "normal") {
+    } else {
       allpros.push({
         _id: post._id,
+        slug: post.slug,
         title: postForExport.title,
         price: post.price,
         salePrice: post.salePrice,
         in_stock: post.in_stock,
         quantity: post.quantity,
-        type: post.type,
-        views: post.views.length,
-        firstCategory: post.firstCategory.name.fa || ""
+        type: post.type
 
 
       });
     }
-    delete postForExport.active;
-    delete postForExport.countries;
-    delete postForExport.categories;
-    delete postForExport.catChoosed;
-    delete postForExport.addToCard;
-    delete postForExport.countryChoosed;
-    delete postForExport.gtin;
-    delete postForExport.getContactData;
-    delete postForExport.mainCountryList;
-    delete postForExport.views;
-    delete postForExport.transaction;
-    delete postForExport.t;
-    delete postForExport.mainList;
-    // delete postForExport.firstCategory;
-    delete postForExport.options;
-    // delete postForExport.secondCategory;
-    // delete postForExport.thirdCategory;
-    delete postForExport.updatedAt;
-    delete postForExport.createdAt;
-    delete postForExport.thumbnail;
-    delete postForExport.status;
-    delete postForExport.title;
-    delete postForExport.combinations;
-    delete postForExport.id;
-    return postForExport;
   });
   console.log("postsForExport", allpros);
   jsonExport(allpros, {
-    headers: ["_id", "title", "type", "price", "salePrice", "in_stock", "quantity", "firstCategory"] // order fields in the export
+    headers: ["_id", "slug","title", "type", "price", "salePrice", "in_stock", "quantity"] // order fields in the export
   }, (err, csv) => {
     console.log("ForExport", allpros);
     const BOM = "\uFEFF";
-    downloadCSV(`${BOM} ${csv}`, "posts"); // download as 'posts.csv` file
+    downloadCSV(`${BOM} ${csv}`, "products"); // download as 'posts.csv` file
   });
 };
 
@@ -286,7 +232,7 @@ const ListActions = (props) => {
       <CreateButton/>
       <ExportButton maxResults={10000000}/>
       {/*<CreateButton basePath={basePath} />*/}
-      {/*<ImportButton {...props} {...config} />*/}
+      <ImportButton {...props} {...config} />
       {/* Add your custom actions */}
       {/*<Button*/}
       {/*onClick={() => {*/}
@@ -300,6 +246,296 @@ const ListActions = (props) => {
   );
 };
 
+const TabbedDatagrid = (props) => {
+  const listContext = useListContext();
+  const { ids, filterValues, setFilters, displayedFilters } = listContext;
+  const classes = useDatagridStyles();
+  const translate = useTranslate();
+
+  const [cart, setCart] = useState([]);
+  const [checkout, setCheckout] = useState([]
+  );
+  const [processing, setProcessing] = useState([]
+  );
+
+  const totals = 0;
+
+  useEffect(() => {
+    if (ids && ids !== filterValues.status) {
+      switch (filterValues.status) {
+        case "published":
+          console.log("ids", ids);
+          setCart(ids);
+          break;
+        case "draft":
+          setCheckout(ids);
+          break;
+        case "processing":
+          setProcessing(ids);
+          break;
+        default:
+          setCart("published");
+
+      }
+    }
+  }, [ids, filterValues.status]);
+
+  const handleChange = useCallback(
+    (event, value) => {
+      setFilters &&
+      setFilters(
+        { ...filterValues, status: value },
+        displayedFilters
+      );
+    },
+    [displayedFilters, filterValues, setFilters]
+  );
+
+  const selectedIds =
+    filterValues.status === "published"
+      ? cart
+      : filterValues.status === "draft"
+      ? checkout
+      : cart;
+// console.log('filterValues.status',filterValues.status);
+  if (!filterValues.status) {
+    filterValues.status = "published";
+  }
+  return (
+    <Fragment>
+      <Tabs
+        variant="fullWidth"
+        centered
+        value={filterValues.status}
+        indicatorColor="primary"
+        onChange={handleChange}
+      >
+        {tabs.map(choice => (
+          <Tab
+            key={choice.id}
+            label={
+              totals[choice.name]
+                ? `${choice.name} (${totals[choice.name]})`
+                : choice.name
+            }
+            value={choice.id}
+          />
+        ))}
+      </Tabs>
+      <Divider/>
+
+      <div>
+        {/*{filterValues.status === 'cart' && (*/}
+        <ListContextProvider
+          value={{ ...listContext, ids: cart }}
+        >
+          <Datagrid optimized
+            // rowStyle={postRowStyle}
+          >
+            <SimpleImageField label={translate("resources.product.image")}/>
+
+            <ShowLink source={"title." + translate("lan")} label={translate("resources.product.title")}
+                      sortable={false}/>
+            {/*<CustomTextInput source="description.fa" label="description" sortable={false}/>*/}
+
+            <FunctionField label={translate("resources.product.categories")}
+                           render={record => {
+
+
+                             return (
+                               <div className={"categories"}>
+                                 {record.productCategory && record.productCategory.map((item, it) => <div>
+                                   <ChipField source={"productCategory[" + it + "].slug"} label={item.slug}
+                                              sortable={false}/>
+                                 </div>)}
+
+                               </div>
+                             );
+                           }}/>
+
+            {/*<NumberField source="price" label="قیمت" sortable={false}/>*/}
+            {/*<TextInput source="title.fa" label="Title" value="title.fa"/>*/}
+            {/*<NumberField source="salePrice" label="قیمت تخفیف خورده" sortable={false}/>*/}
+            {/*<BooleanField source="in_stock" label="موجودی"/>*/}
+            {/*<NumberField source="quantity" label="مقدار" sortable={false}/>*/}
+            {/*<FunctionField label="نوع"*/}
+            {/*render={record => `${record.combinations && record.combinations.length ? 'مادر' : 'ساده'}`}/>*/}
+            {/*<FileChips source="photos" sortable={false}/>*/}
+            <FunctionField label={translate("resources.product.prices")}
+                           render={record => {
+                             let tt = translate("resources.product.outOfStock"), thecl = "erro";
+
+                             if (record.type == "variable") {
+                               if (record.combinations) {
+                                 record.combinations.map((comb, key) => {
+                                   if (comb.in_stock == true) {
+                                     tt = translate("resources.product.stock");
+                                     thecl = "succ";
+                                   }
+                                 });
+                                 return (
+                                   <div className={"stockandprice " + thecl}>
+
+                                     <div className='theDate hoverparent'>
+                                       <Chip className={thecl} label={tt}/>
+                                       <div className='theDate thehover'>
+                                         {record.combinations.map((comb, key) => {
+                                           return (<div className={"cobm flex-d cobm" + key} key={key}>
+                                             <div className={"flex-1"}>
+                                               {comb.options && <div
+                                                 className={""}>{Object.keys(comb.options).map((item, index) => {
+                                                 return <div
+                                                   key={index}>{(item) + " : " + comb.options[item] + "\n"}</div>;
+
+                                               })}</div>}
+                                             </div>
+                                             <div className={"flex-1"}>
+
+                                               {comb.price && <div className={"FDFD"}>
+                                                 <span>{translate("resources.product.price")}</span><span>{comb.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                                               </div>}
+                                             </div>
+                                             <div className={"flex-1"}>
+
+                                               {comb.salePrice && <div className={"vfdsf"}>
+                                                 <span>{translate("resources.product.salePrice")}</span><span>{comb.salePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                                               </div>}
+                                             </div>
+                                             <div className={"flex-1"}>
+
+                                               {comb.in_stock && <div className={""}>
+                                                 <span>{(comb.in_stock == true ? translate("resources.product.inStock") : translate("resources.product.outOfStock"))}</span>
+                                               </div>}
+                                             </div>
+                                             <div className={"flex-1"}>
+
+                                               {comb.quantity &&
+                                               <div className={""}>
+                                                 <span>{comb.quantity}</span>
+                                               </div>}
+                                             </div>
+                                           </div>);
+                                         })}
+                                       </div>
+                                     </div>
+                                   </div>
+                                 );
+
+                               }
+
+                             } else {
+                               if (record.in_stock == true) {
+                                 tt = translate("resources.product.inStock");
+                                 thecl = "succ";
+                               }
+                               return (<div className={"cobm flex-d cobm"}>
+                                 <div>
+                                   {record.price && <div className={"flex-1"}>
+                                     <span>{translate("resources.product.price")}:</span><span>{record.price && record.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                                   </div>}
+                                   {record.salePrice && <div className={"flex-1"}>
+                                     <span>{translate("resources.product.salePrice")}:</span><span>{record.salePrice && record.salePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                                   </div>}
+                                 </div>
+                                 <div>
+                                   <div className={"flex-1"}>
+
+                                     <span>{translate("resources.product.stock")}:</span><Chip className={thecl}
+                                                                                               label={tt}></Chip><span></span>
+                                   </div>
+                                   <div className={"flex-1"}>
+                                     <span>{translate("resources.product.count")}:</span><span>{record.quantity}</span>
+                                   </div>
+                                 </div>
+                               </div>);
+
+                             }
+
+                           }}/>
+
+
+            <FunctionField label={translate("resources.product.date")}
+                           render={record => (
+                             <div className='theDate'>
+                               <div>
+                                 {translate("resources.product.createdAt") + ": " + `${dateFormat(record.createdAt)}`}
+                               </div>
+                               <div>
+                                 {translate("resources.product.updatedAt") + ": " + `${dateFormat(record.updatedAt)}`}
+                               </div>
+
+                               {record.views && <div>
+                                 {translate("resources.product.viewsCount") + ": " + `${(record.views.length)}`}
+                               </div>}
+                             </div>
+                           )}/>
+
+            <FunctionField label={translate("resources.product.edit")}
+                           render={record => (
+                             <>
+                               <div>
+                                 <EditButton label={"resources.product.sell"} key={"00"}/>
+                               </div>
+                               {/*<EditButton label={"resources.product.content"} key={'11'}/>,*/}
+                               {/*<ShowButton label={"resources.product.analytics"} key={'22'}/>,*/}
+                               <div>
+                                 <Button
+                                   color="primary"
+                                   size="small"
+                                   key={"33"}
+                                   onClick={() => {
+                                     // console.log('data', record._id);
+                                     API.post("/product/copy/" + record._id, null)
+                                       .then(({ data = {} }) => {
+                                         // console.log('data', data._id);
+                                         props.history.push("/product/" + data._id);
+                                         // ale/rt('done');
+                                       })
+                                       .catch((err) => {
+                                         console.log("error", err);
+                                       });
+                                   }}>
+                                   <ContentCopyIcon/><span
+                                   className={"ml-2 mr-2"}>{translate("resources.product.copy")}</span>
+
+                                 </Button>
+                               </div>
+                               <div>
+                                 <a
+                                   href={"/#/action?filter=%7B%22product\"%3A\"" + record._id + "\"%7D&order=ASC&page=1&perPage=10&sort=id/"}
+                                   target={"_blank"}
+                                   color="primary"
+                                   size="small"
+                                   onClick={() => {
+
+                                   }}>
+                                   <PendingActionsIcon/><span
+                                   className={"ml-2 mr-2"}>{translate("resources.product.activities")}</span>
+
+                                 </a>
+                               </div>
+                             </>
+                           )}/>
+
+          </Datagrid>
+
+        </ListContextProvider>
+
+      </div>
+
+    </Fragment>
+  );
+};
+
+const useDatagridStyles = makeStyles({
+  total: { fontWeight: "bold" }
+});
+
+const tabs = [
+  { id: "published", name: "منتشر شده" },
+  { id: "processing", name: "در دست بررسی" },
+  { id: "draft", name: "پیش نویس" }
+];
 
 const list = (props) => {
   // console.clear();
@@ -310,188 +546,7 @@ const list = (props) => {
 
     <List  {...props} filters={<PostFilter/>} pagination={<PostPagination/>} actions={<ListActions/>}
            exporter={exporter}>
-      <Datagrid optimized rowStyle={postRowStyle}>
-        <SimpleImageField label={translate("resources.product.image")}/>
-
-        <ShowLink source={"title." + translate("lan")} label={translate("resources.product.title")} sortable={false}/>
-        {/*<CustomTextInput source="description.fa" label="description" sortable={false}/>*/}
-
-        <FunctionField label={translate("resources.product.categories")}
-                       render={record => {
-
-
-                         return (
-                           <div className={"categories"}>
-                             {record.productCategory && record.productCategory.map((item, it) => <div>
-                               <ChipField source={"productCategory[" + it + "].slug"} label={item.slug}
-                                          sortable={false}/>
-                             </div>)}
-
-                           </div>
-                         );
-                       }}/>
-
-        {/*<NumberField source="price" label="قیمت" sortable={false}/>*/}
-        {/*<TextInput source="title.fa" label="Title" value="title.fa"/>*/}
-        {/*<NumberField source="salePrice" label="قیمت تخفیف خورده" sortable={false}/>*/}
-        {/*<BooleanField source="in_stock" label="موجودی"/>*/}
-        {/*<NumberField source="quantity" label="مقدار" sortable={false}/>*/}
-        {/*<FunctionField label="نوع"*/}
-        {/*render={record => `${record.combinations && record.combinations.length ? 'مادر' : 'ساده'}`}/>*/}
-        {/*<FileChips source="photos" sortable={false}/>*/}
-        <FunctionField label={translate("resources.product.prices")}
-                       render={record => {
-                         let tt = translate("resources.product.outOfStock"), thecl = "erro";
-
-                         if (record.type == "variable") {
-                           if (record.combinations) {
-                             record.combinations.map((comb, key) => {
-                               if (comb.in_stock == true) {
-                                 tt = translate("resources.product.stock");
-                                 thecl = "succ";
-                               }
-                             });
-                             return (
-                               <div className={"stockandprice " + thecl}>
-
-                                 <div className='theDate hoverparent'>
-                                   <Chip className={thecl} label={tt}/>
-                                   <div className='theDate thehover'>
-                                     {record.combinations.map((comb, key) => {
-                                       return (<div className={"cobm flex-d cobm" + key} key={key}>
-                                         <div className={"flex-1"}>
-                                           {comb.options && <div
-                                             className={""}>{Object.keys(comb.options).map((item, index) => {
-                                             return <div
-                                               key={index}>{(item) + " : " + comb.options[item] + "\n"}</div>;
-
-                                           })}</div>}
-                                         </div>
-                                         <div className={"flex-1"}>
-
-                                           {comb.price && <div className={"FDFD"}>
-                                             <span>{translate("resources.product.price")}</span><span>{comb.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
-                                           </div>}
-                                         </div>
-                                         <div className={"flex-1"}>
-
-                                           {comb.salePrice && <div className={"vfdsf"}>
-                                             <span>{translate("resources.product.salePrice")}</span><span>{comb.salePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
-                                           </div>}
-                                         </div>
-                                         <div className={"flex-1"}>
-
-                                           {comb.in_stock && <div className={""}>
-                                             <span>{(comb.in_stock == true ? translate("resources.product.inStock") : translate("resources.product.outOfStock"))}</span>
-                                           </div>}
-                                         </div>
-                                         <div className={"flex-1"}>
-
-                                           {comb.quantity &&
-                                           <div className={""}>
-                                             <span>{comb.quantity}</span>
-                                           </div>}
-                                         </div>
-                                       </div>);
-                                     })}
-                                   </div>
-                                 </div>
-                               </div>
-                             );
-
-                           }
-
-                         } else {
-                           if (record.in_stock == true) {
-                             tt = translate("resources.product.inStock");
-                             thecl = "succ";
-                           }
-                           return (<div className={"cobm flex-d cobm"}>
-                             <div>
-                               {record.price && <div className={"flex-1"}>
-                                 <span>{translate("resources.product.price")}:</span><span>{record.price && record.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
-                               </div>}
-                               {record.salePrice && <div className={"flex-1"}>
-                                 <span>{translate("resources.product.salePrice")}:</span><span>{record.salePrice && record.salePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
-                               </div>}
-                             </div>
-                             <div>
-                               <div className={"flex-1"}>
-
-                                 <span>{translate("resources.product.stock")}:</span><Chip className={thecl}
-                                                                                           label={tt}></Chip><span></span>
-                               </div>
-                               <div className={"flex-1"}>
-                                 <span>{translate("resources.product.count")}:</span><span>{record.quantity}</span>
-                               </div>
-                             </div>
-                           </div>);
-
-                         }
-
-                       }}/>
-
-
-        <FunctionField label={translate("resources.product.date")}
-                       render={record => (
-                         <div className='theDate'>
-                           <div>
-                             {translate("resources.product.createdAt") + ": " + `${dateFormat(record.createdAt)}`}
-                           </div>
-                           <div>
-                             {translate("resources.product.updatedAt") + ": " + `${dateFormat(record.updatedAt)}`}
-                           </div>
-
-                           {record.views && <div>
-                             {translate("resources.product.viewsCount") + ": " + `${(record.views.length)}`}
-                           </div>}
-                         </div>
-                       )}/>
-
-        <FunctionField label={translate("resources.product.edit")}
-                       render={record => (
-                         <>
-                           <div>
-                             <EditButton label={"resources.product.sell"} key={"00"}/>
-                           </div>
-                           {/*<EditButton label={"resources.product.content"} key={'11'}/>,*/}
-                           {/*<ShowButton label={"resources.product.analytics"} key={'22'}/>,*/}
-                           <div>
-                             <Button
-                               color="primary"
-                               size="small"
-                               key={"33"}
-                               onClick={() => {
-                                 // console.log('data', record._id);
-                                 API.post("/product/copy/" + record._id, null)
-                                   .then(({ data = {} }) => {
-                                     // console.log('data', data._id);
-                                     props.history.push("/product/" + data._id);
-                                     // ale/rt('done');
-                                   })
-                                   .catch((err) => {
-                                     console.log("error", err);
-                                   });
-                               }}>
-                               {translate("resources.product.copy")}
-                             </Button>
-                           </div>
-                           <div>
-                             <a
-                               href={"/#/action?filter=%7B%22product\"%3A\"" + record._id + "\"%7D&order=ASC&page=1&perPage=10&sort=id/"}
-                               target={"_blank"}
-                               color="primary"
-                               size="small"
-                               onClick={() => {
-
-                               }}>
-                               {translate("resources.product.activities")}
-                             </a>
-                           </div>
-                         </>
-                       )}/>
-
-      </Datagrid>
+      <TabbedDatagrid/>
     </List>
   );
 };

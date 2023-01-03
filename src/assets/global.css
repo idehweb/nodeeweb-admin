@@ -2,11 +2,27 @@ html, body {
     margin: 0;
     padding: 0;
 }
-.the-dev-menu li + div{
+.rtl .the-dev-menu li + div{
 padding-right: 30px;
+}
+.ltr .the-dev-menu li + div{
+padding-left: 30px;
+}
+
+.width1000{
+    width: 100%;
 }
 .the-dev-menu svg{
     color:var(--primary)
+}
+.nodeeweb-page-builder-wrapper.rtl{
+    direction: rtl;
+}
+.nodeeweb-page-builder-wrapper.ltr{
+    direction: ltr;
+}
+#header_last{
+    direction: ltr;
 }
 .grid-box {
     display: grid;

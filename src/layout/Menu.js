@@ -9,7 +9,11 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import AddReactionIcon from '@mui/icons-material/AddReaction';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 const { Action, Attributes,CustomerGroup,Discount, Page,Gateway,Template, ProductCategory, Customer, MainDashboard, Media, Order, OrderCart, Post, Product, Settings, Notification, Transaction, User } = resources;
-
+import DynamicFormIcon from '@mui/icons-material/DynamicForm';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import NoteAddIcon from '@mui/icons-material/NoteAdd';
+import SettingsInputHdmiIcon from '@mui/icons-material/SettingsInputHdmi';
+import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 const Menu = ({ onMenuClick, dense = false }) => {
   const themeData = useSelector((st) => st.themeData);
 
@@ -22,6 +26,7 @@ const Menu = ({ onMenuClick, dense = false }) => {
     discountSection: false,
 
 
+    menuForm: false,
     menuOrder: false,
     menuCustomer: false,
     menuUser: false,
@@ -39,7 +44,7 @@ const Menu = ({ onMenuClick, dense = false }) => {
     setState(state => ({ ...state, [menu]: !state[menu] }));
   };
   console.log("themeData", themeData);
-  let exclude = ["attributes","customergroup", "gateway","discount","template","settings", "order", "admin", "menu", "page", "notification", "media", "post", "customer", "product", "productcategory", "transaction"];
+  let exclude = ["attributes","customergroup","entry","form", "gateway","discount","template","settings", "order", "admin", "menu", "page", "notification", "media", "post", "customer", "product", "productcategory", "transaction"];
   return (
     <div className={"the-dev-menu"}>
       <MenuItemLink
@@ -88,6 +93,53 @@ const Menu = ({ onMenuClick, dense = false }) => {
           leftIcon={<Media.icon/>}
           dense={dense}
         />
+
+      </SubMenu>
+      <SubMenu
+        handleToggle={() => handleToggle("menuForm")}
+        isOpen={state.menuForm}
+        name="form"
+        label={translate(`pos.menu.forms`)}
+        icon={<DynamicFormIcon/>}
+        dense={dense}
+      >
+        <MenuItemLink
+          to={{
+            pathname: "/form/create",
+            state: { _scrollToTop: true }
+          }}
+          primaryText={translate(`pos.menu.addForm`)}
+          leftIcon={<DynamicFormIcon/>}
+          dense={dense}
+        />
+        <MenuItemLink
+          to={{
+            pathname: "/form",
+            state: { _scrollToTop: true }
+          }}
+          primaryText={translate(`pos.menu.allForms`)}
+          leftIcon={<CheckBoxIcon/>}
+          dense={dense}
+        />
+        <MenuItemLink
+          to={{
+            pathname: "/entry",
+            state: { _scrollToTop: true }
+          }}
+          primaryText={translate(`pos.menu.allEntries`)}
+          leftIcon={<DocumentScannerIcon/>}
+          dense={dense}
+        />
+        <MenuItemLink
+          to={{
+            pathname: "/entry/create",
+            state: { _scrollToTop: true }
+          }}
+          primaryText={translate(`pos.menu.addEntry`)}
+          leftIcon={<NoteAddIcon/>}
+          dense={dense}
+        />
+
 
       </SubMenu>
       <SubMenu
@@ -266,24 +318,7 @@ const Menu = ({ onMenuClick, dense = false }) => {
             // leftIcon={<Transaction.icon/>}
             dense={dense}
           />
-          <MenuItemLink
-            to={{
-              pathname: "/gateway",
-              state: { _scrollToTop: true }
-            }}
-            primaryText={translate(`pos.menu.allGateways`)}
-            // leftIcon={<Gateway.icon/>}
-            dense={dense}
-          />
-          <MenuItemLink
-            to={{
-              pathname: "/gateway/create",
-              state: { _scrollToTop: true }
-            }}
-            primaryText={translate(`pos.menu.addGateway`)}
-            // leftIcon={<Gateway.createIcon/>}
-            dense={dense}
-          />
+
 
         </SubMenu>
       </SubMenu>
@@ -385,6 +420,15 @@ const Menu = ({ onMenuClick, dense = false }) => {
           leftIcon={<Notification.icon/>}
           dense={dense}
         />
+        <MenuItemLink
+          to={{
+            pathname: "/messages",
+            state: { _scrollToTop: true }
+          }}
+          primaryText={translate(`pos.menu.messagesSettings`)}
+          leftIcon={<Notification.icon/>}
+          dense={dense}
+        />
       </SubMenu>
       <SubMenu
         handleToggle={() => handleToggle("menuPost")}
@@ -442,6 +486,15 @@ const Menu = ({ onMenuClick, dense = false }) => {
       >
         <MenuItemLink
           to={{
+            pathname: "/plugins",
+            state: { _scrollToTop: true }
+          }}
+          primaryText={translate(`pos.menu.plugins`)}
+          leftIcon={<SettingsInputHdmiIcon/>}
+          dense={dense}
+        />
+        <MenuItemLink
+          to={{
             pathname: "/template",
             state: { _scrollToTop: true }
           }}
@@ -460,6 +513,24 @@ const Menu = ({ onMenuClick, dense = false }) => {
         />
         <MenuItemLink
           to={{
+            pathname: "/gateway",
+            state: { _scrollToTop: true }
+          }}
+          primaryText={translate(`pos.menu.allGateways`)}
+          leftIcon={<Gateway.icon/>}
+          dense={dense}
+        />
+        {/*<MenuItemLink*/}
+          {/*to={{*/}
+            {/*pathname: "/gateway/create",*/}
+            {/*state: { _scrollToTop: true }*/}
+          {/*}}*/}
+          {/*primaryText={translate(`pos.menu.addGateway`)}*/}
+          {/*leftIcon={<Gateway.createIcon/>}*/}
+          {/*dense={dense}*/}
+        {/*/>*/}
+        <MenuItemLink
+          to={{
             pathname: "/settings",
             state: { _scrollToTop: true }
           }}
@@ -467,6 +538,7 @@ const Menu = ({ onMenuClick, dense = false }) => {
           leftIcon={<Settings.icon/>}
           dense={dense}
         />
+
       </SubMenu>
     </div>
   );

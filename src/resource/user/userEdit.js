@@ -22,12 +22,12 @@ export const userEdit = (props) => {
   return(
     <Edit {...props}>
       <SimpleForm>
-        <TextInput disabled source="id" label={translate("resources.user._id")} />
-        <TextInput source="nickname" label={translate("resources.user.nickname")} />
-        <TextInput source="email" type="email" label={translate("resources.user.email")} />
-        <TextInput source="username" label={translate("resources.user.username")} />
-        <PasswordInput source="password" label={translate("resources.user.password")} />
-        <BooleanInput source="active" label={translate("resources.user.active")} />
+        <TextInput disabled fullWidth source="id" label={translate("resources.user._id")} />
+        <TextInput fullWidth source="nickname" label={translate("resources.user.nickname")} />
+        <TextInput fullWidth source="email" type="email" label={translate("resources.user.email")} />
+        <TextInput fullWidth source="username" label={translate("resources.user.username")} />
+        <PasswordInput fullWidth source="password" label={translate("resources.user.password")} />
+        <BooleanInput fullWidth source="active" label={translate("resources.user.active")} />
       </SimpleForm>
     </Edit>
   );

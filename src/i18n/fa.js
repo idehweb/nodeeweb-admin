@@ -5,6 +5,16 @@ console.log("running farsi language...");
 const customFarsiMessages = {
   ...farsiMessages,
   logoutMessage: "برای خروج مطمئن هستید؟",
+  maxWidth: "maxWidth",
+  classes: "classes",
+  upgraded: "ارتقا داده شد",
+  direction: "rtl",
+  logout: "خروج",
+  padding: "padding",
+  backgroundColor: "backgroundColor",
+  require: "ضروری",
+  showInDesktop: "نمایش در دسکتاپ",
+  showInMobile: "نمایش در موبایل",
   sign_out: "خروج",
   notpaid: "پرداخت نشده",
   unsuccessful: "پرداخت ناموفق",
@@ -19,6 +29,7 @@ const customFarsiMessages = {
   inpeyk: "ارسال شده",
   complete: "تحویل شده",
   cancel: "لغو شده",
+  restarted: "سیستم ری استارت شد.",
 
   websiteName: "arvandshop",
   _id: "شناسه",
@@ -28,6 +39,8 @@ const customFarsiMessages = {
   comma: ",",
   undefined: "مشخص نشده",
   pos: {
+    profile: "حساب کاربری",
+    logout: "خروج",
     search: "جستجو",
     configuration: "تنظیمات",
     language: "زبان",
@@ -59,6 +72,17 @@ const customFarsiMessages = {
       }
     },
     menu: {
+      upgrade: "ارتقا",
+      plugins: "افزونه ها",
+      messagesSettings: "تنظیمات پیام ها",
+      restart: "ری استارت سیستم",
+      entry: "ورودی",
+      form: "فرم",
+      forms: "فرم ها",
+      addForm: "افزودن فرم",
+      allForms: "همه فرم ها",
+      allEntries: "همه ورودی ها",
+      addEntry: "افزودن ورودی",
       shop: "فروشگاه",
       category: "دسته بندی",
       discount: "کد تخفیف",
@@ -166,8 +190,26 @@ const customFarsiMessages = {
     }
   },
   resources: {
-    customer: {
-      customerGroup:"گروه"
+
+    messages: {
+      help: "لطفا از این پارامتر ها استفاده کنید:" +
+      "\n" +
+      "%firstName% , %lastName% , %phoneNumber% , %email% ",
+      messages: "پیام ها",
+      message: "پیام",
+      title: "عنوان",
+      text: "متن پیام"
+    },
+
+    form: {
+      customerGroup: "گروه",
+      message: "پیام",
+      actions: "اقدامات"
+    },
+    entry: {
+      customerGroup: "گروه",
+      message: "پیام",
+      actions: "اقدامات"
     },
 
     action: {
@@ -223,9 +265,12 @@ const customFarsiMessages = {
       values: "مقادیر",
       type: "نوع",
       normal: "عادی",
+      useInFilter: "قابل استفاده در فیلتر",
       color: "رنگ"
     },
     category: {
+      actions: "اقدامات",
+      edit: "ویرایش",
       slug: "نامک",
       name: "نام دسته بندی",
       values: "مقادیر",
@@ -240,25 +285,49 @@ const customFarsiMessages = {
       slug: "نامک",
       name: "عنوان کد تخفیف",
       count: "تعداد",
+      expire: "تاریخ انقضا",
       percent: "درصد",
-      price: "هزینه",
+      excludeProductCategory: "بجز دسته محصولات",
+      excludeProduct: "بجز محصولات",
+      price: "هزینه"
     },
 
     customers: {
+      notifications: "اعلان ها",
       _id: "شناسه",
+      transactions: "تراکنش ها",
+      title: "عنوان آدرس",
+      address: "آدرس",
+      state: "استان",
+      city: "شهر",
+      postalCode: "کد پستی",
+      streetAddress: "آدرس",
+      source: "منبع",
       phoneNumber: "شماره تماس",
       activationCode: "کد فعال سازی",
       countryCode: "کد کشور",
       firstName: "نام",
       lastName: "نام خانوادگی",
       email: "ایمیل",
+      male: "مرد",
+      female: "زن",
       internationalCode: "کدملی",
       createdAt: "ساخته شده در",
       updatedAt: "بروزرسانی در",
-      active: "فعال/غیرفعال"
+      active: "فعال/غیرفعال",
+      customerGroup: "گروه",
+      WEBSITE: "وب سایت",
+      CRM: "CRM",
+      orders: "سفارشات",
+      birthday: "تاریخ تولد",
+      birthdate: "تاریخ تولد",
+      sex: "جنسیت",
+      message: "پیام",
+      actions: "اقدامات"
     },
     menu: {
       menu: "فهرست",
+      messagesSettings: "تنظیمات پیام ها",
       addMenu: "افزودن فهرست",
       allMenus: "همه فهرست ها",
       attributes: "ویژگی ها",
@@ -296,12 +365,20 @@ const customFarsiMessages = {
       active: "فعال/غیرفعال"
     },
     order: {
+      customer:"مشتری",
+      product: "محصول",
+      _id: "شناسه",
+      title: "عنوان",
+      card: "سبد",
+      count: "تعداد",
+      price: "قیمت",
+      saleprice: "قیمت با تخفیف",
       orderNumber: "شماره سفارش",
       customerData: "اطلاعات مشتری",
       amountToPay: "مبلغی را وارد کنید",
       total: "مجموع پرداختی",
       sum: "جمع کل موارد",
-      amount: "مجموع پرداختی",
+      amount: "مجموع پرداخت",
       paid: "پرداخت شده",
       status: "وضعیت سفارش",
       paymentStatus: "وضعیت پرداخت",
@@ -317,6 +394,7 @@ const customFarsiMessages = {
       inpeyk: "ارسال شده",
       complete: "تکمیل شده",
       canceled: "لغو شده",
+      actions: "اقدامات",
       orderNumberOrMobileNumber: "order number or mobile number"
     },
     post: {
@@ -336,7 +414,8 @@ const customFarsiMessages = {
       type: "نوع",
       photo: "عکس",
       status: "وضعیت",
-      processing: "پیش نویس",
+      processing: "در دست بررسی",
+      draft: "پیش نویس",
       published: "منتشر شده",
       deleted: "حذف شده",
       slug: "نامک",
@@ -371,7 +450,8 @@ const customFarsiMessages = {
       type: "نوع",
       photo: "عکس",
       status: "وضعیت",
-      processing: "پیش نویس",
+      processing: "در دست بررسی",
+      draft: "پیش نویس",
       published: "منتشر شده",
       deleted: "حذف شده",
       slug: "نامک",
@@ -385,9 +465,13 @@ const customFarsiMessages = {
       updated: "بروزرسانی",
       created: "ساخته شده",
       categories: "دسته بندی ها",
-      post: "نوشته",
-      page: "برگه",
-      kind: "نوع"
+      page: "page",
+      post: "post",
+      header: "header",
+      footer: "footer",
+      product: "product",
+      checkout: "checkout",
+      kind: "نوع",
     },
     page: {
       actions: "اقدامات",
@@ -406,7 +490,8 @@ const customFarsiMessages = {
       type: "نوع",
       photo: "عکس",
       status: "وضعیت",
-      processing: "پیش نویس",
+      processing: "در دست بررسی",
+      draft: "پیش نویس",
       published: "منتشر شده",
       deleted: "حذف شده",
       slug: "نامک",
@@ -427,11 +512,17 @@ const customFarsiMessages = {
     },
 
     product: {
+      edit: "ویرایش",
+      productCategory: "دسته بندی محصول",
       source: "منبع",
+      values: "مقادیر",
+      attribute: "ویژگی",
+      attributes: "ویژگی ها",
       formula: "فرمول",
       minPrice: "حداقل قیمت",
       maxPrice: "حداکثر قیمت",
       search: "نام محصول...",
+      extra_button: "دکمه اضافه",
       category: "دسته بندی",
       image: "تصویر",
       title: "عنوان",
@@ -448,7 +539,8 @@ const customFarsiMessages = {
       extra_attr: "ویژگی های اضافه",
       sources: "منابع ربات",
       status: "وضعیت",
-      processing: "پیش نویس",
+      processing: "در دست بررسی",
+      draft: "پیش نویس",
       published: "منتشرشده",
       deleted: "حذف شده",
       addAttr: "افزودن ویژگی",
@@ -492,6 +584,8 @@ const customFarsiMessages = {
     reviews: {},
 
     settings: {
+      tax:"مالیات",
+      currency: "currency",
       activeCategory: "دسته های فعال",
       siteStatus: "وضعیت سایت",
       siteActiveMessage: "پیام برای کاربر وقتی سایت غیر فعاله",
@@ -533,11 +627,18 @@ const customFarsiMessages = {
       receiver: "دریافت کننده",
       updatedAt: "بروزرسانی در",
       createdAt: "ساخته شده در",
-      phoneNumber: "شماره موبایل"
+      phoneNumber: "شماره موبایل",
+      customerGroup: "ارسال به گروه مشتری",
+      source: "ارسال به منبع",
+      CRM: "CRM",
+      WEBSITE: "WEBSITE",
 
 
     },
     transaction: {
+      gateway: "درگاه",
+      method: "روش",
+      edit: "ویرایش",
       date: "تاریخ",
       amount: "مجموع",
       statusCode: "کد وضعیت",

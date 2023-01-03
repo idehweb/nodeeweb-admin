@@ -244,6 +244,7 @@ const Form = ({children, ...props}) => {
             // delete values.photos;
             delete values.category;
             delete values.catChoosed;
+            delete values.elements;
             delete values.files;
             console.log("last values (edit): ", values);
 
@@ -290,8 +291,10 @@ const Form = ({children, ...props}) => {
     }
 
     return (
-        <SimpleForm {...props} toolbar={<CustomToolbar record={props.record}/>}
-                    onSubmit={v => save(v)}>
+        <SimpleForm {...props}
+                    // toolbar={<CustomToolbar record={props.record}/>}
+                    // onSubmit={v => save(v)}
+        >
           {children}
 
             {/*<TabbedDatagrid/>*/}
@@ -304,8 +307,11 @@ const Form = ({children, ...props}) => {
 
             <TextInput source="slug" fullWidth label={translate("resources.page.slug")}
                        className={"width100 mb-20 ltr"}/>
-            <TextInput multiline fullWidth source="excerpt" label={translate("resources.page.excerpt")}/>
-            <RichTextInput multiline fullWidth source="description" label={translate("resources.page.description")}/>
+
+          <TextInput source="path" fullWidth label={translate("resources.page.path")}
+                       className={"width100 mb-20 ltr"}/>
+            <TextInput multiline fullWidth source={"excerpt."+translate("lan")} label={translate("resources.page.excerpt")}/>
+            <RichTextInput multiline fullWidth source={"description."+translate("lan")} label={translate("resources.page.description")}/>
 
             <div className={"mb-20"}></div>
             {/*<UploaderField*/}
@@ -326,6 +332,19 @@ const Form = ({children, ...props}) => {
                     {/*{id: "page", name: translate("resources.page.page")}*/}
                 {/*]}*/}
             {/*/>*/}
+          <TextInput source="kind" fullWidth label={translate("kind")}
+                     className={"width100 mb-20 ltr"}/>
+          <TextInput source="maxWidth" fullWidth label={translate("maxWidth")}
+                     className={"width100 mb-20 ltr"}/>
+
+          <TextInput source="classes" fullWidth label={translate("classes")}
+                     className={"width100 mb-20 ltr"}/>
+          <TextInput source="padding" fullWidth label={translate("padding")}
+                     className={"width100 mb-20 ltr"}/>
+          <TextInput source="margin" fullWidth label={translate("margin")}
+                     className={"width100 mb-20 ltr"}/>
+          <TextInput source="backgroundColor" fullWidth label={translate("backgroundColor")}
+                     className={"width100 mb-20 ltr"}/>
             <SelectInput
                 label={translate("resources.page.status")}
                 defaultValue={"processing"}

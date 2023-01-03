@@ -61,8 +61,8 @@ const LoadedGridList = (props) => {
     return (
       <ImageListItem key={key} className={"media_ImageListItem"}>
         <img
-          src={ShopURL + "/" + d.url}
-          srcSet={ShopURL + "/" + d.url}
+          src={ShopURL + d.url}
+          srcSet={ShopURL + d.url}
           loading="lazy"
         />
       </ImageListItem>

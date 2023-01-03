@@ -8,6 +8,7 @@ import {
   SimpleShowLayout,
   TextField,
   SelectField,
+  Show,
   useTranslate
 } from "react-admin";
 

@@ -29,7 +29,9 @@ import {
 import { Button } from "@mui/material";
 
 import React from "react";
-
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import NoteAltIcon from '@mui/icons-material/NoteAlt';
 
 const PostPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100]} {...props} />;
 
@@ -87,7 +89,10 @@ const list = (props) => {
                          <div>
                            {/*+"?token="+localStorage.getItem('token')*/}
                            <a target={"_blank"}
-                              href={"/#/builder" + "/template/" + record._id}>{translate("resources.template.pagebuilder")}</a>
+                              href={"/admin/#/builder" + "/template/" + record._id}>
+                             <NoteAltIcon/><span
+                             className={"ml-2 mr-2"}>{translate("resources.page.pagebuilder")}</span>
+                           </a>
                          </div>
                          <div>
                            <EditButton/>
@@ -108,7 +113,9 @@ const list = (props) => {
                                    console.log("error", err);
                                  });
                              }}>
-                             {translate("resources.template.copy")}
+                             <ContentCopyIcon/><span
+                             className={"ml-2 mr-2"}>{translate("resources.product.copy")}</span>
+
                            </Button>
                          </div>
                          <div>
@@ -120,7 +127,8 @@ const list = (props) => {
                              onClick={() => {
 
                              }}>
-                             {translate("resources.template.activities")}
+                             <PendingActionsIcon/><span
+                             className={"ml-2 mr-2"}>{translate("resources.product.activities")}</span>
                            </a>
                          </div>
                          <div>

@@ -21,7 +21,7 @@ export const notificationList = (props) => {
         <TextField source="from" label={translate('resources.notification.sender')}/>
         <DateField source="createdAt" showTime label={translate('resources.notification.createdAt')}/>
         <DateField source="updatedAt" showTime label={translate('resources.notification.updatedAt')}/>
-        <DeleteButton />
+        {/*<DeleteButton />*/}
       </Datagrid>
     </List>
   );

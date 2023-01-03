@@ -1,84 +1,107 @@
 import {
-    BulkDeleteButton,
-    Create,
-    Datagrid,
-    DeleteButton,
-    Edit,
-    EditButton,
-    Filter,
-    FunctionField,
-    NumberInput,
-    Pagination,
-    ReferenceField,
-    ReferenceInput,
-    ResourceContextProvider,
-    SearchInput,
-    SelectInput,
-    Show,
-    ShowButton,
-    SimpleShowLayout,
-    TextField,
-    TextInput,
-    useResourceContext, useTranslate
-} from 'react-admin';
-import React, {Fragment} from 'react';
-import {useParams} from 'react-router';
-import {CategoryRounded as Icon, LibraryAdd} from '@mui/icons-material';
-import {CustomResetViewsButton, List, SimpleForm} from '@/components';
-import useStyles from '@/styles';
-import {Val} from '@/Utils';
-import API, {BASE_URL} from '@/functions/API';
-import {Chip} from '@mui/material';
+  Datagrid,
+  DeleteButton,
+  EditButton,
+  Filter,
+  FunctionField,
+  Pagination,
+  ReferenceField,
+  SearchInput,
+  TextField,
+  useResourceContext,
+  useTranslate
+} from "react-admin";
+import React from "react";
+import { Button } from "@mui/material";
+import { CustomResetViewsButton, List, SimpleForm } from "@/components";
+import { Val } from "@/Utils";
+import API, { BASE_URL } from "@/functions/API";
+import MessageIcon from '@mui/icons-material/Message';
+import CustomModal from "@/components/Modal";
 
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 var theID = null;
 const ResourceName = () => {
-    const {resource} = useResourceContext();
-    return <>{resource}</>;
-}
+  const { resource } = useResourceContext();
+  return <>{resource}</>;
+};
 const PostFilter = (props) => {
-    const translate = useTranslate();
+  const translate = useTranslate();
 
-    return (
-        <Filter {...props}>
-            {/*<TextInput label="Search" source="search" alwaysOn/>*/}
-            <SearchInput source="Search" placeholder={translate('resources.category.name')} alwaysOn/>
-            {/*<SearchInput source="firstCategory" placeholder={'نام'} alwaysOn/>*/}
-            {/*<SearchInput source="lastName" placeholder={'نام خانوادگی'} alwaysOn/>*/}
-            {/*<SelectInput source="firstCategory" label={'دسته بندی اول'}  emptyValue={null} choices={typeChoices4}/>*/}
-            {/*<SelectInput source="secondCategory" label={'دسته بندی دوم'}  emptyValue={null} choices={typeChoices3}/>*/}
-            {/*<SelectInput source="thirdCategory" label={'دسته بندی سوم'}  emptyValue={null} choices={typeChoices3}/>*/}
+  return (
+    <Filter {...props}>
+      {/*<TextInput label="Search" source="search" alwaysOn/>*/}
+      <SearchInput source="Search" placeholder={translate("resources.category.name")} alwaysOn/>
+      {/*<SearchInput source="firstCategory" placeholder={'نام'} alwaysOn/>*/}
+      {/*<SearchInput source="lastName" placeholder={'نام خانوادگی'} alwaysOn/>*/}
+      {/*<SelectInput source="firstCategory" label={'دسته بندی اول'}  emptyValue={null} choices={typeChoices4}/>*/}
+      {/*<SelectInput source="secondCategory" label={'دسته بندی دوم'}  emptyValue={null} choices={typeChoices3}/>*/}
+      {/*<SelectInput source="thirdCategory" label={'دسته بندی سوم'}  emptyValue={null} choices={typeChoices3}/>*/}
 
-        </Filter>
-    );
-}
+    </Filter>
+  );
+};
 const PostPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100, 200, 500]} {...props} />;
 
 const list = (props) => {
-    const translate = useTranslate();
+  const translate = useTranslate();
 
-    return (
-        <List {...props} filters={<PostFilter/>} pagination={<PostPagination/>}>
-            <Datagrid>
-                <TextField source={"name."+translate('lan')} label={translate('resources.category.name')}/>
-                <TextField source="slug" label={translate('resources.category.slug')}/>
-                <ReferenceField
-                    label={translate('resources.category.parent')}
-                    source="parent"
-                    reference="category">
-                    <TextField source={"name."+translate('lan')}/>
-                </ReferenceField>
-                {/*<TextField source="order" label={translate('resources.category.order')}/>*/}
+  return (
+    <List {...props} filters={<PostFilter/>} pagination={<PostPagination/>}>
+      <Datagrid>
+        <TextField source={"name." + translate("lan")} label={translate("resources.category.name")}/>
+        <TextField source="slug" label={translate("resources.category.slug")}/>
+        <ReferenceField
+          label={translate("resources.category.parent")}
+          source="parent"
+          reference="category">
+          <TextField source={"name." + translate("lan")}/>
+        </ReferenceField>
+        {/*<TextField source="order" label={translate('resources.category.order')}/>*/}
+        <FunctionField label={translate("resources.customers.actions")}
+                       render={record => (
+                         <>
+                           <div key={"00"}>
+                             <EditButton/>
+                           </div>
+                           <div key={"01"}>
+                             <Button
+                               color="primary"
+                               size="small"
+                               key={"33"}
+                               onClick={() => {
+                                 return <CustomModal onClose={()=>{}} open={false} className={'width50vw sdfghyjuikol kiuytgfhjuyt modal'}
+                                                     title={('Choose Element')}>
+                                   <input/>
+                                 </CustomModal>
+                                 // console.log('data', record._id);
+                                 // API.post("/product/copy/" + record._id, null)
+                                 //   .then(({ data = {} }) => {
+                                 //     // console.log('data', data._id);
+                                 //     props.history.push("/product/" + data._id);
+                                 //     // ale/rt('done');
+                                 //   })
+                                 //   .catch((err) => {
+                                 //     console.log("error", err);
+                                 //   });
+                               }}>
+                               <MessageIcon /><span className={'ml-2 mr-2'}>{translate("resources.customers.message")}</span>
+                             </Button>
+                           </div>
+                           <div key={"02"}>
+                             <DeleteButton/>
 
-                <EditButton/>
-                {/*<ShowButton/>*/}
-                <DeleteButton/>
-            </Datagrid>
-        </List>
-    );
-}
+                           </div>
+                         </>
+                       )}/>
 
+        {/*<EditButton/>*/}
+        {/*<ShowButton/>*/}
+      </Datagrid>
 
-
+    </List>
+  );
+};
 
 
 export default list;

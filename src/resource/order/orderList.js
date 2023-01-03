@@ -6,16 +6,14 @@ import {
   ListContextProvider,
   NumberField,
   Pagination,
-  SearchInput,
-  SelectField,
+  ReferenceInput,
+  AutocompleteInput,
   SelectInput,
   TextField,
-  TextInput,
   useListContext,
   useTranslate
 } from "react-admin";
-import { Divider, Tab, Tabs } from "@mui/material";
-import { Chip } from "@mui/material";
+import { Chip, Divider, Tab, Tabs } from "@mui/material";
 
 
 import {
@@ -23,11 +21,11 @@ import {
   OrderPaymentStatus,
   OrderStatus,
   OrderTabs,
+  PaymentStatusField,
   PrintOrder,
   PrintPack,
   SimpleForm,
-  StatusField,
-  PaymentStatusField
+  StatusField
 } from "@/components";
 import { dateFormat } from "@/functions";
 import { BASE_URL } from "@/functions/API";
@@ -37,19 +35,20 @@ const PostPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100
 
 export const orderList = (props) => {
   const translate = useTranslate();
-
+  // {...props}
   return (
-    <List {...props} filters={
-      <Filter {...props}>
-        <SearchInput source="search" placeholder={translate("resources.order.orderNumberOrMobileNumber")} alwaysOn/>
-        <TextInput source="firstName" label={translate("resources.order.customerFirstName")}
-                   placeholder={translate("resources.order.customerFirstName")}/>
-        <TextInput source="lastName" label={translate("resources.order.customerLastName")}
-                   placeholder={translate("resources.order.customerLastName")}/>
-        <SelectInput source="paymentStatus" label={translate("resources.order.paymentStatus")}
+    <List filters={
+      [ <SelectInput source="paymentStatus" label={translate("resources.order.paymentStatus")}
                      emptyValue={null}
-                     choices={OrderPaymentStatus()} alwaysOn/>
-      </Filter>
+                     choices={OrderPaymentStatus()} alwaysOn/>,
+        <ReferenceInput
+          // perPage={10000000}
+        label={translate("resources.order.customer")}
+        source="customer" reference="customer">
+          <AutocompleteInput optionText={(record)=>`${record.firstName ? record.firstName : ''} ${record.lastName ? record.lastName : ''}`}/>
+
+
+        </ReferenceInput>]
     } pagination={<PostPagination/>}>
       <TabbedDatagrid/>
 
@@ -109,9 +108,9 @@ const TabbedDatagrid = (props) => {
     },
     [displayedFilters, filterValues, setFilters]
   );
-  console.clear();
+  // console.clear();
 // console.log('filterValues.status',filterValues.status);
-console.log('props',props);
+  console.log("props", props);
   return (
     <Fragment>
       <Tabs
@@ -171,24 +170,26 @@ console.log('props',props);
 
                              </div>
                            )}/>
-            <NumberField source="sum" label={translate("resources.order.total")}/>
-            <NumberField source="amount" label={translate("resources.order.paid")}/>
+            <NumberField source="sum" label={translate("resources.order.sum")}/>
+            <NumberField source="amount" label={translate("resources.order.amount")}/>
 
-              <FunctionField label={translate("resources.order.status")}
-                             render={record => {
-                               console.log("record",record);
-                               return(<Chip source="status" className={record.status} label={translate("pos.OrderStatus."+record.status)}/>)
-                             }}/>
-              <FunctionField label={translate("resources.order.paymentStatus")}
-                             render={record => {
-                               console.log("record",record);
-                               return(<Chip source="paymentStatus" className={record.paymentStatus} label={translate("pos.OrderPaymentStatus."+record.paymentStatus)}/>)
-                             }}/>
+            <FunctionField label={translate("resources.order.status")}
+                           render={record => {
+                             console.log("record", record);
+                             return (<Chip source="status" className={record.status}
+                                           label={translate("pos.OrderStatus." + record.status)}/>);
+                           }}/>
+            <FunctionField label={translate("resources.order.paymentStatus")}
+                           render={record => {
+                             console.log("record", record);
+                             return (<Chip source="paymentStatus" className={record.paymentStatus}
+                                           label={translate("pos.OrderPaymentStatus." + record.paymentStatus)}/>);
+                           }}/>
             {/*<SelectField source="status" choices={OrderStatus()}*/}
-                         {/*label={translate("resources.order.status")} optionText={<StatusField/>}*/}
+            {/*label={translate("resources.order.status")} optionText={<StatusField/>}*/}
             {/*/>*/}
             {/*<SelectField source="paymentStatus" choices={OrderPaymentStatus()}*/}
-                         {/*label={translate("resources.order.paymentStatus")} optionText={<PaymentStatusField/>}*/}
+            {/*label={translate("resources.order.paymentStatus")} optionText={<PaymentStatusField/>}*/}
             {/*/>*/}
 
             <FunctionField label={translate("resources.order.date")}
@@ -204,7 +205,13 @@ console.log('props',props);
                              </div>
                            )}/>
 
-            <EditButton/>
+            <FunctionField label={translate("resources.order.actions")}
+                           render={record => (
+                             <>
+                               <div>
+                                 <EditButton/>
+                               </div>
+                             </>)}/>
           </Datagrid>
         </ListContextProvider>
 

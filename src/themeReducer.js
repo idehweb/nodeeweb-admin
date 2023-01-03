@@ -1,7 +1,5 @@
-import {CHANGE_THEME, changeTheme,CHANGE_LOCALE,CHANGE_THEMEDATA} from '@/functions';
+import { CHANGE_LOCALE, CHANGE_THEME, CHANGE_THEMEDATA, changeTheme } from "@/functions";
 // import { useContext} from 'react';
-
-import { useStore } from 'react-redux'
 // import store from 'store';
 // import { ThemeName } from '../types';
 
@@ -9,24 +7,35 @@ import { useStore } from 'react-redux'
 // type Action =
 // | ReturnType<typeof changeTheme>
 // | { type: 'OTHER_ACTION'; payload?: any };
-let them=(localStorage.getItem('theme'));
-const themeReducer = (
-    previousState = them || 'light',
-    action
-) => {
-    // const { store } = useContext(ReactReduxContext);
-    console.log('themeReducer...')
-    if (action.type === CHANGE_THEME) {
-        console.log('action',action);
-
-        console.log('action.payload',action.payload);
-        console.log('previousState', previousState, action);
-
-
-        return action.payload;
+let them = (localStorage.getItem("theme"));
+// const themeReducer = (
+//     previousState = them || 'light',
+//     action
+// ) => {
+//     // const { store } = useContext(ReactReduxContext);
+//     console.log('themeReducer...')
+//     if (action.type === CHANGE_THEME) {
+//         console.log('action',action);
+//
+//         console.log('action.payload',action.payload);
+//         console.log('previousState', previousState, action);
+//
+//
+//         return action.payload;
+//     }
+//
+//     return previousState;
+// };
+// export default themeReducer;
+export default function themeReducer(state = { theme: { them } }, action) {
+  switch (action.type) {
+    case CHANGE_THEME:
+      // console.log("themeReducer",state, {theme: action.payload });
+      return (action.payload=='dark' ? 'light' : 'dark');
+    default: {
+      console.log('here',state)
+      return state;
     }
-
-    return previousState;
-};
-
-export default themeReducer;
+  }
+  return state;
+}

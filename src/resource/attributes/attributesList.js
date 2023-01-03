@@ -32,6 +32,7 @@ const list = (props) => {
             <Datagrid>
                 <TextField source="name.fa" label={translate('resources.attributes.name')}/>
                 <TextField source="slug" label={translate('resources.attributes.slug')}/>
+                <TextField source="useInFilter" label={translate('resources.attributes.useInFilter')}/>
 
                 <EditButton/>
                 <DeleteButton/>
