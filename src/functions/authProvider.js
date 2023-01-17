@@ -26,6 +26,8 @@ export default {
         localStorage.setItem('username', obj.user.username);
         localStorage.setItem('token', obj.user.token);
         localStorage.setItem('user_id', obj.user._id);
+        return Promise.resolve();
+
       });
   },
   // called when the user clicks on the logout button

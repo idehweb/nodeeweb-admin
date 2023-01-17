@@ -22,28 +22,31 @@ const dateFormatter = (date) => {
   return dateFormat(new Date(date),'YYYY/MM/DD');
 }
 
-const aggregateOrdersByDay = (order) =>
-  order ? order : []
-  // .filter((order) => order.paymentStatus == 'paid')
-    .reduce((acc, curr) => {
+const aggregateOrdersByDay = (order=[]) => {
+  // console.log('aggregateOrdersByDay()',order);
+  // return order;
+  return order.reduce((acc, curr) => {
+      // console.log('acc',acc)
+      // console.log('curr',curr)
       const day = dateFormat(curr.createdAt, 'YYYY/MM/DD');
-      // console.log('day',day);
+      // console.log('day', day);
       if (!acc[day]) {
         acc[day] = 0;
       }
-      acc[day] += curr.amount;
-      // console.log('acc',acc);
+      acc[day] += 1;
+      // console.log('acc', acc);
       return acc;
     }, {});
-
+}
 const getRevenuePerDay = (orders) => {
+  // console.log('getRevenuePerDay',orders)
   const daysWithRevenue = aggregateOrdersByDay(orders);
   // console.log('daysWithRevenue', daysWithRevenue);
   return lastMonthDays.map(date => {
     // console.log('data',dateFormat(date));
     return ({
       date: date.getTime(),
-      'مجموع': daysWithRevenue[dateFormat(date, 'YYYY/MM/DD')] || 0,
+      'rxxx': daysWithRevenue[dateFormat(date, 'YYYY/MM/DD')] || 0,
     })
   });
 };
@@ -60,29 +63,30 @@ const NotifChart = (props) => {
   aMonthAgo.setMilliseconds(0);
   // React.useEffect(() => {
 
-    const { isLoading: loaded, data: visitors } = useGetList("notification",
+    const { isLoading: loaded, data: visitors } = useGetList(props.model,
       {
-        pagination: { page: 1, perPage: 10 }
+        pagination: { page: 1, perPage: 100000 }
         // sort: { field: "published_at", order: "DESC" }
       }
     );
   // }, []);
 
-  console.log('loaded',loaded)
-  console.log('visitors',visitors)
+  // console.log('loaded',loaded)
+  // console.log('visitors',visitors)
 
   // if (!loaded) return null;
 
   const nb = visitors ? visitors.reduce((nb) => ++nb, 0) : 0;
-  console.log('visitors',visitors)
-  // return JSON.stringify(visitors)
+  let all_data=getRevenuePerDay(visitors);
+  console.log('all_data',all_data)
+  // return JSON.stringify(getRevenuePerDay(visitors))
   return (
-    <Card className={'width100'}>
+    <Card className={'width1000'}>
       <CardHeader title={props.title}/>
       <CardContent>
         <div style={{ height: 300}} className={'order-chart'}>
           <ResponsiveContainer>
-            <AreaChart data={getRevenuePerDay(visitors)}>
+            <AreaChart data={all_data}>
               <defs>
                 <linearGradient
                   id="colorUv"
@@ -107,7 +111,7 @@ const NotifChart = (props) => {
                 dataKey="date"
                 label={'روز'}
 
-                name="Date"
+                name="date"
                 type="number"
                 scale="time"
                 domain={[
@@ -116,7 +120,7 @@ const NotifChart = (props) => {
                 ]}
                 tickFormatter={dateFormatter}
               />
-              <YAxis dataKey="مجموع" name="درآمد" unit="T" label={'مجموع'}
+              <YAxis dataKey="rxxx" name="درآمد" unit="T" label={'rxxx'}
 
               />
               <CartesianGrid strokeDasharray="3 3"/>
@@ -140,8 +144,8 @@ const NotifChart = (props) => {
               />
               <Area
                 type="monotone"
-                label={'مجموع'}
-                dataKey="مجموع"
+                label={'rxxx'}
+                dataKey="rxxx"
                 stroke="#8884d8"
                 strokeWidth={2}
                 fill="url(#colorUv)"

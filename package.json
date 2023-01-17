@@ -40,6 +40,8 @@
     "react-advance-jalaali-datepicker": "^1.4.0",
     "react-chartjs-2": "^4.1.0",
     "react-color": "^2.19.3",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.1.0",
     "react-email-editor": "^1.6.1",
     "react-final-form": "^6.5.9",

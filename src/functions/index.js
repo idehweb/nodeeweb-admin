@@ -13,7 +13,9 @@ export const MainUrl = window.BASE_URL;
 const dataProvider = data(ADMIN_ROUTE);
 
 export {dataProvider, authProvider, theme};
-
+export const ItemTypes = {
+  KNIGHT: 'knight'
+}
 export const dateFormat = (d, f = 'YYYY/MM/DD HH:mm') => {
     // console.log('d', d);
     if (d)

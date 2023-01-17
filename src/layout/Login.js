@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
         minHeight: '100vh',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        background: 'url(https://source.unsplash.com/random/1600x900)',
+        background: '#2f2f2f',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
     },
@@ -91,7 +91,13 @@ const Login = () => {
             console.log('location.state.nextPathname',location.state.nextPathname)
 
         // }
-        login(auth, location.state ? location.state.nextPathname : '/').catch(
+      let urltoRedirect=location.state ? location.state.nextPathname : '/';
+            console.log('urltoRedirect',urltoRedirect)
+      if(urltoRedirect=='/logout'){
+        urltoRedirect='/';
+      }
+      // return urltoRedirect
+        login(auth, urltoRedirect).catch(
             (error) => {
                 setLoading(false);
                 notify(

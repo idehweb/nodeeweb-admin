@@ -3374,6 +3374,9 @@ img[alt="payment"] {
 }
 
 @media only screen and (max-width: 600px) {
+    .col-sm-6{
+        flex-basis:100% !important;
+    }
     .post-style-list .card-post__image,
     .post-style-list .post-content-style {
         width: 100% !important;

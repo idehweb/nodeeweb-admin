@@ -41,12 +41,19 @@ const Form = ({children, ...rest}) => {
         <SimpleForm {...rest}>
             {children}
             <TextInput
-                source={"name."+translate('lan')}
+              source={"title."+translate('lan')}
                 label={translate('resources.gateway.name')}
                 validate={Val.req}
                 formClassName={cls.f2}
                 fullWidth
             />
+          <TextInput
+            source={"description."+translate('lan')}
+            label={translate('resources.gateway.description')}
+            validate={Val.req}
+            formClassName={cls.f2}
+            fullWidth
+          />
             <TextInput
                 source="slug"
                 label={translate('resources.gateway.slug')}
@@ -54,15 +61,16 @@ const Form = ({children, ...rest}) => {
                 formClassName={cls.f2}
                 fullWidth
             />
-            <ReferenceInput
-                label={translate('resources.gateway.parent')}
-                source="parent"
-                reference="productCategory"
-
-                perPage={1000}
-                formClassName={cls.f2}>
-                <SelectInput optionText={"name."+translate('lan')} optionValue="id"/>
-            </ReferenceInput>
+          <SelectInput
+            label={translate("resources.gateway.type")}
+            defaultValue={"bank"}
+            source="type"
+            choices={[
+              {id: "bank", name: translate("resources.gateway.bank")},
+              {id: "sms", name: translate("resources.gateway.sms")},
+              {id: "email", name: translate("resources.gateway.email")}
+            ]}
+          />
             {/*<NumberInput*/}
                 {/*source="order"*/}
                 {/*label={translate('resources.gateway.order')}*/}
@@ -72,49 +80,6 @@ const Form = ({children, ...rest}) => {
     );
 };
 
-function save(record) {
-    console.log('save', record, theID);
-
-    // if (record.plusx) {
-    let type = null, number = 0;
-    if (record.plusx) {
-        type = 'plusx';
-        number = record.plusx;
-    }
-    if (record.minusx) {
-        type = 'minusx';
-        number = record.minusx;
-
-    }
-    if (record.plusxp) {
-        type = 'plusxp';
-        number = record.plusxp;
-
-    }
-    if (record.minusxp) {
-        type = 'minusxp';
-        number = record.minusxp;
-
-    }
-    if (theID)
-        API.put('/product/modifyPriceByCat/' + theID, JSON.stringify({type: type, number: number}))
-            .then(({data = {}}) => {
-                // const refresh = useRefresh();
-                // refresh();
-                alert('it is ok');
-                window.location.reload();
-                // if (data.success) {
-                //     values = [];
-                //     valuess = [];
-                // }
-            })
-            .catch((err) => {
-                console.log('error', err);
-            });
-    // }
-
-    // return 0;
-}
 
 
 

@@ -1,6 +1,7 @@
 import Welcome from "@/components/dashboard/Welcome";
 import NewCustomers from "@/components/dashboard/NewCustomers";
 import NotifChart from "@/components/dashboard/NotifChart";
+import OrderChart from "@/components/dashboard/OrderChart";
 // import Spacer from '@/dashboard/Spacer';
 // import Col from '@mui/material';
 import React, { useState } from "react";
@@ -278,17 +279,19 @@ const MainDashboard = () => {
   return (
     <>
       <Welcome/>
-      <div style={styles.flex} className={"flex-wrap"}>
+      <div style={styles.flex} className={"flex-wrapp d-block"}>
         <div style={styles.leftCol} className={"leftCol"}>
           <div className={"dwfghrtjy"}>
             {/*<OrderChart orders={sOrders} title={translate('resources.dashboard.priceAnnLast30Days')}/>*/}
             {/*<NewCustomers/>*/}
+            <OrderChart title={'orders'} model={'order'}/>
+
           </div>
         </div>
         <div style={styles.rightCol} className={"rightCol"}>
           <div className={"dwfghrtjy"}>
             {/*<OrderChart orders={pendingOrders} title={translate('resources.dashboard.countOrdersSuccess30Days')}/>*/}
-            <NotifChart/>
+            {/*<NotifChart title={'notifications'} model={'notification'}/>*/}
           </div>
         </div>
       </div>
@@ -299,6 +302,7 @@ const MainDashboard = () => {
             {/*<MonthlyRevenue value={revenue} title={translate('resources.dashboard.countAnnLast30Days')}/>*/}
             <Spacer/>
             {/*<NbNewOrders value={nbNewOrders} title={translate('resources.dashboard.countPayedLast30Days')}/>*/}
+            {/*<NotifChart title={'customer'} model={'customer'}/>*/}
 
           </div>
           <div style={styles.singleCol}>

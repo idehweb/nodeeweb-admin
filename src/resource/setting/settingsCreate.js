@@ -11,6 +11,7 @@ import {
   SelectInput,
   SimpleFormIterator,
   TextInput,
+  NumberInput,
   useTranslate
 } from "react-admin";
 import { CatRefField, DeliverySchedule, FileChips, List, showFiles, SimpleForm } from "@/components";
@@ -138,6 +139,8 @@ const Form = ({ children, ...props }) => {
     <SimpleForm {...props} onSubmit={save}>
       <BooleanInput source="siteActive" label="site status"/>
       <BooleanInput source="tax" label={translate("resources.settings.tax")}/>
+      <NumberInput source="taxAmount" label={translate("resources.settings.taxAmount")}/>
+
       {/*<ReferenceArrayInput label="دسته های فعال" source="category" reference="category" filter={{f:true}} >*/}
       {/*<SelectArrayInput optionText="name" optionValue="_id">*/}
       {/*/!*<ChipField source="name" />*!/*/}

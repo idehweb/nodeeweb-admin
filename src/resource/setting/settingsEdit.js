@@ -3,10 +3,12 @@ import {
   BooleanInput,
   Edit,
   SelectArrayInput,
+  ReferenceInput,
   SelectInput,
   SimpleFormIterator,
   TextInput,
-  useTranslate
+  useTranslate,
+  NumberInput
 } from "react-admin";
 import { CatRefField, DeliverySchedule, FileChips, List, showFiles, SimpleForm } from "@/components";
 import API from "@/functions/API";
@@ -90,6 +92,7 @@ const Form = ({ children, ...props }) => {
     <SimpleForm {...props} onSubmit={save}>
       <BooleanInput source="siteActive" label={translate("resources.settings.siteActive")}/>
       <BooleanInput source="tax" label={translate("resources.settings.tax")}/>
+      <NumberInput source="taxAmount" label={translate("resources.settings.taxAmount")}/>
 
       {/*<SelectArrayInput label={translate("resources.settings.activeCategory")} source="activeCategory" optionValue="_id" choices={[{*/}
         {/*"_id": "61d58e37d931414fd78c7fb7",*/}
@@ -192,7 +195,23 @@ const Form = ({ children, ...props }) => {
       <TextInput multiline fullWidth source="sms_onGetProductByCustomer" label={translate('resources.settings.onGetProductByCustomer')} />
       <TextInput multiline fullWidth source="sms_submitReview" label={translate('resources.settings.submitReview')} />
       <TextInput multiline fullWidth source="sms_onCancel" label={translate('resources.settings.onCancel')} />
-
+      <TextInput multiline fullWidth source="factore_shop_name" label={translate('resources.settings.shop_name')} />
+      <TextInput multiline fullWidth source="factore_shop_address" label={translate('resources.settings.shop_address')} />
+      <TextInput multiline fullWidth source="factore_shop_phoneNumber" label={translate('resources.settings.shop_phoneNumber')} />
+      <TextInput multiline fullWidth source="factore_shop_faxNumber" label={translate('resources.settings.shop_faxNumber')} />
+      <TextInput multiline fullWidth source="factore_shop_postalCode" label={translate('resources.settings.shop_postalCode')} />
+      <TextInput multiline fullWidth source="factore_shop_submitCode" label={translate('resources.settings.shop_submitCode')} />
+      <TextInput multiline fullWidth source="factore_shop_internationalCode" label={translate('resources.settings.shop_internationalCode')} />
+      {/*defaultSmsGateway*/}
+      <ReferenceInput
+        label={translate('resources.settings.defaultSmsGateway')}
+        source="defaultSmsGateway"
+        reference="gateway"
+        perPage={1000}
+        allowEmpty
+      >
+        <SelectInput optionText={"title."+translate('lan')} optionValue="id"/>
+      </ReferenceInput>
       {children}
     </SimpleForm>
   );

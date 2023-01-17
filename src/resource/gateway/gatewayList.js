@@ -62,6 +62,7 @@ const list = (props) => {
             <Datagrid>
                 <TextField source={"title."+translate('lan')} label={translate('resources.gateway.name')}/>
                 <TextField source="slug" label={translate('resources.gateway.slug')}/>
+                <TextField source="type" label={translate('resources.gateway.type')}/>
 
               <BooleanField source="active" label={translate("resources.gateway.active")}/>
 

@@ -10,6 +10,7 @@ import themeReducer from "./themeReducer";
 import languageReducer from "./languageReducer";
 import Types from "@/functions/types";
 import {Route} from "react-router-dom";
+import Login from "./layout/Login"
 import { useDispatch ,useSelector} from "react-redux";
 import {
 
@@ -61,6 +62,7 @@ export default function App() {
             title={translate('websiteName')}
             disableTelemetry
             theme={theme}
+            loginPage={Login}
             dataProvider={dataProvider}
             authProvider={authProvider}
             dashboard={MainDashboard}

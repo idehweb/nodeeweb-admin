@@ -182,6 +182,105 @@ color:#000 !important;
     transform: translate(0, -50%);
 
 }
+.remove-button{
+    display: none;
+    border-radius: 3px;
+    font-size: 20px;
+    padding: 0;
+    background-color: red;
+    border:red;
+}
+.redxxx{
+    background-color: red;
+    border:red;
+}
+.remove-button:hover,.remove-button:focus{
+    background-color: red;
+    border:red;
+
+}
+form .MGD{
+    position: relative;
+}
+form .MGD:hover >.remove-button {
+    display: block;
+    position: absolute;
+    left:0;
+    top:0;
+}
+.csfs-b{
+
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+.component-set-for-setting{
+    position: fixed;
+    background-color: rgba(0, 0, 0, .6);
+
+    top: 0;
+    left: 0;
+    width:100vw;
+    height:100vh;
+    z-index: 999999;
+}
+#nodeeweb-page-builder .active{
+    height: 20px;
+    background-color: #b2b2ff;
+}
+.whitespace-nowrap{
+    white-space: nowrap;
+}
+label[draggable="true"]{
+    cursor: move;
+}
+.only-border{
+    background-color: #fff;
+    color: #000;
+}
+.only-border:hover{
+    background-color: #2b7e7b !important;
+    color: #fff;
+}
+.closeIcon{
+    background-color: #fff;
+    border:1px solid red !important;
+    color:red !important;
+
+}
+.d-flex-inputs{
+    padding: 0;
+    height: 30px;
+    line-height: 30px;
+}
+.closeIcon:hover{
+    background-color: red;
+    color:#fff !important;
+
+}
+.component-set-for-setting .top-bar-settings{
+    justify-content: space-between;
+    display: flex;
+}
+.csfs-a{
+    position: fixed;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    height: 90%;
+    overflow: scroll;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+.csfs-c{
+
+}
 .show-image-uploader .RaFileInput-dropZone{
 
     background-color: #e0e0e0 !important;

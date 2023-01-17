@@ -10,10 +10,12 @@ import FieldText from './FieldText';
 import FieldTextarea from './FieldTextarea';
 import FieldJson from './FieldJson';
 import FieldNumber from './FieldNumber';
+import EveryFields from './EveryFields';
 
 
 export {
   FieldObject,
+  EveryFields,
   FieldNumber,
   FieldTextarea,
   FieldJson,

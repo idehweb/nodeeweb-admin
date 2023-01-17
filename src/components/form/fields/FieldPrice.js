@@ -3,12 +3,14 @@ import {Field} from 'react-final-form'
 import {Col} from 'shards-react';
 import {MainUrl, uploadMedia} from "@/functions/index";
 import { useTranslate } from 'react-admin';
-
+import {
+  EveryFields
+} from "@/components/form/fields";
 function FieldPrice(props) {
   // console.clear();
   const t=useTranslate();
 
-  let {field} = props;
+  let {field,removeField} = props;
   const {type, kind, size, className, name, label,options, placeholder,value} = field;
 
   let [theVal,setTheVal]=useState(value)
@@ -23,6 +25,7 @@ function FieldPrice(props) {
     lg={size ? size.lg : ''}
     className={'MGD ' + className}>
     <label htmlFor={name}>{label ? t(label) : t(name)}</label>
+    <EveryFields onClick={(e) => removeField(e)}/>
 
     <Field
       name={name}

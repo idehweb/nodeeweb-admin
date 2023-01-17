@@ -7,6 +7,7 @@ import {
   Toolbar,
   useForm,
   useNotify,
+  BooleanInput,
   useRedirect,
   useTranslate
 } from "react-admin";
@@ -320,6 +321,12 @@ const Form = ({ children, ...props }) => {
                  className={"width100 mb-20 ltr"}/>
       <TextInput source="padding" fullWidth label={translate("padding")}
                  className={"width100 mb-20 ltr"}/>
+
+
+      <BooleanInput source="showInDesktop" label={translate("showInDesktop")} />
+      <BooleanInput source="showInMobile" label={translate("showInMobile")} />
+
+
       <TextInput source="backgroundColor" fullWidth label={translate("backgroundColor")}
                  className={"width100 mb-20 ltr"}/>
       <div className={"mb-20"}></div>

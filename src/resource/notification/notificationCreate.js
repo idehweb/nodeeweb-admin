@@ -57,6 +57,11 @@ fullWidth
           ]}
         />
         <TextInput source="phoneNumber" label={translate("resources.notification.phoneNumber")} fullWidth/>
+        <TextInput source="limit" label={translate("resources.notification.limit")} fullWidth/>
+        <TextInput source="offset" label={translate("resources.notification.offset")} fullWidth/>
+        <div>
+          {translate("resources.messages.help")}
+        </div>
         <TextInput multiline source="message" label={translate("resources.notification.message")} fullWidth/>
       </SimpleForm>
     </Create>

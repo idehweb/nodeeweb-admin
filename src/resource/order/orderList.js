@@ -30,12 +30,14 @@ import {
 import { dateFormat } from "@/functions";
 import { BASE_URL } from "@/functions/API";
 import React, { Fragment, useCallback, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const PostPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100]} {...props} />;
 
 export const orderList = (props) => {
   const translate = useTranslate();
   // {...props}
+
   return (
     <List filters={
       [ <SelectInput source="paymentStatus" label={translate("resources.order.paymentStatus")}
@@ -50,7 +52,7 @@ export const orderList = (props) => {
 
         </ReferenceInput>]
     } pagination={<PostPagination/>}>
-      <TabbedDatagrid/>
+      <TabbedDatagrid />
 
     </List>
   );
@@ -70,6 +72,7 @@ const TabbedDatagrid = (props) => {
   const [complete, setComplete] = useState([]);
   const [checkout, setCheckout] = useState([]
   );
+  const themeData = useSelector((st) => st.themeData);
 
   const totals = 0;
 
@@ -170,8 +173,14 @@ const TabbedDatagrid = (props) => {
 
                              </div>
                            )}/>
-            <NumberField source="sum" label={translate("resources.order.sum")}/>
-            <NumberField source="amount" label={translate("resources.order.amount")}/>
+            <FunctionField label={translate("resources.order.sum")}
+                           render={record => {
+                             return (record && record.sum && record.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+" "+translate(themeData.currency));
+                           }}/>
+            <FunctionField label={translate("resources.order.amount")}
+                           render={record => {
+                             return (record && record.amount && record.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+" "+translate(themeData.currency));
+                           }}/>
 
             <FunctionField label={translate("resources.order.status")}
                            render={record => {
@@ -179,6 +188,8 @@ const TabbedDatagrid = (props) => {
                              return (<Chip source="status" className={record.status}
                                            label={translate("pos.OrderStatus." + record.status)}/>);
                            }}/>
+
+
             <FunctionField label={translate("resources.order.paymentStatus")}
                            render={record => {
                              console.log("record", record);

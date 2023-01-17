@@ -126,7 +126,7 @@ const Messages = (props) => {
   };
 
   const onSubmit = (g) => {
-    console.log('theData',g)
+    console.log('theData',g,getValues())
     // console.clear();
     let jso={
       messages:g.messages,
@@ -168,6 +168,17 @@ const Messages = (props) => {
             <div>
               {translate("resources.messages.help")}
             </div>
+            <ReferenceInput
+              label={translate("resources.messages.gateway")}
+              source="smsgateway"
+
+              reference="gateway"
+              perPage={1000}
+              allowEmpty
+            >
+              <SelectInput optionText={"title." + translate("lan")} optionValue="id"/>
+            </ReferenceInput>
+
             <Box>
               <ArrayInput source="messages"
                           label={translate("resources.messages.messages")}>

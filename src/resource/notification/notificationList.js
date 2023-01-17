@@ -3,6 +3,7 @@ import {
     Datagrid,
     DateField,
     DeleteButton,
+    EditButton,
     TextField,
   useTranslate
 } from 'react-admin';
@@ -21,7 +22,8 @@ export const notificationList = (props) => {
         <TextField source="from" label={translate('resources.notification.sender')}/>
         <DateField source="createdAt" showTime label={translate('resources.notification.createdAt')}/>
         <DateField source="updatedAt" showTime label={translate('resources.notification.updatedAt')}/>
-        {/*<DeleteButton />*/}
+        <EditButton/>
+        <DeleteButton />
       </Datagrid>
     </List>
   );

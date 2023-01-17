@@ -105,6 +105,16 @@ const Form = ({children, ...rest}) => {
                 formClassName={cls.f2}
                 fullWidth
             />
+          <SelectInput
+            label={translate("resources.gateway.type")}
+            defaultValue={"bank"}
+            source="type"
+            choices={[
+              {id: "bank", name: translate("resources.gateway.bank")},
+              {id: "sms", name: translate("resources.gateway.sms")},
+              {id: "email", name: translate("resources.gateway.email")}
+            ]}
+          />
           <TextInput
             className={"width100 mb-20 ltr"}
                 source="request"

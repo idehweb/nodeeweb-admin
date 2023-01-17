@@ -11,7 +11,7 @@ import {dateFormat} from '@/functions';
 export default (props) => {
     // console.log(props.record);
     const divRef = React.useRef();
-    const [tel, Stel] = React.useState('02188649930');
+    const [tel, Stel] = React.useState('02141175');
     // const [cfirstName, ScfirstName] = React.useState(props.record.customer.firstName+' '+props.record.customer.lastName);
 
     let fname = '', lname = '';
@@ -260,7 +260,7 @@ export default (props) => {
                         <div className="shop-name">
                             <h3>رسید حمل و نقل</h3></div>
                         <h1 className="document-type-label">
-                            فروشگاه آنلاین آروند
+                            فروشگاه آنلاین گل افشان
                         </h1>
                     </td>
                     <td className="shop-info">
@@ -290,15 +290,15 @@ export default (props) => {
                     <td>
 
                         <div>
-                            <span>شرکت آروند - </span>
-                            <span>تلفن: </span>{'02188649930'}
+                            <span>شرکت گل افشان - </span>
+                            <span>تلفن: </span>{'02141175'}
                             -
-                            <span>سایت: </span>{'#your-site-link'}
+                            <span>سایت: </span>{'golafshan.ir'}
                         </div>
 
                         <div>
 
-                            <span>آدرس: </span>{'تهران، کاووسیه، بلوار میرداماد، پلاک ۴۹۶، مجتمع پایتخت، بلوک A، طبقه ۹، واحد ۹۰۱'}
+                            <span>آدرس: </span>{'تهران، پونک جنوبی، ایران زمین شمالی، کوچه شکوفه سوم شرقی، پلاک ۳، طبقه ۲، واحد ۴'}
                         </div>
                     </td>
                 </tr>

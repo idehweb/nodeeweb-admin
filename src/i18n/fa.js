@@ -9,10 +9,13 @@ const customFarsiMessages = {
   classes: "classes",
   upgraded: "ارتقا داده شد",
   direction: "rtl",
+  rial: "ریال",
+  toman: "تومان",
   logout: "خروج",
   padding: "padding",
   backgroundColor: "backgroundColor",
   require: "ضروری",
+  orders: "سفارشات",
   showInDesktop: "نمایش در دسکتاپ",
   showInMobile: "نمایش در موبایل",
   sign_out: "خروج",
@@ -354,7 +357,11 @@ const customFarsiMessages = {
     gateway: {
       title: "عنوان",
       name: "عنوان",
+      bank: "بانک",
+      sms: "پیامک",
+      email: "ایمیل",
       slug: "نامک",
+      type: "نوع",
       description: "توضیح",
 
       createdAt: "انتشار در",
@@ -365,7 +372,7 @@ const customFarsiMessages = {
       active: "فعال/غیرفعال"
     },
     order: {
-      customer:"مشتری",
+      customer: "مشتری",
       product: "محصول",
       _id: "شناسه",
       title: "عنوان",
@@ -471,7 +478,7 @@ const customFarsiMessages = {
       footer: "footer",
       product: "product",
       checkout: "checkout",
-      kind: "نوع",
+      kind: "نوع"
     },
     page: {
       actions: "اقدامات",
@@ -583,8 +590,11 @@ const customFarsiMessages = {
 
     reviews: {},
 
+
     settings: {
-      tax:"مالیات",
+      taxAmount: "رقم مالیات",
+
+      tax: "مالیات",
       currency: "currency",
       activeCategory: "دسته های فعال",
       siteStatus: "وضعیت سایت",
@@ -631,7 +641,7 @@ const customFarsiMessages = {
       customerGroup: "ارسال به گروه مشتری",
       source: "ارسال به منبع",
       CRM: "CRM",
-      WEBSITE: "WEBSITE",
+      WEBSITE: "WEBSITE"
 
 
     },
