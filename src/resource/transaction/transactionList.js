@@ -14,6 +14,7 @@ import {
 
 import { dateFormat } from "@/functions";
 import { List, StatusField,PaymentStatus ,TransactionPaymentStatusField} from "@/components";
+import { useSelector } from "react-redux";
 // import Transactions from "../../../../main/src/client/views/Transactions";
 
 
@@ -21,6 +22,7 @@ export const transactionList = (props) => {
   const translate = useTranslate();
   const PaymentStatuses = PaymentStatus();
   console.log('PaymentStatus',PaymentStatuses);
+  const themeData = useSelector((st) => st.themeData);
 
   return (
     <List {...props} filters={
@@ -31,20 +33,29 @@ export const transactionList = (props) => {
       <Datagrid>
         {/*<TextField source="id"/>*/}
         <TextField source="Authority" label={translate("resources.transaction.authority")}/>
-        <NumberField source="amount" label={translate("resources.transaction.amount")}/>
+        <FunctionField label={translate("resources.order.amount")}
+                       render={record => {
+                         return (record && record.amount && record.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+" "+translate(themeData.currency));
+                       }}/>
+        <TextField source="RefID" label={translate("resources.transaction.RefID")}/>
+
+        {/*<NumberField source="amount" label={translate("resources.transaction.amount")}/>*/}
         <TextField source="method" label={translate("resources.transaction.gateway")}/>
         {/*<TextField source="orderNumber" label={translate("resources.transaction.orderNumber")}/>*/}
 
         <FunctionField label={translate("resources.transaction.orderNumber")}
-                       render={record => (
-                         <div className='theDate'>
+                       render={record => {
+                         if(!record || !record.order.orderNumber){
+                           return
+                         }
+                         return(
+                           <div className='theDate'>
 
+                             <a href={"/admin/#/order/" + record.order._id} target={"_blank"}>{record.order.orderNumber ? record.order.orderNumber : ''}</a>
 
-                           {record.order &&
-                           <a href={"/#/order/" + record.order} target={"_blank"}>{record.orderNumber}</a>}
-
-                         </div>
-                       )}/>
+                           </div>
+                         )
+                       }}/>
 
         <SelectField source="statusCode" choices={PaymentStatuses}
         label={translate("resources.transaction.statusCode")} optionText={<TransactionPaymentStatusField />}

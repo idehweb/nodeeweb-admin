@@ -47,6 +47,12 @@ const Form = ({ children, ...rest }) => {
         formClassName={cls.f2}
         fullWidth
       />
+<NumberInput
+        source="customerLimit"
+        label={translate("resources.discount.customerLimit")}
+        formClassName={cls.f2}
+        fullWidth
+      />
 
       <ReferenceArrayInput
         label={translate("resources.discount.excludeProductCategory")}

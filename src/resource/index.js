@@ -3,6 +3,9 @@ import Attributes from "./attributes/index";
 import ProductCategory from "./productCategory/index";
 import Customer from "./customer/index";
 import CustomerGroup from "./customerGroup/index";
+import Document from "./document/index";
+import Note from "./note/index";
+import Task from "./task/index";
 import Entry from "./entry/index";
 import Form from "./form/index";
 import MainDashboard from "./dashboard/index";
@@ -29,6 +32,6 @@ import Template from "./template/index";
 import Logout from "./logout";
 
 
-const resources = { Attributes,Plugins,Gateway,CustomerGroup,Entry,Form,Action,Discount,Page,Template,ProductCategory,Configuration,Logout,PrivateConfiguration,Messages,Customer,MainDashboard,Media,Menu,Order,OrderCart,PageBuilder,Post,Product,Settings,Notification,Transaction ,User};
+const resources = { Attributes,Plugins,Gateway,CustomerGroup,Document,Entry,Form,Note,Task,Action,Discount,Page,Template,ProductCategory,Configuration,Logout,PrivateConfiguration,Messages,Customer,MainDashboard,Media,Menu,Order,OrderCart,PageBuilder,Post,Product,Settings,Notification,Transaction ,User};
 
 export default resources;

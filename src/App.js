@@ -56,7 +56,7 @@ export default function App() {
     console.log("useEffect");
     load();
   }, []);
-  const {Action, Attributes,CustomerGroup,Form,Entry, ProductCategory,Gateway,Template,Discount,Logout,Page,Messages, Configuration,Plugins, PrivateConfiguration, Customer, MainDashboard, Media, Menu, Order, OrderCart, Post, Product, Settings, Notification, Transaction, User,PageBuilder} = resources;
+  const {Action, Attributes,CustomerGroup,Form,Entry, ProductCategory,Gateway,Template,Discount,Logout,Page,Messages, Configuration,Plugins, PrivateConfiguration, Customer,Note,Task,Document, MainDashboard, Media, Menu, Order, OrderCart, Post, Product, Settings, Notification, Transaction, User,PageBuilder} = resources;
     return (
         <Admin
             title={translate('websiteName')}
@@ -82,6 +82,9 @@ export default function App() {
             <Resource name="customer" options={{label: translate('pos.menu.customers')}} {...Customer} />
             <Resource name="admin" options={{label: translate('pos.menu.users')}} {...User} />
             <Resource name="media" options={{label: translate('pos.menu.medias')}} {...Media} />
+            <Resource name="document" options={{label: translate('pos.menu.documents')}} {...Document} />
+            <Resource name="note" options={{label: translate('pos.menu.notes')}} {...Note} />
+            <Resource name="task" options={{label: translate('pos.menu.tasks')}} {...Task} />
             <Resource name="menu" options={{label: translate('pos.menu.menu')}} {...Menu} />
             <Resource name="form" options={{label: translate('pos.menu.form')}} {...Form} />
             <Resource name="entry" options={{label: translate('pos.menu.entry')}} {...Entry} />

@@ -6,14 +6,17 @@ import {
   ListContextProvider,
   NumberField,
   Pagination,
+  TextInput,
   ReferenceInput,
   AutocompleteInput,
   SelectInput,
   TextField,
   useListContext,
+  DateInput,
   useTranslate
 } from "react-admin";
 import { Chip, Divider, Tab, Tabs } from "@mui/material";
+import moment from 'jalali-moment'
 
 
 import {
@@ -25,6 +28,7 @@ import {
   PrintOrder,
   PrintPack,
   SimpleForm,
+  ReactAdminJalaliDateInput,
   StatusField
 } from "@/components";
 import { dateFormat } from "@/functions";
@@ -43,6 +47,16 @@ export const orderList = (props) => {
       [ <SelectInput source="paymentStatus" label={translate("resources.order.paymentStatus")}
                      emptyValue={null}
                      choices={OrderPaymentStatus()} alwaysOn/>,
+        <ReactAdminJalaliDateInput
+          fullWidth
+          source="date_gte" label={translate("resources.order.date_gte")}
+          format={formValue => moment.from(formValue,"fa","jYYYY/jMM/jDD").format("YYYY-MM-DD")}
+          parse={inputValue => moment.from(inputValue,"fa","jYYYY/jMM/jDD").format("YYYY-MM-DD")}
+        />,
+        <TextInput
+          fullWidth
+          source="date_gte" label={translate("resources.order.date_gte")}
+        />,
         <ReferenceInput
           // perPage={10000000}
         label={translate("resources.order.customer")}
@@ -155,8 +169,10 @@ const TabbedDatagrid = (props) => {
                                    {record.customer.lastName}
                                  </div>}
                                  {record.customer.phoneNumber &&
-                                 <a href={"/#/customer/" + record.customer._id}>{record.customer.phoneNumber}</a>}
-
+                                 <a href={"/admin/#/customer/" + record.customer._id}>{record.customer.phoneNumber}</a>}
+                                 {(record.customer.orderCount || record.customer.orderCount==0) && <div>
+                                   <span>{translate("resources.order.orderCount")+":"}</span>{record.customer.orderCount}
+                                 </div>}
                                </div>}
 
                                {(!record.customer && record.customer_data) && <div>
@@ -168,6 +184,7 @@ const TabbedDatagrid = (props) => {
                                  <div>
                                    {record.customer_data.lastName}
                                  </div>}
+
                                </div>}
 
 

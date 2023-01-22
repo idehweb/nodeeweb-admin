@@ -183,6 +183,21 @@ const Form = ({ children, ...props }) => {
           />
         </SimpleFormIterator>
       </ArrayInput>
+      <ArrayInput source="customerStatus">
+        <SimpleFormIterator {...props}>
+          <TextInput
+            fullWidth
+            source={"title"}
+            label={translate("resources.settings.title")}
+          />
+          <TextInput
+            fullWidth
+            source={"slug"}
+            label={translate("resources.settings.slug")}
+          />
+
+        </SimpleFormIterator>
+      </ArrayInput>
 
       <TextInput fullWidth source={"title."+ translate("lan")} label={translate('resources.settings.title')} />
       <TextInput fullWidth source="currency" label={translate('resources.settings.currency')} />
@@ -196,6 +211,7 @@ const Form = ({ children, ...props }) => {
       <TextInput multiline fullWidth source="sms_submitReview" label={translate('resources.settings.submitReview')} />
       <TextInput multiline fullWidth source="sms_onCancel" label={translate('resources.settings.onCancel')} />
       <TextInput multiline fullWidth source="factore_shop_name" label={translate('resources.settings.shop_name')} />
+      <TextInput multiline fullWidth source="factore_shop_site_address" label={translate('resources.settings.shop_site_address')} />
       <TextInput multiline fullWidth source="factore_shop_address" label={translate('resources.settings.shop_address')} />
       <TextInput multiline fullWidth source="factore_shop_phoneNumber" label={translate('resources.settings.shop_phoneNumber')} />
       <TextInput multiline fullWidth source="factore_shop_faxNumber" label={translate('resources.settings.shop_faxNumber')} />

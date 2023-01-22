@@ -64,6 +64,7 @@ const list = (props) => {
                 <TextField source="count" label={translate('resources.discount.count')}/>
                 <TextField source="price" label={translate('resources.discount.price')}/>
                 <TextField source="percent" label={translate('resources.discount.percent')}/>
+                <TextField source="customerLimit" label={translate('resources.discount.customerLimit')}/>
                 {/*<ReferenceField*/}
                     {/*label={translate('resources.discount.parent')}*/}
                     {/*source="parent"*/}

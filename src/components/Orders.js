@@ -5,22 +5,26 @@ import { useCallback, useEffect, useState } from "react";
 // import GridListTileBar from '@mui/material/GridListTileBar';
 // import withWidth, { WithWidth } from '@mui/material/withWidth';
 import { ShopURL } from "@/functions/API";
-import { useDataProvider } from "react-admin";
-import { DataGrid } from "@mui/x-data-grid";
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import { dateFormat } from "@/functions";
+import { useDataProvider,useTranslate } from "react-admin";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { Chip } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const Orders = (props) => {
   const { record } = props;
   const { _id } = record;
   const [state, setState] = useState({});
+  const translate =   useTranslate();
   // const version = useVersion();
   const dataProvider = useDataProvider();
+  const themeData = useSelector((st) => st.themeData);
 
   const fetchOrders = useCallback(async () => {
     const { data: Data } = await dataProvider.get(
@@ -86,36 +90,42 @@ const Orders = (props) => {
   //   pageSize={20}
   //   rowsPerPageOptions={[5, 20, 100]}
   // /></div>;
+
   return <TableContainer component={Paper}>
-    <Table sx={{ minWidth: '100%',marginBottom:'20px' }} aria-label="simple table">
+    <div className={'label-top-table'}>{translate("orders")}</div>
+    <Table sx={{ minWidth: "100%", marginBottom: "20px" }} aria-label="simple table">
       <TableHead>
         <TableRow>
-          <TableCell>_id</TableCell>
-          <TableCell align="right">sum</TableCell>
-          <TableCell align="right">amount</TableCell>
-          <TableCell align="right">orderNumber</TableCell>
-          <TableCell align="right">status</TableCell>
-          <TableCell align="right">paymentStatus</TableCell>
-          <TableCell align="right">updatedAt</TableCell>
-          <TableCell align="right">createdAt</TableCell>
+          <TableCell>{translate("resources.order._id")}</TableCell>
+          <TableCell align="right">{translate("resources.order.sum")}</TableCell>
+          <TableCell align="right">{translate("resources.order.amount")}</TableCell>
+          <TableCell align="right">{translate("resources.order.orderNumber")}</TableCell>
+          <TableCell align="right">{translate("resources.order.status")}</TableCell>
+          <TableCell align="right">{translate("resources.order.paymentStatus")}</TableCell>
+          <TableCell align="right">{translate("resources.order.updatedAt")}</TableCell>
+          <TableCell align="right">{translate("resources.order.createdAt")}</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
 
-    {orders && orders.map((item,i) => {
-      return <TableRow key={i}>
-        <TableCell component="th" scope="row">{JSON.stringify(item._id)}</TableCell>
-        <TableCell>{JSON.stringify(item.sum)}</TableCell>
-        <TableCell>{JSON.stringify(item.amount)}</TableCell>
-        <TableCell>{JSON.stringify(item.orderNumber)}</TableCell>
-        <TableCell>{JSON.stringify(item.status)}</TableCell>
-        <TableCell>{JSON.stringify(item.paymentStatus)}</TableCell>
-        <TableCell>{JSON.stringify(item.updatedAt)}</TableCell>
-        <TableCell>{JSON.stringify(item.createdAt)}</TableCell>
-      </TableRow>;
+        {orders && orders.map((item, i) => {
+          return <TableRow key={i}>
+            <TableCell component="th" scope="row">{JSON.stringify(item._id)}</TableCell>
+            <TableCell>{(item.sum && item.sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))+" "+translate(themeData.currency)}</TableCell>
+            <TableCell>{(item.amount && item.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))+" "+translate(themeData.currency)}</TableCell>
+            <TableCell><a href={"/admin/#/order/" + item._id}>{(item.orderNumber)}</a></TableCell>
+            <TableCell><Chip source="status" className={item.status}
+                             label={translate("pos.OrderStatus." + item.status)}/>
+            </TableCell>
+            <TableCell><Chip source="paymentStatus" className={item.paymentStatus}
+                             label={translate("pos.OrderPaymentStatus." + item.paymentStatus)}/>
+            </TableCell>
+            <TableCell>{dateFormat(item.updatedAt)}</TableCell>
+            <TableCell>{dateFormat(item.createdAt)}</TableCell>
+          </TableRow>;
 
-    })}
-    </TableBody>
+        })}
+      </TableBody>
     </Table>
   </TableContainer>;
 };

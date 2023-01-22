@@ -10,12 +10,18 @@ const customFarsiMessages = {
   upgraded: "ارتقا داده شد",
   direction: "rtl",
   rial: "ریال",
+  transactions: "تراکنش ها",
   toman: "تومان",
   logout: "خروج",
   padding: "padding",
   backgroundColor: "backgroundColor",
+  customerStatus: "وضعیت مشتری",
   require: "ضروری",
+  documents: "اسناد",
+  tasks: "کار ها",
+  notes: "یادداشت ها",
   orders: "سفارشات",
+  notifications: "اعلانات",
   showInDesktop: "نمایش در دسکتاپ",
   showInMobile: "نمایش در موبایل",
   sign_out: "خروج",
@@ -90,8 +96,12 @@ const customFarsiMessages = {
       category: "دسته بندی",
       discount: "کد تخفیف",
       menu: "فهرست",
+      tasks: "کار ها",
+      notes: "یادداشت ها",
       gateways: "درگاه ها",
       addMenu: "افزودن فهرست",
+      addDocument: "افزودن سند",
+      allDocuments: "همه اسناد",
       allMenus: "همه فهرست ها",
       customerGroups: "گروه های مشتری",
       templates: "قالب ها",
@@ -194,6 +204,12 @@ const customFarsiMessages = {
   },
   resources: {
 
+    document: {
+      title: "عنوان",
+      type: "نوع"
+    },
+    note: {},
+    task: {},
     messages: {
       help: "لطفا از این پارامتر ها استفاده کنید:" +
       "\n" +
@@ -286,6 +302,7 @@ const customFarsiMessages = {
     },
     discount: {
       slug: "نامک",
+      customerLimit: "محدودیت مشتری",
       name: "عنوان کد تخفیف",
       count: "تعداد",
       expire: "تاریخ انقضا",
@@ -296,6 +313,7 @@ const customFarsiMessages = {
     },
 
     customers: {
+      tasks: "کار ها",
       notifications: "اعلان ها",
       _id: "شناسه",
       transactions: "تراکنش ها",
@@ -372,7 +390,9 @@ const customFarsiMessages = {
       active: "فعال/غیرفعال"
     },
     order: {
+      date_gte: "از تاریخ",
       customer: "مشتری",
+      orderCount: "تعداد سفارشات تا قبل امروز",
       product: "محصول",
       _id: "شناسه",
       title: "عنوان",
@@ -593,7 +613,14 @@ const customFarsiMessages = {
 
     settings: {
       taxAmount: "رقم مالیات",
-
+      shop_name: "اسم فروشگاه (فاکتور)",
+      shop_site_address: "آدرس سایت (فاکتور)",
+      shop_address: "آدرس فروشگاه (فاکتور)",
+      shop_phoneNumber: "شماره تماس (فاکتور)",
+      shop_faxNumber: "شماره فکس (فاکتور)",
+      shop_postalCode: "کد پستی (فاکتور)",
+      shop_submitCode: "کد ثبتی (فاکتور)",
+      shop_internationalCode: "کد اقتصادی، شماره ملی (فاکتور)",
       tax: "مالیات",
       currency: "currency",
       activeCategory: "دسته های فعال",
@@ -646,6 +673,7 @@ const customFarsiMessages = {
 
     },
     transaction: {
+      RefID: "شماره مرجع",
       gateway: "درگاه",
       method: "روش",
       edit: "ویرایش",

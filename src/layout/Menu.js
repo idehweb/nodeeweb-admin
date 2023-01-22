@@ -5,15 +5,16 @@ import { Dashboard, MoreHoriz } from "@mui/icons-material";
 import SubMenu from "./SubMenu";
 import resources from "@/resource/index";
 import { useSelector } from "react-redux";
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import AddReactionIcon from '@mui/icons-material/AddReaction';
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
-const { Action, Attributes,CustomerGroup,Discount, Page,Gateway,Template, ProductCategory, Customer, MainDashboard, Media, Order, OrderCart, Post, Product, Settings, Notification, Transaction, User } = resources;
-import DynamicFormIcon from '@mui/icons-material/DynamicForm';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import NoteAddIcon from '@mui/icons-material/NoteAdd';
-import SettingsInputHdmiIcon from '@mui/icons-material/SettingsInputHdmi';
-import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import AddReactionIcon from "@mui/icons-material/AddReaction";
+import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
+import DynamicFormIcon from "@mui/icons-material/DynamicForm";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import NoteAddIcon from "@mui/icons-material/NoteAdd";
+import SettingsInputHdmiIcon from "@mui/icons-material/SettingsInputHdmi";
+import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
+
+const { Action, Attributes, CustomerGroup, Discount, Page, Gateway, Template, ProductCategory, Customer, MainDashboard, Media, Order, Document, Note, Task, OrderCart, Post, Product, Settings, Notification, Transaction, User } = resources;
 const Menu = ({ onMenuClick, dense = false }) => {
   const themeData = useSelector((st) => st.themeData);
 
@@ -44,7 +45,7 @@ const Menu = ({ onMenuClick, dense = false }) => {
     setState(state => ({ ...state, [menu]: !state[menu] }));
   };
   console.log("themeData", themeData);
-  let exclude = ["attributes","customergroup","entry","form", "gateway","discount","template","settings", "order", "admin", "menu", "page", "notification", "media", "post", "customer", "product", "productcategory", "transaction"];
+  let exclude = ["attributes", "customergroup", "entry", "form", "gateway", "discount", "template", "settings", "order", "admin", "menu", "page", "notification", "media", "post", "customer", "product", "productcategory", "transaction"];
   return (
     <div className={"the-dev-menu"}>
       <MenuItemLink
@@ -56,15 +57,15 @@ const Menu = ({ onMenuClick, dense = false }) => {
         className={"vas"}
       />
       {/*{themeData && themeData.models && themeData.models.map((model, m) => {*/}
-        {/*if (exclude.indexOf(model.toLowerCase()) == -1)*/}
-          {/*return <MenuItemLink*/}
-            {/*to={"/"}*/}
-            {/*primaryText={translate(`${model}`)}*/}
-            {/*// leftIcon={<Dashboard/>}*/}
-            {/*exact={"true"}*/}
-            {/*dense={dense}*/}
-            {/*className={"vas"}*/}
-          {/*/>;*/}
+      {/*if (exclude.indexOf(model.toLowerCase()) == -1)*/}
+      {/*return <MenuItemLink*/}
+      {/*to={"/"}*/}
+      {/*primaryText={translate(`${model}`)}*/}
+      {/*// leftIcon={<Dashboard/>}*/}
+      {/*exact={"true"}*/}
+      {/*dense={dense}*/}
+      {/*className={"vas"}*/}
+      {/*/>;*/}
       {/*})}*/}
 
       <SubMenu
@@ -91,6 +92,24 @@ const Menu = ({ onMenuClick, dense = false }) => {
           }}
           primaryText={translate(`pos.menu.allMedias`)}
           leftIcon={<Media.icon/>}
+          dense={dense}
+        />
+        <MenuItemLink
+          to={{
+            pathname: "/document/create",
+            state: { _scrollToTop: true }
+          }}
+          primaryText={translate(`pos.menu.addDocument`)}
+          leftIcon={<Document.createIcon/>}
+          dense={dense}
+        />
+        <MenuItemLink
+          to={{
+            pathname: "/document",
+            state: { _scrollToTop: true }
+          }}
+          primaryText={translate(`pos.menu.allDocuments`)}
+          leftIcon={<Document.icon/>}
           dense={dense}
         />
 
@@ -521,13 +540,13 @@ const Menu = ({ onMenuClick, dense = false }) => {
           dense={dense}
         />
         {/*<MenuItemLink*/}
-          {/*to={{*/}
-            {/*pathname: "/gateway/create",*/}
-            {/*state: { _scrollToTop: true }*/}
-          {/*}}*/}
-          {/*primaryText={translate(`pos.menu.addGateway`)}*/}
-          {/*leftIcon={<Gateway.createIcon/>}*/}
-          {/*dense={dense}*/}
+        {/*to={{*/}
+        {/*pathname: "/gateway/create",*/}
+        {/*state: { _scrollToTop: true }*/}
+        {/*}}*/}
+        {/*primaryText={translate(`pos.menu.addGateway`)}*/}
+        {/*leftIcon={<Gateway.createIcon/>}*/}
+        {/*dense={dense}*/}
         {/*/>*/}
         <MenuItemLink
           to={{
@@ -536,6 +555,24 @@ const Menu = ({ onMenuClick, dense = false }) => {
           }}
           primaryText={translate(`pos.menu.siteSettings`)}
           leftIcon={<Settings.icon/>}
+          dense={dense}
+        />
+        <MenuItemLink
+          to={{
+            pathname: "/task",
+            state: { _scrollToTop: true }
+          }}
+          primaryText={translate(`pos.menu.tasks`)}
+          leftIcon={<Task.icon/>}
+          dense={dense}
+        />
+        <MenuItemLink
+          to={{
+            pathname: "/note",
+            state: { _scrollToTop: true }
+          }}
+          primaryText={translate(`pos.menu.notes`)}
+          leftIcon={<Note.icon/>}
           dense={dense}
         />
 

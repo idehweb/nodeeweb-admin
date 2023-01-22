@@ -1,5 +1,5 @@
 // import {SimpleForm} from 'react-admin';
-import React from 'react';
+import React ,{useEffect} from 'react';
 // import logo from '../assets/img/logo.svg';
 import IRANSansWeb_font_eot from '../assets/fonts/eot/IRANSansWeb.eot';
 import IRANSansWeb_font_woff2 from '../assets/fonts/woff2/IRANSansWeb.woff2';
@@ -7,11 +7,12 @@ import IRANSansWeb_font_woff from '../assets/fonts/woff/IRANSansWeb.woff';
 import IRANSansWeb_font_ttf from '../assets/fonts/ttf/IRANSansWeb.ttf';
 import {dateFormat} from '@/functions';
 // export const logo = require('../assets/img/logo.svg');
+import API, { BASE_URL } from "@/functions/API";
 
 export default (props) => {
     // console.log(props.record);
     const divRef = React.useRef();
-    const [tel, Stel] = React.useState('02141175');
+    const [tel, Stel] = React.useState('');
     // const [cfirstName, ScfirstName] = React.useState(props.record.customer.firstName+' '+props.record.customer.lastName);
 
     let fname = '', lname = '';
@@ -44,7 +45,39 @@ export default (props) => {
     const [amount, Samount] = React.useState(props.record.amount || 0);
     const [deliveryDay, SdeliveryDay] = React.useState(props.record.deliveryDay || 0);
     const [sum, SSum] = React.useState(props.record.sum || 0);
+  const [shopData, SetShopData] = React.useState({
+    factore_shop_address : "",
+    factore_shop_faxNumber :  "",
+    factore_shop_internationalCode : "",
+    factore_shop_name : "",
+    factore_shop_phoneNumber : "",
+    factore_shop_postalCode :  "",
+    factore_shop_submitCode : ""
+  });
 
+  const getShopData = () => {
+    API.get("/settings/factore").then(({ data = {} }) => {
+      // setLoading(false);
+      // Object.keys(data).forEach(d => {
+      //   setValue(d, data[d]);
+      // });
+      // console.log(d);
+      SetShopData({...data})
+      if(data.factore_shop_phoneNumber)
+        Stel(data.factore_shop_phoneNumber)
+      // setValue("title",data.title);
+      // setTheData(true);
+      return data;
+    }).catch(e=>{
+      // setLoading(false);
+      // setTheData(true);
+    });
+  }
+  useEffect(()=>{
+    console.clear()
+    console.log('getShopData')
+    getShopData();
+  },[])
     const changeInput = (s, t) => {
         // console.log('changeInput', s, t);
         switch (s) {
@@ -238,7 +271,9 @@ export default (props) => {
 
     };
     // handleClick();
-    return (
+  let {factore_shop_name,factore_shop_phoneNumber,factore_shop_address,factore_shop_site_name,factore_shop_site_address,factore_shop_internationalCode,factore_shop_submitCode}=shopData
+
+  return (
         <div id={'theprint'} ref={divRef}>
             <button onClick={handleClick} className={'no-print'}>print</button>
             <table className="head container ">
@@ -260,7 +295,7 @@ export default (props) => {
                         <div className="shop-name">
                             <h3>رسید حمل و نقل</h3></div>
                         <h1 className="document-type-label">
-                            فروشگاه آنلاین گل افشان
+                          {factore_shop_name}
                         </h1>
                     </td>
                     <td className="shop-info">
@@ -290,15 +325,15 @@ export default (props) => {
                     <td>
 
                         <div>
-                            <span>شرکت گل افشان - </span>
-                            <span>تلفن: </span>{'02141175'}
+                            <span>{factore_shop_name} - </span>
+                            <span>تلفن: </span>{factore_shop_phoneNumber}
                             -
-                            <span>سایت: </span>{'golafshan.ir'}
+                            <span>سایت: </span>{factore_shop_site_address}
                         </div>
 
                         <div>
 
-                            <span>آدرس: </span>{'تهران، پونک جنوبی، ایران زمین شمالی، کوچه شکوفه سوم شرقی، پلاک ۳، طبقه ۲، واحد ۴'}
+                            <span>آدرس: </span>{factore_shop_address}
                         </div>
                     </td>
                 </tr>

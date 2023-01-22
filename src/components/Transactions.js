@@ -14,6 +14,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useTranslate } from "react-admin";
 
 const Transactions = (props) => {
   const { record } = props;
@@ -21,6 +22,7 @@ const Transactions = (props) => {
   const [state, setState] = useState({});
   // const version = useVersion();
   const dataProvider = useDataProvider();
+  const translate =useTranslate()
 
   const fetchOrders = useCallback(async () => {
     const { data: Data } = await dataProvider.get(
@@ -63,7 +65,9 @@ const Transactions = (props) => {
   if (!orders) {
     return <></>;
   }
-  return <div style={{ height: 400, width: "100%", minWidth: "100%" }}><DataGrid
+  return <div style={{ height: 400, width: "100%", minWidth: "100%" }}>
+    <div className={'label-top-table'}>{translate("tasks")}</div>
+    <DataGrid
     style={{ minWidth: "100%" }}
     getRowId={(row) => row._id}
     DisableResizing
@@ -75,6 +79,8 @@ const Transactions = (props) => {
     disableSelectionOnClick={true}
   /></div>;
   return <TableContainer component={Paper}>
+    <div className={'label-top-table'}>{translate("transactions")}</div>
+
     <Table sx={{ minWidth: "100%", marginBottom: "20px" }} aria-label="simple table">
       <TableHead>
         <TableRow>

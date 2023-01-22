@@ -1,17 +1,18 @@
 // import {SimpleForm} from 'react-admin';
-import React from "react";
+import React , {useEffect} from "react";
 import IRANSansWeb_font_eot from "../assets/fonts/eot/IRANSansWeb.eot";
 import IRANSansWeb_font_woff2 from "../assets/fonts/woff2/IRANSansWeb.woff2";
 import IRANSansWeb_font_woff from "../assets/fonts/woff/IRANSansWeb.woff";
 import IRANSansWeb_font_ttf from "../assets/fonts/ttf/IRANSansWeb.ttf";
 // export const logo = require('../assets/img/logo.svg');
 import { dateFormat } from "@/functions";
+import API, { BASE_URL } from "@/functions/API";
 
 export default (props) => {
   // console.clear();
   // console.log('props',props);
   const divRef = React.useRef();
-  const [tel, Stel] = React.useState("02141175");
+  const [tel, Stel] = React.useState("");
   // if(!props.record.customer_data){
   //     props.record.customer_data={
   //         firstName:''
@@ -48,7 +49,40 @@ export default (props) => {
   const [amount, Samount] = React.useState(props.record.amount || 0);
   const [deliveryDay, SdeliveryDay] = React.useState(props.record.deliveryDay || 0);
   const [change, SetChange] = React.useState(0);
+  const [shopData, SetShopData] = React.useState({
+    factore_shop_address : "",
+    factore_shop_faxNumber :  "",
+    factore_shop_internationalCode : "",
+    factore_shop_name : "",
+    factore_shop_phoneNumber : "",
+    factore_shop_postalCode :  "",
+    factore_shop_site_address:"",
+    factore_shop_submitCode : ""
+  });
 
+  const getShopData = () => {
+    API.get("/settings/factore").then(({ data = {} }) => {
+      // setLoading(false);
+      // Object.keys(data).forEach(d => {
+      //   setValue(d, data[d]);
+      // });
+      // console.log(d);
+      SetShopData({...data})
+      if(data.factore_shop_phoneNumber)
+      Stel(data.factore_shop_phoneNumber)
+      // setValue("title",data.title);
+      // setTheData(true);
+      return data;
+    }).catch(e=>{
+      // setLoading(false);
+      // setTheData(true);
+    });
+  }
+  useEffect(()=>{
+    console.clear()
+    console.log('getShopData')
+    getShopData();
+  },[])
   const changePackage = (s, t, tyhj) => {
     // console.log('changePackage', s, t.target.value, tyhj);
     cpackage[tyhj][s] = t.target.value;
@@ -307,6 +341,7 @@ export default (props) => {
 
   };
   // handleClick();
+  let {factore_shop_name,factore_shop_phoneNumber,factore_shop_site_address,factore_shop_address,factore_shop_site_name,factore_shop_internationalCode,factore_shop_submitCode}=shopData
   return (
     <div id={"theprint"} ref={divRef}>
       <button onClick={handleClick} className={"no-print"}>print</button>
@@ -331,7 +366,7 @@ export default (props) => {
               <h3> فاکتور
                 فروش</h3></div>
             <h1 className="document-type-label">
-              فروشگاه گل افشان
+              {factore_shop_name}
             </h1>
           </td>
 
@@ -363,14 +398,14 @@ export default (props) => {
           <td>
 
             <div>
-              <span>شرکت گل افشان</span> <span style={{ padding: "0 5px" }}>  </span>
-              <span>سایت: </span>{"golafshan.ir"}<span style={{ padding: "0 5px" }}>  </span>
-              <span>شماره اقتصادی: </span>{"411113938696"} <span style={{ padding: "0 5px" }}>  </span>
-              <span>شماره ثبت: </span>{"10101531483"}
+              <span>{factore_shop_name}</span> <span style={{ padding: "0 5px" }}>  </span>
+              {factore_shop_site_address && <><span>سایت: </span>{factore_shop_site_address}<span style={{ padding: "0 5px" }}>  </span></>}
+              {factore_shop_internationalCode && <><span>شماره اقتصادی: </span>{factore_shop_internationalCode} <span style={{ padding: "0 5px" }}>  </span></>}
+              {factore_shop_submitCode && <><span>شماره ثبت: </span>{factore_shop_submitCode}</>}
             </div>
             <div>
 
-              <span>آدرس: </span>{"تهران، پونک جنوبی، ایران زمین شمالی، کوچه شکوفه سوم شرقی، پلاک ۳، طبقه ۲، واحد ۴"}
+              <span>آدرس: </span>{factore_shop_address}
               <span style={{ padding: "0 5px" }}>  </span>
               <span>تلفن: </span><input className={"d-inline-block width100"} value={tel}
                                         onChange={(e) => changeInput("tel", e)}/>

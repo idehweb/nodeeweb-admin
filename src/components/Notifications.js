@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useCallback, useEffect, useState } from "react";
+import {useTranslate } from "react-admin";
 // import MuiGridList from '@mui/material/GridList';
 // import GridListTile from '@mui/material/GridListTile';
 // import GridListTileBar from '@mui/material/GridListTileBar';
@@ -18,6 +19,7 @@ import Paper from "@mui/material/Paper";
 const Notifications = (props) => {
   const { record } = props;
   const { phoneNumber } = record;
+  const translate =useTranslate()
   const [state, setState] = useState({});
   // const version = useVersion();
   const dataProvider = useDataProvider();
@@ -63,7 +65,9 @@ const Notifications = (props) => {
   if (!orders) {
     return <></>;
   }
-  return <div style={{ height: 400, width: "100%", minWidth: "100%" }}><DataGrid
+  return <div style={{ height: 400, width: "100%", minWidth: "100%" }}>
+    <div className={'label-top-table'}>{translate("notifications")}</div>
+    <DataGrid
     style={{ minWidth: "100%" }}
     getRowId={(row) => row._id}
     DisableResizing
@@ -75,6 +79,7 @@ const Notifications = (props) => {
     disableSelectionOnClick={true}
   /></div>;
   return <TableContainer component={Paper}>
+    <div className={'label-top-table'}>{translate("notifications")}</div>
     <Table sx={{ minWidth: "100%", marginBottom: "20px" }} aria-label="simple table">
       <TableHead>
         <TableRow>
