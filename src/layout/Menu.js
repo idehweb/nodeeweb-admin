@@ -14,7 +14,7 @@ import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import SettingsInputHdmiIcon from "@mui/icons-material/SettingsInputHdmi";
 import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
 
-const { Action, Attributes, CustomerGroup, Discount, Page, Gateway, Template, ProductCategory, Customer, MainDashboard, Media, Order, Document, Note, Task, OrderCart, Post, Product, Settings, Notification, Transaction, User } = resources;
+const {Automation, Action, Attributes, CustomerGroup, Discount, Page, Gateway, Template, ProductCategory, Customer, MainDashboard, Media, Order, Document, Note, Task, OrderCart, Post, Product, Settings, Notification, Transaction, User } = resources;
 const Menu = ({ onMenuClick, dense = false }) => {
   const themeData = useSelector((st) => st.themeData);
 
@@ -319,6 +319,7 @@ const Menu = ({ onMenuClick, dense = false }) => {
             dense={dense}
           />
 
+
         </SubMenu>
         <SubMenu
           handleToggle={() => handleToggle("menuTransaction")}
@@ -328,6 +329,15 @@ const Menu = ({ onMenuClick, dense = false }) => {
           icon={<Transaction.icon/>}
           dense={dense}
         >
+          <MenuItemLink
+            to={{
+              pathname: "/transaction/create",
+              state: { _scrollToTop: true }
+            }}
+            primaryText={translate(`pos.menu.addOrderLink`)}
+            // leftIcon={<OrderCart.icon/>}
+            dense={dense}
+          />
           <MenuItemLink
             to={{
               pathname: "/transaction",
@@ -573,6 +583,14 @@ const Menu = ({ onMenuClick, dense = false }) => {
           }}
           primaryText={translate(`pos.menu.notes`)}
           leftIcon={<Note.icon/>}
+          dense={dense}
+        /> <MenuItemLink
+          to={{
+            pathname: "/automation",
+            state: { _scrollToTop: true }
+          }}
+          primaryText={translate(`pos.menu.automation`)}
+          leftIcon={<Automation.icon/>}
           dense={dense}
         />
 

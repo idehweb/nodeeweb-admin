@@ -1,4 +1,4 @@
-import { AutocompleteInput,SelectInput, Create, NumberInput, ReferenceInput, useTranslate } from "react-admin";
+import { AutocompleteInput,TextInput,SelectInput, Create, NumberInput, ReferenceInput, useTranslate } from "react-admin";
 import {
   AddProductsField,
   List,
@@ -64,11 +64,52 @@ const Form = ({ children, ...props }) => {
 
       />
 
-      <NumberInput source="amount" label={translate("resources.order.amount")}
-                   className={"width100 mb-20 ltr"} fullWidth/>
+      {/*<NumberInput source="sum" label={translate("resources.order.sum")}*/}
+                   {/*className={"width100 mb-20 ltr"} fullWidth/>*/}
 
-      <NumberInput source="sum" label={translate("resources.order.sum")}
-                   className={"width100 mb-20 ltr"} fullWidth/>
+      {/*<NumberInput source="amount" label={translate("resources.order.amount")}*/}
+                   {/*className={"width100 mb-20 ltr"} fullWidth/>*/}
+
+      <TextInput
+        fullWidth
+        // record={scopedFormData}
+
+        source={"sum"}
+        className={"ltr"}
+
+        label={translate("resources.order.sum")}
+        format={v => {
+          if (!v) return "";
+
+          return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }}
+        parse={v => {
+          if (!v) return "";
+
+          return v.toString().replace(/,/g, "");
+
+        }}
+      />
+      <TextInput
+        fullWidth
+        // record={scopedFormData}
+
+        source={"amount"}
+        className={"ltr"}
+
+        label={translate("resources.order.amount")}
+        format={v => {
+          if (!v) return "";
+
+          return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }}
+        parse={v => {
+          if (!v) return "";
+
+          return v.toString().replace(/,/g, "");
+
+        }}
+      />
 
 
       {children}

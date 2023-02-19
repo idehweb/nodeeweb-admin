@@ -7,10 +7,13 @@ import IRANSansWeb_font_ttf from "../assets/fonts/ttf/IRANSansWeb.ttf";
 // export const logo = require('../assets/img/logo.svg');
 import { dateFormat } from "@/functions";
 import API, { BASE_URL } from "@/functions/API";
+import { useSelector } from "react-redux";
 
 export default (props) => {
   // console.clear();
   // console.log('props',props);
+  const themeData = useSelector((st) => st.themeData);
+
   const divRef = React.useRef();
   const [tel, Stel] = React.useState("");
   // if(!props.record.customer_data){
@@ -38,10 +41,10 @@ export default (props) => {
   }
 
   const [cfirstName, ScfirstName] = React.useState(((fname) + " " + (lname)) || "");
-  const [codeMelli, ScodeMelli] = React.useState((props.record.customer_data.internationalCode));
+  const [codeMelli, ScodeMelli] = React.useState(((props.record.customer_data && props.record.customer_data.internationalCode) ? props.record.customer_data.internationalCode : ""));
   // const [clastName, SclastName] = React.useState(props.record.customer.lastName);
-  const [caddress, Scaddress] = React.useState(props.record.billingAddress.State + "، " + props.record.billingAddress.City + "، " + props.record.billingAddress.StreetAddress);
-  const [codeposti, Scodeposti] = React.useState(props.record.billingAddress.PostalCode);
+  const [caddress, Scaddress] = React.useState((props.record.billingAddress && props.record.billingAddress.State) ? (props.record.billingAddress.State + "، " + props.record.billingAddress.City + "، " + props.record.billingAddress.StreetAddress) : "");
+  const [codeposti, Scodeposti] = React.useState((props.record.billingAddress && props.record.billingAddress.PostalCode ) ? props.record.billingAddress.PostalCode : "");
   const [cpackage, Scpackage] = React.useState(props.record.package);
   const [csum, Scsum] = React.useState(props.record.sum || 0);
   const [ersal, Sersal] = React.useState(props.record.deliveryPrice || 0);
@@ -393,12 +396,12 @@ export default (props) => {
         <tbody>
         <tr>
           <td>
-            ارسال کننده
+            فروشنده
           </td>
           <td>
 
             <div>
-              <span>{factore_shop_name}</span> <span style={{ padding: "0 5px" }}>  </span>
+              <span><span>نام شخص حقیقی / حقوقی: </span>{factore_shop_name}</span> <span style={{ padding: "0 5px" }}>  </span>
               {factore_shop_site_address && <><span>سایت: </span>{factore_shop_site_address}<span style={{ padding: "0 5px" }}>  </span></>}
               {factore_shop_internationalCode && <><span>شماره اقتصادی: </span>{factore_shop_internationalCode} <span style={{ padding: "0 5px" }}>  </span></>}
               {factore_shop_submitCode && <><span>شماره ثبت: </span>{factore_shop_submitCode}</>}
@@ -415,13 +418,13 @@ export default (props) => {
         </tr>
         <tr>
           <td>
-            دریافت کننده
+            خریدار
           </td>
           <td>
 
             <div>
               <div>
-                <span>نام خریدار: </span>
+                <span>نام شخص حقیقی / حقوقی: </span>
                 <input style={{ width: "300px" }} value={cfirstName} onChange={(e) => changeInput("cfirstName", e)}/>
 
                 {codeMelli && [<span>کد ملی: </span>,
@@ -433,9 +436,10 @@ export default (props) => {
               <div>
                 <span>شماره تماس: </span>
                 <span className="billing-phone">
-                                    {props.record.customer && props.record.customer.phoneNumber}
-                  <span> - </span>
-                  {props.record.billingAddress && props.record.billingAddress.PhoneNumber}
+                                    {(props.record.customer) && props.record.customer.phoneNumber}
+                                    {(!props.record.customer && props.record.customer_data) && props.record.customer_data.phoneNumber}
+
+                  {(props.record.billingAddress && props.record.billingAddress.PhoneNumber) && <span><span> - </span>{props.record.billingAddress.PhoneNumber}</span>}
 
 
                                 </span>
@@ -468,10 +472,14 @@ export default (props) => {
         <thead>
         <tr>
           <th className="product">ردیف</th>
-          <th className="product">نوع کالا</th>
+          <th className="sku">کد کالا</th>
+          <th className="product">شرح کالا یا خدمات</th>
           <th className="quantity">تعداد</th>
-          <th className="price">قیمت واحد (تومان)</th>
-          <th className="price">قیمت کل (تومان)</th>
+          <th className="price">مبلغ واحد</th>
+          <th className="discount">مبلغ تخفیف</th>
+          <th className="quantityinprice">مبلغ کل</th>
+          <th className="tax">جمع مالیات و عوارض</th>
+          <th className="total">جمع کل بعلاوه جمع مالیات و عوارض با احتساب تخفیف</th>
         </tr>
         </thead>
         <tbody>
@@ -487,6 +495,10 @@ export default (props) => {
                 <td className="therow">
                   {(tyhj + 1)}
                   {/*<?php echo $i; ?>*/}
+                </td>
+                <td className="sku">
+                  {cpackage[tyhj].sku && <span>{cpackage[tyhj].sku}</span>}
+
                 </td>
                 <td className="product">
                   {/*<?php $description_label = __('توضیحات', 'woocommerce-pdf-invoices-packing-slips'); // registering alternate label translation*/}
@@ -546,7 +558,27 @@ export default (props) => {
 
                   {/*<?php echo $item['order_price']; ?>*/}
                 </td>
+                <td className="quantity">
+                  {/*{p.quantity}*/}
+                  <input value={cpackage[tyhj].quantity}
+                         onChange={(e) => changePackage("quantity", e, tyhj)}/>
 
+                  {/*<?php echo $item['quantity']; ?>*/}
+                </td>
+                <td className="quantity">
+                  {/*{p.quantity}*/}
+                  <input value={cpackage[tyhj].quantity}
+                         onChange={(e) => changePackage("quantity", e, tyhj)}/>
+
+                  {/*<?php echo $item['quantity']; ?>*/}
+                </td>
+                <td className="quantity">
+                  {/*{p.quantity}*/}
+                  <input value={cpackage[tyhj].quantity}
+                         onChange={(e) => changePackage("quantity", e, tyhj)}/>
+
+                  {/*<?php echo $item['quantity']; ?>*/}
+                </td>
               </tr>);
           else
             return <></>;
@@ -577,14 +609,14 @@ export default (props) => {
                                </span>
               <span>
 
-                            </span>
+                             </span>
             </div>
             <div>
               <span>تخفیف (تومان): </span>
               <input/>
             </div>
 
-            <div>
+            {ersal && <div>
               <span>هزینه ارسال (تومان): </span>
               <span>
                             <input className={"width80"} value={ersal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
@@ -594,7 +626,18 @@ export default (props) => {
 
                             </span>
               {/*<?php echo number_format($order_data['shipping_total']) . ' تومان'; ?>*/}
-            </div>
+            </div>}
+            {(themeData && themeData.tax) && <div>
+              <span>{themeData.taxAmount}% مالیات بر ارزش افزوده</span>
+              <span>
+                            <input className={"width80"} value={ersal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                                   onChange={(e) => changeInput("ersal", e)}/>
+                            </span>
+              <span>
+
+                            </span>
+              {/*<?php echo number_format($order_data['shipping_total']) . ' تومان'; ?>*/}
+            </div>}
             <div>
               <span>قابل پرداخت (تومان): </span>
               <span>

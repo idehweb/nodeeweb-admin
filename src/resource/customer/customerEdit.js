@@ -1,4 +1,4 @@
-import { BooleanInput, Edit, ReferenceArrayInput, SelectArrayInput, SelectInput, TextInput } from "react-admin";
+import { BooleanInput, Edit,ArrayInput,SimpleFormIterator, ReferenceArrayInput, SelectArrayInput, SelectInput, TextInput } from "react-admin";
 
 import { dateFormat } from "@/functions";
 import { List, ReactAdminJalaliDateInput, SimpleForm } from "@/components";
@@ -54,6 +54,34 @@ export const customerEdit = (props) => {
                    source="source" label={translate("resources.customers.source")}/>
         <TextInput fullWidth
                    source="birthday" label={translate("resources.customers.birthday")}/>
+        <ArrayInput source="address">
+          <SimpleFormIterator {...props}>
+            <TextInput
+              fullWidth
+              source={"City"}
+              label="City"
+            />
+            <TextInput
+            fullWidth
+            source={"PostalCode"}
+            label="PostalCode"
+          />
+            <TextInput
+              fullWidth
+              source={"State"}
+              label="State"
+            />
+            <TextInput
+              fullWidth
+              source={"StreetAddress"}
+              label="StreetAddress"
+            />
+
+
+
+          </SimpleFormIterator>
+        </ArrayInput>
+
         <ReactAdminJalaliDateInput
           fullWidth
           source="birthdate" label={translate("resources.customers.birthdate")}/>

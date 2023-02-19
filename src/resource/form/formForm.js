@@ -215,7 +215,7 @@ const Form = ({children, ...props}) => {
                     // onSubmit={v => save(v)}
         >
             {/*<TabbedDatagrid/>*/}
-            <TextInput source={"title"} fullWidth label={translate("resources.post.title")}
+            <TextInput source={"title."+translate("lan")} fullWidth label={translate("resources.post.title")}
                        className={"width100 mb-20"}
                        validate={Val.req}/>
 

@@ -263,22 +263,6 @@ const DefaultOptions = [
       },
       "design": [{"name": "padding", "type": "string"}],
     }
-  },
-  {
-    "label": "Grid Entity",
-    "name": "grid",
-    "addable": false,
-    "settings": {
-      "general": {
-        "fields": {"colCount": 1,...fields},
-        "rules": [
-          {"name": "colCount", "type": "number"},
-          ...rules
-
-        ]
-      },
-      "design": [{"name": "padding", "type": "string"}],
-    }
   }, {
     "label": "Load More",
     "name": "loadmore",
@@ -298,7 +282,8 @@ const DefaultOptions = [
       },
       "design": [{"name": "padding", "type": "string"}],
     }
-  }, {
+  },
+  {
     "label": "Pagination",
     "name": "pagination",
     "addable": false,
@@ -319,7 +304,31 @@ const DefaultOptions = [
       },
       "design": [{"name": "padding", "type": "string"}],
     }
-  },{
+  },
+  {
+    "label": "Grid",
+    "name": "grid",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {"entity": "", "include": "","perPage":1,"offset":0,"limit":10,"breakpoints":{},"classess":"","customQuery":{},"populateQuery":{},...fields},
+        "rules": [
+          {"name": "entity", "type": "string"},
+          {"name": "include", "type": "string","class":"ltr"},
+          {"name": "perPage", "type": "number"},
+          {"name": "offset", "type": "number"},
+          {"name": "limit", "type": "number"},
+          {"name": "breakpoints", "type": "object"},
+          {"name": "customQuery", "type": "object"},
+          {"name": "populateQuery", "type": "object"},
+          ...rules
+        ]
+      },
+      "design": [{"name": "padding", "type": "string"}],
+    }
+  },
+
+  {
     "label": "Side Menu",
     "name": "sidemenu",
     "addable": false,
@@ -426,14 +435,15 @@ const DefaultOptions = [
     "addable": false,
     "settings": {
       "general": {
-        "fields": {"name": "", "value": "","placeholder": "","require": "",...fields},
+        "fields": {"label": "","name": "", "value": "","placeholder": "","require": "","sm": "","lg": ""},
         "rules": [
+          {"name": "label", "type": "string"},
           {"name": "name", "type": "string"},
           {"name": "value", "type": "string"},
           {"name": "placeholder", "type": "string"},
+          {"name": "sm", "type": "string"},
+          {"name": "lg", "type": "string"},
           {"name": "require", "type": "boolean","value":false},
-
-          ...rules
         ]
       },
       "design": [],
@@ -444,12 +454,69 @@ const DefaultOptions = [
     "addable": false,
     "settings": {
       "general": {
-        "fields": {"name": "", "value": "", "placeholder": "","require": "",...fields},
+        "fields": {"label": "","name": "", "value": "", "placeholder": "","require": "","sm":"","lg":"lg"},
         "rules": [
+          {"name": "label", "type": "string"},
           {"name": "name", "type": "string"},
           {"name": "value", "type": "string"},
           {"name": "placeholder", "type": "string"},
+          {"name": "sm", "type": "string"},
+          {"name": "lg", "type": "string"},
           {"name": "require", "type": "boolean","value":false},
+        ]
+      },
+      "design": [],
+    }
+  },
+  {
+    "label": "category description",
+    "name": "description",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {"entity": ""},
+        "rules": [
+          {"name": "entity", "type": "string"},
+
+        ]
+      },
+      "design": [{"name": "padding", "type": "string"}],
+    }
+  },
+  {
+    "label": "currency",
+    "name": "currency",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {...fields},
+        "rules": [
+          ...rules
+        ]
+      },
+      "design": [],
+    }
+  },{
+    "label": "tsc",
+    "name": "tsc",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {...fields},
+        "rules": [
+          ...rules
+        ]
+      },
+      "design": [],
+    }
+  },{
+    "label": "gomrokform",
+    "name": "gomrokform",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {...fields},
+        "rules": [
           ...rules
         ]
       },

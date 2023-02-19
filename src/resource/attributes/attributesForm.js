@@ -41,6 +41,10 @@ const Form = ({ children, ...props }) => {
         choices={AttrType()}
 
       />
+      <TextInput fullWidth source={"metatitle." + translate("lan")}
+                 label={translate("resources.attributes.metatitle")}/>
+      <TextInput multiline fullWidth source={"metadescription." + translate("lan")}
+                 label={translate("resources.attributes.metadescription")}/>
 
       <Divider/>
 

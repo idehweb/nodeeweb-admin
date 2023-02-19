@@ -56,7 +56,7 @@ export default function App() {
     console.log("useEffect");
     load();
   }, []);
-  const {Action, Attributes,CustomerGroup,Form,Entry, ProductCategory,Gateway,Template,Discount,Logout,Page,Messages, Configuration,Plugins, PrivateConfiguration, Customer,Note,Task,Document, MainDashboard, Media, Menu, Order, OrderCart, Post, Product, Settings, Notification, Transaction, User,PageBuilder} = resources;
+  const {Action,Plugin, Attributes,Automation,CustomerGroup,Form,Entry, ProductCategory,Gateway,Template,Discount,Logout,Page,Messages, Configuration,Plugins, PrivateConfiguration, Customer,Note,Task,Document, MainDashboard, Media, Menu, Order, OrderCart, Post, Product, Settings, Notification, Transaction, User,PageBuilder} = resources;
     return (
         <Admin
             title={translate('websiteName')}
@@ -95,8 +95,10 @@ export default function App() {
             <Resource name="notification" options={{label: translate("pos.menu.notification")}} {...Notification} />
             <Resource name="settings" options={{label: translate("pos.menu.settings")}} {...Settings} />
             <Resource name="action" options={{label: translate("pos.menu.actions")}} {...Action} />
+            <Resource name="automation" options={{label: translate("pos.menu.automation")}} {...Automation} />
             <CustomRoutes>
                 <Route path="/plugins" element={<Plugins/>}/>
+                <Route path="/plugins/:name" element={<Plugin/>}/>
                 <Route path="/configuration" element={<Configuration/>}/>
                 <Route path="/messages" element={<Messages/>}/>
                 <Route path="/p-c" element={<PrivateConfiguration/>}/>

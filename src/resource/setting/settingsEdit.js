@@ -200,6 +200,7 @@ const Form = ({ children, ...props }) => {
       </ArrayInput>
 
       <TextInput fullWidth source={"title."+ translate("lan")} label={translate('resources.settings.title')} />
+      <TextInput fullWidth source={"description."+ translate("lan")} label={translate('resources.settings.description')} />
       <TextInput fullWidth source="currency" label={translate('resources.settings.currency')} />
       <TextInput multiline fullWidth source="sms_welcome" label={translate('resources.settings.welcome')} />
       <TextInput multiline fullWidth source="sms_register" label={translate('resources.settings.register')} />

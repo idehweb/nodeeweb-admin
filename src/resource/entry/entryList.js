@@ -2,6 +2,7 @@ import {
   Datagrid,
   DeleteButton,
   EditButton,
+  ShowButton,
   Filter,
   FunctionField,
   Pagination,
@@ -61,10 +62,9 @@ const list = (props) => {
 
     <List  {...props} filters={<PostFilter/>} pagination={<PostPagination/>}>
       <Datagrid optimized>
+        <TextField source="trackingCode" label={translate("resources.entry.trackingCode")}/>
 
-        <ShowLink source={"title." + translate("lan")} label={translate("resources.post.title")}
-                  sortable={false} base={"post"}/>
-        <TextField source="slug" label={translate("resources.page.slug")}/>
+        <TextField source={"form.title." + translate("lan")} label={translate("resources.form.title")}/>
 
 
         <FunctionField label={translate("resources.post.date")}
@@ -85,43 +85,10 @@ const list = (props) => {
         <FunctionField label={translate("resources.post.actions")}
                        render={record => (<div>
                          <div>
-                           {/*+"?token="+localStorage.getItem('token')*/}
-                           <a target={"_blank"}
-                              href={"/admin/#/builder" + "/page/" + record._id}>{translate("resources.post.pagebuilder")}</a>
+                           <ShowButton/>
                          </div>
                          <div>
                            <EditButton/>
-                         </div>
-                         <div>
-                           <Button
-                             color="primary"
-                             size="small"
-                             onClick={() => {
-                               // console.log('data', record._id);
-                               API.post("/entry/copy/" + record._id, null)
-                                 .then(({ data = {} }) => {
-                                   // console.log('data', data._id);
-                                   props.history.push("/post/" + data._id);
-                                   // ale/rt('done');
-                                 })
-                                 .catch((err) => {
-                                   console.log("error", err);
-                                 });
-                             }}>
-                             {translate("resources.post.copy")}
-                           </Button>
-                         </div>
-                         <div>
-                           <a
-                             href={"/#/action?filter=%7B%post\"%3A\"" + record._id + "\"%7D&order=ASC&page=1&perPage=10&sort=id/"}
-                             target={"_blank"}
-                             color="primary"
-                             size="small"
-                             onClick={() => {
-
-                             }}>
-                             {translate("resources.post.activities")}
-                           </a>
                          </div>
                          <div>
                            <DeleteButton/>

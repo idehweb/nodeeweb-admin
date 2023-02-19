@@ -6,9 +6,16 @@ const customFarsiMessages = {
   ...farsiMessages,
   logoutMessage: "برای خروج مطمئن هستید؟",
   maxWidth: "maxWidth",
+  active: "فعال",
+  deactive: "غیر فعال",
+  market: "مارکت",
   classes: "classes",
+  rewrite: "استاندارد سازی",
+  "rewritten successfully.": "استاندارد سازی انجام شد",
+  "rewrite failed.": "استاندارد سازی با شکست مواجه شد.",
   upgraded: "ارتقا داده شد",
   direction: "rtl",
+  createTransaction: "ساخت تراکنش",
   rial: "ریال",
   transactions: "تراکنش ها",
   toman: "تومان",
@@ -36,7 +43,7 @@ const customFarsiMessages = {
   indoing: "تایید شده",
   makingready: "درحال آماده سازی",
   inpeyk: "ارسال شده",
-  complete: "تحویل شده",
+  complete: "تکمیل شده",
   cancel: "لغو شده",
   restarted: "سیستم ری استارت شد.",
 
@@ -81,6 +88,7 @@ const customFarsiMessages = {
       }
     },
     menu: {
+      automation: "اتوماسیون",
       upgrade: "ارتقا",
       plugins: "افزونه ها",
       messagesSettings: "تنظیمات پیام ها",
@@ -100,6 +108,7 @@ const customFarsiMessages = {
       notes: "یادداشت ها",
       gateways: "درگاه ها",
       addMenu: "افزودن فهرست",
+      addOrderLink: "ساخت لینک پرداخت",
       addDocument: "افزودن سند",
       allDocuments: "همه اسناد",
       allMenus: "همه فهرست ها",
@@ -190,7 +199,7 @@ const customFarsiMessages = {
       indoing: "تایید شده",
       makingready: "درحال آماده سازی",
       inpeyk: "ارسال شده",
-      complete: "تحویل شده",
+      complete: "تکمیل شده",
       cancel: "لغو شده"
 
     }
@@ -204,6 +213,15 @@ const customFarsiMessages = {
   },
   resources: {
 
+    automation: {
+      name:"نام ایونت",
+      title:"عنوان",
+      active:"فعال",
+      deactive:"غیرفعال",
+      status:"وضعیت",
+      functions:"توابع",
+      trigger:"trigger",
+    },
     document: {
       title: "عنوان",
       type: "نوع"
@@ -222,11 +240,21 @@ const customFarsiMessages = {
 
     form: {
       customerGroup: "گروه",
+      title: "عنوان فرم",
+      slug: "نامک فرم",
+      date: "تاریخ",
+      pagebuilder: "فرم ساز",
+      copy: "کپی",
+      createdAt: "ساخته شده در",
+      updatedAt: "بروزرسانی در",
       message: "پیام",
       actions: "اقدامات"
     },
     entry: {
       customerGroup: "گروه",
+      trackingCode: "کد پیگیری",
+      form: "فرم",
+      data: "داده ها",
       message: "پیام",
       actions: "اقدامات"
     },
@@ -280,6 +308,8 @@ const customFarsiMessages = {
     },
     attributes: {
       slug: "نامک",
+      metatitle: "meta title",
+      metadescription: "meta description",
       name: "نام ویژگی",
       values: "مقادیر",
       type: "نوع",
@@ -288,6 +318,9 @@ const customFarsiMessages = {
       color: "رنگ"
     },
     category: {
+      metatitle: "meta title",
+      metadescription: "meta description",
+      description: "توضیحات",
       actions: "اقدامات",
       edit: "ویرایش",
       slug: "نامک",
@@ -313,6 +346,8 @@ const customFarsiMessages = {
     },
 
     customers: {
+      orderCount: "تعداد سفارشات",
+      date: "تاریخ",
       tasks: "کار ها",
       notifications: "اعلان ها",
       _id: "شناسه",
@@ -391,6 +426,7 @@ const customFarsiMessages = {
     },
     order: {
       date_gte: "از تاریخ",
+      date_lte: "تا تاریخ",
       customer: "مشتری",
       orderCount: "تعداد سفارشات تا قبل امروز",
       product: "محصول",
@@ -594,7 +630,8 @@ const customFarsiMessages = {
       outOfStock: "موجود نیست",
       normal: "عادی",
       variable: "متغیر",
-      metadescription: "توضیحات متا",
+      metatitle: "meta title",
+      metadescription: "meta description",
       keywords: "کلمات کلیدی",
       is: "هست",
       isnt: "نیست",

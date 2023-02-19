@@ -18,7 +18,7 @@ import { useTranslate } from "react-admin";
 
 const Transactions = (props) => {
   const { record } = props;
-  const { phoneNumber } = record;
+  const { phoneNumber,_id } = record;
   const [state, setState] = useState({});
   // const version = useVersion();
   const dataProvider = useDataProvider();
@@ -26,7 +26,7 @@ const Transactions = (props) => {
 
   const fetchOrders = useCallback(async () => {
     const { data: Data } = await dataProvider.get(
-      "transaction/0/10000?customer=" + phoneNumber,
+      (phoneNumber ? ("transaction/0/10000?customer=" + _id) : ("transaction/0/10000?order="+_id)),
       {}
     );
     console.log("Data", Data);
@@ -66,7 +66,7 @@ const Transactions = (props) => {
     return <></>;
   }
   return <div style={{ height: 400, width: "100%", minWidth: "100%" }}>
-    <div className={'label-top-table'}>{translate("tasks")}</div>
+    <div className={'label-top-table'}>{translate("transactions")}</div>
     <DataGrid
     style={{ minWidth: "100%" }}
     getRowId={(row) => row._id}

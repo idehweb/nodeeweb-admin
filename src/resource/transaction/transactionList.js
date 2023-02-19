@@ -45,7 +45,7 @@ export const transactionList = (props) => {
 
         <FunctionField label={translate("resources.transaction.orderNumber")}
                        render={record => {
-                         if(!record || !record.order.orderNumber){
+                         if(!record || !record.order || !record.order.orderNumber){
                            return
                          }
                          return(

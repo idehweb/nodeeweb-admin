@@ -13,9 +13,11 @@ import {
   ReferenceInput,
   SearchInput,
   TopToolbar,
+  TextField,
   useTranslate
 } from "react-admin";
 import { ImportButton } from "react-admin-import-csv";
+import ProductRewriteButton from "@/components/ProductRewriteButton";
 
 import jsonExport from "jsonexport/dist";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
@@ -81,8 +83,8 @@ const PostFilter = (props) => {
 const exporter = posts => {
   // console.clear();
   let allpros = [];
-  console.log('posts.length',posts.length)
-  const postsForExport = posts.map((post,i) => {
+  console.log("posts.length", posts.length);
+  const postsForExport = posts.map((post, i) => {
     const { backlinks, author, ...postForExport } = post; // omit backlinks and author
 
     postForExport._id = post._id; // add a field
@@ -91,7 +93,7 @@ const exporter = posts => {
     if (post.title)
       postForExport.title = post.title.fa; // add a field
     postForExport.type = post.type; // add a field
-console.log('i',i)
+    console.log("i", i);
     // postForExport.combinations = post.combinations; // add a field
     if (post.type == "variable") {
       // postForExport.price=[];
@@ -130,7 +132,7 @@ console.log('i',i)
   });
   console.log("postsForExport", allpros);
   jsonExport(allpros, {
-    headers: ["_id", "slug","title", "type", "price", "salePrice", "in_stock", "quantity"] // order fields in the export
+    headers: ["_id", "slug", "title", "type", "price", "salePrice", "in_stock", "quantity"] // order fields in the export
   }, (err, csv) => {
     console.log("ForExport", allpros);
     const BOM = "\uFEFF";
@@ -140,6 +142,7 @@ console.log('i',i)
 
 
 const ListActions = (props) => {
+  let { basePath, data, resource }=props;
   // All configuration options are optional
   const config = {
     // Enable logging
@@ -233,7 +236,9 @@ const ListActions = (props) => {
       <ExportButton maxResults={10000000}/>
       {/*<CreateButton basePath={basePath} />*/}
       <ImportButton {...props} {...config} />
+      <ProductRewriteButton record={data}/>
       {/* Add your custom actions */}
+
       {/*<Button*/}
       {/*onClick={() => {*/}
       {/*alert('Your custom action');*/}
@@ -333,9 +338,15 @@ const TabbedDatagrid = (props) => {
             // rowStyle={postRowStyle}
           >
             <SimpleImageField label={translate("resources.product.image")}/>
-
-            <ShowLink source={"title." + translate("lan")} label={translate("resources.product.title")}
-                      sortable={false}/>
+            <FunctionField label={translate("resources.product.categories")}
+                           render={record => {
+                             return <><ShowLink source={"title." + translate("lan")}
+                                                label={translate("resources.product.title")}
+                                                sortable={false}/>
+                               <br/>
+                                      <TextField source={"slug"} />
+                             </>;
+                           }}/>
             {/*<CustomTextInput source="description.fa" label="description" sortable={false}/>*/}
 
             <FunctionField label={translate("resources.product.categories")}

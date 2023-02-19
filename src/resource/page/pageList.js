@@ -65,7 +65,7 @@ const list = (props) => {
       <Datagrid optimized>
 
         <ShowLink source={"title." + translate("lan")} label={translate("resources.page.title")}
-                  sortable={false} base={"post"}/>
+                  sortable={false} base={null}/>
         <TextField source="slug" label={translate("resources.page.slug")}/>
         <TextField source="path" label={translate("resources.page.path")}/>
 
@@ -127,9 +127,9 @@ const list = (props) => {
                              <PendingActionsIcon /><span className={'ml-2 mr-2'}>{translate("resources.page.activities")}</span>
                            </a>
                          </div>
-                         <div>
-                           <DeleteButton/>
-                         </div>
+                         {/*<div>*/}
+                           {/*<DeleteButton/>*/}
+                         {/*</div>*/}
                        </div>)}/>
 
       </Datagrid>

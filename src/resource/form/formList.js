@@ -47,8 +47,8 @@ const PostFilter = (props) => {
 
   return (
     <Filter {...props}>
-      <SearchInput source="Search" placeholder={translate("resources.post.search")} alwaysOn/>
-      <SearchInput source="category" placeholder={translate("resources.post.category")} alwaysOn/>
+      <SearchInput source="Search" placeholder={translate("resources.form.search")} alwaysOn/>
+      <SearchInput source="category" placeholder={translate("resources.form.category")} alwaysOn/>
     </Filter>
   );
 };
@@ -62,31 +62,31 @@ const list = (props) => {
     <List  {...props} filters={<PostFilter/>} pagination={<PostPagination/>}>
       <Datagrid optimized>
 
-        <TextField source="title" label={translate("resources.page.title")}/>
-        <TextField source="slug" label={translate("resources.page.slug")}/>
+        <TextField source={"title."+translate('lan')} label={translate("resources.form.title")}/>
+        <TextField source="slug" label={translate("resources.form.slug")}/>
 
 
-        <FunctionField label={translate("resources.post.date")}
+        <FunctionField label={translate("resources.form.date")}
                        render={record => (
                          <div className='theDate'>
                            <div>
-                             {translate("resources.post.createdAt") + ": " + `${dateFormat(record.createdAt)}`}
+                             {translate("resources.form.createdAt") + ": " + `${dateFormat(record.createdAt)}`}
                            </div>
                            <div>
-                             {translate("resources.post.updatedAt") + ": " + `${dateFormat(record.updatedAt)}`}
+                             {translate("resources.form.updatedAt") + ": " + `${dateFormat(record.updatedAt)}`}
                            </div>
 
                            {record.views && <div>
-                             {translate("resources.post.viewsCount") + ": " + `${(record.views.length)}`}
+                             {translate("resources.form.viewsCount") + ": " + `${(record.views.length)}`}
                            </div>}
                          </div>
                        )}/>
-        <FunctionField label={translate("resources.post.actions")}
+        <FunctionField label={translate("resources.form.actions")}
                        render={record => (<div>
                          <div>
                            {/*+"?token="+localStorage.getItem('token')*/}
                            <a target={"_blank"}
-                              href={"/admin/#/builder" + "/form/" + record._id}>{translate("resources.post.pagebuilder")}</a>
+                              href={"/admin/#/builder" + "/form/" + record._id}>{translate("resources.form.pagebuilder")}</a>
                          </div>
                          <div>
                            <EditButton/>
@@ -107,20 +107,8 @@ const list = (props) => {
                                    console.log("error", err);
                                  });
                              }}>
-                             {translate("resources.post.copy")}
+                             {translate("resources.form.copy")}
                            </Button>
-                         </div>
-                         <div>
-                           <a
-                             href={"/#/action?filter=%7B%post\"%3A\"" + record._id + "\"%7D&order=ASC&page=1&perPage=10&sort=id/"}
-                             target={"_blank"}
-                             color="primary"
-                             size="small"
-                             onClick={() => {
-
-                             }}>
-                             {translate("resources.post.activities")}
-                           </a>
                          </div>
                          <div>
                            <DeleteButton/>

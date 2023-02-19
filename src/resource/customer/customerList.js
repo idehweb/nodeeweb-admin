@@ -2,7 +2,6 @@ import {
   BooleanField,
   ChipField,
   Datagrid,
-  ShowButton,
   downloadCSV,
   EditButton,
   EmailField,
@@ -12,6 +11,7 @@ import {
   NumberField,
   Pagination,
   ReferenceArrayField,
+  ShowButton,
   SingleFieldList,
   TextField,
   TextInput,
@@ -26,7 +26,7 @@ import API, { BASE_URL } from "@/functions/API";
 const PostFilter = (props) => {
   const translate = useTranslate();
 
-  return(
+  return (
     [<Filter {...props}>
       <TextInput label={translate("resources.customers.firstName")} source="firstName" alwaysOn/>
       <TextInput label={translate("resources.customers.lastName")} source="lastName" alwaysOn/>
@@ -35,7 +35,7 @@ const PostFilter = (props) => {
     </Filter>
     ]
   );
-}
+};
 
 const PostPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100]} {...props} />;
 const exporter = posts => {
@@ -187,7 +187,7 @@ const ListActions = (props) => {
               _id: row._id
             });
           if (!row.phoneNumber)
-            row.phoneNumber=row.phoneNumber2;
+            row.phoneNumber = row.phoneNumber2;
 
           if (row.phoneNumber && row.phoneNumber.toString().length < 12) {
             if (row.phoneNumber.toString().length === 10) {
@@ -293,11 +293,25 @@ export const customerList = (props) => {
         {/*</div>*/}
         {/*);*/}
         {/*}}/>*/}
+        <FunctionField label={translate("resources.customers.date")}
+                       render={record => {
 
-        <FunctionField label={translate("resources.customers.createdAt")}
-                       render={record => `${dateFormat(record.createdAt)}`}/>
-        <FunctionField label={translate("resources.customers.updatedAt")}
-                       render={record => `${dateFormat(record.updatedAt)}`}/>
+                         return (
+                           <div className='theDate'>
+                             <div>
+                               {translate("resources.customers.createdAt") + ": " + `${dateFormat(record.createdAt)}`}
+                             </div>
+                             <div>
+                               {translate("resources.customers.updatedAt") + ": " + `${dateFormat(record.updatedAt)}`}
+                             </div>
+
+                             {Boolean(record.orderCount) && <div>
+                               {translate("resources.customers.orderCount") + ": " + `${(record.orderCount)}`}
+                             </div>}
+                           </div>
+                         );
+                       }}/>
+
         <BooleanField source="active" label={translate("resources.customers.active")}/>
         <FunctionField label={translate("resources.product.edit")}
                        render={record => (

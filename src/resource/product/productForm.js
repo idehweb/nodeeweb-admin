@@ -492,8 +492,8 @@ const Form = ({ children, ...props }) => {
 
         source="slug" label={translate("resources.product.slug")} className={"width100 mb-20 ltr"}
         fullWidth/>
-      <TextInput fullWidth source={"keywords." + translate("lan")}
-                 label={translate("resources.product.keywords")}/>
+      <TextInput fullWidth source={"metatitle." + translate("lan")}
+                 label={translate("resources.product.metatitle")}/>
       <TextInput multiline fullWidth source={"metadescription." + translate("lan")}
                  label={translate("resources.product.metadescription")}/>
 
@@ -516,6 +516,7 @@ const Form = ({ children, ...props }) => {
 
       <ReferenceArrayInput
         label={translate("resources.product.productCategory")}
+        perPage={100}
         source="productCategory" reference="productCategory">
         <SelectArrayInput optionText="name.fa"/>
       </ReferenceArrayInput>

@@ -24,7 +24,7 @@ export const formEdit = (props) => {
     console.log('props', props);
     const translate = useTranslate();
     const {id} = props;
-    const {record, save, isLoading} = useEditController({resource: 'post', id});
+    const {record, save, isLoading} = useEditController({resource: 'form', id});
 
     return (
         <Edit {...props} redirect={false} mutationMode={'pessimistic'}>

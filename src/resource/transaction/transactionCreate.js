@@ -1,4 +1,4 @@
-import { Create, NumberInput, useTranslate,ReferenceInput,AutocompleteInput } from "react-admin";
+import { Create,SelectInput, NumberInput,TextInput, useTranslate,ReferenceInput,AutocompleteInput } from "react-admin";
 import {
   AddProductsField,
   List,
@@ -20,7 +20,7 @@ const Form = ({ children, ...props }) => {
   const [url, setUrl] = useState([""]);
   const save = (values) => {
     console.log("save...", values);
-    API.post("/order/", JSON.stringify({ ...values }))
+    API.post("/transaction/create", JSON.stringify({ ...values }))
       .then(({ data = {} }) => {
         // alert('it is ok');
 
@@ -42,9 +42,35 @@ const Form = ({ children, ...props }) => {
   return (
     <SimpleForm {...props} onSubmit={(e) => save(e)} className={"d-flex"}>
 
-      <NumberInput source="amount" label={translate("resources.order.amountToPay")}
-                   className={"width100 mb-20 ltr"} fullWidth/>
+      {/*<NumberInput source="amount" label={translate("resources.order.amountToPay")}*/}
+                   {/*className={"width100 mb-20 ltr"} fullWidth/>*/}
+      <ReferenceInput
+        label={translate('resources.transaction.gateway')}
+        source="method"
+        reference="gateway"
+        perPage={1000}>
+        <SelectInput optionText={"title."+translate('lan')} optionValue="slug"/>
+      </ReferenceInput>
+      <TextInput
+        fullWidth
+        // record={scopedFormData}
 
+        source={"amount"}
+        className={"ltr"}
+
+        label={translate("resources.order.amountToPay")}
+        format={v => {
+          if (!v) return "";
+
+          return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }}
+        parse={v => {
+          if (!v) return "";
+
+          return v.toString().replace(/,/g, "");
+
+        }}
+      />
       <input id={"theUrl"} defaultValue={url} className={"ltr"}/>
       {children}
     </SimpleForm>

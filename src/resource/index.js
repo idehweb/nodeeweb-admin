@@ -1,3 +1,4 @@
+import Automation from "./automation/index";
 import Action from "./action/index";
 import Attributes from "./attributes/index";
 import ProductCategory from "./productCategory/index";
@@ -20,6 +21,7 @@ import Post from "./post/index";
 import Product from "./product/index";
 import Configuration from "./configuration/Configuration";
 import Plugins from "./plugins/Plugins";
+import Plugin from "./plugins/Plugin";
 import Messages from "./configuration/Messages";
 import PrivateConfiguration from "./configuration/PrivateConfiguration";
 
@@ -32,6 +34,6 @@ import Template from "./template/index";
 import Logout from "./logout";
 
 
-const resources = { Attributes,Plugins,Gateway,CustomerGroup,Document,Entry,Form,Note,Task,Action,Discount,Page,Template,ProductCategory,Configuration,Logout,PrivateConfiguration,Messages,Customer,MainDashboard,Media,Menu,Order,OrderCart,PageBuilder,Post,Product,Settings,Notification,Transaction ,User};
+const resources = { Attributes,Automation,Plugins,Plugin,Gateway,CustomerGroup,Document,Entry,Form,Note,Task,Action,Discount,Page,Template,ProductCategory,Configuration,Logout,PrivateConfiguration,Messages,Customer,MainDashboard,Media,Menu,Order,OrderCart,PageBuilder,Post,Product,Settings,Notification,Transaction ,User};
 
 export default resources;

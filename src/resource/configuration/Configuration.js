@@ -12,6 +12,7 @@ const Configuration = (props) => {
   const { register, handleSubmit, formState: { errors }, setValue, getValues } = useForm({
     defaultValues: {
       title: "",
+      description: "",
       primaryColor: "#ee811d",
       secondaryColor: "#2d3488",
       textColor: "#000000",
@@ -130,6 +131,7 @@ const Configuration = (props) => {
     let jso={
       logo:theData.logo,
       title:theData.title,
+      description:theData.description,
       home:theData.home,
       header_last:theData.header_last,
       body_first:theData.body_first,
@@ -167,7 +169,7 @@ const Configuration = (props) => {
   }
   if(theData) {
     let {
-      _id, logo, title, ADMIN_ROUTE, BASE_URL, SHOP_URL, ADMIN_URL,home,
+      _id, logo, title={},description={}, ADMIN_ROUTE, BASE_URL, SHOP_URL, ADMIN_URL,home,
       primaryColor,
       secondaryColor,
       bgColor,
@@ -222,6 +224,21 @@ const Configuration = (props) => {
                   defaultValue={title[translate("lan")]}
                   onChange={(event) => {
                     handleChange("title."+translate("lan"), event.target.value);
+                  }}
+                />
+
+              </Box>
+              <Box>
+
+                <TextInput
+                  autoFocus
+                  fullWidth
+                  label={translate("resources.settings.description")}
+                  source={"description."+translate("lan")}
+                  disabled={loading}
+                  defaultValue={description[translate("lan")]}
+                  onChange={(event) => {
+                    handleChange("description."+translate("lan"), event.target.value);
                   }}
                 />
 

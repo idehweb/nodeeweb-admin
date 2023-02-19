@@ -25,6 +25,7 @@ import useStyles from "@/styles";
 import { Val } from "@/Utils";
 import API, { BASE_URL } from "@/functions/API";
 import { Chip } from "@mui/material";
+import { RichTextInput } from "ra-input-rich-text";
 
 var theID = null;
 const ResourceName = () => {
@@ -130,6 +131,14 @@ const Form = ({ children, ...rest }) => {
         formClassName={cls.f2}>
         <SelectInput optionText={"name." + translate("lan")} optionValue="id"/>
       </ReferenceInput>
+
+      <RichTextInput multiline fullWidth source={"description." + translate("lan")}
+                     label={translate("resources.category.description")}/>
+      <TextInput fullWidth source={"metatitle." + translate("lan")}
+                 label={translate("resources.category.metatitle")}/>
+      <TextInput multiline fullWidth source={"metadescription." + translate("lan")}
+                 label={translate("resources.category.metadescription")}/>
+
       {/*<NumberInput*/}
       {/*source="order"*/}
       {/*label={translate('resources.category.order')}*/}
