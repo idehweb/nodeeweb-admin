@@ -2,64 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73028272-49ca-4f2c-b8f1-dff263286de5" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/ProductRewriteButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TransactionCreate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resource/automation/automationCreate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resource/automation/automationEdit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resource/automation/automationForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resource/automation/automationList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resource/automation/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resource/configuration/Db.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resource/entry/entryShow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resource/plugins/Plugin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/site_setting/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/site_setting/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/main.9264f797.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/main.9264f797.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.f424c209.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.f424c209.js.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.f424c209.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/css/main.3df6c048.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/css/main.3df6c048.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.19ec5b77.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.19ec5b77.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.19ec5b77.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/site_setting/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/site_setting/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/global.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PrintOrder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PrintOrder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PrintPack.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PrintPack.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ShowLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowLink.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Transactions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Transactions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/OrderChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/OrderChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-builder/DefaultOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-builder/DefaultOptions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/i18n/fa.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/fa.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/Menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/attributes/attributesForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/attributes/attributesForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/configuration/Configuration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/configuration/Configuration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/customer/customerEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/customer/customerEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/customer/customerList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/customer/customerList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/entry/entryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/entry/entryList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/entry/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/entry/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/form/formEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/form/formEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/form/formForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/form/formForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/form/formList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/form/formList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/order/orderCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/order/orderCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/order/orderEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/order/orderEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/order/orderList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/order/orderList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/page/pageList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/page/pageList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/plugins/Messages.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/plugins/Plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/plugins/Plugins.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/plugins/PrivateConfiguration.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/plugins/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/plugins/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/product/productForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/product/productForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/product/productList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/product/productList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/productCategory/categoryEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/productCategory/categoryEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/setting/settingsEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/setting/settingsEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/transaction/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/transaction/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/transaction/transactionCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/transaction/transactionCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource/transaction/transactionList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/transaction/transactionList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -70,56 +22,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="entryShow.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/resource/entry/entryShow.js">
+      <file leaf-file-name="PrintOrder.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/PrintOrder.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="38" column="71" selection-start-line="38" selection-start-column="71" selection-end-line="38" selection-end-column="71" />
+            <state relative-caret-position="341">
+              <caret line="462" column="11" lean-forward="true" selection-start-line="462" selection-start-column="11" selection-end-line="462" selection-end-column="11" />
               <folding>
-                <element signature="e#0#88#0" expanded="true" />
+                <element signature="e#43#84#0" expanded="true" />
+                <element signature="e#440#481#0" expanded="true" />
+                <element signature="e#6891#13916#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="customerShow.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resource/customer/customerShow.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="68" />
-              <folding>
-                <element signature="e#0#166#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="387" selection-start-column="387" selection-end-column="387" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pageList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resource/page/pageList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="66" selection-start-line="66" selection-end-line="67" selection-end-column="48" />
-              <folding>
-                <element signature="e#0#156#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fa.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/i18n/fa.js">
+      <file leaf-file-name="orderList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resource/order/orderList.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="256" column="20" selection-start-line="256" selection-start-column="20" selection-end-line="256" selection-end-column="20" />
+              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="formEdit.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resource/form/formEdit.js">
+      <file leaf-file-name="orderEdit.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resource/order/orderEdit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="26" column="72" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="72" />
+            <state relative-caret-position="1809">
+              <caret line="90" column="14" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#165#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/site_setting/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="27">
+              <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -136,23 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>RichTextInput</find>
-      <find>./</find>
-      <find>meta</find>
-      <find>attr</find>
-      <find>product:</find>
-      <find>category: {</find>
-      <find>li</find>
-      <find>automation</find>
-      <find>ReferenceIn</find>
-      <find>onSubmit</find>
-      <find>theData</find>
-      <find>totals</find>
-      <find>status</find>
-      <find>tabs</find>
-      <find>handleChange</find>
-      <find>installed</find>
-      <find>deactive</find>
       <find>deactivatePlugin</find>
       <find>getData</find>
       <find>activatePlugin</find>
@@ -166,6 +100,23 @@
       <find>update</find>
       <find>post.</find>
       <find>FunctionField</find>
+      <find>http://localhost:3000</find>
+      <find>disco</find>
+      <find>Sersal</find>
+      <find>settotalTaxAmount</find>
+      <find>totalTaxAmount</find>
+      <find>returnTaxAccountToTotal</find>
+      <find>discount</find>
+      <find>Sdiscount</find>
+      <find>csum</find>
+      <find>./</find>
+      <find>discountAmount</find>
+      <find>v2.golafshan.ir</find>
+      <find>returnDiscountOfPRice</find>
+      <find>تومان</find>
+      <find>taxAccount</find>
+      <find>theprint</find>
+      <find>handleClick</find>
     </findStrings>
     <replaceStrings>
       <replace>gateway.</replace>
@@ -185,19 +136,19 @@
       <replace>https://cinemachoob.shop</replace>
       <replace>https://alvarstrading.com</replace>
       <replace>gameboss.shop</replace>
-      <replace>parts.arvandguarantee.shop</replace>
       <replace>https://fixche.shop</replace>
       <replace>https://parts.arvandguarantee.shop</replace>
-      <replace>https://v2.golafshan.ir</replace>
       <replace>cinemachoob.shop</replace>
       <replace>gameboss</replace>
       <replace>http://localhost:3000</replace>
       <replace>s://gilbanu.ir</replace>
-      <replace>/admin/</replace>
       <replace>automation</replace>
       <replace>active</replace>
       <replace>form</replace>
       <replace>form.</replace>
+      <replace>https://v2.golafshan.ir</replace>
+      <replace>/admin/</replace>
+      <replace>parts.arvandguarantee.shop</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/components/form/fields</dir>
@@ -232,14 +183,12 @@
         <option value="$PROJECT_DIR$/src/resource/transaction/transactionCreate.js" />
         <option value="$PROJECT_DIR$/src/components/TransactionCreate.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/src/components/PrintOrder.js" />
         <option value="$PROJECT_DIR$/src/resource/setting/settingsEdit.js" />
         <option value="$PROJECT_DIR$/src/resource/customer/customerList.js" />
         <option value="$PROJECT_DIR$/src/resource/order/orderList.js" />
         <option value="$PROJECT_DIR$/src/resource/product/productList.js" />
         <option value="$PROJECT_DIR$/src/components/ProductRewriteButton.js" />
         <option value="$PROJECT_DIR$/src/resource/configuration/Configuration.js" />
-        <option value="$PROJECT_DIR$/public/site_setting/config.js" />
         <option value="$PROJECT_DIR$/src/resource/form/formForm.js" />
         <option value="$PROJECT_DIR$/src/layout/Menu.js" />
         <option value="$PROJECT_DIR$/src/resource/automation/index.js" />
@@ -249,7 +198,6 @@
         <option value="$PROJECT_DIR$/src/resource/product/productForm.js" />
         <option value="$PROJECT_DIR$/src/resource/productCategory/categoryEdit.js" />
         <option value="$PROJECT_DIR$/src/resource/attributes/attributesForm.js" />
-        <option value="$PROJECT_DIR$/build/index.html" />
         <option value="$PROJECT_DIR$/src/resource/automation/automationEdit.js" />
         <option value="$PROJECT_DIR$/src/resource/automation/automationList.js" />
         <option value="$PROJECT_DIR$/src/resource/automation/automationForm.js" />
@@ -267,6 +215,9 @@
         <option value="$PROJECT_DIR$/src/resource/form/index.js" />
         <option value="$PROJECT_DIR$/src/i18n/fa.js" />
         <option value="$PROJECT_DIR$/src/resource/entry/entryShow.js" />
+        <option value="$PROJECT_DIR$/build/index.html" />
+        <option value="$PROJECT_DIR$/public/site_setting/config.js" />
+        <option value="$PROJECT_DIR$/src/components/PrintOrder.js" />
       </list>
     </option>
   </component>
@@ -607,15 +558,18 @@
       <workItem from="1676569619990" duration="5936000" />
       <workItem from="1676714255590" duration="237000" />
       <workItem from="1676714853924" duration="2164000" />
-      <workItem from="1676744307724" duration="2316000" />
+      <workItem from="1676744307724" duration="6705000" />
+      <workItem from="1676883122157" duration="2240000" />
+      <workItem from="1676886193237" duration="5309000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="386459000" />
+    <option name="totallyTimeSpent" value="398397000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50061053" side_tool="true" weight="0.3697479" />
@@ -623,10 +577,10 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4993895" visible="true" weight="0.480042" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.4993895" visible="true" weight="0.480042" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.22649573" />
       <window_info anchor="bottom" id="TypeScript" order="8" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26373628" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26984128" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -721,20 +675,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/TransactionCreate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/pageBuilder/core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="531" column="32" selection-start-line="531" selection-start-column="32" selection-end-line="531" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resource/pageBuilder/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27">
@@ -742,24 +682,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/PrintOrder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16389">
-          <caret line="613" column="9" selection-start-line="613" selection-start-column="9" selection-end-line="613" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resource/setting/settingsEdit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4995">
           <caret line="202" column="117" selection-start-line="202" selection-start-column="117" selection-end-line="202" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource/order/orderList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -860,13 +786,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="455" selection-start-column="455" selection-end-column="455" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.eslintrc">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -912,13 +831,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5670">
           <caret line="245" column="61" selection-start-line="245" selection-start-column="55" selection-end-line="245" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/site_setting/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -985,10 +897,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1836">
           <caret line="86" column="4" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-            <element signature="e#117#159#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -996,10 +904,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="972">
           <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-            <element signature="e#117#159#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1014,9 +918,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
           <caret line="66" selection-start-line="66" selection-end-line="67" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#156#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1031,9 +932,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
           <caret line="87" column="32" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#156#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1041,9 +939,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1065,9 +960,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27">
           <caret line="68" column="7" selection-start-line="68" selection-start-column="7" selection-end-line="82" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#156#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1075,9 +967,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#166#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1085,8 +974,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
           <caret line="38" column="71" selection-start-line="38" selection-start-column="71" selection-end-line="38" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/order/orderList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/order/orderCreate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="35" lean-forward="true" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/order/orderEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1809">
+          <caret line="90" column="14" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
           <folding>
-            <element signature="e#0#88#0" expanded="true" />
+            <element signature="e#0#165#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="387" selection-start-column="387" selection-end-column="387" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/site_setting/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PrintOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="462" column="11" lean-forward="true" selection-start-line="462" selection-start-column="11" selection-end-line="462" selection-end-column="11" />
+          <folding>
+            <element signature="e#43#84#0" expanded="true" />
+            <element signature="e#440#481#0" expanded="true" />
+            <element signature="e#6891#13916#0" />
           </folding>
         </state>
       </provider>
