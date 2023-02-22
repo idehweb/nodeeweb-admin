@@ -331,7 +331,6 @@ const Core = (props) => {
 console.log('result',result)
   };
 
-
   const addToComponents = (element, extra) => {
     console.log("addToComponent: ", element);
     console.log("inside: ", sourceAddress);
@@ -421,8 +420,6 @@ console.log('result',result)
       });
     }
   };
-
-
   const generateID = (tokenLen = 5) => {
 
     var text = "";

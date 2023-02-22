@@ -225,6 +225,10 @@ export const orderList = (props) => {
             fullWidth
             source="orderCount" label={translate("resources.order.orderCount")}
           />,
+          <TextInput
+            fullWidth
+            source="orderNumber" label={translate("resources.order.orderNumber")}
+          />,
           <ReferenceInput
             // perPage={10000000}
             label={translate("resources.order.customer")}
