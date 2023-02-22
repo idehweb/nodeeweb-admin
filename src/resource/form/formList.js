@@ -109,9 +109,9 @@ const list = (props) => {
     <List  {...props} filters={<PostFilter/>} pagination={<PostPagination/>} exporter={exporter}>
       <Datagrid optimized>
 
-        {/*<TextField source={"title"+translate('lan')} label={translate("resources.form.title")}/>*/}
-        <TextField source={"title"} label={translate("resources.form.title")}/>
-        <TextField source="_id" label={translate("resources.form.slug")}/>
+        <TextField source={"title."+translate('lan')} label={translate("resources.form.title")}/>
+        {/*<TextField source={"title"} label={translate("resources.form.title")}/>*/}
+        <TextField source="slug" label={translate("resources.form.slug")}/>
 
 
         <FunctionField label={translate("resources.form.date")}
