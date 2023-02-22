@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73028272-49ca-4f2c-b8f1-dff263286de5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/public/site_setting/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/site_setting/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -78,8 +79,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>deactivatePlugin</find>
-      <find>getData</find>
       <find>activatePlugin</find>
       <find>navigate</find>
       <find>useNavigate</find>
@@ -107,10 +106,11 @@
       <find>تومان</find>
       <find>taxAccount</find>
       <find>theprint</find>
+      <find>s://parts.arvandguarantee.shop</find>
+      <find>.idea</find>
       <find>handleClick</find>
     </findStrings>
     <replaceStrings>
-      <replace>gateway.</replace>
       <replace>customerGroup</replace>
       <replace>/</replace>
       <replace>the-label2</replace>
@@ -140,6 +140,7 @@
       <replace>https://v2.golafshan.ir</replace>
       <replace>/admin/</replace>
       <replace>parts.arvandguarantee.shop</replace>
+      <replace>://localhost:3000</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/components/form/fields</dir>
@@ -158,7 +159,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="&lt;ce39571c-90df-4e04-b94e-47ff272b5444&gt;/home/fixche/domains/fixche.shop/public_html/plugins/zibal-gateway/index.js" />
         <option value="&lt;ce39571c-90df-4e04-b94e-47ff272b5444&gt;/home/cinemachoo/domains/cinemachoob.shop/public_html/plugins/zibal-gateway/index.js" />
         <option value="&lt;ce39571c-90df-4e04-b94e-47ff272b5444&gt;/home/arvand/domains/arvandguarantee.shop/public_html/parts/plugins/zibal-gateway/index.js" />
         <option value="$PROJECT_DIR$/src/resource/transaction/transactionList.js" />
@@ -209,6 +209,7 @@
         <option value="$PROJECT_DIR$/build/index.html" />
         <option value="$PROJECT_DIR$/src/components/PrintOrder.js" />
         <option value="$PROJECT_DIR$/public/site_setting/config.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -551,12 +552,12 @@
       <workItem from="1676714853924" duration="2164000" />
       <workItem from="1676744307724" duration="6705000" />
       <workItem from="1676883122157" duration="2240000" />
-      <workItem from="1676886193237" duration="7822000" />
+      <workItem from="1676886193237" duration="8308000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="400910000" />
+    <option name="totallyTimeSpent" value="401396000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -665,13 +666,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/resource/pageBuilder/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="40" selection-start-line="1" selection-start-column="40" selection-end-line="1" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resource/setting/settingsEdit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4995">
@@ -1007,6 +1001,13 @@
             <element signature="e#440#481#0" expanded="true" />
             <element signature="e#6891#13916#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
         </state>
       </provider>
     </entry>
