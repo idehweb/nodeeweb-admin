@@ -1,5 +1,5 @@
 // import {SimpleForm} from 'react-admin';
-import React, { useEffect } from "react";
+import React , {useEffect} from "react";
 import IRANSansWeb_font_eot from "../assets/fonts/eot/IRANSansWeb.eot";
 import IRANSansWeb_font_woff2 from "../assets/fonts/woff2/IRANSansWeb.woff2";
 import IRANSansWeb_font_woff from "../assets/fonts/woff/IRANSansWeb.woff";
@@ -21,12 +21,16 @@ export default (props) => {
   //         firstName:''
   //     }
   // }
-  let fname = "", lname = "", phoneNumber = "", discountCode = null;
-
-
-  if (props.record.discountCode) {
-    discountCode = props.record.discountCode;
+  let fname = "", lname = "";
+  if (props.record.customer_data) {
+    if (props.record.customer_data.firstName) {
+      fname = props.record.customer_data.firstName;
+    }
+    if (props.record.customer_data.lastName) {
+      lname = props.record.customer_data.lastName;
+    }
   }
+
   if (props.record.customer) {
     if (props.record.customer.firstName) {
       fname = props.record.customer.firstName;
@@ -35,59 +39,28 @@ export default (props) => {
       lname = props.record.customer.lastName;
     }
   }
-  if (props.record.customer_data) {
-    if (props.record.customer_data.firstName) {
-      fname = props.record.customer_data.firstName;
-    }
-    if (props.record.customer_data.lastName) {
-      lname = props.record.customer_data.lastName;
-    }
 
-    if (props.record.customer_data.phoneNumber) {
-      phoneNumber = props.record.customer_data.phoneNumber;
-    }
-  }
-  let sum = 0;
-  if (props.record.sum) {
-    sum = props.record.sum;
-  }
-  if (props.record.card)
-    sum = 0;
-  props.record.card.forEach((o) => {
-    sum += o.salePrice || o.price;
-  });
-  if (themeData && themeData.tax && themeData.taxAmount) {
-    let y = (parseInt(themeData.taxAmount) * sum) / 100;
-    y = parseInt(y);
-    if (y) {
-      sum = y + sum;
-    }
-  }
   const [cfirstName, ScfirstName] = React.useState(((fname) + " " + (lname)) || "");
   const [codeMelli, ScodeMelli] = React.useState(((props.record.customer_data && props.record.customer_data.internationalCode) ? props.record.customer_data.internationalCode : ""));
   // const [clastName, SclastName] = React.useState(props.record.customer.lastName);
   const [caddress, Scaddress] = React.useState((props.record.billingAddress && props.record.billingAddress.State) ? (props.record.billingAddress.State + "، " + props.record.billingAddress.City + "، " + props.record.billingAddress.StreetAddress) : "");
-  const [codeposti, Scodeposti] = React.useState((props.record.billingAddress && props.record.billingAddress.PostalCode) ? props.record.billingAddress.PostalCode : "");
+  const [codeposti, Scodeposti] = React.useState((props.record.billingAddress && props.record.billingAddress.PostalCode ) ? props.record.billingAddress.PostalCode : "");
   const [cpackage, Scpackage] = React.useState(props.record.package);
-  const [csum, Scsum] = React.useState(sum);
-  const [discount, Sdiscount] = React.useState(props.record.discount || 0);
-  const [discountAmount, SdiscountAmount] = React.useState(props.record.discountAmount || 0);
+  const [csum, Scsum] = React.useState(props.record.sum || 0);
   const [ersal, Sersal] = React.useState(props.record.deliveryPrice || 0);
-  const [totalTaxAmount, settotalTaxAmount] = React.useState(props.record.taxAmount || 0);
   const [total, Stotal] = React.useState(props.record.sum || 0);
-  // const [total, Stotal] = React.useState(props.record.sum || 0);
   const [amount, Samount] = React.useState(props.record.amount || 0);
   const [deliveryDay, SdeliveryDay] = React.useState(props.record.deliveryDay || 0);
   const [change, SetChange] = React.useState(0);
   const [shopData, SetShopData] = React.useState({
-    factore_shop_address: "",
-    factore_shop_faxNumber: "",
-    factore_shop_internationalCode: "",
-    factore_shop_name: "",
-    factore_shop_phoneNumber: "",
-    factore_shop_postalCode: "",
-    factore_shop_site_address: "",
-    factore_shop_submitCode: ""
+    factore_shop_address : "",
+    factore_shop_faxNumber :  "",
+    factore_shop_internationalCode : "",
+    factore_shop_name : "",
+    factore_shop_phoneNumber : "",
+    factore_shop_postalCode :  "",
+    factore_shop_site_address:"",
+    factore_shop_submitCode : ""
   });
 
   const getShopData = () => {
@@ -97,22 +70,22 @@ export default (props) => {
       //   setValue(d, data[d]);
       // });
       // console.log(d);
-      SetShopData({ ...data });
-      if (data.factore_shop_phoneNumber)
-        Stel(data.factore_shop_phoneNumber);
+      SetShopData({...data})
+      if(data.factore_shop_phoneNumber)
+      Stel(data.factore_shop_phoneNumber)
       // setValue("title",data.title);
       // setTheData(true);
       return data;
-    }).catch(e => {
+    }).catch(e=>{
       // setLoading(false);
       // setTheData(true);
     });
-  };
-  useEffect(() => {
-    console.clear();
-    console.log("getShopData");
+  }
+  useEffect(()=>{
+    console.clear()
+    console.log('getShopData')
     getShopData();
-  }, []);
+  },[])
   const changePackage = (s, t, tyhj) => {
     // console.log('changePackage', s, t.target.value, tyhj);
     cpackage[tyhj][s] = t.target.value;
@@ -149,18 +122,8 @@ export default (props) => {
       case "csum":
         return Scsum(t.target.value.toString().replace(/,/g, ""));
         break;
-      case "discount":
-        return Sdiscount(t.target.value.toString().replace(/,/g, ""));
-        break;
-
-      case "discountAmount":
-        return SdiscountAmount(t.target.value.toString().replace(/,/g, ""));
-        break;
       case "ersal":
         return Sersal(t.target.value.toString().replace(/,/g, ""));
-        break;
-      case "totalTaxAmount":
-        return settotalTaxAmount(t.target.value.toString().replace(/,/g, ""));
         break;
       case "total":
         return Stotal(t.target.value.toString().replace(/,/g, ""));
@@ -173,91 +136,23 @@ export default (props) => {
 
 
   };
-  const taxAccount = (item) => {
-    return 'ji'
-    if (item) {
-      return item.price
-      let x = 0;
-
-      if (discount && (discount !=props.record.discountAmount)) {
-        x = 0;
-        x = (discount * item.price) / 100;
-        x = parseInt(x);
-        x = item.price - x;
-      }
-      if (discount && (discount ==props.record.discountAmount)) {
-        x = 0;
-        x = item.price - parseInt(discount);
-      }
-      let f = item.price;
-      if (x) {
-        f = x;
-      }
-      let p = (themeData.taxAmount * f) / 100;
-      p = parseInt(p);
-      return p.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-    }
-  };
-  const returnDiscountOfPRice = (item) => {
-    if (item) {
-      let p = (discount * item.price) / 100;
-      if(discount==props.record.discountAmount){
-        if(props.record.card && props.record.card.length){
-          let v=discount/props.record.card.length;
-
-          return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-
-        }
-      }
-      p = parseInt(p);
-      if (p)
-        return p.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      else
-        return 0;
-    }
-  };
-  const returnAfterDiscountOfPRice = (item) => {
-    if (item) {
-      let p = (discount * item.price) / 100;
-      if(discount==props.record.discountAmount){
-        if(props.record.card && props.record.card.length){
-          let v=discount/props.record.card.length;
-
-          p=v
-
-        }
-      }
-      p = parseInt(p);
-      if (p) {
-        p = parseInt(item.price) - p;
-        return p.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      } else
-        return item.price;
-    }
-  };
-  const returnTaxAccountToTotal = (item) => {
-    if (item) {
-      let x = 0;
-        if (discount && (discount !=props.record.discountAmount)) {
-
-          x = (discount * item.price) / 100;
-        x = parseInt(x);
-        x = item.price - x;
-      }
-      let f = item.price;
-      if (x) {
-        f = x;
-      }
-      let p = (themeData.taxAmount * f) / 100;
-      p = parseInt(p);
-      p = p + f;
-      return p.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-    }
-  };
   const handleClick = () => {
+    // return;
+    // console.log('handleClick');
 
+
+    // QRCode.toCanvas(canvas, '#your-site-link', function (error) {
+    // QRCode.toDataURL('http://localhost:3001')
+    //     .then(url => {
+    //         var canvas = document.getElementById('canvas');
+    //
+    //         var ctx = canvas.getContext('2d');
+    //         var img = new Image;
+    //         img.onload = function(){
+    //             ctx.drawImage(img,0,0); // Or at whatever offset you like
+    //         };
+    //         console.log('success!',url);
+    //         img.src = url;
     var mywindow = window.open("", "PRINT", "height=400,width=600");
 
     mywindow.document.write("<html><head><title>" + document.title + "</title>");
@@ -403,17 +298,9 @@ export default (props) => {
       "            width: calc(100vw - 930px) !important;\n" +
       "            min-width: 500px;\n" +
       "        }\n" +
-      "        .total_taxionf{\n" +
-      "            width: 160px !important;\n" +
-      "        }\n" +
       "\n" +
       "        #theprint .address{\n" +
       "            width: calc(100% - 50px) !important;\n" +
-      "        }\n" +
-
-      "        .minWidth250px{\n" +
-      "            min-width: 200px !important;\n" +
-      "            display: block;\n" +
       "        }\n" +
       "\n" +
       "        .kjhgf img {\n" +
@@ -456,11 +343,8 @@ export default (props) => {
 
 
   };
-  // setTimeout(()=>{
-    handleClick();
-
-  // },100)
-  let { factore_shop_name, factore_shop_phoneNumber, factore_shop_site_address, factore_shop_address, factore_shop_site_name, factore_shop_internationalCode, factore_shop_submitCode } = shopData;
+  // handleClick();
+  let {factore_shop_name,factore_shop_phoneNumber,factore_shop_site_address,factore_shop_address,factore_shop_site_name,factore_shop_internationalCode,factore_shop_submitCode}=shopData
   return (
     <div id={"theprint"} ref={divRef}>
       <button onClick={handleClick} className={"no-print"}>print</button>
@@ -494,10 +378,10 @@ export default (props) => {
               <span>شماره فاکتور:</span>
               <span>{props.record.orderNumber}</span>
             </div>
-            {/*<div className="order-number">*/}
-            {/*<span>شماره سفارش:</span>*/}
-            {/*<span>{props.record.orderNumber}</span>*/}
-            {/*</div>*/}
+            <div className="order-number">
+              <span>شماره سفارش:</span>
+              <span>{props.record.orderNumber}</span>
+            </div>
             <div className="invoice-date">
               <span>تاریخ:</span>
               <span>{dateFormat(props.record.createdAt)}</span>
@@ -517,12 +401,9 @@ export default (props) => {
           <td>
 
             <div>
-              <span><span>نام شخص حقیقی / حقوقی: </span>{factore_shop_name}</span> <span
-              style={{ padding: "0 5px" }}>  </span>
-              {factore_shop_site_address && <><span>سایت: </span>{factore_shop_site_address}<span
-                style={{ padding: "0 5px" }}>  </span></>}
-              {factore_shop_internationalCode && <><span>شماره اقتصادی: </span>{factore_shop_internationalCode} <span
-                style={{ padding: "0 5px" }}>  </span></>}
+              <span><span>نام شخص حقیقی / حقوقی: </span>{factore_shop_name}</span> <span style={{ padding: "0 5px" }}>  </span>
+              {factore_shop_site_address && <><span>سایت: </span>{factore_shop_site_address}<span style={{ padding: "0 5px" }}>  </span></>}
+              {factore_shop_internationalCode && <><span>شماره اقتصادی: </span>{factore_shop_internationalCode} <span style={{ padding: "0 5px" }}>  </span></>}
               {factore_shop_submitCode && <><span>شماره ثبت: </span>{factore_shop_submitCode}</>}
             </div>
             <div>
@@ -553,24 +434,22 @@ export default (props) => {
               </div>
 
               <div>
-                <span><span>شماره تماس: </span>
+                <span>شماره تماس: </span>
                 <span className="billing-phone">
                                     {(props.record.customer) && props.record.customer.phoneNumber}
-                  {(!props.record.customer.phoneNumber && props.record.customer_data.phoneNumber) && props.record.customer_data.phoneNumber}
+                                    {(!props.record.customer && props.record.customer_data) && props.record.customer_data.phoneNumber}
 
-                  {(props.record.billingAddress && props.record.billingAddress.PhoneNumber) &&
-                  <span><span> - </span>{props.record.billingAddress.PhoneNumber}</span>}
+                  {(props.record.billingAddress && props.record.billingAddress.PhoneNumber) && <span><span> - </span>{props.record.billingAddress.PhoneNumber}</span>}
 
 
                                 </span>
-                  </span>
-                {codeposti && <span style={{marginRight:'50px'}}>
-                  <span>کد پستی: </span>
-                  <span><input style={{ width: "200px" }} value={codeposti}
-                               onChange={(e) => changeInput("codeposti", e)}/></span>
-                </span>}
-              </div>
 
+              </div>
+              {codeposti && <div>
+                <span>کد پستی: </span>
+                <span><input style={{ width: "400px" }} value={codeposti}
+                             onChange={(e) => changeInput("codeposti", e)}/></span>
+              </div>}
             </div>
             <div>
               <span>نشانی: </span><span><textarea className={"address"} onChange={(e) => changeInput("caddress", e)}
@@ -599,73 +478,107 @@ export default (props) => {
           <th className="price">مبلغ واحد</th>
           <th className="discount">مبلغ تخفیف</th>
           <th className="quantityinprice">مبلغ کل</th>
-          {Boolean(themeData && themeData.taxAmount) && <th className="tax">جمع مالیات و عوارض</th>}
-          {Boolean(themeData && themeData.taxAmount) && <th className="total_taxionf">جمع کل بعلاوه جمع مالیات <br/>و عوارض با احتساب تخفیف</th>}
+          <th className="tax">جمع مالیات و عوارض</th>
+          <th className="total">جمع کل بعلاوه جمع مالیات و عوارض با احتساب تخفیف</th>
         </tr>
         </thead>
         <tbody>
-
+        {/*<?php*/}
+        {/*$i = 0;*/}
+        {/*foreach ($this->get_order_items() as $item_id => $item) :*/}
+        {/*$i++;*/}
+        {/*?>*/}
         {props.record.package.map((p, tyhj) => {
           if (cpackage[tyhj])
             return (
               <tr className="" key={tyhj}>
                 <td className="therow">
                   {(tyhj + 1)}
+                  {/*<?php echo $i; ?>*/}
                 </td>
                 <td className="sku">
                   {cpackage[tyhj].sku && <span>{cpackage[tyhj].sku}</span>}
 
                 </td>
                 <td className="product">
-                  <span className="item-name no-print">
-                    <textarea className={""} style={{ height: "auto", minHeight: "25px", float: "right" }}
+                  {/*<?php $description_label = __('توضیحات', 'woocommerce-pdf-invoices-packing-slips'); // registering alternate label translation*/}
+                  {/*?>*/}
+                  <span className="item-name">
+                            {/*{p.product_name}*/}
+                    <textarea style={{ height: "auto", minHeight: "25px", float: "right" }}
                               value={cpackage[tyhj].product_name}
                               onChange={(e) => changePackage("product_name", e, tyhj)}/>
+                    {/*<?php echo $item['name']; ?>*/}
                         </span>
-                  <span className="item-name d-none minWidth250px">
-                    {cpackage[tyhj].product_name}
-                  </span>
-
-
+                  {/*<?php do_action('wpo_wcpdf_before_item_meta', $this->get_type(), $item, $this->order); ?>*/}
+                  <span className="item-meta">
+                            {/*<?php echo $item['meta']; ?>*/}
+                        </span>
+                  <dl className="meta">
+                    {/*<?php $description_label = __('SKU', 'woocommerce-pdf-invoices-packing-slips'); // registering alternate label translation*/}
+                    {/*?>*/}
+                    {/*<?php if (!empty($item['sku'])) : ?>*/}
+                    <dt className="sku">
+                      {/*<?php _e('SKU:', 'woocommerce-pdf-invoices-packing-slips'); ?>*/}
+                    </dt>
+                    <dd className="sku">
+                      {/*<?php echo $item['sku']; ?>*/}
+                    </dd>
+                    {/*<?php endif; ?>*/}
+                    {/*<?php if (!empty($item['weight'])) : ?>*/}
+                    <dt className="weight">
+                      {/*<?php _e('Weight:', 'woocommerce-pdf-invoices-packing-slips'); ?>*/}
+                    </dt>
+                    <dd className="weight">
+                      {/*<?php echo $item['weight']; ?><?php echo get_option('woocommerce_weight_unit'); ?>*/}
+                    </dd>
+                    {/*<?php endif; ?>*/}
+                  </dl>
+                  {/*<?php do_action('wpo_wcpdf_after_item_meta', $this->get_type(), $item, $this->order); ?>*/}
                 </td>
                 <td className="quantity">
-                  <input className={"no-print"} value={cpackage[tyhj].quantity}
+                  {/*{p.quantity}*/}
+                  <input value={cpackage[tyhj].quantity}
                          onChange={(e) => changePackage("quantity", e, tyhj)}/>
-                  <span className={"d-none"}>{cpackage[tyhj].quantity}</span>
+
+                  {/*<?php echo $item['quantity']; ?>*/}
                 </td>
                 <td className="price">
-                  <input className={"no-print"}
-                         value={cpackage[tyhj].price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  <input value={cpackage[tyhj].price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                          onChange={(e) => changePackage("price", e, tyhj)}/>
-                  <span
-                    className={"d-none"}>{cpackage[tyhj].price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                  {/*{p.price.toString().replace(/\B(?=(\d{3})+(?!\d))//g, ",")}*/}
 
+                  {/*<?php echo $item['order_price']; ?>*/}
                 </td>
-                <td className=" discount">
-                  {returnDiscountOfPRice(cpackage[tyhj])}
+                <td className="price">
+                  <input
+                    value={cpackage[tyhj].total_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    onChange={(e) => changePackage("total_price", e, tyhj)}/>
+                  {/*{p.total_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}*/}
+
+                  {/*<?php echo $item['order_price']; ?>*/}
                 </td>
-                <td className="quantity total_price">
-                  {returnAfterDiscountOfPRice(cpackage[tyhj])}
+                <td className="quantity">
+                  {/*{p.quantity}*/}
+                  <input value={cpackage[tyhj].quantity}
+                         onChange={(e) => changePackage("quantity", e, tyhj)}/>
 
-                  {/*<input*/}
-                  {/*className={"no-print"}*/}
-                  {/*value={cpackage[tyhj].price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}*/}
-                  {/*onChange={(e) => changePackage("price", e, tyhj)}/>*/}
-                  {/*<span className={"d-none"}>{cpackage[tyhj].price}</span>*/}
-
+                  {/*<?php echo $item['quantity']; ?>*/}
                 </td>
-                {Boolean(themeData && themeData.taxAmount) && <td className="quantity Tax">
+                <td className="quantity">
+                  {/*{p.quantity}*/}
+                  <input value={cpackage[tyhj].quantity}
+                         onChange={(e) => changePackage("quantity", e, tyhj)}/>
 
-                   <span>
-                    {taxAccount(cpackage[tyhj])}
-                  </span>
+                  {/*<?php echo $item['quantity']; ?>*/}
+                </td>
+                <td className="quantity">
+                  {/*{p.quantity}*/}
+                  <input value={cpackage[tyhj].quantity}
+                         onChange={(e) => changePackage("quantity", e, tyhj)}/>
 
-                </td>}
-                {Boolean(themeData && themeData.taxAmount) && <td className="quantity with_tax">
-                   <span>
-                    {returnTaxAccountToTotal(cpackage[tyhj])}
-                  </span>
-                </td>}
+                  {/*<?php echo $item['quantity']; ?>*/}
+                </td>
               </tr>);
           else
             return <></>;
@@ -689,7 +602,7 @@ export default (props) => {
           </td>
           <td className={"textAlignR"}>
             <div>
-              <span>جمع کل: </span>
+              <span>جمع کل (تومان): </span>
               <span>
                             <input className={"width80"} value={csum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                                    onChange={(e) => changeInput("csum", e)}/>
@@ -699,15 +612,12 @@ export default (props) => {
                              </span>
             </div>
             <div>
-              <span>تخفیف: </span>
-              <span>
-               <input className={"width80"} value={discountAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                      onChange={(e) => changeInput("discountAmount", e)}/>
-              </span>
+              <span>تخفیف (تومان): </span>
+              <input/>
             </div>
 
-            {Boolean(ersal) && <div>
-              <span>هزینه ارسال: </span>
+            {ersal && <div>
+              <span>هزینه ارسال (تومان): </span>
               <span>
                             <input className={"width80"} value={ersal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                                    onChange={(e) => changeInput("ersal", e)}/>
@@ -718,11 +628,10 @@ export default (props) => {
               {/*<?php echo number_format($order_data['shipping_total']) . ' تومان'; ?>*/}
             </div>}
             {(themeData && themeData.tax) && <div>
-              <span>{themeData.taxAmount}% مالیات بر ارزش افزوده:</span>
+              <span>{themeData.taxAmount}% مالیات بر ارزش افزوده</span>
               <span>
-                            <input className={"width80"}
-                                   value={totalTaxAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                                   onChange={(e) => changeInput("totalTaxAmount", e)}/>
+                            <input className={"width80"} value={ersal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                                   onChange={(e) => changeInput("ersal", e)}/>
                             </span>
               <span>
 
@@ -730,7 +639,7 @@ export default (props) => {
               {/*<?php echo number_format($order_data['shipping_total']) . ' تومان'; ?>*/}
             </div>}
             <div>
-              <span>قابل پرداخت: </span>
+              <span>قابل پرداخت (تومان): </span>
               <span>
 
                             <input className={"width80"} value={amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
@@ -742,10 +651,7 @@ export default (props) => {
             </div>
           </td>
           <td className={"textAlignR width300"}>
-            {discountCode && <div>
-              <span>کد تخفیف:</span>
-              <span>{discountCode}</span>
-            </div>}
+
 
           </td>
         </tr>

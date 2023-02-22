@@ -2,8 +2,7 @@
 
 # dependencies
 /node_modules
-/.idea
-.idea
+
 # testing
 /coverage
 
@@ -11,7 +10,6 @@
 
 # misc
 .DS_Store
-.idea
 .env.local
 .env.development.local
 .env.test.local

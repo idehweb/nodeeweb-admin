@@ -24,7 +24,12 @@ import {
 
 function CreateForm(props) {
   let { fields, rules = { fields: [] }, t } = props;
+  // console.clear();
+  console.log("fields", fields);
+  console.log("rules", rules);
+
   const themeData = useSelector((st) => st.themeData);
+  console.log("themeData", themeData);
   if (!themeData) {
     return;
   }
@@ -47,6 +52,7 @@ function CreateForm(props) {
       setTheRules(rules);
     }
   }, []);
+
   const addField = (e) => {
     e.preventDefault();
     if(theF) {
@@ -107,8 +113,6 @@ function CreateForm(props) {
           placeholder={placeholder || label}
           className="mb-2 form-control"
           disabled={disabled}
-
-
         />
 
       </Col>;
@@ -395,12 +399,11 @@ function CreateForm(props) {
           render={({
                      handleSubmit, form, submitting, pristine, values
                    }) => (
-            <form onSubmit={handleSubmit} draggable={false}>
+            <form onSubmit={handleSubmit}>
               <Container>
                 <Row>
-
-
                   {theRules?.fields?.map((field, index) => {
+                    console.log(',', field)
                     if (fields[field.name]) {
                       field.value = fields[field.name];
                     }
@@ -431,11 +434,6 @@ function CreateForm(props) {
                     return (<TheField key={index} removeField={(e) => removeField(e, index)} {...lastObj}
                                       setValue={form.mutators.setValue}/>);
                   })}
-
-
-
-
-
 
 
                   <div className="buttons absolute-bottom top-bar-settings">
