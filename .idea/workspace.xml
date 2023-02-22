@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73028272-49ca-4f2c-b8f1-dff263286de5" name="Default" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/site_setting/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/site_setting/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/OrderChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/OrderChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/CreateForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/CreateForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-builder/Component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-builder/Component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-builder/DefaultOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-builder/DefaultOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-builder/OptionBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-builder/OptionBox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/i18n/fa.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/fa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/form/formList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/form/formList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resource/order/orderList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resource/order/orderList.js" afterDir="false" />
+>>>>>>> 5d8278906e9cadb0282fad8a6df103aa9a415d3a
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -77,6 +91,7 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="FindInProjectRecents">
     <findStrings>
       <find>activatePlugin</find>
@@ -153,6 +168,8 @@
       <dir>$PROJECT_DIR$/src</dir>
     </dirStrings>
   </component>
+=======
+>>>>>>> 5d8278906e9cadb0282fad8a6df103aa9a415d3a
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -430,6 +447,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
@@ -438,8 +457,11 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="D:\ABCDIGITAL-GIT\Admin\nodeeweb-admin\node_modules\eslint" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -552,7 +574,14 @@
       <workItem from="1676714853924" duration="2164000" />
       <workItem from="1676744307724" duration="6705000" />
       <workItem from="1676883122157" duration="2240000" />
+<<<<<<< HEAD
       <workItem from="1676886193237" duration="8308000" />
+=======
+      <workItem from="1676886193237" duration="5309000" />
+      <workItem from="1676961320785" duration="12415000" />
+      <workItem from="1676979993293" duration="13522000" />
+      <workItem from="1677051244880" duration="658000" />
+>>>>>>> 5d8278906e9cadb0282fad8a6df103aa9a415d3a
     </task>
     <servers />
   </component>
@@ -613,13 +642,13 @@
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/../nodeeweb-server/node_modules/assert-never/index.d.ts" />
-        <option value="$PROJECT_DIR$/../nodeeweb-server/node_modules/assert-never/index.js" />
-      </list>
-    </option>
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="660" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1676991988090">
+      <screen x="74" y="0" width="1846" height="1080" />
+    </state>
+    <state x="660" y="235" width="672" height="678" key="search.everywhere.popup/1994.156.1292.768/74.0.1846.1080@74.0.1846.1080" timestamp="1676991988090" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -630,11 +659,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/resource/pageBuilder/index.js</url>
           <line>7</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/i18n/fa.js</url>
-          <line>696</line>
-          <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/layout/Menu.js</url>
@@ -650,16 +674,6 @@
           <url>file://$PROJECT_DIR$/src/resource/configuration/Configuration.js</url>
           <line>154</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/page-builder/Component.js</url>
-          <line>134</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/page-builder/DefaultOptions.js</url>
-          <line>496</line>
-          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="21" />
