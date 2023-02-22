@@ -248,7 +248,10 @@ const customFarsiMessages = {
       createdAt: "ساخته شده در",
       updatedAt: "بروزرسانی در",
       message: "پیام",
-      actions: "اقدامات"
+      actions: "اقدامات",
+      category: "دسته بندی",
+      search:"جستجو...",
+      viewsCount:"بازدید"
     },
     entry: {
       customerGroup: "گروه",
@@ -575,7 +578,6 @@ const customFarsiMessages = {
     },
 
     product: {
-      edit: "ویرایش",
       productCategory: "دسته بندی محصول",
       source: "منبع",
       values: "مقادیر",

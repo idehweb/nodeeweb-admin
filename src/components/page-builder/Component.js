@@ -123,7 +123,6 @@ const Component = (props) => {
     end: (item, monitor) => {
       let res = monitor.getDropResult();
       moveItem(item.id, res.id);
-      console.log("end item:", item.id, res.id);
     },
     collect: (monitor) => {
       // console.log('monitor',monitor)
@@ -134,7 +133,8 @@ const Component = (props) => {
   }));
   return (
     <div
-      className={"element-wrapper"} id={component.id} ref={drag}>
+      // className={"element-wrapper"} id={component.id} ref={drag}>
+       className={"element-wrapper"} id={component.id} >
       {/*{component.id==enterElement && <div className={component.id==enterElement ? "active" : ''}*/}
       {/*onDragEnter={(e) => dragEnter(e, component)}*/}
       {/*>*/}
@@ -142,8 +142,6 @@ const Component = (props) => {
       {/*{enterElement}*/}
       {/*</div>}*/}
       {!componentForSetting && <div
-
-
         // onDragEnd={(e) => {
         //   console.log('on drop main',component.id)
         //   onDrop(component);
@@ -260,10 +258,10 @@ const Component = (props) => {
           <div className={"csfs-c"}>
             <div className={"top-bar-settings"}>
               <Button className={"closeIcon"} onClick={() => {
-                console.log("click on options...");
                 setComponentForSetting(!componentForSetting);
                 // toggleComponentOptionsBox()
-              }}><CloseIcon/></Button>
+                }}><CloseIcon/>
+              </Button>
               <Button
                 className={"redxxx"}
                 onClick={(e) => {
@@ -279,10 +277,8 @@ const Component = (props) => {
               {/*{JSON.stringify(component.settings.general.fields)}*/}
               {component.settings && component.settings.general && <CreateForm
                 onSubmit={(e) => {
-                  console.log("on submit", e);
                   changeComponentSetting(component, "general", e);
                   setComponentForSetting(!componentForSetting);
-
                 }}
                 rules={{ fields: component.settings.general.rules }}
                 buttons={[]}
