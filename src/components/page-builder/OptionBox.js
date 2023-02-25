@@ -17,6 +17,7 @@ const OptionBox = (props) => {
 
   const [Options, SetOptions] = useState('');
 
+
   useEffect(() => {
     let tempOption = [];
 
@@ -35,14 +36,18 @@ const OptionBox = (props) => {
       });
       SetOptions(tempOption);
     }
+
   }, [exclude]);
   useEffect(() => {
     if (themeData && themeData.components) {
       let tempOption = Options;
       themeData.components.forEach((dO) => {
+
         tempOption.push(dO);
+
       });
       SetOptions(tempOption);
+
     }
     //
 
