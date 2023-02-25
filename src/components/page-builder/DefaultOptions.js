@@ -223,6 +223,21 @@ const DefaultOptions = [
     }
   },
   {
+    "label": "Form",
+    "name": "form",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {"_id": "",...fields},
+        "rules": [
+          {"name": "_id", "type": "string"},
+          ...rules
+        ]
+      },
+      "design": [],
+    }
+  },
+  {
     "label": "Search bar",
     "name": "searchbar",
     "addable": false,
