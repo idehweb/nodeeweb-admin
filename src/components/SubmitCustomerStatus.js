@@ -160,7 +160,10 @@ const SubmitCustomerStatus = (props) => {
     else
       return JSON.stringify(st)
   };
-  let co = theStatus.length || 0;
+  let co = 0;
+  if(theStatus){
+    co=theStatus.length
+  }
 
   if (!theData) {
     return <></>;

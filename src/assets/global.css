@@ -8,7 +8,15 @@ padding-right: 30px;
 .ltr .the-dev-menu li + div{
 padding-left: 30px;
 }
-
+.posabADDICON{
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+}
 .width1000{
     width: 100%;
 }
@@ -548,13 +556,32 @@ body label[data-shrink=false]+.MuiInputBase-formControl .css-1by8xkp-MuiInputBas
     background-size: 100% 50px, 50px 10px, 60px 10px, auto 50px;
     background-position: 0 0, 20px 80px, 20px 100px, left 0 bottom 20px;
     background-repeat: no-repeat;
-    border: 1px solid #eee;
-    box-shadow: 0px 0px 1px #000;
+    border: 1px solid #836f31;
+    box-shadow: 3px 2px 1px 2px #aa9450;
     overflow: hidden;
     cursor: pointer;
+    position: relative;
 
 }
+.posabADDICOtrash{
+    position: absolute;
+}
+.the-placeholder{
 
+}
+.grid-box.one-box{
+    grid-template-columns: repeat(1, 1fr);
+}
+.posabADDICO.the-title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    /*font-size: 13px;*/
+}
+.posabADDICO{
+    padding: 5px;
+}
 .media_ImageListItem:after {
     content: '';
     position: absolute;

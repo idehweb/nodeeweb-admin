@@ -357,6 +357,21 @@ const DefaultOptions = [
       "design": [],
     }
   },{
+    "label": "form",
+    "name": "form",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {"_id":"",...fields},
+        "rules": [
+          {"name": "_id", "type": "string"},
+
+          ...rules
+        ]
+      },
+      "design": [],
+    }
+  },{
     "label": "Prices",
     "name": "prices",
     "addable": false,

@@ -5,18 +5,17 @@ import {
   Filter,
   FunctionField,
   ReferenceInput,
-  Show,
+  Pagination,
   ShowButton,
-  SimpleShowLayout,
   TextField,
   useTranslate
 } from "react-admin";
 import { dateFormat } from "@/functions";
-import { Rowing as Icon } from "@mui/icons-material";
 import { JsonDiffer, List, SimpleForm, UploaderField } from "@/components";
 import { Val } from "@/Utils";
 // import { useTranslate } from "react-admin";
 // import {deepEqual} from 'deep-equal';
+const PostPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100]} {...props} />;
 
 const list = (props) => {
   const translate = useTranslate();
@@ -58,7 +57,9 @@ const list = (props) => {
           <AutocompleteInput optionText="phoneNumber"/>
         </ReferenceInput>
       </Filter>
-    }>
+    }
+          pagination={<PostPagination/>}
+    >
       <Datagrid>
         <FunctionField
           label={translate("resources.action.user")}
@@ -69,8 +70,9 @@ const list = (props) => {
                 {(record.user) && <div>
                   <ChipField source="user.username" label={translate("resources.action.username")}
                              sortable={false}/>
-                  {record.user.nickname && <ChipField source="user.nickname" label={translate("resources.action.nickname")}
-                                                      sortable={false}/>}
+                  {record.user.nickname &&
+                  <ChipField source="user.nickname" label={translate("resources.action.nickname")}
+                             sortable={false}/>}
                 </div>}
               </div>
             );
@@ -81,7 +83,8 @@ const list = (props) => {
                          return (
                            <div className={"categories"}>
                              {(record.customer) && <div>
-                               <ChipField source="customer.phoneNumber" label={translate("resources.action.phoneNumber")}
+                               <ChipField source="customer.phoneNumber"
+                                          label={translate("resources.action.phoneNumber")}
                                           sortable={false}/>
                                <ChipField source="customer.firstName" label={translate("resources.action.firstName")}
                                           sortable={false}/>

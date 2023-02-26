@@ -233,7 +233,7 @@ export default (props) => {
         p = parseInt(item.price) - p;
         return p.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       } else
-        return item.price;
+        return item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
   };
   const returnTaxAccountToTotal = (item) => {
@@ -457,7 +457,7 @@ export default (props) => {
 
   };
   // setTimeout(()=>{
-    handleClick();
+  //   handleClick();
 
   // },100)
   let { factore_shop_name, factore_shop_phoneNumber, factore_shop_site_address, factore_shop_address, factore_shop_site_name, factore_shop_internationalCode, factore_shop_submitCode } = shopData;

@@ -130,6 +130,7 @@ const Plugin = (props) => {
             {/*{JSON.stringify(theData)}*/}
 
             {theData && theData.map((item)=>{
+              if(!item.type)
                 return <Box>
 
                   <TextInput
@@ -147,7 +148,28 @@ const Plugin = (props) => {
 
 
                 </Box>
-              })}
+
+              if(item.type=='textarea')
+                return <Box>
+
+                  <TextInput
+                    multiline
+                    autoFocus
+                    fullWidth
+                    label={item.label || item.name}
+                    source={item.name}
+                    disabled={loading}
+                    defaultValue={item.value}
+                    onChange={(event) => {
+                      handleChange(item.name, event.target.value);
+                    }}
+                  />
+
+
+
+                </Box>
+
+                })}
 
             <CardActions sx={{ padding: "0 1em 1em 1em" }}>
               <SaveButton

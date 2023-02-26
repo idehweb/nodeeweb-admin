@@ -26,6 +26,8 @@ export { default as CustomResetViewsButton } from './CustomResetViewsButton';
 export { default as ToggleThemeButton } from './ToggleThemeButton';
 export { default as DollarPrice } from './DollarPrice';
 export { default as GridList } from './GridList';
+export { default as NoteList } from './NoteList';
+export { default as NoteShow } from './NoteShow';
 export { default as JsonDiffer } from './JsonDiffer';
 export { default as ShowObject } from './ShowObject';
 export { default as Configuration } from './Configuration';

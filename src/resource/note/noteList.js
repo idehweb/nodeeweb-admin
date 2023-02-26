@@ -1,6 +1,6 @@
 import { ListBase, Pagination } from "react-admin";
 import { Box } from "@mui/material";
-import { CustomFileField, GridList, List, SimpleForm, UploaderField } from "@/components";
+import { CustomFileField, NoteList, List, SimpleForm, UploaderField } from "@/components";
 
 
 const list = (props) => {
@@ -12,7 +12,7 @@ const list = (props) => {
       {...props}
     >
       <Box className={"grid-box"}>
-        <GridList {...props} />
+        <NoteList {...props} />
       </Box>
       <Pagination rowsPerPageOptions={[10, 20, 40]}/>
 
