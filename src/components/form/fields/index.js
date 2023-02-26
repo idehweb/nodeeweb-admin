@@ -11,6 +11,7 @@ import FieldTextarea from './FieldTextarea';
 import FieldJson from './FieldJson';
 import FieldNumber from './FieldNumber';
 import EveryFields from './EveryFields';
+import ConditionFiled from './ConditionFiled';
 
 
 export {
@@ -26,7 +27,8 @@ export {
   FieldPrice,
   FieldCheckbox,
   FieldCheckboxes,
-  FieldServer
+  FieldServer,
+  ConditionFiled
 };
 
 import { useTranslate } from 'react-admin';

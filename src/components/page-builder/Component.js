@@ -28,6 +28,7 @@ import { ItemTypes } from "../../functions";
 // import {SnapChatIcon} from "@/assets/index";
 
 const Component = (props) => {
+  console.log("alo",props);
   let {
     index,
     component,
@@ -166,6 +167,8 @@ const Component = (props) => {
               {text && <label className={"component-id"} style={{ direction: "ltr" }}>{JSON.stringify(text)}</label>}
 
             </div>
+
+
             <span className={"npb-settings"}>
                   {Boolean(index) &&
                   <Button className={"only-border"}
@@ -179,7 +182,13 @@ const Component = (props) => {
                 // toggleComponentOptionsBox()
               }}><DisplaySettingsIcon/></Button>
                 </span>
+
+
+
           </div>
+
+
+
         </div>
 
         {component.addable && <div className={"add-part name-" + component.name}>
@@ -282,6 +291,7 @@ const Component = (props) => {
                 }}
                 rules={{ fields: component.settings.general.rules }}
                 buttons={[]}
+                componentType={component.name}
 
                 fields={component.settings.general.fields}/>}
             </div>

@@ -19,11 +19,12 @@ import {
   FieldSelect,
   FieldServer,
   FieldText,
-  FieldTextarea
+  FieldTextarea,
+  ConditionFiled
 } from "@/components/form/fields";
 
 function CreateForm(props) {
-  let { fields, rules = { fields: [] }, t } = props;
+  let { fields, rules = { fields: [] }, t ,componentType} = props;
   const themeData = useSelector((st) => st.themeData);
   if (!themeData) {
     return;
@@ -31,6 +32,9 @@ function CreateForm(props) {
   const [theRules, setTheRules] = useState(rules);
   const [theF, setTheF] = useState('');
   useEffect(() => {
+
+
+    console.log("salammmm",props);
     // changeThemeData();
     if (!theRules || (theRules && !theRules.fields) || (theRules.fields && !theRules.fields[0])) {
       Object.keys(fields).forEach((fi) => {
@@ -72,7 +76,7 @@ function CreateForm(props) {
     // console.log('themeData',  themeData['models']);
     // moment(field.value, "YYYY-MM-DD[T]HH:mm:ss.SSS[Z]", true).isValid())
 
-    if (type == "date") {
+    if (type === "date") {
       console.log("date");
       return <Col
         sm={size ? size.sm : ""}
@@ -91,7 +95,7 @@ function CreateForm(props) {
 
       </Col>;
     }
-    if (type == "string" || !type) {
+    if (type === "string" || !type) {
       // console.log('string')
 
       return <Col
@@ -252,7 +256,7 @@ function CreateForm(props) {
 
       </Col>;
     }
-    if (type == "images") {
+    if (type === "images") {
       // console.log('image')
       return <Col
         sm={size ? size.sm : ""}
@@ -308,16 +312,14 @@ function CreateForm(props) {
     }
 
   };
-
+const [optionInputs,setOptionInputs] = useState(null)
   const onSubmit = async v => {
-    console.log("onSubmit", v);
-    console.log("theRules.fields", theRules.fields);
     if (props.onSubmit) {
       let values = v;
       if (theRules && theRules.fields)
         theRules.fields.forEach((item, i) => {
           console.log("irem", item);
-          if (item.type == "object" && values[item.name] instanceof Array && item.value) {
+          if (item.type === "object" && values[item.name] instanceof Array && item.value) {
             console.log("can we fix:", item);
             let obj = {};
             item.value.forEach((its) => {
@@ -330,18 +332,15 @@ function CreateForm(props) {
 
           }
         });
-      console.log("values", values);
-
+      if(optionInputs){
+        Object.assign(values, {'options':optionInputs});
+      }
       props.onSubmit(values);
     }
   };
-  // console.log("fields:", fields)
-  // console.log("rules:", rules)
-
-  // console.clear()
-
-  // console.log('iValues', iValues)
-  // console.log('render')
+  const saveInputOptions = (options) =>{
+    setOptionInputs(options)
+  }
   const removeField = (e, mindex) => {
     // console.log("index ,fields", e, mindex, fields);
     // console.log("theRules", theRules);
@@ -433,7 +432,7 @@ function CreateForm(props) {
                   })}
 
 
-
+                  <ConditionFiled type={componentType} saveOptions={saveInputOptions}/>
 
 
 
@@ -442,6 +441,7 @@ function CreateForm(props) {
                     <Button type="submit">
                       <SaveIcon/>{("Submit")}
                     </Button>
+
                     <div className={"d-flex ltr"}>
                       <input className={"d-flex-inputs"} value={theF} onChange={(e)=>{setTheF(e.target.value)}}/>
                       <Button type="button" className={"whitespace-nowrap"} onClick={(e) => {
