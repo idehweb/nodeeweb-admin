@@ -2,6 +2,10 @@ html, body {
     margin: 0;
     padding: 0;
 }
+.hideTextInput{
+	top: -500px !important;
+	position: absolute !important;
+}
 .rtl .the-dev-menu li + div{
 padding-right: 30px;
 }

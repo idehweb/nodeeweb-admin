@@ -210,7 +210,8 @@ export const orderList = (props) => {
           <TextInput
             fullWidth
             source="date_gte" label={translate("resources.order.date_gte")}
-          />,
+            className="hideTextInput"
+           />,
           <ReactAdminJalaliDateInput
             fullWidth
             source="date_lte" label={translate("resources.order.date_lte")}
@@ -220,6 +221,7 @@ export const orderList = (props) => {
           <TextInput
             fullWidth
             source="date_lte" label={translate("resources.order.date_lte")}
+            className="hideTextInput"
           />,
           <NumberInput
             fullWidth
