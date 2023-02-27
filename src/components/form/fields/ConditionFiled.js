@@ -1,21 +1,40 @@
-import React ,{useState} from 'react';
+import React, { useEffect, useState } from "react";
 import { useTranslate } from 'react-admin';
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { Form, FormGroup, FormInput ,Button} from "shards-react";
 import { Container, Row, Col } from "shards-react";
 function ConditionFiled(props) {
   const translate=useTranslate();
-  const {type} = props;
-  console.log("typeeeeeeeee",type);
+  const {type,data} = props;
+  console.log('dddddddddddddddd-oprions',data)
   if (type !== 'radio' && type !== 'select') {
     return;
   }
-  const [optionValues, setOptionValues] = useState([
-    {
-      title: "",
-      value : ""
-    }
-    ])
+  let bindData = [];
+  if(data){
+    // setOptionValues(data);
+    bindData = data;
+  }else{
+    bindData =
+      {
+        title: "",
+        value : ""
+      }
+    ;
+  }
+  console.log('bindDatabindDatabindDatabindData',bindData);
+  const [optionValues, setOptionValues] = useState(bindData)
+
+  // useEffect(()=>{
+  //   if(data){
+  //     setOptionValues(data);
+  //   }else{
+  //     setOptionValues({
+  //       title: "",
+  //       value : ""
+  //     });
+  //   }
+  // },[])
   let handleChange = (i, e) => {
     let newFormValues = [...optionValues];
     newFormValues[i][e.target.name] = e.target.value;
@@ -33,6 +52,7 @@ function ConditionFiled(props) {
   }
   let handleSubmit = (event) => {
     event.preventDefault();
+    console.log('lastOpitons',optionValues)
     // props.saveOptions(JSON.stringify(optionValues))
     props.saveOptions(optionValues);
   }

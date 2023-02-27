@@ -329,12 +329,13 @@ const [optionInputs,setOptionInputs] = useState(null)
             values[item.name] = obj;
           } else {
             // values[item.name] = item.value;
-
           }
         });
       if(optionInputs){
         Object.assign(values, {'options':optionInputs});
       }
+
+      console.log('new VVVVVVV',values);
       props.onSubmit(values);
     }
   };
@@ -432,7 +433,7 @@ const [optionInputs,setOptionInputs] = useState(null)
                   })}
 
 
-                  <ConditionFiled type={componentType} saveOptions={saveInputOptions}/>
+                  <ConditionFiled data={fields.options} type={componentType} saveOptions={saveInputOptions}/>
 
 
 
