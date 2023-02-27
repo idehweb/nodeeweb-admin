@@ -6,8 +6,6 @@ import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, X
 import { subDays } from "date-fns";
 import { useSelector } from "react-redux";
 import { dateFormat } from "@/functions";
-import OrderChartFilter from "./OrderChartFilter";
-import { useState } from "react";
 // import {Customer} from '../types';
 
 const lastDay = new Date();
@@ -89,7 +87,6 @@ const getRevenuePerDay = (orders) => {
 };
 
 const OrderChart = (props) => {
-
   const translate = useTranslate();
   const classes = useStyles();
   const { title } = props;
@@ -119,44 +116,15 @@ const OrderChart = (props) => {
 
   const nb = visitors ? visitors.reduce((nb) => ++nb, 0) : 0;
   let all_data = getRevenuePerDay(visitors);
-  const [filterData,setFilterData] = useState(all_data);
   console.log("all_data", all_data);
   // return JSON.stringify(all_data)
-
-  const handleChangeStatusFilter = (value) => {
-    setFilterData(null);
-    let arr = [];
-    switch (value) {
-      case 'paidStatus':
-        all_data.map((data)=>
-          arr.push({'date':data.date,'paid':data.paid})
-        );
-        setFilterData(arr);
-      case 'completeStatus':
-        all_data.map((data)=>
-          arr.push({'date':data.date,'complete':data.complete})
-        );
-        setFilterData(arr);
-      case 'totalStatus':
-        all_data.map((data)=>
-          arr.push({'date':data.date,'total':data.total})
-        );
-        setFilterData(arr);
-    }
-
-  };
   return (
     <Card className={"width1000"}>
       <CardHeader title={translate(props.title)}/>
-
       <CardContent>
-        <div className={"filter"}>
-          <OrderChartFilter handleChangeStatusFilter={handleChangeStatusFilter} />
-        </div>
         <div style={{ height: 300 }} className={"order-chart"}>
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={filterData} width={1000}  >
-            {/*<LineChart data={filterData != null ? filterData : all_data} width={1000}  >*/}
+            <LineChart data={all_data} width={1000}>
 
               <CartesianGrid strokeDasharray="3 3"/>
               <XAxis

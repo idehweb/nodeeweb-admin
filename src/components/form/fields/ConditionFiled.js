@@ -16,10 +16,12 @@ function ConditionFiled(props) {
     bindData = data;
   }else{
     bindData =
-      {
-        title: "",
-        value : ""
-      }
+      [
+        {
+          title: "",
+          value : ""
+        }
+      ]
     ;
   }
   console.log('bindDatabindDatabindDatabindData',bindData);
