@@ -23,6 +23,8 @@ const customFarsiMessages = {
   padding: "padding",
   backgroundColor: "backgroundColor",
   customerStatus: "وضعیت مشتری",
+  customers: "مشتریان",
+  total: "جمع کل",
   require: "ضروری",
   documents: "اسناد",
   tasks: "کار ها",

@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import { Chart as ChartJS, Filler, Legend, LineElement, PointElement, RadialLinearScale, Tooltip } from "chart.js";
 import { useDataProvider, useTranslate } from "react-admin";
 import { BASE_URL } from "@/functions/API";
+import CustomerChart from "#c/components/dashboard/CustomerChart";
 
 
 const Spacer = () => <span style={{ width: "1em" }}/>;
@@ -285,6 +286,7 @@ const MainDashboard = () => {
             {/*<OrderChart orders={sOrders} title={translate('resources.dashboard.priceAnnLast30Days')}/>*/}
             {/*<NewCustomers/>*/}
             <OrderChart title={'orders'} model={'order'}/>
+            {/*<CustomerChart title={'customers'} model={'customer'}/>*/}
 
           </div>
         </div>
