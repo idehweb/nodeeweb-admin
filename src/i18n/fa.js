@@ -5,6 +5,7 @@ console.log("running farsi language...");
 const customFarsiMessages = {
   ...farsiMessages,
   logoutMessage: "برای خروج مطمئن هستید؟",
+  topProductOrders:'پرفروشترین محصولات',
   maxWidth: "maxWidth",
   active: "فعال",
   deactive: "غیر فعال",

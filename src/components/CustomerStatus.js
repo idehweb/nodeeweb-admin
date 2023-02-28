@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 
 const CustomerStatus = (props) => {
   const { record } = props;
+  console.log('custoooooooooooooomer',record);
   const { _id, status } = record;
   const [state, setState] = useState({});
   const translate = useTranslate();
