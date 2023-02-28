@@ -61,6 +61,7 @@ const data = [
 export default function CustomerChart(props) {
 
   const { isLoading: loaded, data: visitors } = useGetList(props.model);
+  console.log('fooooooooooooooooooo');
 
   return (
     <Card className={"width1000"} style={{'marginTop':'30px'}}>

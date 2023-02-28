@@ -52,7 +52,7 @@ const ProductOrdersTable = (props) => {
         newsPro[checkID].count += ProductListNew[i].count
       }
     }
-    resultProducts = newsPro.sort((a,b) => b.count - a.count).slice(1,11);
+    resultProducts = newsPro.sort((a,b) => b.count - a.count).slice(1,21);
   }
   React.useEffect(() => {
     getData();

@@ -6,6 +6,7 @@ const customFarsiMessages = {
   ...farsiMessages,
   logoutMessage: "برای خروج مطمئن هستید؟",
   topProductOrders:'پرفروشترین محصولات',
+  entryForm:'ورودی فرم ها',
   maxWidth: "maxWidth",
   active: "فعال",
   deactive: "غیر فعال",

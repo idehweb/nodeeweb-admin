@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 
 export default (props) => {
   // console.clear();
-  // console.log('props',props);
+  console.log('psssssssssssssssssssssssss',props);
   const themeData = useSelector((st) => st.themeData);
 
   const divRef = React.useRef();
@@ -55,6 +55,10 @@ export default (props) => {
     sum = 0;
   props.record.card.forEach((o) => {
     sum += o.salePrice || o.price;
+
+  });
+  props.record.card.forEach((o) => {
+    sum *= o.count;
   });
   if (themeData && themeData.tax && themeData.taxAmount) {
     let y = (parseInt(themeData.taxAmount) * sum) / 100;
