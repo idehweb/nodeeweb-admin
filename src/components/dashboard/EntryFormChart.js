@@ -58,10 +58,17 @@ const data = [
   }
 ];
 
-export default function CustomerChart(props) {
+export default function EntryFormChart(props) {
 
-  const { isLoading: loaded, data: visitors } = useGetList(props.model);
-  console.log('fooooooooooooooooooo',visitors);
+  const { isLoading: loaded, data: binds } = useGetList(props.model);
+  const [formData,setFormData] = React.useState(binds,(binds)=>{
+    binds.forEach((item)=>{
+      setFormData([...formData,item.form])
+    });
+    console.log('fooooooooooooooooooo',formData);
+  });
+
+
 
   return (
     <Card className={"width1000"} style={{'marginTop':'30px'}}>
@@ -70,30 +77,30 @@ export default function CustomerChart(props) {
       <CardContent>
         <div style={{ height: 300 }} className={"customer-chart"}>
           <ResponsiveContainer width="100%" height="100%">
-              <LineChart
-                width={500}
-                height={300}
-                data={data}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="pv"
-                  stroke="#8884d8"
-                  activeDot={{ r: 8 }}
-                />
-                <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-              </LineChart>
+            <LineChart
+              width={500}
+              height={300}
+              data={data}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="pv"
+                stroke="#8884d8"
+                activeDot={{ r: 8 }}
+              />
+              <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+            </LineChart>
           </ResponsiveContainer>
         </div>
       </CardContent>

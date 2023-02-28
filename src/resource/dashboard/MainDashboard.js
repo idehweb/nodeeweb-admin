@@ -10,6 +10,7 @@ import { useDataProvider, useTranslate } from "react-admin";
 import { BASE_URL } from "@/functions/API";
 import CustomerChart from "#c/components/dashboard/CustomerChart";
 import ProductOrdersTable from "#c/components/dashboard/ProductOrdersTable";
+import EntryFormChart from "#c/components/dashboard/EntryFormChart";
 
 
 const Spacer = () => <span style={{ width: "1em" }}/>;
@@ -287,7 +288,8 @@ const MainDashboard = () => {
             {/*<OrderChart orders={sOrders} title={translate('resources.dashboard.priceAnnLast30Days')}/>*/}
             {/*<NewCustomers/>*/}
             <OrderChart title={'orders'} model={'order'}/>
-            {/*<CustomerChart title={'entryForm'} model={'entry'}/>*/}
+            {/*<CustomerChart title={'customers'} model={'custome'}/>*/}
+            {/*<EntryFormChart title={'entryForm'} model={'entry'}/>*/}
             <ProductOrdersTable title={'topProductOrders'} model={'order'}/>
 
           </div>
