@@ -289,7 +289,7 @@ const MainDashboard = () => {
             {/*<NewCustomers/>*/}
             <OrderChart title={'orders'} model={'order'}/>
             {/*<CustomerChart title={'customers'} model={'custome'}/>*/}
-            {/*<EntryFormChart title={'entryForm'} model={'entry'}/>*/}
+            <EntryFormChart title={'entryForm'} model={'entry'}/>
             <ProductOrdersTable title={'topProductOrders'} model={'order'}/>
 
           </div>

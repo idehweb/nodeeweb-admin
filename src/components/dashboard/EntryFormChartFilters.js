@@ -1,0 +1,43 @@
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { useGetList } from "react-admin";
+export default function EntryFormChartFilters(props) {
+  const {handleChangeForm,model} = props;
+  const [form, setForm] = React.useState('');
+  const { isLoading: loaded, data: forms } = useGetList(model);
+
+
+  return (
+    <Box sx={{ minWidth: 120 }}>
+      <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+        <InputLabel id="demo-simple-select-label">انتخاب فرم</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={form}
+          label="form"
+          onChange={(e)=>{
+            setForm(e.target.value);
+            handleChangeForm(e.target.value);
+          }}
+        >
+          <MenuItem disabled value="">
+            <em>Please Select</em>
+          </MenuItem>
+          <MenuItem  value="all">
+            <em>نمایش همه</em>
+          </MenuItem>
+          {
+            forms &&  forms.map((form,index)=>
+              <MenuItem key={index} value={form._id}>{form.title.fa}</MenuItem>
+            )
+          }
+        </Select>
+      </FormControl>
+    </Box>
+  );
+}
