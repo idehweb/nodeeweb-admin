@@ -178,6 +178,10 @@ const customFarsiMessages = {
       rial: "ریال",
       dollar: "دلار"
     },
+    filter: {
+      startDate: "شروع تاریخ از",
+      endDate: "تا تاریخ "
+    },
     paymentStatus: {
       SuccessfulOperation: "عملیات موفق",
       CanceledByTheUser: "لغو شده توسط کاربر",

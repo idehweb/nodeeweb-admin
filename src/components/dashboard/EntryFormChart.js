@@ -75,7 +75,20 @@ const filterListData = [];
     }
 
   }
+  const handleChangeDateFilter = (date,type) =>{
+    console.log('returnDateForFilter',date);
+    // if(date){
+    //   if(entries){
+    //     entries.forEach((ent)=>{
+    //       if(ent.form._id === formID){
+    //         filterListData.push(ent)
+    //       }
+    //     })
+    //   }
+    //   setForms(getRevenuePerDay(filterListData));
+    // }
 
+  }
 
 
 
@@ -84,7 +97,7 @@ const filterListData = [];
   return (
     <Card className={"width1000"} style={{marginTop:'20px'}}>
       <CardHeader title={translate(props.title)}/>
-      <EntryFormChartFilters handleChangeForm={handleChangeFormFilter} model={'form'}/>
+      <EntryFormChartFilters handleChangeForm={handleChangeFormFilter} handleChangeDate={handleChangeDateFilter} model={'form'}/>
       <CardContent>
         <div style={{ height: 300 }} className={"entry-chart"}>
           {
