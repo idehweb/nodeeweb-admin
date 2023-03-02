@@ -35,8 +35,16 @@ const getRevenuePerDay = (entries) => {
   });
 };
 
+
+
+
 const EntryFormChart = (props) => {
-  const [forms,setForms] = React.useState('')
+  const [forms,setForms] = React.useState([])
+  const [formiIdFilter,setFormIdFilter] = React.useState('')
+  const [startDateFilter,setStartDateFilter] = React.useState(0)
+  const [endDateFilter,setEndDateFilter] = React.useState(0)
+  let filterListData = [];
+
   const translate = useTranslate();
   const classes = useStyles();
   const { title } = props;
@@ -52,15 +60,15 @@ const EntryFormChart = (props) => {
         pagination: { page: 1, perPage: 1000 }
        }
     );
-
 React.useEffect(()=>{
-     setForms(getRevenuePerDay(entries))
+  console.log('useEffectRendering');
+    setForms(getRevenuePerDay(entries))
 },[])
 
 
-
-const filterListData = [];
   const handleChangeFormFilter = (formID) =>{
+    setFormIdFilter(formID)
+    filterListData =[];
     if(formID ==='all'){
       setForms(getRevenuePerDay(entries))
     }else{
@@ -73,35 +81,118 @@ const filterListData = [];
       }
       setForms(getRevenuePerDay(filterListData));
     }
-
-  }
-  const handleChangeDateFilter = (date,type) =>{
-    console.log('returnDateForFilter',date);
-    // if(date){
-    //   if(entries){
-    //     entries.forEach((ent)=>{
-    //       if(ent.form._id === formID){
-    //         filterListData.push(ent)
-    //       }
-    //     })
-    //   }
-    //   setForms(getRevenuePerDay(filterListData));
-    // }
-
   }
 
 
 
+  const getRevenuePerDateFilter = (entriessss,dateCallBack,type) => {
+    let arrayFilter = [];
+
+    // console.log('time-->'+type,dateCallBack);
+    // console.log('startDate',startDateFilter);
+    // console.log('endDateFilter',endDateFilter);
+    const daysWithRevenueEntries = aggregateEntriesByDay(entriessss);
+    if(type === 'start'){
+      setStartDateFilter(dateCallBack)
+       lastMonthDays.map(date => {
+         if(startDateFilter > 1){
+           if(date.getTime() > startDateFilter.getTime()){
+             arrayFilter.push({
+               date: date.getTime(),
+               "total": daysWithRevenueEntries[dateFormat(date, "YYYY/MM/DD")] || 0
+             });
+           }
+         }else{
+
+           if(date.getTime() > dateCallBack.getTime()){
+             arrayFilter.push({
+               date: date.getTime(),
+               "total": daysWithRevenueEntries[dateFormat(date, "YYYY/MM/DD")] || 0
+             });
+           }
+         }
+
+
+      })
+
+
+    };
+    if(type === 'end'){
+      setEndDateFilter(dateCallBack)
+      lastMonthDays.map(date => {
+        if(endDateFilter > 1){
+          if(date.getTime() > startDateFilter.getTime() && date.getTime() < endDateFilter.getTime()){
+            arrayFilter.push ({
+              date: date.getTime(),
+              "total": daysWithRevenueEntries[dateFormat(date, "YYYY/MM/DD")] || 0
+            });
+          }
+        }else{
+          if(date.getTime() > startDateFilter.getTime() && date.getTime() < dateCallBack.getTime()){
+            arrayFilter.push ({
+              date: date.getTime(),
+              "total": daysWithRevenueEntries[dateFormat(date, "YYYY/MM/DD")] || 0
+            });
+          }
+        }
+
+      })
+    }
+
+    if(arrayFilter.length > 0){
+      setForms(arrayFilter);
+    }else{
+      setForms(getRevenuePerDay(entries))
+    }
+  };
+
+
+
+
+  const startFunction = (start) =>{
+    setStartDateFilter(start)
+    let filterListDataStart = [];
+
+    if(formiIdFilter !== ''){
+      if(entries){
+        entries.forEach((ent)=>{
+          if(ent.form._id === formiIdFilter){
+            filterListDataStart.push(ent)
+          }
+        })
+        getRevenuePerDateFilter(filterListDataStart,start,'start');
+      }
+    }else{
+      getRevenuePerDateFilter(entries,start,'start');
+    }
+  }//endFunction
+  const endFunction = (end) =>{
+    setEndDateFilter(end)
+    let filterListDataEnd = [];
+    if(formiIdFilter !== ''){
+      if(entries){
+        entries.forEach((ent)=>{
+          if(ent.form._id === formiIdFilter){
+            filterListDataEnd.push(ent)
+          }
+        })
+      }
+      getRevenuePerDateFilter(filterListDataEnd,end,'end')
+    }else{
+      getRevenuePerDateFilter(entries,end,'end');
+    }
+  }//endFunction
 
 
   return (
     <Card className={"width1000"} style={{marginTop:'20px'}}>
       <CardHeader title={translate(props.title)}/>
-      <EntryFormChartFilters handleChangeForm={handleChangeFormFilter} handleChangeDate={handleChangeDateFilter} model={'form'}/>
+      <EntryFormChartFilters handleChangeForm={handleChangeFormFilter} handlerStart={startFunction} handlerEnd={endFunction}  model={'form'}/>
       <CardContent>
         <div style={{ height: 300 }} className={"entry-chart"}>
           {
-            forms ? (<ResponsiveContainer width="100%" height="100%">
+            forms ? (
+              <ResponsiveContainer width="100%" height="100%">
               <LineChart data={forms} width={1000}>
 
                 <CartesianGrid strokeDasharray="3 3"/>
@@ -141,7 +232,8 @@ const filterListData = [];
                 {/*<Line type="monotone" dataKey={("complete")} label={translate("pos.OrderStatus.complete")} stroke="#31bd58"  strokeWidth={2}/>*/}
                 {/*<Line type="monotone" dataKey={("paid")} label={translate("pos.OrderStatus.paid")} stroke="#1875d2"  strokeWidth={2}/>*/}
               </LineChart>
-            </ResponsiveContainer>):('Nothing To Show')
+            </ResponsiveContainer>
+            ):('Nothing To Show')
           }
 
         </div>
@@ -160,4 +252,4 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default EntryFormChart;
+export default EntryFormChart

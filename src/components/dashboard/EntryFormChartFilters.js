@@ -6,17 +6,20 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useGetList } from "react-admin";
 import FilterWithDate from "#c/components/dashboard/base/FilterWithDate";
-import { dateFormat } from "@/functions";
-export default function EntryFormChartFilters(props) {
-  const {handleChangeForm,handleChangeDate,model} = props;
+import { dateFormat } from "#c/functions";
+const EntryFormChartFilters = (props) => {
+  const {handleChangeForm,handlerStart,handlerEnd,model} = props;
   const [form, setForm] = React.useState('');
   const { isLoading: loaded, data: forms } = useGetList(model);
   const dateFormatter = (date) => {
     return dateFormat(new Date(date), "YYYY/MM/DD");
   };
-const filterDateChange = (dateValue,type) =>{
-  handleChangeDate(dateValue.getTime(),type)
+const startHandler = (dateValue) =>{
+  handlerStart(dateValue);
 }
+const endHandler = (dateValue) =>{
+  handlerEnd(dateValue);
+  }
 
   return (
     <Box sx={{ minWidth: 120 }}>
@@ -45,8 +48,9 @@ const filterDateChange = (dateValue,type) =>{
           }
         </Select>
       </FormControl>
-      <FilterWithDate type={'startDate'} handlerChangeFilter={filterDateChange} />
-      <FilterWithDate type={'endDate'} handlerChangeFilter={filterDateChange} />
+      <FilterWithDate type={'startDate'} handlerChangeFilter={startHandler} />
+      <FilterWithDate type={'endDate'} handlerChangeFilter={endHandler} />
     </Box>
   );
 }
+export default EntryFormChartFilters

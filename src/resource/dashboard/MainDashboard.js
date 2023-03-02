@@ -285,7 +285,6 @@ const MainDashboard = () => {
       <div style={styles.flex} className={"flex-wrapp d-block"}>
         <div style={styles.leftCol} className={"leftCol"}>
           <div className={"dwfghrtjy"}>
-            {/*<OrderChart orders={sOrders} title={translate('resources.dashboard.priceAnnLast30Days')}/>*/}
             {/*<NewCustomers/>*/}
             <OrderChart title={'orders'} model={'order'}/>
             {/*<CustomerChart title={'customers'} model={'custome'}/>*/}
