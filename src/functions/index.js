@@ -16,6 +16,29 @@ export {dataProvider, authProvider, theme};
 export const ItemTypes = {
   KNIGHT: 'knight'
 }
+export const getDays = (startDate, endDate)=> {
+  let dates = [];
+  if(startDate){
+    let currDate = moment(startDate).startOf('day');
+    let lastDate = moment(new Date()).startOf('day');
+
+    while(currDate.add(1, 'days').diff(lastDate) <= 0) {
+      dates.push(currDate.clone().toDate());
+    }
+    if(endDate){
+      dates = []
+      let currDate = moment(startDate).startOf('day');
+      let lastDate = moment(endDate).startOf('day');
+
+      while(currDate.add(1, 'days').diff(lastDate) <= 0) {
+        dates.push(currDate.clone().toDate());
+      }
+    }
+  }
+
+  return dates;
+};
+
 export const jToM = (date) =>{
   const newDate = moment.from(date, 'fa', 'YYYY/MM/DD').format('YYYY/MM/DD');
   console.log('newDateeeeeee',newDate);

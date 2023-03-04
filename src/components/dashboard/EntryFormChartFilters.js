@@ -38,9 +38,9 @@ const endHandler = (dateValue) =>{
           <MenuItem disabled value="">
             <em>Please Select</em>
           </MenuItem>
-          <MenuItem  value="all">
-            <em>نمایش همه</em>
-          </MenuItem>
+          {/*<MenuItem  value="all">*/}
+          {/*  <em>نمایش همه</em>*/}
+          {/*</MenuItem>*/}
           {
             forms &&  forms.map((form,index)=>
               <MenuItem key={index} value={form._id}>{form.title.fa}</MenuItem>
