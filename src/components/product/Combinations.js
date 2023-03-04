@@ -91,12 +91,12 @@ export default (props) => {
                                         value={"fds"}
                                         source={getSource("price")}
                                         format={v => {
-                                            if (!v) return;
+                                            if (!v) return '';
 
                                             return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                                         }}
                                         parse={v => {
-                                            if (!v) return;
+                                            if (!v) return '';
 
                                             // return v.toString().replace(/,/g, "");
                                             let x = v.toString().replace(/,/g, "");
@@ -112,11 +112,11 @@ export default (props) => {
                                         source={getSource("salePrice")}
                                         record={scopedFormData}
                                         format={v => {
-                                            if (!v) return;
+                                            if (!v) return '';
                                             return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                                         }}
                                         parse={v => {
-                                            if (!v) return;
+                                            if (!v) return '';
 
                                             let x = v.toString().replace(/,/g, "");
                                             return parseInt(x);
