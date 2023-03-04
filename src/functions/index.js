@@ -16,6 +16,11 @@ export {dataProvider, authProvider, theme};
 export const ItemTypes = {
   KNIGHT: 'knight'
 }
+export const jToM = (date) =>{
+  const newDate = moment.from(date, 'fa', 'YYYY/MM/DD').format('YYYY/MM/DD');
+  console.log('newDateeeeeee',newDate);
+  return  newDate;
+}
 export const dateFormat = (d, f = 'YYYY/MM/DD HH:mm') => {
     // console.log('d', d);
     if (d)

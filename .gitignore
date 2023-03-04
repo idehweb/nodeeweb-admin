@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/public/site_setting/config.js
 /.idea
 .idea
 # testing

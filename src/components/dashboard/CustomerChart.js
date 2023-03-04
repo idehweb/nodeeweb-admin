@@ -60,8 +60,10 @@ const data = [
 
 export default function CustomerChart(props) {
 
-  const { isLoading: loaded, data: visitors } = useGetList(props.model);
-  console.log('fooooooooooooooooooo',visitors);
+  const { isLoading: loadedCustomers, data: customers } = useGetList(props.model);
+  const { isLoading: loadedStatus, data: customerStatus } = useGetList('settings/customerStatus');
+  console.log('customerStatuscustomerStatuscustomerStatus',customerStatus);
+  console.log('customerscustomerscustomers',customers);
 
   return (
     <Card className={"width1000"} style={{'marginTop':'30px'}}>

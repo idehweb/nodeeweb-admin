@@ -5,13 +5,17 @@ import { useGetList, useTranslate } from "react-admin";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { subDays } from "date-fns";
 import { useSelector } from "react-redux";
-import { dateFormat } from "@/functions";
+import { dateFormat,jToM } from "@/functions";
 import EntryFormChartFilters from "#c/components/dashboard/EntryFormChartFilters";
+import API from "#c/functions/API";
 const lastDay = new Date();
 const lastMonthDays = Array.from({ length: 30 }, (_, i) => subDays(lastDay, i));
 const aMonthAgo = subDays(new Date(), 30);
 const dateFormatter = (date) => {
   return dateFormat(new Date(date), "YYYY/MM/DD");
+};
+const dateFormatterDashed = (date) => {
+  return dateFormat(new Date(date), "YYYY-MM-DD");
 };
 const aggregateEntriesByDay = (entry = []) => {
 
@@ -152,35 +156,49 @@ React.useEffect(()=>{
   const startFunction = (start) =>{
     setStartDateFilter(start)
     let filterListDataStart = [];
-
-    if(formiIdFilter !== ''){
-      if(entries){
-        entries.forEach((ent)=>{
-          if(ent.form._id === formiIdFilter){
-            filterListDataStart.push(ent)
+    API.get("/entry/0/10000?date_gte="+ jToM(dateFormatter(start)) + '&_order=ASC').then(({ data = {} }) => {
+      if (data) {
+        if(formiIdFilter !== ''){
+          if(data){
+            data.forEach((ent)=>{
+              if(ent.form._id === formiIdFilter){
+                filterListDataStart.push(ent)
+              }
+            })
+            getRevenuePerDateFilter(filterListDataStart,start,'start');
           }
-        })
-        getRevenuePerDateFilter(filterListDataStart,start,'start');
+        }else{
+          getRevenuePerDateFilter(entries,start,'start');
+        }
+      } else {
+        getRevenuePerDateFilter(entries,start,'start');
       }
-    }else{
-      getRevenuePerDateFilter(entries,start,'start');
-    }
+    });
+
+
   }//endFunction
   const endFunction = (end) =>{
     setEndDateFilter(end)
     let filterListDataEnd = [];
-    if(formiIdFilter !== ''){
-      if(entries){
-        entries.forEach((ent)=>{
-          if(ent.form._id === formiIdFilter){
-            filterListDataEnd.push(ent)
+    API.get("/entry/0/10000?date_gte="+ jToM(dateFormatter(startDateFilter)) +'&date_lte='+ jToM(dateFormatter(end)) + '&_order=ASC').then(({ data = {} }) => {
+      if (data) {
+        if(formiIdFilter !== ''){
+          if(data){
+            data.forEach((ent)=>{
+              if(ent.form._id === formiIdFilter){
+                filterListDataEnd.push(ent)
+              }
+            })
           }
-        })
+          getRevenuePerDateFilter(filterListDataEnd,end,'end')
+        }else{
+          getRevenuePerDateFilter(entries,end,'end');
+        }
+      }else{
+        getRevenuePerDateFilter(entries,end,'end');
       }
-      getRevenuePerDateFilter(filterListDataEnd,end,'end')
-    }else{
-      getRevenuePerDateFilter(entries,end,'end');
-    }
+    });
+
   }//endFunction
 
 

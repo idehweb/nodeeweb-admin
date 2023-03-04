@@ -131,7 +131,6 @@ const SubmitCustomerStatus = (props) => {
     let jso = {
       description: theData.description,
       status: theData.status
-
     };
     console.log("jso", jso);
 

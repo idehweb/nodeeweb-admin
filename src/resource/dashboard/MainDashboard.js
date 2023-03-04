@@ -285,9 +285,8 @@ const MainDashboard = () => {
       <div style={styles.flex} className={"flex-wrapp d-block"}>
         <div style={styles.leftCol} className={"leftCol"}>
           <div className={"dwfghrtjy"}>
-            {/*<NewCustomers/>*/}
             <OrderChart title={'orders'} model={'order'}/>
-            {/*<CustomerChart title={'customers'} model={'custome'}/>*/}
+            {/*<CustomerChart title={'customers'} model={'customer'}/>*/}
             <EntryFormChart title={'entryForm'} model={'entry'}/>
             <ProductOrdersTable title={'topProductOrders'} model={'order'}/>
 
