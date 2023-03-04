@@ -1,7 +1,7 @@
 import Welcome from "@/components/dashboard/Welcome";
 import NewCustomers from "@/components/dashboard/NewCustomers";
 import NotifChart from "@/components/dashboard/NotifChart";
-import OrderChart from "@/components/dashboard/OrderChart";
+
 // import Spacer from '@/dashboard/Spacer';
 // import Col from '@mui/material';
 import React, { useState } from "react";
@@ -11,7 +11,8 @@ import { BASE_URL } from "@/functions/API";
 import CustomerChart from "#c/components/dashboard/CustomerChart";
 import ProductOrdersTable from "#c/components/dashboard/ProductOrdersTable";
 import EntryFormChart from "#c/components/dashboard/EntryFormChart";
-
+import OrderChartDemo from "#c/components/dashboard/OrderChartDemo";
+import OrderChart from "#c/components/dashboard/OrderChart";
 
 const Spacer = () => <span style={{ width: "1em" }}/>;
 const VerticalSpacer = () => <span style={{ height: "1em" }}/>;
@@ -286,9 +287,10 @@ const MainDashboard = () => {
         <div style={styles.leftCol} className={"leftCol"}>
           <div className={"dwfghrtjy"}>
             <OrderChart title={'orders'} model={'order'}/>
+            {/*<OrderChartDemo title={'orders'} model={'order'}/>*/}
             {/*<CustomerChart title={'customers'} model={'customer'}/>*/}
-            <EntryFormChart title={'entryForm'} model={'entry'}/>
-            <ProductOrdersTable title={'topProductOrders'} model={'order'}/>
+            {/*<EntryFormChart title={'entryForm'} model={'entry'}/>*/}
+            {/*<ProductOrdersTable title={'topProductOrders'} model={'order'}/>*/}
 
           </div>
         </div>

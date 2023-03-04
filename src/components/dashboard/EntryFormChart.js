@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { dateFormat,jToM,getDays } from "@/functions";
 import EntryFormChartFilters from "#c/components/dashboard/EntryFormChartFilters";
 import API from "#c/functions/API";
+import { Block } from 'notiflix/build/notiflix-block-aio';
 
 
 const aMonthAgo = subDays(new Date(), 30);
@@ -73,6 +74,7 @@ const EntryFormChart = (props) => {
     setFormIdFilter(formID)
     filterListData =[];
     const url = "/entry/0/1000?_order=ASC";
+    Block.circle('.'+props.model);
     API.get(url).then((res) => {
       const {data} = res;
       setTotalItems(res.headers['x-total-count']);
@@ -87,6 +89,7 @@ const EntryFormChart = (props) => {
           })
         }
         setForms(getRevenuePerDay(filterListData));
+        Block.remove('.'+props.model);
       }
     });
   }
@@ -200,6 +203,7 @@ const EntryFormChart = (props) => {
     const DaysLenght = getDays(start);
     setDefaultDays(DaysLenght.length)
     const url = "/entry/0/40000?date_gte="+ jToM(dateFormatter(start)) + '&_order=ASC';
+    Block.circle('.'+props.model);
     API.get(url).then((res) => {
       const {data} = res;
       setTotalItems(res.headers['x-total-count']);
@@ -211,6 +215,7 @@ const EntryFormChart = (props) => {
               }
             })
             getRevenuePerDateFilter(filterListDataStart,start,'start',DaysLenght.length);
+          Block.remove('.'+props.model);
         }
       }
     });
@@ -221,6 +226,7 @@ const EntryFormChart = (props) => {
     const DaysLenght = getDays(startDateFilter,end);
     setDefaultDays(DaysLenght.length)
     const url = "/entry/0/10000?date_gte="+ jToM(dateFormatter(startDateFilter)) +'&date_lte='+ jToM(dateFormatter(end)) + '&_order=ASC';
+    Block.circle('.'+props.model);
     API.get(url).then((res) => {
       const {data} = res;
       setTotalItems(res.headers['x-total-count']);
@@ -234,6 +240,7 @@ const EntryFormChart = (props) => {
             })
           }
           getRevenuePerDateFilter(filterListDataEnd,end,'end',DaysLenght.length)
+          Block.remove('.'+props.model);
         }
       }
     });
@@ -242,63 +249,66 @@ const EntryFormChart = (props) => {
 
 
   return (
-    <Card className={"width1000"} style={{marginTop:'20px'}}>
-      <CardHeader title={translate(props.title)}/>
-      <EntryFormChartFilters handleChangeForm={handleChangeFormFilter} handlerStart={startFunction} handlerEnd={endFunction}  model={'form'}/>
-      <CardContent>
-        <div style={{ height: 300 }} className={"entry-chart"}>
-          {
-            forms.length > 0 ? (
-              <React.Fragment>
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={forms} width={1000}>
+    <section  className={props.model}>
+      <Card className={"width1000"} style={{marginTop:'20px'}}>
 
-                    <CartesianGrid strokeDasharray="3 3"/>
-                    <XAxis
-                      name="date"
-                      dataKey="date"
-                      // label={'روز'}
-                      // type="number"
-                      // scale="time"
-                      // domain={[
-                      //   addDays(aMonthAgo, 1).getTime(),
-                      //   new Date().getTime(),
-                      // ]}
-                      tickFormatter={dateFormatter}
-                    />
-                    <YAxis/>
-                    <Tooltip
-                      cursor={{ strokeDasharray: "10 10" }}
-                      formatter={(value, name, props) => {
-                        let { payload } = props;
-                        let { date } = payload;
-                        if (value)
-                          return <div>
-                            <div>{dateFormatter(date)}</div>
-                            <div>{value + " عدد" }</div>
-                          </div>;
-                        else
-                          return "0";
-                      }}
-                      labelFormatter={(label) => {
-                        return dateFormatter(label);
-                      }}
-                    />
-                    <Legend/>
-                    <Line type="monotone" dataKey={("total")} label={translate("total")} stroke="#8884d8"  strokeWidth={2}/>
-                    {/*<Line type="monotone" dataKey={("total")} label={translate("total")} stroke="#8884d8"  strokeWidth={2}/>*/}
-                    {/*<Line type="monotone" dataKey={("complete")} label={translate("pos.OrderStatus.complete")} stroke="#31bd58"  strokeWidth={2}/>*/}
-                    {/*<Line type="monotone" dataKey={("paid")} label={translate("pos.OrderStatus.paid")} stroke="#1875d2"  strokeWidth={2}/>*/}
-                  </LineChart>
-                </ResponsiveContainer>
-                <p className="notes" style={{textAlign:'center'}}>Total Items : {totalItems > 0 && totalItems}</p>
-              </React.Fragment>
-            ):('لطفا فرم مورد نظر را انتخاب نمایید')
-          }
+        <CardHeader title={translate(props.title)}/>
+        <EntryFormChartFilters handleChangeForm={handleChangeFormFilter} handlerStart={startFunction} handlerEnd={endFunction}  model={'form'}/>
+        <CardContent >
+          <div style={{ height: 300 }} className={"entry-chart"}>
+            {
+              forms.length > 0 ? (
+                <React.Fragment>
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={forms} width={1000}>
 
-        </div>
-      </CardContent>
-    </Card>
+                      <CartesianGrid strokeDasharray="3 3"/>
+                      <XAxis
+                        name="date"
+                        dataKey="date"
+                        // label={'روز'}
+                        // type="number"
+                        // scale="time"
+                        // domain={[
+                        //   addDays(aMonthAgo, 1).getTime(),
+                        //   new Date().getTime(),
+                        // ]}
+                        tickFormatter={dateFormatter}
+                      />
+                      <YAxis/>
+                      <Tooltip
+                        cursor={{ strokeDasharray: "10 10" }}
+                        formatter={(value, name, props) => {
+                          let { payload } = props;
+                          let { date } = payload;
+                          if (value)
+                            return <div>
+                              <div>{dateFormatter(date)}</div>
+                              <div>{value + " عدد" }</div>
+                            </div>;
+                          else
+                            return "0";
+                        }}
+                        labelFormatter={(label) => {
+                          return dateFormatter(label);
+                        }}
+                      />
+                      <Legend/>
+                      <Line type="monotone" dataKey={("total")} label={translate("total")} stroke="#8884d8"  strokeWidth={2}/>
+                      {/*<Line type="monotone" dataKey={("total")} label={translate("total")} stroke="#8884d8"  strokeWidth={2}/>*/}
+                      {/*<Line type="monotone" dataKey={("complete")} label={translate("pos.OrderStatus.complete")} stroke="#31bd58"  strokeWidth={2}/>*/}
+                      {/*<Line type="monotone" dataKey={("paid")} label={translate("pos.OrderStatus.paid")} stroke="#1875d2"  strokeWidth={2}/>*/}
+                    </LineChart>
+                  </ResponsiveContainer>
+                  <p className="notes" style={{textAlign:'center'}}>Total Items : {totalItems > 0 && totalItems}</p>
+                </React.Fragment>
+              ):('لطفا فرم مورد نظر را انتخاب نمایید')
+            }
+
+          </div>
+        </CardContent>
+      </Card>
+    </section>
 
   );
 };

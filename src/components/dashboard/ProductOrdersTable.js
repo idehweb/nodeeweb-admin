@@ -10,14 +10,16 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import CircularProgress from '@mui/material/CircularProgress';
+import { Block } from 'notiflix/build/notiflix-block-aio';
 const ProductOrdersTable = (props) => {
   const translate = useTranslate();
   const [orders, setOrders] = React.useState([]);
   let resultProducts = [];
   const getData = async () => {
+    Block.circle('.'+props.model);
     await API.get("/order/0/1000?_order=DESC").then(({ data = {} }) => {
             setOrders(data)
+            Block.remove('.'+props.model);
           });
   };
   if(orders.length > 0) {
@@ -59,7 +61,7 @@ const ProductOrdersTable = (props) => {
   }, []);
   return (
     <Card className={"width1000"} style={{marginTop:'20px'}}>
-      <CardHeader title={translate(props.title)}/>{resultProducts.length <= 0 && (<CircularProgress/>)}
+      <CardHeader title={translate(props.title)}/>
       <CardContent>
         <div style={{ height: "auto"}} className={"order-chart"}>
           <TableContainer component={Paper}>
