@@ -49,8 +49,8 @@ import { RichTextInput } from "ra-input-rich-text";
 let combs = [];
 
 let valuess = { "photos": [], "files": [], thumbnail: "", combinations: [] };
-let _The_ID = null;
-console.log("_The_ID", _The_ID);
+
+
 
 function setPhotos(values) {
 
@@ -331,16 +331,13 @@ const CustomToolbar = props => {
     </Toolbar>
   );
 };
-
 const Form = ({ children, ...props }) => {
-  console.clear();
-  // console.log("vprops", props);
+  let _The_ID = null;
   const { record } = props;
-  // if (!record) return null;
   const translate = useTranslate();
   const notify = useNotify();
+  console.log('newProooooooooooopssssss',props);
   if (record && record._id) {
-    console.log("_id set");
     _The_ID = record._id;
   }
   if (record && record.photos) {
@@ -352,48 +349,27 @@ const Form = ({ children, ...props }) => {
   // const {reset} = useFormContext();
   const redirect = useRedirect();
   const transform = (data, { previousData }) => {
-    console.log("transform={transform}", data, { previousData });
-
     return ({
       ...data
       // firstCategory: "61d58e37d931414fd78c7fb7"
     });
   };
-  // const notify = useNotify();
-  // const {reset} = useFormContext();
-  //
-  console.log("_The_ID", _The_ID);
 
   function save(values) {
-    // console.clear();
-    // let values = record;
-    console.log("save function ()...");
-    // const redirect = useRedirect();
-
     if (valuess.firstCategory) {
-      // console.log('let us set firstCategory');
       values.firstCategory = valuess.firstCategory;
-
     }
     if (valuess.secondCategory) {
-      // console.log('let us set secondCategory');
-
       values.secondCategory = valuess.secondCategory;
-
     }
     if (valuess.thirdCategory) {
-      // console.log('let us set thirdCategory');
-
       values.thirdCategory = valuess.thirdCategory;
-
     }
     if (valuess.thumbnail) {
       values.thumbnail = valuess.thumbnail;
-
     }
     if (valuess.photos) {
       values.photos = valuess.photos;
-      // valuess['photos']
     }
     // if (valuess.combinations) {
     //   values.combinations = valuess.combinations;
@@ -442,17 +418,10 @@ const Form = ({ children, ...props }) => {
       }
       API.post("/product/", JSON.stringify({ ...values }))
         .then(({ data = {} }) => {
-          // showNotification(translate('product.created'));
-          // console.clear()
-          console.log("data", data);
           if (data._id) {
-            _The_ID = data._id;
-            // window.location.href = "/#/product/" + _The_ID;
-            // window.location.reload();
+            _The_ID = '';
+            console.log('poooooooooooostDoiIt',_The_ID);
             redirect('/product/'+data._id);
-
-            // values = [];
-            // valuess = [];
           }
         })
         .catch((err) => {
@@ -471,9 +440,8 @@ const Form = ({ children, ...props }) => {
   });
   console.log(ST);
   const totals = 0;
-  // toolbar={<CustomToolbar/>}
-  console.log("Form props", props);
-  console.log("_The_ID", _The_ID);
+  console.log("Form props111", props);
+  console.log("_The_ID111", _The_ID);
 
   return (
 

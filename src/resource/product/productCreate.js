@@ -4,7 +4,6 @@ import Form from "./productForm";
 
 const create = (props) => {
     // const createControllerProps = useCreateController();
-
     return (
         <Create {...props}>
             <Form>

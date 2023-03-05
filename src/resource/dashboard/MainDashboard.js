@@ -1,13 +1,8 @@
-import Welcome from "@/components/dashboard/Welcome";
-import NewCustomers from "@/components/dashboard/NewCustomers";
-import NotifChart from "@/components/dashboard/NotifChart";
-
-// import Spacer from '@/dashboard/Spacer';
-// import Col from '@mui/material';
+import Welcome from "#c/components/dashboard/Welcome";
 import React, { useState } from "react";
 import { Chart as ChartJS, Filler, Legend, LineElement, PointElement, RadialLinearScale, Tooltip } from "chart.js";
 import { useDataProvider, useTranslate } from "react-admin";
-import { BASE_URL } from "@/functions/API";
+import { BASE_URL } from "#c/functions/API";
 import CustomerChart from "#c/components/dashboard/CustomerChart";
 import ProductOrdersTable from "#c/components/dashboard/ProductOrdersTable";
 import EntryFormChart from "#c/components/dashboard/EntryFormChart";
@@ -286,8 +281,8 @@ const MainDashboard = () => {
       <div style={styles.flex} className={"flex-wrapp d-block"}>
         <div style={styles.leftCol} className={"leftCol"}>
           <div className={"dwfghrtjy"}>
-            <OrderChart title={'orders'} model={'order'}/>
-            {/*<OrderChartDemo title={'orders'} model={'order'}/>*/}
+            {/*<OrderChart title={'orders'} model={'order'}/>*/}
+            <OrderChartDemo title={'orders'} model={'order'}/>
             {/*<CustomerChart title={'customers'} model={'customer'}/>*/}
             <EntryFormChart title={'entryForm'} model={'entry'}/>
             <ProductOrdersTable title={'topProductOrders'} model={'order'}/>

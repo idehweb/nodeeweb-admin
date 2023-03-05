@@ -52,7 +52,9 @@ export const dateFormat = (d, f = 'YYYY/MM/DD HH:mm') => {
         return t;
     else return false;
 }
-
+export const dateFormatter = (date) => {
+  return dateFormat(new Date(date), "YYYY/MM/DD");
+};
 export const numberWithCommas = (x) => {
     if (x)
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
