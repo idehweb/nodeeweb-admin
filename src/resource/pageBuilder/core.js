@@ -38,14 +38,6 @@ import DefaultOptions from "./../../components/page-builder/DefaultOptions";
 // import {toast} from "react-toastify";
 // import store from "../functions/store";
 
-
-// let c = 0;
-const Builder = () => {
-
-};
-// const Button=()=>{
-//   return <button ></button>
-// }
 const Core = (props) => {
   // const translate = useTranslate();
 
@@ -69,11 +61,10 @@ const Core = (props) => {
   let _id = params._id || null;
   let model = params.model || "page";
   const load = (options = {}) => {
-    console.log("load ", model, _id);
+    console.log("loadload ", model, _id);
     if (_id) {
       changeThemeDataFunc().then(e => {
         dispatch(changeThemeData(e));
-
       });
       GetBuilder(model, _id).then(async r => {
         if (r) {
@@ -88,18 +79,13 @@ const Core = (props) => {
     }
   };
   const save = (options = {}) => {
-    // console.clear()
-    // console.log("store ")
-    // console.log('_id', _id, components)
+    console.log('save Input');
     SaveBuilder(model, _id, { elements: components }).then(r => {
-      console.log("r", r);
       if (r._id)
         notify(translate("saved successfully."), {
           type: "success"
         });
-      // window.location.reload();
     }).catch(f => {
-      console.log("f", f);
       notify(translate("shit!"), {
         type: "warning"
       });
@@ -327,8 +313,8 @@ const Core = (props) => {
   };
   const moveItem = (id,dest) => {
     console.log('source:',id,'destination:',dest)
+    console.log('source:source:source:',data)
     let result = _.find(components, el => el.id === id);
-console.log('result',result)
   };
 
   const addToComponents = (element, extra) => {
@@ -340,9 +326,7 @@ console.log('result',result)
       mainAddress = sourceAddress.split("_");
     }
 
-    if (mainAddress[0] == "new") {
-      // console.log('addToComponents:', {...element, id: 'component_' + c})
-      // console.log(mainAddress, theNewComponents)
+    if (mainAddress[0] === "new") {
 
       theNewComponents.push({ ...element, id: "component_" + generateID() });
       setC(c + 1);
@@ -483,17 +467,13 @@ console.log('result',result)
 
   };
 
-  console.log("componentForSetting", componentForSetting);
-  // console.log('DefaultOptions', DefaultOptions)
-  console.log("components", components);
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.KNIGHT,
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging()
     })
   }));
-  const [{ isOver, canDrop }, drop] = useDrop(
-    {
+  const [{ isOver, canDrop }, drop] = useDrop({
       accept: ItemTypes.KNIGHT,
       drop: () => ({name:'some name'}),
       // canDrop: () => canMoveKnight(x, y),
@@ -504,8 +484,7 @@ console.log('result',result)
     })
   return (
     <div className={"nodeeweb-page-builder-wrapper " + translate("direction")}>
-        <div id="nodeeweb-page-builder"
-             style={{ height: "100vh", width: "100vw !important", opacity: isDragging ? 0.5 : 1 }}>
+        <div id="nodeeweb-page-builder" style={{ height: "100vh", width: "100vw !important", opacity: isDragging ? 0.5 : 1 }}>
           {components && components.map((component, index) => {
             if (!component) {
               return <></>;
@@ -518,7 +497,6 @@ console.log('result',result)
               moveItem={moveItem}
               component={component}
               deleteItem={(e) => {
-                // e.preventDefault();
                 console.log("delete Item", e);
                 deleteItem(e || component.id);
               }}
@@ -538,7 +516,6 @@ console.log('result',result)
 
           <div ref={drop} className={"add-component element "+(isOver ? 'hover' : '')} onClick={(e) => {
             setState({ ...state, sourceAddress: "new", excludeArray: [], optionBox: !state.optionBox });
-            console.log("create exclude...");
           }}>
 
            <AddIcon/>

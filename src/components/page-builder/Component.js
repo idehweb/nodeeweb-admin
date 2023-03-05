@@ -28,7 +28,6 @@ import { ItemTypes } from "../../functions";
 // import {SnapChatIcon} from "@/assets/index";
 
 const Component = (props) => {
-  console.log("alo",props);
   let {
     index,
     component,
@@ -102,8 +101,7 @@ const Component = (props) => {
 
     // }
   };
-  const [{ isOver, canDrop }, drop] = useDrop(
-    {
+  const [{ isOver, canDrop }, drop] = useDrop({
       accept: ItemTypes.KNIGHT,
       drop: (item, monitor) => {
         // console.log("item:", item, "monitor:", monitor.getItem());
@@ -123,6 +121,7 @@ const Component = (props) => {
     item: { id: component.id },
     end: (item, monitor) => {
       let res = monitor.getDropResult();
+      console.log('Reeeessssss',item);
       moveItem(item.id, res.id);
     },
     collect: (monitor) => {
@@ -134,8 +133,8 @@ const Component = (props) => {
   }));
   return (
     <div
-      // className={"element-wrapper"} id={component.id} ref={drag}>
-       className={"element-wrapper"} id={component.id} >
+      className={"element-wrapper"} id={component.id} ref={drag}>
+       {/*className={"element-wrapper"} id={component.id} >*/}
       {/*{component.id==enterElement && <div className={component.id==enterElement ? "active" : ''}*/}
       {/*onDragEnter={(e) => dragEnter(e, component)}*/}
       {/*>*/}
