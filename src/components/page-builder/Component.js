@@ -261,6 +261,7 @@ const Component = (props) => {
           </div>
         </div>}
       </div>}
+      {/*StartModalSetting*/}
       {componentForSetting && <div draggable={false} className={"component-set-for-setting"}>
         <div className={"csfs-a"}>
           <div className={"csfs-c"}>

@@ -8,6 +8,7 @@ import ProductOrdersTable from "#c/components/dashboard/ProductOrdersTable";
 import EntryFormChart from "#c/components/dashboard/EntryFormChart";
 import OrderChartDemo from "#c/components/dashboard/OrderChartDemo";
 import OrderChart from "#c/components/dashboard/OrderChart";
+import DragDropTest from "#c/components/dashboard/base/DragDropTest";
 
 const Spacer = () => <span style={{ width: "1em" }}/>;
 const VerticalSpacer = () => <span style={{ height: "1em" }}/>;
@@ -281,6 +282,7 @@ const MainDashboard = () => {
       <div style={styles.flex} className={"flex-wrapp d-block"}>
         <div style={styles.leftCol} className={"leftCol"}>
           <div className={"dwfghrtjy"}>
+            {/*<DragDropTest/>*/}
             {/*<OrderChart title={'orders'} model={'order'}/>*/}
             <OrderChartDemo title={'orders'} model={'order'}/>
             {/*<CustomerChart title={'customers'} model={'customer'}/>*/}

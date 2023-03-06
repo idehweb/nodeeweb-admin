@@ -33,6 +33,7 @@ import {
   savePost
 } from "./../../functions/index";
 import DefaultOptions from "./../../components/page-builder/DefaultOptions";
+import update from "immutability-helper";
 // import {useDispatch, useSelector, useStore} from 'react-redux'
 
 // import {toast} from "react-toastify";
@@ -92,54 +93,7 @@ const Core = (props) => {
     });
 
   };
-  const moveContent = (thisKey, theDestinationKey, address = 0) => {
-    // console.clear();
-    console.log("moveContent...", thisKey, theDestinationKey, address);
-    // setLoading(true);
-    if (address === 0) {
-      let tempContent = components[theDestinationKey];
-      components[theDestinationKey] = components[thisKey];
-      components[thisKey] = tempContent;
-      // components.push(element)
-      // console.log('components', components)
-      // setComponents([...components]);
-      setState({ ...state, components: components });
 
-
-    } else {
-      address = address.split("_");
-      if (address[0] === "component") {
-        address.shift();
-        let theNewComponents = components;
-        let mainAddress = address;
-        theNewComponents.forEach((comp, inde) => {
-          let the_id = "component_" + mainAddress[0];
-
-          console.log("the_id", the_id, comp.id);
-          if (!theNewComponents[inde].children) {
-            theNewComponents[inde].children = [];
-          }
-          // if (!theNewComponents[inde]['children'][mainAddress[1]]) {
-          //   theNewComponents[inde]['children'][mainAddress[1]]={};
-          // }
-          if (comp.id == the_id) {
-            console.log(inde, " ==> ", theDestinationKey, " in:", mainAddress[1]);
-            console.log(theNewComponents[inde].children[mainAddress[1]]);
-            let tempContent = theNewComponents[inde].children[mainAddress[1]][theDestinationKey];
-            console.log("tempContent", tempContent);
-            theNewComponents[inde].children[mainAddress[1]][theDestinationKey] = theNewComponents[inde].children[mainAddress[1]][thisKey];
-            theNewComponents[inde].children[mainAddress[1]][thisKey] = tempContent;
-          }
-        });
-        setState({ ...state, components: theNewComponents });
-
-        // console.log('address',address);
-      }
-    }
-    // setComponents(components);
-    // setLoading(false);
-
-  };
 
   useEffect(() => {
     // console.clear();
@@ -155,14 +109,11 @@ const Core = (props) => {
   const toggleOptionBox = (extra) => {
     setState({ ...state, optionBox: !state.optionBox, ...extra });
   };
+
+  //SaveSettingsHere
   const changeComponentSetting = (the_com, method, element) => {
     let address = "";
-    console.log("the_com #0", the_com);
-    // console.log("the_com", the_com.rules);
-    console.log("change id:", the_com.id);
-    console.log("method", method);
-    console.log("element", element);
-    console.log("components", components);
+    let tempArray = [];
     the_com["settings"][method].fields = element;
     let array = Object.keys(element);
     console.log("array", array);
@@ -170,69 +121,52 @@ const Core = (props) => {
     if (the_com && the_com.settings && the_com.settings.general && the_com.settings.general.rules) {
 
       the_com.settings.general.rules = the_com.settings.general.rules.filter((rule, index) => {
-        return array.indexOf(rule.name) != -1;
+        return array.indexOf(rule.name) !== -1;
       });
       the_com.settings.general.rules.forEach((item, i) => {
         the_com.settings.general.rules[i].value = element[item];
       });
       console.log("the_com.settings.general.rules", the_com.settings.general.rules);
     }
-    let tempArray = [];
+
+
     components.forEach((comp, j) => {
-      console.log("#j:", j);
       if (the_com.id === comp.id) {
-        console.log("we found it in parent route... the_com.id:", the_com.id, " comp.id:", comp.id);
         tempArray.push(the_com);
       } else {
-        console.log("maybe it is in row " + j + "...");
-
         if (comp.children) {
-
           comp.children.forEach((c, x) => {
-            console.log("check level " + j + " , " + x + "...");
-            console.log("the_com.id:", the_com.id, "c.id", c.id);
             if (the_com.id === c.id) {
-              console.log("it is in level " + j + " , " + x + "...", comp.children[x]);
-              console.log("update comp.children[" + x + "]");
               comp.children[x] = the_com;
-
               address = [j, x];
             } else {
-              console.log("comp.children[" + x + "] should be same");
               comp.children[x] = comp.children[x];
               if (comp.children[x].children) {
                 comp.children[x].children.forEach((cc, xx) => {
                   if (the_com.id === cc.id) {
-                    console.log("we found it here");
-
-                    console.log("it is in level " + j + " , " + x + " , " + xx + " ...", comp.children[x].children);
-                    console.log("update comp.children[" + x + "].children[" + xx + "]", comp.children[x].children);
                     comp.children[x].children[xx] = the_com;
-                    //
                     address = [j, x, xx];
                   }
-
                 });
-
               }
-
             }
-            // console.log('c', c)
             if (the_com.id === c.id) {
-
-              // console.log('it is in level ' + h + ' , ' + x + '...')
               address = [j];
             }
           });
 
         }
-        console.log("comp", address);
         tempArray.push(comp);
       }
     });
+
     console.log("save components:", tempArray);
+    console.log("save components:", state);
+    console.log("save components:", address);
     setState({ ...state, components: tempArray });
   };
+
+
   const deleteItem = (id) => {
     // console.clear()
     let found_path = "";
@@ -311,10 +245,64 @@ const Core = (props) => {
     setState({ ...state, components: tempArray });
 
   };
+  const moveContent = (thisKey, theDestinationKey, address = 0) => {
+    // console.clear();
+    console.log("moveContent...", thisKey, theDestinationKey, address);
+    // setLoading(true);
+    if (address === 0) {
+      let tempContent = components[theDestinationKey];
+      components[theDestinationKey] = components[thisKey];
+      components[thisKey] = tempContent;
+      // components.push(element)
+      // console.log('components', components)
+      // setComponents([...components]);
+      setState({ ...state, components: components });
+
+
+    } else {
+      address = address.split("_");
+      if (address[0] === "component") {
+        address.shift();
+        let theNewComponents = components;
+        let mainAddress = address;
+        theNewComponents.forEach((comp, inde) => {
+          let the_id = "component_" + mainAddress[0];
+
+          console.log("the_id", the_id, comp.id);
+          if (!theNewComponents[inde].children) {
+            theNewComponents[inde].children = [];
+          }
+          // if (!theNewComponents[inde]['children'][mainAddress[1]]) {
+          //   theNewComponents[inde]['children'][mainAddress[1]]={};
+          // }
+          if (comp.id === the_id) {
+            console.log(inde, " ==> ", theDestinationKey, " in:", mainAddress[1]);
+            console.log(theNewComponents[inde].children[mainAddress[1]]);
+            let tempContent = theNewComponents[inde].children[mainAddress[1]][theDestinationKey];
+            console.log("tempContent", tempContent);
+            theNewComponents[inde].children[mainAddress[1]][theDestinationKey] = theNewComponents[inde].children[mainAddress[1]][thisKey];
+            theNewComponents[inde].children[mainAddress[1]][thisKey] = tempContent;
+          }
+        });
+        setState({ ...state, components: theNewComponents });
+
+        // console.log('address',address);
+      }
+    }
+    // setComponents(components);
+    // setLoading(false);
+
+  };
   const moveItem = (id,dest) => {
     console.log('source:',id,'destination:',dest)
-    console.log('source:source:source:',data)
-    let result = _.find(components, el => el.id === id);
+    let result = _.find(components, el => {
+      if(el.id === id){
+        // setState({ ...state, components: components });
+      }
+    });
+
+    // console.log('source:',result)
+    // setState({ ...state, components: result });
   };
 
   const addToComponents = (element, extra) => {
@@ -406,9 +394,9 @@ const Core = (props) => {
   };
   const generateID = (tokenLen = 5) => {
 
-    var text = "";
+    let text = "";
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (var i = 0; i < tokenLen; ++i)
+    for (let i = 0; i < tokenLen; ++i)
       text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return text;
@@ -432,7 +420,7 @@ const Core = (props) => {
         if (!theNewComponents[inde].children) {
           theNewComponents[inde].children = [];
         }
-        if ((comp.id == the_id) || (inde == mainAddress[0])) {
+        if ((comp.id === the_id) || (inde === mainAddress[0])) {
           console.log("theNewComponents[inde]", theNewComponents[inde]);
           //make changes here
           if (mainAddress[1]) {
@@ -471,6 +459,7 @@ const Core = (props) => {
     type: ItemTypes.KNIGHT,
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging()
+      // isDragging: monitor.isDragging()
     })
   }));
   const [{ isOver, canDrop }, drop] = useDrop({
@@ -506,6 +495,8 @@ const Core = (props) => {
               //   setState({...state, sourceAddress: e});
               //
               // }}
+              // changeComponentSetting={changeComponentSetting}
+
               changeComponentSetting={(e, j, d) => {
                 console.log("changeComponentSetting", e, j, d);
                 changeComponentSetting(e, j, d);

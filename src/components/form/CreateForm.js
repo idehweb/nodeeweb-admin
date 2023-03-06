@@ -117,51 +117,51 @@ function CreateForm(props) {
 
       </Col>;
     }
-    if (type == "price") {
+    if (type === "price") {
       // console.log('string')
 
       return <FieldPrice field={field} removeField={(e) => removeField(e)}/>;
     }
-    if (type == "json") {
+    if (type === "json") {
       // console.log('string')
 
       return <FieldJson field={field}/>;
     }
-    if (type == "object") {
+    if (type === "object") {
       // return  .stringify(field)
       return <FieldObject field={field} removeField={(e) => removeField(e)}/>;
     }
-    if (type == "array") {
+    if (type === "array") {
       return <FieldArray field={field}/>;
 
     }
-    if (type == "checkbox") {
+    if (type === "checkbox") {
       // console.clear()
       // console.log(field)
       return <FieldCheckbox field={field}/>;
 
     }
-    if (type == "checkboxes") {
+    if (type === "checkboxes") {
       // console.clear()
       // console.log(field)
       return <FieldCheckboxes field={field}/>;
 
     }
-    if (type == "radio") {
+    if (type === "radio") {
       // console.clear()
       // console.log(field)
       return <FieldCheckbox field={field}/>;
 
     }
-    if (type == "select") {
+    if (type === "select") {
       return <FieldSelect field={field}/>;
 
     }
-    if (type == "server") {
+    if (type === "server") {
       return <FieldServer field={field}/>;
 
     }
-    if (type == "number") {
+    if (type === "number") {
       return <FieldNumber field={field} removeField={(e) => removeField(e)}/>;
 
       // return <Col
@@ -178,7 +178,7 @@ function CreateForm(props) {
       //   />
       // </Col>
     }
-    if (type == "textarea") {
+    if (type === "textarea") {
       return <Col
         sm={size ? size.sm : ""}
         lg={size ? size.lg : ""}
@@ -195,10 +195,10 @@ function CreateForm(props) {
         />
       </Col>;
     }
-    if (type == "boolean") {
+    if (type === "boolean") {
       return <FieldBoolean field={field} removeField={(e) => removeField(e)}/>;
     }
-    if (type == "image") {
+    if (type === "image") {
       // console.log('image')
       return <Col
         sm={size ? size.sm : ""}
@@ -314,8 +314,9 @@ function CreateForm(props) {
   };
 const [optionInputs,setOptionInputs] = useState(null)
   const onSubmit = async v => {
+    let values = [];
     if (props.onSubmit) {
-      let values = v;
+       values = v;
       if (theRules && theRules.fields)
         theRules.fields.forEach((item, i) => {
           console.log("irem", item);
