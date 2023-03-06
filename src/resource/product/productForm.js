@@ -332,13 +332,14 @@ const CustomToolbar = props => {
   );
 };
 const Form = ({ children, ...props }) => {
-  const [_The_ID,set_The_ID] = React.useState('')
+   let _The_ID = '';
   const { record } = props;
+
   const translate = useTranslate();
   const notify = useNotify();
   console.log('newProooooooooooopssssss',props);
   if (record && record._id) {
-    set_The_ID(record._id);
+    _The_ID = record._id;
   }
   if (record && record.photos) {
     valuess["photos"] = record.photos;
@@ -384,12 +385,11 @@ const Form = ({ children, ...props }) => {
         delete values.category;
         delete values.catChoosed;
         delete values.files;
-        console.log("last values (edit): ", values);
 
         API.put("/product/" + _The_ID, JSON.stringify({ ...values }))
           .then(({ data = {} }) => {
             notify("saved");
-            if (data.success) {
+            if (data) {
               values = [];
               valuess = [];
             }
@@ -412,7 +412,7 @@ const Form = ({ children, ...props }) => {
         API.post("/product/", JSON.stringify({ ...values }))
           .then(({ data = {} }) => {
             if (data) {
-              set_The_ID('');
+              _The_ID = '';
               redirect('/product');
             }
           })
