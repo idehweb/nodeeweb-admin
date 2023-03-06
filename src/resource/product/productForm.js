@@ -332,13 +332,13 @@ const CustomToolbar = props => {
   );
 };
 const Form = ({ children, ...props }) => {
-  let _The_ID = null;
+  const [_The_ID,set_The_ID] = React.useState('')
   const { record } = props;
   const translate = useTranslate();
   const notify = useNotify();
   console.log('newProooooooooooopssssss',props);
   if (record && record._id) {
-    _The_ID = record._id;
+    set_The_ID(record._id);
   }
   if (record && record.photos) {
     valuess["photos"] = record.photos;
@@ -356,6 +356,7 @@ const Form = ({ children, ...props }) => {
   };
 
   function save(values) {
+    console.log("valuesvaluesvaluesvalues ", valuess);
     if (valuess.firstCategory) {
       values.firstCategory = valuess.firstCategory;
     }
@@ -376,60 +377,50 @@ const Form = ({ children, ...props }) => {
     //   // valuess['photos']
     // }
 
-    console.log("values after edit: ", values);
-    // return;
-    if (_The_ID) {
-      // delete values.photos;
-      delete values.questions;
-      delete values.nextproduct;
-      delete values.category;
-      delete values.catChoosed;
-      delete values.files;
-      console.log("last values (edit): ", values);
+      if (_The_ID.length > 0) {
+        // delete values.photos;
+        delete values.questions;
+        delete values.nextproduct;
+        delete values.category;
+        delete values.catChoosed;
+        delete values.files;
+        console.log("last values (edit): ", values);
 
-      API.put("/product/" + _The_ID, JSON.stringify({ ...values }))
-        .then(({ data = {} }) => {
-          // const refresh = useRefresh();
-          // refresh();
-          // alert('it is ok');
-          notify("saved");
-          // redirect(false);
-          // showNotification(translate('product.updated'));
-          // window.location.reload();
-          if (data.success) {
-            values = [];
-            valuess = [];
-          }
-        })
-        .catch((err) => {
-          console.log("error", err);
-        });
+        API.put("/product/" + _The_ID, JSON.stringify({ ...values }))
+          .then(({ data = {} }) => {
+            notify("saved");
+            if (data.success) {
+              values = [];
+              valuess = [];
+            }
+          })
+          .catch((err) => {
+            console.log("error", err);
+          });
+      }
+      else {
+        if (valuess.photos) {
+          values.photos = valuess.photos;
+        }
+        if (valuess.files) {
+          values.files = valuess.files;
+        }
+
+        if (!values.status) {
+          values.status = 'draft';
+        }
+        API.post("/product/", JSON.stringify({ ...values }))
+          .then(({ data = {} }) => {
+            if (data) {
+              set_The_ID('');
+              redirect('/product');
+            }
+          })
+          .catch((err) => {
+            console.log("error", err);
+          });
+      }
     }
-    else {
-      if (valuess.photos) {
-        values.photos = valuess.photos;
-      }
-      if (valuess.files) {
-        values.files = valuess.files;
-      }
-
-      if (!valuess.status) {
-        values.status = 'draft';
-      }
-      API.post("/product/", JSON.stringify({ ...values }))
-        .then(({ data = {} }) => {
-          if (data._id) {
-            _The_ID = '';
-            console.log('poooooooooooostDoiIt',_The_ID);
-            redirect('/product/'+data._id);
-          }
-        })
-        .catch((err) => {
-          console.log("error", err);
-        });
-    }
-  }
-
   let ST = StockStatus() || [];
   ST.map(item => {
     item.id = item.value;
