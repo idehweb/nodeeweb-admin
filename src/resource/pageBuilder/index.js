@@ -4,7 +4,6 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 const CreatePage = (props) => {
   // const translate = useTranslate();
-
   return (
     <DndProvider backend={HTML5Backend}>
       <Core {...props}/>

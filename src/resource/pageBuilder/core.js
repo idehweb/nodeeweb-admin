@@ -62,7 +62,7 @@ const Core = (props) => {
   let _id = params._id || null;
   let model = params.model || "page";
   const load = (options = {}) => {
-    console.log("loadload ", model, _id);
+
     if (_id) {
       changeThemeDataFunc().then(e => {
         dispatch(changeThemeData(e));
@@ -93,7 +93,6 @@ const Core = (props) => {
     });
 
   };
-
 
   useEffect(() => {
     // console.clear();
@@ -245,9 +244,11 @@ const Core = (props) => {
     setState({ ...state, components: tempArray });
 
   };
+
+
   const moveContent = (thisKey, theDestinationKey, address = 0) => {
     // console.clear();
-    console.log("moveContent...", thisKey, theDestinationKey, address);
+    console.log("moveContent.....................", thisKey, theDestinationKey, address);
     // setLoading(true);
     if (address === 0) {
       let tempContent = components[theDestinationKey];
@@ -295,13 +296,64 @@ const Core = (props) => {
   };
   const moveItem = (id,dest) => {
     console.log('source:',id,'destination:',dest)
-    let result = _.find(components, el => {
-      if(el.id === id){
-        // setState({ ...state, components: components });
-      }
-    });
+    console.log('Compoinentsssssssssss',components)
+    let moveCurrentItem = [];
+    let pushCurrentItem = [];
 
-    // console.log('source:',result)
+    // let destination = _(components)
+    //   .thru(function(coll) {
+    //     return _.union(coll, _.map(coll, 'children') || []);
+    //   })
+    //   .flatten()
+    //   .find({ id: dest });
+    // let current = _(components)
+    //   .thru(function(coll) {
+    //     return _.union(coll, _.map(coll, 'children') || []);
+    //   })
+    //   .flatten()
+    //   .find({ id: id });
+    //
+
+    components.forEach((component)=>{
+
+      if(component.children){
+        component.children.forEach((child)=>{
+          if(child.children){
+            child.children.forEach((subChild)=>{
+
+            })
+          }
+        })
+      }
+    })
+
+
+
+
+    // _.find(components, el => {
+    //   if(el.id === id){
+    //     moveCurrentItem.push(el);
+    //   }
+    //   if(el.id === dest){
+    //     pushCurrentItem.push(el);
+    //   }else{
+    //     _.find(el.children,ch=>{
+    //       if(ch.id === dest){
+    //         pushCurrentItem.push(ch)
+    //       }else{
+    //         _.find(ch.children,chch=>{
+    //           if(chch.id === dest){
+    //             pushCurrentItem.push(chch)
+    //           }
+    //         })
+    //       }
+    //     })
+    //   }
+
+    // });
+
+    console.log('moveCurrentItem:',current)
+    console.log('pushCurrentItem:',destination)
     // setState({ ...state, components: result });
   };
 
@@ -512,13 +564,11 @@ const Core = (props) => {
            <AddIcon/>
           </div>
         </div>
-      <OptionBox {...props} defaultOptions={DefaultOptions} onClose={(e) => {
+        <OptionBox {...props} defaultOptions={DefaultOptions} onClose={(e) => {
         console.log("setExcludeArray");
         toggleOptionBox();
       }} exclude={excludeArray} open={state.optionBox} addToComponents={addToComponents}/>
-
-
-      <div className={"nodeeweb-fixed-bottom-bar"}>
+        <div className={"nodeeweb-fixed-bottom-bar"}>
         <div className={"npb-d-flex "}>
           <label
             style={{ direction: "ltr" }}>{data && (typeof data.title == "object") ? data.title[lan] : data.title}</label>

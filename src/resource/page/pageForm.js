@@ -307,6 +307,10 @@ const Form = ({children, ...props}) => {
 
             <TextInput source="slug" fullWidth label={translate("resources.page.slug")}
                        className={"width100 mb-20 ltr"}/>
+            <TextInput fullWidth source={"metatitle." + translate("lan")}
+                       label={translate("resources.product.metatitle")}/>
+            <TextInput multiline fullWidth source={"metadescription." + translate("lan")}
+                       label={translate("resources.product.metadescription")}/>
 
           <TextInput source="path" fullWidth label={translate("resources.page.path")}
                        className={"width100 mb-20 ltr"}/>
