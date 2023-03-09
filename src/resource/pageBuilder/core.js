@@ -329,54 +329,23 @@ const Core = (props) => {
           }
         })
       }
+    })
+    completeComponent.forEach((component)=>{
       if(component.id === dest){
         pushCurrentItem.push(component)
-        pushCurrentItem.forEach(push=>{
-          if(push.children.length > 0){
-            // console.log('push.children',push,moveCurrentItem[0]);
-            push.children.push(moveCurrentItem[0])
-          }else{
-            Object.assign(push.children,moveCurrentItem)
-          }
-          completeComponent.splice(completeComponent.findIndex(a => a.id === id) , 1)
-        })
       }else if(component.children){
         component.children.forEach((child)=>{
           if(child.id === dest){
             pushCurrentItem.push(child)
-            pushCurrentItem.forEach(push=>{
-              if(push.children){
-                Object.assign(push.children,moveCurrentItem)
-              }else{
-                Object.assign(push,{children:moveCurrentItem})
-              }
-              completeComponent.splice(completeComponent.findIndex(a => a.id === id) , 1)
-            })
           }else if(child.children){
               child.children.forEach((subChild)=>{
                 if(subChild.id === dest){
                   pushCurrentItem.push(subChild)
-                  pushCurrentItem.forEach(push=>{
-                    if(push.children){
-                      Object.assign(push.children,moveCurrentItem)
-                    }else{
-                      Object.assign(push,{children:moveCurrentItem})
-                    }
-                    completeComponent.splice(completeComponent.findIndex(a => a.id === id) , 1)
-                  })
                 }
               })
           }
-          // if(child.children){
-          //   child.children.forEach((subChild)=>{
-          //
-          //   })
-          // }
         })
       }
-      // if(component.children){
-      //
-      // }
     })
     // _.find(components, el => {
     //   if(el.id === id){
@@ -399,10 +368,25 @@ const Core = (props) => {
     //   }
 
     // });
+if(pushCurrentItem){
+  console.log('puuuush',pushCurrentItem);
+  pushCurrentItem.forEach(push=>{
+    if(push.hasOwnProperty('children')){
+      // Object.assign(push.children,moveCurrentItem)
+      // Object.push(push.children,moveCurrentItem)
+      push.children.push(moveCurrentItem[0]);
+      completeComponent.splice(completeComponent.findIndex(a => a.id === id) , 1)
+    }else{
+      Object.assign(push,{children:moveCurrentItem})
+      completeComponent.splice(completeComponent.findIndex(a => a.id === id) , 1)
+    }
+  })
 
+}
     console.log('moveCurrentItem:',moveCurrentItem)
     console.log('pushCurrentItem:',pushCurrentItem)
     console.log('completeComponent:',completeComponent)
+
     setState({ ...state, components: completeComponent });
   };
 
