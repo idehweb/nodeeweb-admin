@@ -34,7 +34,6 @@ function CreateForm(props) {
   useEffect(() => {
 
 
-    console.log("salammmm",props);
     // changeThemeData();
     if (!theRules || (theRules && !theRules.fields) || (theRules.fields && !theRules.fields[0])) {
       Object.keys(fields).forEach((fi) => {

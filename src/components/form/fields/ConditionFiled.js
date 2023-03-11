@@ -155,7 +155,7 @@ function ConditionFiled(props) {
 
 
     </React.Fragment>
-    )
+  )
 }
 
 export default (ConditionFiled);

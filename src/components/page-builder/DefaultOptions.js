@@ -21,7 +21,35 @@ const DefaultOptions = [
       },
       "design": [{"name": "padding", "type": "string"}],
     }
-  }, {
+  },
+  {
+    "label": "Button",
+    "name": "button",
+    "addable": true,
+    "settings": {
+      "general": {
+        "fields": {"text": "", "action": "","float": "","borderRadius": "","fontSize":"13px","lineHeight":"1","iconImage":"","iconFont":"","iconPosition":"top","iconColor":"","fontWeight":"normal","border":"",...fields},
+        "rules": [
+          {"name": "text", "type": "string"},
+          {"name": "action", "type": "string"},
+          {"name": "float", "type": "string"},
+          {"name": "fontSize", "type": "string"},
+          {"name": "lineHeight", "type": "string"},
+          {"name": "iconImage", "type": "image"},
+          {"name": "iconFont", "type": "string"},
+          {"name": "iconColor", "type": "string"},
+          {"name": "iconPosition", "type": "string"},
+          {"name": "fontWeight", "type": "string"},
+          {"name": "borderRadius", "type": "string"},
+          {"name": "border", "type": "string"},
+
+          ...rules
+        ]
+      },
+      "design": [{"name": "padding", "type": "string"}],
+    }
+  },
+  {
     "label": "Slider",
     "name": "slider",
     "addable": true,

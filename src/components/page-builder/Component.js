@@ -125,7 +125,7 @@ const Component = (props) => {
       moveItem(item.id, res.id);
     },
     collect: (monitor) => {
-      // console.log('monitor',monitor)
+
       return ({
         isDragging: !!monitor.isDragging()
       });
@@ -262,7 +262,7 @@ const Component = (props) => {
         </div>}
       </div>}
       {/*StartModalSetting*/}
-      {componentForSetting && <div draggable={false} className={"component-set-for-setting"}>
+      {componentForSetting && <div draggable={true} className={"component-set-for-setting"} >
         <div className={"csfs-a"}>
           <div className={"csfs-c"}>
             <div className={"top-bar-settings"}>
@@ -282,7 +282,7 @@ const Component = (props) => {
                 <DeleteForeverIcon/>{("Delete")}
               </Button>
             </div>
-            <div className={"bottom-bar-settings"}>
+            <div className={"bottom-bar-settings"} >
               {/*{JSON.stringify(component.settings.general.fields)}*/}
               {component.settings && component.settings.general && <CreateForm
                 onSubmit={(e) => {

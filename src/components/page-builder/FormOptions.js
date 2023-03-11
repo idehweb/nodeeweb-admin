@@ -102,7 +102,6 @@ const FormOptions = [
           "inputClassName":"",
           "wrapperClassName":"",
           "labelClassName":"",
-          "options":"",
         },
         "rules": [
           {"name": "placeholder", "type": "string"},
@@ -116,7 +115,6 @@ const FormOptions = [
           {"name": "inputClassName", "type": "string"},
           {"name": "wrapperClassName", "type": "string"},
           {"name": "labelClassName", "type": "string"},
-          {"name": "options", "type": "string"},
 
         ]
       },
