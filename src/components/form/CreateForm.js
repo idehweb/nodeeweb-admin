@@ -318,7 +318,6 @@ const [optionInputs,setOptionInputs] = useState(null)
        values = v;
       if (theRules && theRules.fields)
         theRules.fields.forEach((item, i) => {
-          console.log("irem", item);
           if (item.type === "object" && values[item.name] instanceof Array && item.value) {
             console.log("can we fix:", item);
             let obj = {};
@@ -334,8 +333,6 @@ const [optionInputs,setOptionInputs] = useState(null)
       if(optionInputs){
         Object.assign(values, {'options':optionInputs});
       }
-
-      console.log('new VVVVVVV',values);
       props.onSubmit(values);
     }
   };

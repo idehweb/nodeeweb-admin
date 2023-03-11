@@ -10,7 +10,6 @@ const FormOptions = [
         "fields": {...fields},
         "rules": [
           ...rules
-
         ]
       },
       "design": [{"name": "padding", "type": "string"}],
@@ -21,10 +20,10 @@ const FormOptions = [
     "addable": true,
     "settings": {
       "general": {
-        "fields": {...fields},
+        "fields": {"title": "",...fields},
         "rules": [
+          {"name": "title", "type": "string"},
           ...rules
-
         ]
       },
       "design": [{"name": "padding", "type": "string"}],
