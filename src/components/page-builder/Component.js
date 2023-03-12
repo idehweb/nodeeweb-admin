@@ -132,8 +132,7 @@ const Component = (props) => {
     }
   }));
   return (
-    <div
-      className={"element-wrapper"} id={component.id} ref={drag}>
+    <div className={"element-wrapper"} id={component.id} ref={drag}>
        {/*className={"element-wrapper"} id={component.id} >*/}
       {/*{component.id==enterElement && <div className={component.id==enterElement ? "active" : ''}*/}
       {/*onDragEnter={(e) => dragEnter(e, component)}*/}
@@ -147,7 +146,7 @@ const Component = (props) => {
         //   onDrop(component);
         // }}
       >
-        <div className={" component name-" + component.name}>
+        <div className={" component name-" + component.name} >
           <div className={"npb-d-flex " + (component.addable ? "border-bottom" : "")}>
             <div style={{ direction: "ltr" }}>
               <span className={"component-address"}>{component.name + " " + (index + 1)}</span>
@@ -162,7 +161,7 @@ const Component = (props) => {
                 // }}
                 // onDragEnter={(e) => dragEnter(e, component)}
 
-                className={"component-id"} style={{ direction: "ltr" }}>{"#" + component.id}</label>
+                className={"component-id "} style={{ direction: "ltr" }}>{"#" + component.id}</label>
               {text && <label className={"component-id"} style={{ direction: "ltr" }}>{JSON.stringify(text)}</label>}
 
             </div>
@@ -190,7 +189,7 @@ const Component = (props) => {
 
         </div>
 
-        {component.addable && <div className={"add-part name-" + component.name}>
+        {component.addable && <div className={"add-part p-2 name-" + component.name}>
 
           <div className={"element-wrapper-child"}>
             {Boolean(component.children && (component.children instanceof Array)) && component.children.map((comp, jj) => {

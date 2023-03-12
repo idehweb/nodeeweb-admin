@@ -571,7 +571,6 @@ if(pushCurrentItem){
               moveItem={moveItem}
               component={component}
               deleteItem={(e) => {
-                console.log("delete Item", e);
                 deleteItem(e || component.id);
               }}
 
