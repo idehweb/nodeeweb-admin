@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import  FormOptions  from "./FormOptions";
 import CustomModal from "@/components/Modal";
 import { useDispatch, useSelector } from "react-redux";
+import ModalOptions from "#c/components/ModalOptions";
 const ListGroup = ({ children }) => {
   return <div>{children}</div>;
 };
@@ -54,25 +55,31 @@ const OptionBox = (props) => {
   }, [themeData]);
 
   return (
-
-    <CustomModal onClose={onClose} open={open} className={"width50vw sdfghyjuikol kiuytgfhjuyt modal"}
-                 title={("Choose Element")}>
-      <ListGroup flush>
-
-        {Options && Options.map((option, key) => {
-
-
-          return <ListGroupItem className="" key={key}>
-            <div className={"block clickable p-3"} onClick={(e) => {
-              addToComponents(option, { optionBox: false });
-            }}>
-              {JSON.stringify(option.label)}
-            </div>
-          </ListGroupItem>;
-        })}
-
-      </ListGroup>
-    </CustomModal>
+    <ModalOptions
+      Options={Options}
+      addToComponents={addToComponents}
+      onClose={onClose}
+      open={open}
+      className={"width50vw modal"}
+      title={("Choose Element")}/>
+    // <CustomModal onClose={onClose} open={open} className={"width50vw sdfghyjuikol kiuytgfhjuyt modal"}
+    //              title={("Choose Element")}>
+    //   <ListGroup flush>
+    //
+    //     {Options && Options.map((option, key) => {
+    //
+    //
+    //       return <ListGroupItem className="" key={key}>
+    //         <div className={"block clickable p-3"} onClick={(e) => {
+    //           addToComponents(option, { optionBox: false });
+    //         }}>
+    //           {JSON.stringify(option.label)}
+    //         </div>
+    //       </ListGroupItem>;
+    //     })}
+    //
+    //   </ListGroup>
+    // </CustomModal>
   );
 };
 export const PageServer = [
