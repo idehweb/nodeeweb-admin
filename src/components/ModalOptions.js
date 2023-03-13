@@ -67,7 +67,7 @@ export default function ModalOptions({
               </Item>
             </Grid>
           </Grid>
-          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          <Grid container rowSpacing={1}  spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
             {Options && Options.map((option, key) => {
               return <Grid item xs={2} key={key}>
                 <Item onClick={(e) => {

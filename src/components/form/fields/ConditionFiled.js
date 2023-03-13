@@ -41,9 +41,8 @@ function ConditionFiled(props) {
       ]
     ;
   }
-  console.log('bindDatabindDatabindDatabindData',bindData);
   const [optionValues, setOptionValues] = useState(bindData)
-
+  props.saveOptions(optionValues);
   let handleChange = (i, e) => {
     let newFormValues = [...optionValues];
     newFormValues[i][e.target.name] = e.target.value;
@@ -61,7 +60,6 @@ function ConditionFiled(props) {
   }
   let handleSubmit = (event) => {
     event.preventDefault();
-    console.log('lastOpitons',optionValues)
     // props.saveOptions(JSON.stringify(optionValues))
     props.saveOptions(optionValues);
   }
@@ -79,7 +77,7 @@ function ConditionFiled(props) {
       <Form>
         <Container key={'addField'}>
           <Button theme="success" size="sm" onClick={() => addFormFields()}>Add Option</Button>
-          <Button theme="info" size="sm" onClick={(e) => handleSubmit(e)}>Save</Button>
+          {/*<Button theme="info" size="sm" onClick={(e) => handleSubmit(e)}>Save</Button>*/}
           <Row>
             {optionValues.map((element, index) => (
               <Col className={"d-flex justify-content-start"}>
