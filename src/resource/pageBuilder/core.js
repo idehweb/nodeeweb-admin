@@ -391,13 +391,13 @@ if(pushCurrentItem){
   };
 
   const addToComponents = (element, extra) => {
-    console.log("addToComponent: ", element);
     console.log("inside: ", sourceAddress);
-    let theNewComponents = components,
-      mainAddress = [];
+    let theNewComponents = components,mainAddress = [];
+
     if (sourceAddress) {
       mainAddress = sourceAddress.split("_");
     }
+
 
     if (mainAddress[0] === "new") {
 
@@ -406,10 +406,9 @@ if(pushCurrentItem){
       setState({ ...state, components: theNewComponents, ...extra });
 
     } else {
+      console.log("addToComponentaddToComponent: ", theNewComponents);
       theNewComponents.forEach((compL1, indeL1) => {
         if ((compL1.id === sourceAddress)) {
-          console.clear();
-          console.log("we found it,...", compL1.id);
           if (!theNewComponents[indeL1]["children"]) {
             theNewComponents[indeL1]["children"] = [];
           }
@@ -436,11 +435,8 @@ if(pushCurrentItem){
               return;
             }
             if ((compL2.children)) {
-
               compL2.children.forEach((compL3, indeL3) => {
                 if ((compL3.id === sourceAddress)) {
-
-                  console.log("we found it here level 3...", theNewComponents[indeL1]["children"][indeL2]["children"][indeL3]);
                   if (!theNewComponents[indeL1]["children"][indeL2]["children"][indeL3]["children"]) {
                     theNewComponents[indeL1]["children"][indeL2]["children"][indeL3]["children"] = [];
                   }
@@ -454,8 +450,6 @@ if(pushCurrentItem){
                 if (compL3.children) {
                   compL3.children.forEach((compL4, indeL4) => {
                     if ((compL4.id === sourceAddress)) {
-
-                      console.log("we found it here level 4...", theNewComponents[indeL1]["children"][indeL2]["children"][indeL3]["children"][indeL4]);
                       if (!theNewComponents[indeL1]["children"][indeL2]["children"][indeL3]["children"][indeL4]["children"]) {
                         theNewComponents[indeL1]["children"][indeL2]["children"][indeL3]["children"][indeL4]["children"] = [];
                       }
@@ -465,6 +459,36 @@ if(pushCurrentItem){
                       });
                       setState({ ...state, components: theNewComponents, ...extra });
                       return;
+                    }
+                    if((compL4.children)){
+                      compL4.children.forEach((compL5,indeL5)=>{
+                        if ((compL5.id === sourceAddress)) {
+                          if (!theNewComponents[indeL1]["children"][indeL2]["children"][indeL3]["children"][indeL4]["children"][indeL5]["children"]) {
+                            theNewComponents[indeL1]["children"][indeL2]["children"][indeL3]["children"][indeL4]["children"][indeL5]["children"] = [];
+                          }
+                          theNewComponents[indeL1]["children"][indeL2]["children"][indeL3]["children"][indeL4]["children"][indeL5]["children"].push({
+                            ...element,
+                            id: "component_" + generateID()
+                          });
+                          setState({ ...state, components: theNewComponents, ...extra });
+                          return;
+                        }
+                        if((compL5.children)){
+                          compL5.children.forEach((compL6,indeL6)=>{
+                            if ((compL6.id === sourceAddress)) {
+                              if (!theNewComponents[indeL1]["children"][indeL2]["children"][indeL3]["children"][indeL4]["children"][indeL5]["children"][indeL6]["children"]) {
+                                theNewComponents[indeL1]["children"][indeL2]["children"][indeL3]["children"][indeL4]["children"][indeL5]["children"][indeL6]["children"] = [];
+                              }
+                              theNewComponents[indeL1]["children"][indeL2]["children"][indeL3]["children"][indeL4]["children"][indeL5]["children"][indeL6]["children"].push({
+                                ...element,
+                                id: "component_" + generateID()
+                              });
+                              setState({ ...state, components: theNewComponents, ...extra });
+                              return;
+                            }
+                          })
+                        }
+                      })
                     }
                   });
                 }
