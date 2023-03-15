@@ -110,7 +110,7 @@ function FieldCheckboxes({field}) {
                     name: fieldName,
                     setValue: setValue
                   }}/></>;
-                if (idx2 == 1 && (theVal[ke] && theVal[ke]['list'])) {
+                if (idx2 === 1 && (theVal[ke] && theVal[ke]['list'])) {
                   return <>
 
                     <Component key={idx2} field={{

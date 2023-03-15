@@ -135,10 +135,7 @@ function CreateForm(props) {
 
     }
     if (type === "checkbox") {
-      // console.clear()
-      // console.log(field)
       return <FieldCheckbox field={field}/>;
-
     }
     if (type === "checkboxes") {
       // console.clear()

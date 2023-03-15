@@ -8,7 +8,7 @@ import {
 } from "@/components/form/fields";
 function FieldCheckbox(props) {
   // console.clear();
-  console.log('checkbox')
+  console.log('checkboxcheckboxcheckbox',props)
   let {field, t} = props;
   let {type, kind, size, className, entity, searchbox = true, limit = 1000, name, options = [], label, placeholder, value} = field;
   let [checkboxes, setCheckBoxes] = useState(options)
