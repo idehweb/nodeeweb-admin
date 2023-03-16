@@ -167,50 +167,81 @@ const Core = (props) => {
 
 
   const deleteItem = (id) => {
-    // console.clear()
     let found_path = "";
-    console.log("deleteItem...", id);
-    console.log("components in:", components);
     let tempArray = [];
     components.forEach((comp, j) => {
       let deleteItem = false;
       if (id === comp.id) {
-        //  delete this
-        console.log("we found it...");
         deleteItem = true;
       }
       if (comp.children && !deleteItem) {
-        console.log("we need to check children...", comp.children);
         let tempChildren = [];
         comp.children.forEach((ch, j2) => {
           let deleteItem2 = false;
           if (id == ch.id) {
-            console.log("we found it in: components[" + j + "][" + j2 + "]");
-
             deleteItem2 = true;
           }
-
-
           if (ch.children && !deleteItem2) {
-            console.log("we need to check children 2...", ch.children);
             let tempChildren3 = [];
             ch.children.forEach((ch3, j3) => {
               let deleteItem3 = false;
               if (id == ch3.id) {
-                console.log("we found it in: components[" + j + "][" + j2 + "][" + j3 + "]");
-
                 deleteItem3 = true;
               }
               if (ch3.children && !deleteItem3) {
-                console.log("we need to check children 3...", ch.children);
                 let tempChildren4 = [];
                 ch3.children.forEach((ch4, j4) => {
                   let deleteItem4 = false;
                   if (id == ch4.id) {
-                    console.log("we found it in: components[" + j + "][" + j2 + "][" + j3 + "][" + j4 + "]");
-
                     deleteItem4 = true;
                   }
+                  if(ch4.children && !deleteItem4){
+                    let tempChildren5 = [];
+                    ch4.children.forEach((ch5,j5)=>{
+                      let deleteItem5 = false;
+                      if(id == ch5.id){
+                        deleteItem5 = true;
+                      }
+                      if(ch5.children && !deleteItem5){
+                        let tempChildren6 = [];
+                        ch5.children.forEach((ch6,j6)=>{
+                          let deleteItem6 = false;
+                          if(id == ch6.id){
+                            deleteItem6 = true;
+                          }
+
+
+                          if(ch6.children && !deleteItem6){
+                            let tempChildren7 = [];
+                            ch6.children.forEach((ch7,j7)=>{
+                              let deleteItem7 = false;
+                              if(id == ch7.id){
+                                deleteItem7 = true;
+                              }
+                              if(!deleteItem7){
+                                tempChildren7.push(ch7)
+                              }
+                            });
+                            ch6.children = tempChildren7;
+                          }
+
+
+
+
+                          if(!deleteItem6){
+                            tempChildren6.push(ch6)
+                          }
+                        });
+                        ch5.children = tempChildren6;
+                      }
+                      if(!deleteItem5){
+                        tempChildren5.push(ch5)
+                      }
+                    });
+                    ch4.children = tempChildren5;
+                  }
+
+
 
                   if (!deleteItem4) {
                     tempChildren4.push(ch4);
