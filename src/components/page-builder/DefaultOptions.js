@@ -2,6 +2,62 @@ import DefaultGeneral from './DefaultGeneral'
 let {fields,rules}=DefaultGeneral;
 const DefaultOptions = [
   {
+    "label": "Condition Steps",
+    "name": "conditionsteps",
+    "addable": true,
+    "settings": {
+      "general": {
+        "fields": {
+          "title": "",
+          "width": "",
+          "align": "",
+          "maxWidth": "",
+          "height": "",
+          "maxHeight": "",
+           ...fields
+          },
+        "rules": [
+          {"name": "title", "type": "string"},
+          {"name": "align", "type": "string"},
+          {"name": "width", "type": "string"},
+          {"name": "maxWidth", "type": "string"},
+          {"name": "height", "type": "string"},
+          {"name": "maxHeight", "type": "string"},
+          ...rules
+        ]
+      },
+      "design": [],
+    }
+  },
+  {
+    "label": "Condition Step",
+    "name": "conditionstep",
+    "addable": true,
+    "settings": {
+      "general": {
+        "fields": {
+          "title": "",
+          "slug": "",
+          "width": "",
+          "maxWidth": "",
+          "height": "",
+          "maxHeight": "",
+           ...fields
+          },
+        "rules": [
+          {"name": "title", "type": "string"},
+          {"name": "slug", "type": "string"},
+          {"name": "width", "type": "string"},
+          {"name": "maxWidth", "type": "string"},
+          {"name": "height", "type": "string"},
+          {"name": "maxHeight", "type": "string"},
+          ...rules
+        ]
+      },
+      "design": [],
+    }
+  },
+  {
     "label": "Image",
     "name": "image",
     "addable": false,
@@ -25,7 +81,7 @@ const DefaultOptions = [
   {
     "label": "Button",
     "name": "button",
-    "addable": true,
+    "addable": false,
     "settings": {
       "general": {
         "fields": {"text": "", "action": "","float": "","borderRadius": "","fontSize":"13px","lineHeight":"1","iconImage":"","iconFont":"","iconPosition":"top","iconColor":"","fontWeight":"normal","border":"",...fields},
