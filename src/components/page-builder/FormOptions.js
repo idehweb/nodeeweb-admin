@@ -49,6 +49,70 @@ const FormOptions = [
       "design": [],
     }
   },{
+    "label": "Radio Button List",
+    "name": "radiobuttonlists",
+    "addable": true,
+    "settings": {
+      "general": {
+        "fields": {
+          "label": "",
+          "name": "",
+          "direction": "",
+          "fontSize":"13px",
+          "lineHeight":"1",
+          "fontWeight":"normal",
+          ...fields},
+        "rules": [
+          {"name": "label", "type": "string"},
+          {"name": "name", "type": "string"},
+          {"name": "direction", "type": "string"},
+          {"name": "fontSize", "type": "string"},
+          {"name": "lineHeight", "type": "string"},
+          {"name": "fontWeight", "type": "string"},
+          ...rules
+
+        ]
+      },
+      "design": [{"name": "padding", "type": "string"}],
+    }
+  },{
+    "label": "Radio Button Item",
+    "name": "radiobuttonitem",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {
+          "label": "",
+          "name": "",
+          "value": "",
+          "direction": "",
+          "fontSize":"13px",
+          "lineHeight":"1",
+          "fontWeight":"normal",
+          "iconImage":"",
+          "iconFont":"",
+          "iconPosition":"top",
+          "iconColor":"",
+          ...fields},
+        "rules": [
+          {"name": "label", "type": "string"},
+          {"name": "name", "type": "string"},
+          {"name": "value", "type": "string"},
+          {"name": "direction", "type": "string"},
+          {"name": "fontSize", "type": "string"},
+          {"name": "lineHeight", "type": "string"},
+          {"name": "fontWeight", "type": "string"},
+          {"name": "iconImage", "type": "image"},
+          {"name": "iconFont", "type": "string"},
+          {"name": "iconColor", "type": "string"},
+          {"name": "iconPosition", "type": "string"},
+          ...rules
+
+        ]
+      },
+      "design": [{"name": "padding", "type": "string"}],
+    }
+  },{
     "label": "Radio",
     "name": "radio",
     "addable": false,
@@ -176,7 +240,7 @@ const FormOptions = [
  {
     "label": "Button",
     "name": "button",
-    "addable": true,
+    "addable": false,
     "settings": {
       "general": {
         "fields": {"text": "", "action": "","float": "","borderRadius": "","fontSize":"13px","lineHeight":"1","iconImage":"","iconFont":"","iconPosition":"top","iconColor":"","fontWeight":"normal","border":"",...fields},
