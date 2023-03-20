@@ -93,6 +93,7 @@ const FormOptions = [
           "iconFont":"",
           "iconPosition":"top",
           "iconColor":"",
+          "nextStep":"",
           ...fields},
         "rules": [
           {"name": "label", "type": "string"},
@@ -106,6 +107,7 @@ const FormOptions = [
           {"name": "iconFont", "type": "string"},
           {"name": "iconColor", "type": "string"},
           {"name": "iconPosition", "type": "string"},
+          {"name": "nextStep", "type": "boolean","value":false},
           ...rules
 
         ]

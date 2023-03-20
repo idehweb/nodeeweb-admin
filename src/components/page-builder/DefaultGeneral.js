@@ -1,5 +1,9 @@
 const DefaultGeneral = {
-        "fields": {"classes": "","margin": "","display": "","padding":"","backgroundColor":"","textAlign":"","color":"","backgroundImage":"","position":"","right":"","left":"","bottom":"","top":""},
+        "fields": {
+          "classes": "",
+          "margin": "",
+          "display": "",
+          "padding":"","backgroundColor":"","textAlign":"","color":"","backgroundImage":"","position":"","right":"","left":"","bottom":"","top":""},
         "rules": [
           {"name": "classes", "type": "string"},
           {"name": "margin", "type": "string"},
