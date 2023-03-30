@@ -7,8 +7,9 @@ const FormOptions = [
     "addable": true,
     "settings": {
       "general": {
-        "fields": {...fields},
+        "fields": {"showStepsTitle":'',...fields},
         "rules": [
+          {"name": "showStepsTitle", "type": "boolean","value":true},
           ...rules
         ]
       },

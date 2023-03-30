@@ -142,8 +142,9 @@ function returnCatsValues() {
 }
 
 function thel(values) {
+  console.log("changechangechange", values);
   return new Promise(resolve => {
-    console.log("change photos field", values);
+    
 
     valuess["photos"] = values;
     resolve(values);
@@ -357,7 +358,8 @@ const Form = ({ children, ...props }) => {
   };
 
   function save(values) {
-    console.log("valuesvaluesvaluesvalues ", valuess);
+    console.log("-------valuesvaluesvaluesvalues ", values);
+    console.log("-------valuesvaluesvaluesvalues ", valuess.photos);
     if (valuess.firstCategory) {
       values.firstCategory = valuess.firstCategory;
     }
@@ -706,6 +708,7 @@ const Form = ({ children, ...props }) => {
         thep={theP}
         setPhotos={setPhotos}
         inReturn={thel}
+        
       />
 
       <div className={"mb-20"}/>

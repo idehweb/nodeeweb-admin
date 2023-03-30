@@ -10,12 +10,16 @@ import DeleteIcon from "@mui/icons-material/Delete";
 API.defaults.headers.common["Content-Type"] = "multipart/form-data";
 
 export default (props) => {
-  let {gallery,v,onImageClick,deletFromObject}=props;
+  let {gallery,v,onImageClick,deletFromObject,onImageAlt}=props;
   // console.log("Images... ",gallery);
 
   return <div className={"galley"}>
     {(gallery && gallery.length > 0) && gallery.map((photo, key) => {
-      return <ShowImageField photo={photo} onImageClick={onImageClick} deletFromObject={deletFromObject} v={v} key={key} unicKey={key}/>;
+      return (
+        <>
+        <ShowImageField photo={photo} onImageAlt={onImageAlt} onImageClick={onImageClick} deletFromObject={deletFromObject} v={v} key={key} unicKey={key}/>
+        </>
+      );
     })}
 
   </div>;
