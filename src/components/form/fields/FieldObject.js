@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Field} from 'react-final-form'
+import TextField from '@material-ui/core/TextField'
 import {Col} from 'shards-react';
 import {MainUrl, uploadMedia} from "@/functions/index";
 import { useTranslate } from 'react-admin';
@@ -11,12 +12,15 @@ function FieldObject(props) {
   const t=useTranslate();
 
   let {field,removeField} = props;
-  let {type, kind, size, className, name, label, placeholder, value={}} = field;
+  let {type, kind, size, className, name, label, placeholder, value={},setValue} = field;
   // return JSON.stringify(field);
 
 // console.clear()
-//   console.log('size',props)
-  let [theVal, setTheVal] = useState(value)
+console.log('ObkjectFielddddddd',field)
+  // if(name === 'customQuery'){
+  //   console.log('ObkjectFielddddddd',field)
+  // }
+  let [theVal, setTheVal] = useState(JSON.stringify(value))
   // console.log('field object', field)
   // return name;
   if(kind=='multiLang'){
@@ -133,16 +137,29 @@ function FieldObject(props) {
     className={'MGD ' + className}>
     <label htmlFor={name}>{t(label)}</label>
     <EveryFields onClick={(e) => removeField(e)}/>
-    <Field
+    {/* <Field
       name={name}
-      component="input"
-      type="text"
-      placeholder={placeholder ? placeholder : (label ? t(label) : t(name))}
+      // component="input"
+      // type="text"
+      value={JSON.stringify(value)}
+      placeholder={placeholder ? placeholder : name}
       onChange={(e) => {
-        console.log(e.target.value, name)
-        field.setValue(name, e.target.value)
-
-      }}
+         field.setValue(name, e.target.value)
+        //  field.setValue(name, e.target.value)
+        }}
+      className="mb-2 form-control ltr"
+    /> */}
+    <input
+      name={name}
+      // component="input"
+      type="text"
+      value={theVal}
+      placeholder={placeholder ? placeholder : name}
+      onChange={(e) => {
+        setTheVal(e.target.value);
+        setValue(name, e.target.value)
+        //  field.setValue(name, e.target.value)
+        }}
       className="mb-2 form-control ltr"
     />
     {/*<Field*/}

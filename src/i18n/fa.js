@@ -4,6 +4,12 @@ console.log("running farsi language...");
 
 const customFarsiMessages = {
   ...farsiMessages,
+  perPage: "perPage",
+  offset: "offset",
+  limit: "limit",
+  breakpoints: "breakpoints",
+  customQuery: "Custom Query",
+  populateQuery: "Populate Query",
   logoutMessage: "برای خروج مطمئن هستید؟",
   topProductOrders:'پرفروشترین محصولات',
   entryForm:'ورودی فرم ها',
