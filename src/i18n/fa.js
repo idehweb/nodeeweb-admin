@@ -554,6 +554,9 @@ const customFarsiMessages = {
       kind: "نوع"
     },
     page: {
+      access: "access",
+      public: "public",
+      private: "private",
       actions: "اقدامات",
       pagebuilder: "صفحه ساز",
       firstCategory: "دسته اول",

@@ -1,15 +1,15 @@
 import { Create, required } from "react-admin";
 
-import { CustomFileField, GridList, List, SimpleForm, UploaderField } from "@/components";
+import { CustomFileField, GridList, List, SimpleForm, FileUploaderField } from "@/components";
 
 
 const create = (props) => (
   <Create {...props}>
     <SimpleForm>
-      <UploaderField
+      <FileUploaderField
         label="Course Audio or video"
         source="files"
-        accept="audio/*, video/*, image/*"
+        // accept="audio/*, video/*, image/*"
         validate={required()}
       />
     </SimpleForm>

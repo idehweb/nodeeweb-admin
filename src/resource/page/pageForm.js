@@ -358,6 +358,14 @@ const Form = ({children, ...props}) => {
                     {id: "processing", name: translate("resources.page.processing")},
                     {id: "deleted", name: translate("resources.page.deleted")}
                 ]}
+            />  <SelectInput
+                label={translate("resources.page.access")}
+                defaultValue={"public"}
+                source="access"
+                choices={[
+                    {id: "public", name: translate("resources.page.public")},
+                    {id: "private", name: translate("resources.page.private")}
+                ]}
             />
             {/*<ReferenceArrayInput label="انتخاب عنوان" source={getSource('title')}*/}
             {/*reference="attributes" filter={{f: true}}>*/}
