@@ -20,7 +20,9 @@ import {
   FieldServer,
   FieldText,
   FieldTextarea,
-  ConditionFiled
+  ConditionFiled,
+  FieldUploadMedia,
+  FieldUploadDocument
 } from "@/components/form/fields";
 
 function CreateForm(props) {
@@ -132,7 +134,12 @@ function CreateForm(props) {
     }
     if (type === "array") {
       return <FieldArray field={field}/>;
-
+    }
+    if (type === "document") {
+      return <FieldUploadDocument field={field}/>;
+    }
+    if (type === "media") {
+      return <FieldUploadMedia field={field}/>;
     }
     if (type === "checkbox") {
       return <FieldCheckbox field={field}/>;

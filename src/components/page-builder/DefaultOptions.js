@@ -446,9 +446,10 @@ const DefaultOptions = [
     "addable": false,
     "settings": {
       "general": {
-        "fields": {"_id":"",...fields},
+        "fields": {"_id":"","showSubmitButton":"true",...fields},
         "rules": [
           {"name": "_id", "type": "string"},
+          {"name": "showSubmitButton", "type": "boolean","value":true},
 
           ...rules
         ]

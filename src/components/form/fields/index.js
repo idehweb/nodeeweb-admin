@@ -12,6 +12,8 @@ import FieldJson from './FieldJson';
 import FieldNumber from './FieldNumber';
 import EveryFields from './EveryFields';
 import ConditionFiled from './ConditionFiled';
+import FieldUploadMedia from './FieldUploadMedia';
+import FieldUploadDocument from './FieldUploadDocument';
 
 
 export {
@@ -28,7 +30,9 @@ export {
   FieldCheckbox,
   FieldCheckboxes,
   FieldServer,
-  ConditionFiled
+  ConditionFiled,
+  FieldUploadDocument,
+  FieldUploadMedia
 };
 
 import { useTranslate } from 'react-admin';

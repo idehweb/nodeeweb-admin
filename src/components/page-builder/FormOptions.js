@@ -49,6 +49,46 @@ const FormOptions = [
       },
       "design": [],
     }
+  },
+  {
+    "label": "Upload File",
+    "name": "document",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {"label": "","name": "", "value": "","placeholder": "","require": "","sm": "","lg": ""},
+        "rules": [
+          {"name": "label", "type": "string"},
+          {"name": "name", "type": "string"},
+          {"name": "value", "type": "string"},
+          {"name": "placeholder", "type": "string"},
+          {"name": "sm", "type": "string"},
+          {"name": "lg", "type": "string"},
+          {"name": "require", "type": "boolean","value":false},
+        ]
+      },
+      "design": [],
+    }
+  },
+  {
+    "label": "Upload Media",
+    "name": "media",
+    "addable": false,
+    "settings": {
+      "general": {
+        "fields": {"label": "","name": "", "value": "","placeholder": "","require": "","sm": "","lg": ""},
+        "rules": [
+          {"name": "label", "type": "string"},
+          {"name": "name", "type": "string"},
+          {"name": "value", "type": "string"},
+          {"name": "placeholder", "type": "string"},
+          {"name": "sm", "type": "string"},
+          {"name": "lg", "type": "string"},
+          {"name": "require", "type": "boolean","value":false},
+        ]
+      },
+      "design": [],
+    }
   },{
     "label": "Radio Button List",
     "name": "radiobuttonlists",
