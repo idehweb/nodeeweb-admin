@@ -83,17 +83,25 @@ const PostFilter = (props) => {
 const exporter = posts => {
   // console.clear();
   let allpros = [];
+  let cats = [];
+  
   console.log("posts.length", posts.length);
   const postsForExport = posts.map((post, i) => {
+    cats = [];
     const { backlinks, author, ...postForExport } = post; // omit backlinks and author
 
     postForExport._id = post._id; // add a field
     // console.log(post.title)
-
+    
+    if(post.productCategory){
+      post.productCategory.map((cat,ci)=>{
+        cats.push(cat.slug)
+      })
+    }
+    console.log("AllCat->", cats);
     if (post.title)
       postForExport.title = post.title.fa; // add a field
-    postForExport.type = post.type; // add a field
-    console.log("i", i);
+      postForExport.type = post.type; // add a field
     // postForExport.combinations = post.combinations; // add a field
     if (post.type == "variable") {
       // postForExport.price=[];
@@ -106,6 +114,8 @@ const exporter = posts => {
           _id: post._id,
           slug: postForExport.slug,
           title: postForExport.title,
+          description: post.description.fa,
+          category: cats,
           price: com.price,
           salePrice: com.salePrice,
           in_stock: com.in_stock,
@@ -120,6 +130,8 @@ const exporter = posts => {
         _id: post._id,
         slug: post.slug,
         title: postForExport.title,
+        description: post.description.fa,
+        category: cats,
         price: post.price,
         salePrice: post.salePrice,
         in_stock: post.in_stock,
@@ -132,7 +144,7 @@ const exporter = posts => {
   });
   console.log("postsForExport", allpros);
   jsonExport(allpros, {
-    headers: ["_id", "slug", "title", "type", "price", "salePrice", "in_stock", "quantity"] // order fields in the export
+    headers: ["_id", "slug", "title","description","category", "type", "price", "salePrice", "in_stock", "quantity"] // order fields in the export
   }, (err, csv) => {
     console.log("ForExport", allpros);
     const BOM = "\uFEFF";
@@ -555,8 +567,7 @@ const list = (props) => {
 
   return (
 
-    <List  {...props} filters={<PostFilter/>} pagination={<PostPagination/>} actions={<ListActions/>}
-           exporter={exporter}>
+    <List  {...props} filters={<PostFilter/>} pagination={<PostPagination/>} actions={<ListActions/>} exporter={exporter}>
       <TabbedDatagrid/>
     </List>
   );
