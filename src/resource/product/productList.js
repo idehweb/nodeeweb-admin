@@ -89,16 +89,12 @@ const exporter = posts => {
   const postsForExport = posts.map((post, i) => {
     cats = [];
     const { backlinks, author, ...postForExport } = post; // omit backlinks and author
-
     postForExport._id = post._id; // add a field
-    // console.log(post.title)
-    
     if(post.productCategory){
       post.productCategory.map((cat,ci)=>{
         cats.push(cat.slug)
       })
     }
-    console.log("AllCat->", cats);
     if (post.title)
       postForExport.title = post.title.fa; // add a field
       postForExport.type = post.type; // add a field
@@ -137,16 +133,12 @@ const exporter = posts => {
         in_stock: post.in_stock,
         quantity: post.quantity,
         type: post.type
-
-
       });
     }
   });
-  console.log("postsForExport", allpros);
   jsonExport(allpros, {
     headers: ["_id", "slug", "title","description","category", "type", "price", "salePrice", "in_stock", "quantity"] // order fields in the export
   }, (err, csv) => {
-    console.log("ForExport", allpros);
     const BOM = "\uFEFF";
     downloadCSV(`${BOM} ${csv}`, "products"); // download as 'posts.csv` file
   });
