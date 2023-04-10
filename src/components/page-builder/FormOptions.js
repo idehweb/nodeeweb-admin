@@ -63,9 +63,10 @@ const FormOptions = [
     "addable": false,
     "settings": {
       "general": {
-        "fields": {"label": "","name": "", "value": "","placeholder": "","require": "","sm": "","lg": ""},
+        "fields": {"label": "","textAlign": "","name": "", "value": "","placeholder": "","require": "","sm": "","lg": ""},
         "rules": [
           {"name": "label", "type": "string"},
+          {"name": "textAlign", "type": "string"},
           {"name": "name", "type": "string"},
           {"name": "value", "type": "string"},
           {"name": "placeholder", "type": "string"},

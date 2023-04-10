@@ -660,9 +660,9 @@ if(pushCurrentItem){
           <label
             style={{ direction: "ltr" }}>{data && (typeof data.title == "object") ? data.title[lan] : data.title}</label>
           <span className={"npb-settings"}>
-        <Button onClick={save}>
-          Save
-        </Button>
+            <Button onClick={save}>
+              Save
+            </Button>
           </span>
         </div>
       </div>

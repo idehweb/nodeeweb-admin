@@ -68,7 +68,6 @@ function CreateForm(props) {
     }
   };
   const TheField = (field) => {
-    // console.log('field', field);
     if (!field) {
       return <>no field</>;
     }

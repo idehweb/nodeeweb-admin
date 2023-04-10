@@ -28,9 +28,13 @@ export const entryShow = (props) => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <TextField source={"_id"} label={translate("_id")}
-                   className={"width100 mb-20"} fullWidth disabled/>
-        <FunctionField label={formTitle ? formTitle : translate("resources.entry.data")} fontSize={16}
+        
+                   <span>{formTitle ? formTitle : translate("resources.entry.data")}</span>
+                   {/* <TextField source={"_id"} label={translate("_id")}
+                   className={"width100"} fullWidth disabled/> */}
+                   <hr style={{border:'3px solid #ddd'}}/>
+        {/* <FunctionField label={formTitle ? formTitle : translate("resources.entry.data")} fontSize={16} */}
+         <FunctionField 
                        render={record => {
                          if(record.data){
                           let fID = record.form;

@@ -275,9 +275,22 @@ const customFarsiMessages = {
       customerGroup: "گروه",
       trackingCode: "کد پیگیری",
       form: "فرم",
+      typeRepair: "نوع تعمیر",
       data: "داده ها",
       message: "پیام",
-      actions: "اقدامات"
+      actions: "اقدامات",
+
+      RowNum: "تعداد ردیف",
+      fullname: " نام کامل",
+      accountname:"نام کاربری",
+      username:'نام کاربری',
+      repaired:'تعمیر شده است',
+      noproblemdes:'مشکلی نیست',
+      unrepairabledes:'غیر قابل تعمیر',
+      consoleType:'نوع کنسول بازی',
+      capacity:'ظرفیت کنسول',
+      numberOfRequestGame:'تعداد بازی درخواستی'
+
     },
 
     action: {
