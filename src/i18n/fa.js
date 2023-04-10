@@ -268,6 +268,10 @@ const customFarsiMessages = {
       viewsCount:"بازدید"
     },
     entry: {
+      name: "نام و نام خانوادگی",
+      device: "نام دستگاه",
+      description: "توضیحات ",
+      phone:"تلفن همراه",
       customerGroup: "گروه",
       trackingCode: "کد پیگیری",
       form: "فرم",

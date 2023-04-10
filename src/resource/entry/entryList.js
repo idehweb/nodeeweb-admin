@@ -45,7 +45,7 @@ const postRowStyle = (record, index) => {
 
 const PostFilter = (props) => {
   const translate = useTranslate();
-
+  
   return (
     <Filter {...props}>
       <SearchInput source="Search" placeholder={translate("resources.post.search")} alwaysOn/>
@@ -58,6 +58,7 @@ const PostFilter = (props) => {
 const list = (props) => {
   const translate = useTranslate();
   // rowStyle={postRowStyle}
+ 
   return (
 
     <List  {...props} filters={<PostFilter/>} pagination={<PostPagination/>}>

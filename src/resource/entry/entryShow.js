@@ -1,8 +1,9 @@
 import { Show, TextInput,FunctionField, useEditController, SimpleShowLayout, useTranslate,TextField } from "react-admin";
-import { BASE_URL } from "@/functions/API";
+import API,{BASE_URL } from "@/functions/API";
 import { dateFormat } from "@/functions";
 import Box from "@mui/material/Box";
-
+import { useParams } from "react-router-dom";
+import { useGetOne } from 'react-admin';
 import {
   CatRefField,
   EditOptions,
@@ -21,22 +22,34 @@ import { Val } from "@/Utils";
 import React from "react";
 
 export const entryShow = (props) => {
-  console.log("props", props);
   const translate = useTranslate();
-  // const { id } = props;
-  // const { record, save, isLoading } = useEditController({ resource: "form", id });
-
+  const { id } = useParams();
+  let [formTitle,setFormTitle] = React.useState('');
   return (
     <Show {...props}>
       <SimpleShowLayout>
         <TextField source={"_id"} label={translate("_id")}
                    className={"width100 mb-20"} fullWidth disabled/>
-        <FunctionField label={translate("resources.entry.data")}
+        <FunctionField label={formTitle ? formTitle : translate("resources.entry.data")} fontSize={16}
                        render={record => {
                          if(record.data){
-
+                          let fID = record.form;
+                            API.get(BASE_URL+'/admin/form/'+fID)
+                                .then((formData) => {
+                                  if(formData.data){
+                                    setFormTitle(formData.data.title.fa);
+                                  }
+                                })
+                                .catch((err) => {
+                                  console.log('datadatadatadatadata',err);
+                                });
                            return Object.keys(record.data).map((item)=>{
-                             return <Box style={{marginBottom:'20px'}} ><span>{item}</span><span>:</span><span>{record.data[item]}</span></Box>
+                              if(item !== 'undefined'){
+                                  return <Box style={{marginBottom:'20px',marginTop:'20px'}} >
+                                    <span style={{fontSize:'18px'}}>{translate("resources.entry."+item)}</span><span style={{padding:'0 10px'}}>:</span><span  style={{fontSize:'18px'}}>{record.data[item]}</span>
+                                </Box>
+                              }
+                             
                            })
                          }
 
