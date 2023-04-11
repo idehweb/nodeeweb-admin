@@ -73,7 +73,7 @@ function CreateForm(props) {
     }
 
     const { type, removeField, kind, size, className, options, disabled = false, name, label, placeholder } = field;
-    // console.log('themeData',  themeData['models']);
+    console.log('fieldfieldfieldfieldfieldfield',  field);
     // moment(field.value, "YYYY-MM-DD[T]HH:mm:ss.SSS[Z]", true).isValid())
 
     if (type === "date") {
@@ -188,13 +188,29 @@ function CreateForm(props) {
         <label htmlFor={name}>{label}</label>
         <EveryFields onClick={(e) => removeField(e)}/>
 
-        <Field
+        {/* <Field
           name={name}
           component="input"
           type="text"
           placeholder={placeholder || label}
           className="mb-2 form-control"
+          style={{height:'200px'}}
+        /> */}
+        <Field
+          name={name}
+          className="mb-2 form-control"
+          render={({ input, meta }) => (
+            <div>
+              <textarea {...input} name={name} style={{width:'100%'}} />
+            </div>
+          )}
         />
+        {/* <textarea
+        name={name}
+        className="mb-2 form-control"
+        >
+          
+        </textarea> */}
       </Col>;
     }
     if (type === "boolean") {
