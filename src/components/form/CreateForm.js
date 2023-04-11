@@ -236,8 +236,6 @@ function CreateForm(props) {
                   name={props.input.name}
                   onChange={(props) => {
                     let { target } = props;
-                    console.log(props);
-                    console.log(target.files[0]);
                     uploadMedia(target.files[0], (e) => {
                       console.log("e", e);
                     }).then(x => {
@@ -293,8 +291,6 @@ function CreateForm(props) {
                   name={props.input.name}
                   onChange={(props) => {
                     let { target } = props;
-                    console.log(props);
-                    console.log(target.files[0]);
                     uploadMedia(target.files[0], (e) => {
                       console.log("e", e);
                     }).then(x => {
