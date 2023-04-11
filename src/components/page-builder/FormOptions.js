@@ -36,9 +36,9 @@ const FormOptions = [
     "addable": false,
     "settings": {
       "general": {
-        "fields": {"text": "","direction": "","target": "","link": "","fontSize":"13px","lineHeight":"1","iconImage":"","iconFont":"","iconPosition":"top","iconColor":"","fontWeight":"normal",...fields},
+        "fields": {"value": "","direction": "","target": "","link": "","fontSize":"13px","lineHeight":"1","iconImage":"","iconFont":"","iconPosition":"top","iconColor":"","fontWeight":"normal",...fields},
         "rules": [
-          {"name": "text", "type": "textarea"},
+          {"name": "value", "type": "textarea"},
           {"name": "direction", "type": "string"},
           {"name": "target", "type": "string"},
           {"name": "link", "type": "string"},
@@ -308,20 +308,30 @@ const FormOptions = [
       "design": [],
     }
   },
- {
+  {
     "label": "Button",
     "name": "button",
     "addable": false,
     "settings": {
       "general": {
-        "fields": {"text": "", "action": "","float": "","borderRadius": "","fontSize":"13px","lineHeight":"1","iconImage":"","iconFont":"","iconPosition":"top","iconColor":"","fontWeight":"normal","border":"",...fields},
+        "fields": {"text": "", "action": "","link": "","float": "","borderRadius": "","fontSize":"13px","lineHeight":"1",
+        "iconImage":"",
+        "imgWidth":"",
+        "imgHeight":"",
+        "imgMargin":"",
+        "iconFont":"",
+        "iconPosition":"top","iconColor":"","fontWeight":"normal","border":"",...fields},
         "rules": [
           {"name": "text", "type": "string"},
           {"name": "action", "type": "string"},
+          {"name": "link", "type": "string"},
           {"name": "float", "type": "string"},
           {"name": "fontSize", "type": "string"},
           {"name": "lineHeight", "type": "string"},
           {"name": "iconImage", "type": "image"},
+          {"name": "imgWidth", "type": "string"},
+          {"name": "imgHeight", "type": "string"},
+          {"name": "imgMargin", "type": "string"},
           {"name": "iconFont", "type": "string"},
           {"name": "iconColor", "type": "string"},
           {"name": "iconPosition", "type": "string"},

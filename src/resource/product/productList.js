@@ -84,12 +84,12 @@ const exporter = posts => {
   // console.clear();
   let allpros = [];
   let cats = [];
-  
-  console.log("posts.length", posts.length);
+  // console.log('postspostsposts',posts.length);
   const postsForExport = posts.map((post, i) => {
     cats = [];
     const { backlinks, author, ...postForExport } = post; // omit backlinks and author
     postForExport._id = post._id; // add a field
+    // postForExport.maxResults  = 10000;
     if(post.productCategory){
       post.productCategory.map((cat,ci)=>{
         cats.push(cat.slug)
@@ -237,7 +237,7 @@ const ListActions = (props) => {
     <TopToolbar>
       {/*<FilterButton/>*/}
       <CreateButton/>
-      <ExportButton maxResults={10000000}/>
+      <ExportButton maxResults={100}/>
       {/*<CreateButton basePath={basePath} />*/}
       <ImportButton {...props} {...config} />
       <ProductRewriteButton record={data}/>
