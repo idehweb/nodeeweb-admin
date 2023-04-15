@@ -6,6 +6,7 @@ const DefaultGeneral = {
           "padding":"","backgroundColor":"","textAlign":"","color":"","backgroundImage":"","position":"","right":"","left":"","bottom":"","top":""},
         "rules": [
           {"name": "classes", "type": "string"},
+        
           {"name": "margin", "type": "string"},
           {"name": "display", "type": "string"},
           {"name": "padding", "type": "string"},
@@ -20,6 +21,7 @@ const DefaultGeneral = {
           {"name": "bottom", "type": "string"},
           {"name": "showInDesktop", "type": "boolean","value":false},
           {"name": "showInMobile", "type": "boolean","value":false},
+          
         ]
       };
 export default DefaultGeneral
