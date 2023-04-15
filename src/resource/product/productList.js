@@ -237,7 +237,7 @@ const ListActions = (props) => {
     <TopToolbar>
       {/*<FilterButton/>*/}
       <CreateButton/>
-      <ExportButton maxResults={100}/>
+      <ExportButton maxResults={3000}/>
       {/*<CreateButton basePath={basePath} />*/}
       <ImportButton {...props} {...config} />
       <ProductRewriteButton record={data}/>
