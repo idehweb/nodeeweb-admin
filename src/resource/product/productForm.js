@@ -775,6 +775,15 @@ const Form = ({ children, ...props }) => {
           { id: "deleted", name: translate("resources.product.deleted") }
         ]}
       />
+      <SelectInput
+                label={translate("resources.page.access")}
+                defaultValue={"public"}
+                source="access"
+                choices={[
+                    {id: "public", name: translate("resources.page.public")},
+                    {id: "private", name: translate("resources.page.private")}
+                ]}
+            />
 
     </SimpleForm>
   );
