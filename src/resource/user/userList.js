@@ -5,13 +5,51 @@ import {
   EmailField,
   DateField,
   EditButton,
-  useTranslate
+  useTranslate,
+  Pagination,
+  downloadCSV
 } from 'react-admin';
 import { List, SimpleForm } from '@/components';
+import jsonExport from "jsonexport/dist";
+const PostPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100]} {...props} />;
+const exporter = users => {
+  let allpros = [];
+  const userForExport = users.map(user => {
+    const { backlinks, author, ...userForExport } = user; // omit backlinks and author
+    if(user){
+      allpros.push({
+        _id: user._id,
+        nickname: user.nickname && user.nickname,
+        username: user.username && user.username,
+        type: user.type && user.type,
+        email: user.email && user.email,
+        active: user.active && user.active,
+        createdAt: user.createdAt && user.createdAt,
+        updatedAt: user.updatedAt && user.updatedAt,
+      });
+    }
+    return userForExport;
+  });
+  jsonExport(allpros, {
+    headers: [
+      "_id",
+      "nickname",
+      "username",
+      "type",
+      "email",
+      "active",
+      "createdAt",
+      "updatedAt"
+    ] // user fields in the export
+  }, (err, csv) => {
+    const BOM = "\uFEFF";
+    downloadCSV(`${BOM} ${csv}`, "users"); // download as 'posts.csv` file
+  });
+};
 export const userList = (props) => {
   const translate=useTranslate();
   return(
-    <List {...props}>
+    <List {...props} exporter={exporter} pagination={<PostPagination/>}>
       <Datagrid>
         {/*<TextField source="id"/>*/}
         <EmailField source="email" label={translate("resources.user.email")} />

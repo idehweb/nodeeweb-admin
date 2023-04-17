@@ -22,7 +22,7 @@ import { dateFormat } from "@/functions";
 import { List, SimpleForm } from "@/components";
 import { ImportButton } from "react-admin-import-csv";
 import API, { BASE_URL } from "@/functions/API";
-
+import jsonExport from "jsonexport/dist";
 const PostFilter = (props) => {
   const translate = useTranslate();
 
@@ -38,123 +38,44 @@ const PostFilter = (props) => {
 };
 
 const PostPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100]} {...props} />;
-const exporter = posts => {
-  console.clear();
+const exporter = customers => {
   let allpros = [];
-  const postsForExport = posts.map(post => {
-    const { backlinks, author, ...postForExport } = post; // omit backlinks and author
-
-    postForExport._id = post._id; // add a field
-    // console.log(post.title)
-
-    if (post.title)
-      postForExport.title = post.title.fa; // add a field
-    postForExport.type = post.type; // add a field
-    if (post.firstCategory) {
-      //     postForExport.firstCategory = post.firstCategory._id; // add a field
-      //     postForExport.firstCategory = post.firstCategory.name.fa; // add a field
-      // delete post.firstCategory;
-    }
-    if (post.secondCategory) {
-      // postForExport.secondCategory = post.secondCategory._id; // add a field
-      postForExport.secondCategory = post.secondCategory.name.fa; // add a field
-      delete post.secondCategory;
-
-    }
-    if (post.thirdCategory) {
-
-      // postForExport.thirdCategory = post.thirdCategory._id; // add a field
-      postForExport.thirdCategory = post.thirdCategory.name.fa; // add a field
-      delete post.thirdCategory;
-
-    }
-    // postForExport.combinations = post.combinations; // add a field
-    if (post.type == "variable") {
-      // postForExport.price=[];
-      // postForExport.salePrice=[];
-      // postForExport.in_stock=[];
-      // postForExport.quantity=[];
-      // allpros.pop();
-      post.combinations.map((com, i) => {
-        allpros.push({
-          _id: post._id,
-          title: postForExport.title,
-          price: com.price,
-          salePrice: com.salePrice,
-          in_stock: com.in_stock,
-          quantity: com.quantity,
-          type: post.type,
-          views: post.views.length,
-          options: com.options ? Object.values(com.options).toString() : "",
-          combination_id: (i + 1),
-          firstCategory: post.firstCategory.name.fa || ""
-        });
-        // delete postForExport.combinations[i].id;
-        // delete postForExport.combinations[i]['id'];
-        // delete postForExport.combinations[i].product_id;
-        // delete postForExport.combinations[i].inventory_status;
-        // delete postForExport.combinations[i].oversell;
-        // delete postForExport.combinations[i].sku;
-        // delete postForExport.combinations[i].barcode;
-        // delete postForExport.combinations[i].weight;
-        // delete postForExport.combinations[i].visible;
-        // delete postForExport.combinations[i].optionsId;
-        // delete postForExport.combinations[i].sale_type;
-        // delete postForExport.combinations[i].sale_price;
-        // delete postForExport.combinations[i].sale_amount;
-        // delete postForExport.combinations[i].scheduled_discount_start;
-        // delete postForExport.combinations[i].scheduled_discount_start_utc;
-
-
-      });
-    } else if (post.type == "normal") {
+  const customerForExport = customers.map(customer => {
+    const { backlinks, author, ...customerForExport } = customer; // omit backlinks and author
+    if(customer){
       allpros.push({
-        _id: post._id,
-        title: postForExport.title,
-        price: post.price,
-        salePrice: post.salePrice,
-        in_stock: post.in_stock,
-        quantity: post.quantity,
-        type: post.type,
-        views: post.views.length,
-        firstCategory: post.firstCategory.name.fa || ""
-
-
+        _id: customer._id,
+        firstName: customer.firstName && customer.firstName,
+        lastName: customer.lastName && customer.lastName,
+        activationCode: customer.activationCode && customer.activationCode,
+        email: customer.email && customer.email,
+        internationalCode: customer.internationalCode && customer.internationalCode,
+        source: customer.source && customer.source,
+        credit: customer.credit && customer.credit,
+        orderCount: customer.orderCount && customer.orderCount,
+        active: customer.active && customer.active,
+        createdAt: customer.createdAt && customer.createdAt,
       });
     }
-    delete postForExport.active;
-    delete postForExport.countries;
-    delete postForExport.categories;
-    delete postForExport.catChoosed;
-    delete postForExport.addToCard;
-    delete postForExport.countryChoosed;
-    delete postForExport.gtin;
-    delete postForExport.getContactData;
-    delete postForExport.mainCountryList;
-    delete postForExport.views;
-    delete postForExport.transaction;
-    delete postForExport.t;
-    delete postForExport.mainList;
-    // delete postForExport.firstCategory;
-    delete postForExport.options;
-    // delete postForExport.secondCategory;
-    // delete postForExport.thirdCategory;
-    delete postForExport.updatedAt;
-    delete postForExport.createdAt;
-    delete postForExport.thumbnail;
-    delete postForExport.status;
-    delete postForExport.title;
-    delete postForExport.combinations;
-    delete postForExport.id;
-    return postForExport;
+    return customerForExport;
   });
-  console.log("postsForExport", allpros);
   jsonExport(allpros, {
-    headers: ["_id", "title", "type", "price", "salePrice", "in_stock", "quantity", "firstCategory"] // order fields in the export
+    headers: [
+      "_id",
+      "firstName",
+      "lastName",
+      "activationCode",
+      "email",
+      "internationalCode",
+      "source", 
+      "credit",
+      "orderCount",
+      "active",
+      "createdAt"
+    ] // order fields in the export
   }, (err, csv) => {
-    console.log("ForExport", allpros);
     const BOM = "\uFEFF";
-    downloadCSV(`${BOM} ${csv}`, "posts"); // download as 'posts.csv` file
+    downloadCSV(`${BOM} ${csv}`, "customers"); // download as 'posts.csv` file
   });
 };
 
@@ -262,7 +183,7 @@ const ListActions = (props) => {
 export const customerList = (props) => {
   const translate = useTranslate();
   return (
-    <List
+    <List exporter={exporter}
       {...props}
       filters={<PostFilter/>} pagination={<PostPagination/>} actions={<ListActions/>}>
       <Datagrid>
