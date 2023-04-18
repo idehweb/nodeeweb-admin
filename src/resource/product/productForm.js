@@ -465,6 +465,7 @@ const Form = ({ children, ...props }) => {
 
       <div className={"mb-20"}/>
       <BooleanInput source="story" label={translate("resources.product.story")}/>
+      <BooleanInput source="requireWarranty" label={translate("resources.product.requireWarranty")}/>
       <TextInput source={"miniTitle." + translate("lan")} label={translate("resources.product.miniTitle")}/>
       <TextInput source={"extra_button"} label={translate("resources.product.extra_button")}/>
 

@@ -31,7 +31,22 @@ import {
   Combinations,
     StockStatus
 } from "@/components";
+const customStyles = {
+  option: (defaultStyles, state) => ({
+    ...defaultStyles,
+    color: state.isSelected ? "#212529" : "#fff",
+    backgroundColor: state.isSelected ? "#a0a0a0" : "#212529",
+  }),
 
+  control: (defaultStyles) => ({
+    ...defaultStyles,
+    backgroundColor: "rgba(255, 255, 255, 0.09)",
+    padding: "10px",
+    border: "none",
+    boxShadow: "none",
+  }),
+  singleValue: (defaultStyles) => ({ ...defaultStyles, color: "#fff" }),
+};
 // API.defaults.headers.common['Content-Type'] = 'multipart/form-data';
 
 const typeChoices2 = [
@@ -263,10 +278,11 @@ console.log("React.useEffect")
 
       return (
         [<div key={op} className={"row mb-20 width1000"}>
-          <div style={{ direction: "rtl" }}>#{op}</div>
+          <div style={{ direction: "rtl" }}># {op}</div>
           <div className={"col-md-5"}>
 
             <Select isRtl={true}
+             styles={customStyles}
               // isLoading={selectS[op]}
               // isDisabled={selectS[op]}
                     className={"zindexhigh"}
@@ -276,6 +292,7 @@ console.log("React.useEffect")
           </div>
           {tchild && <div className={"col-md-5"}>
             <Select isRtl={true}
+             styles={customStyles}
                     isMulti
               // isLoading={selectS[op]}
               // isDisabled={selectS[op]}

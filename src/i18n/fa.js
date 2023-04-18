@@ -632,6 +632,7 @@ const customFarsiMessages = {
       label: "برچسب",
       labels: "برچسب ها",
       story: "استوری",
+      requireWarranty: "ضرورت خرید با گارانتی",
       miniTitle: "عنوان کوتاه",
       type: "نوع",
       photo: "رسانه",
