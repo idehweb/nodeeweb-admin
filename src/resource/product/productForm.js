@@ -358,8 +358,7 @@ const Form = ({ children, ...props }) => {
   };
 
   function save(values) {
-    console.log("-------valuesvaluesvaluesvalues ", values);
-    console.log("-------valuesvaluesvaluesvalues ", valuess.photos);
+    
     if (valuess.firstCategory) {
       values.firstCategory = valuess.firstCategory;
     }
@@ -375,10 +374,10 @@ const Form = ({ children, ...props }) => {
     if (valuess.photos) {
       values.photos = valuess.photos;
     }
-    // if (valuess.combinations) {
-    //   values.combinations = valuess.combinations;
-    //   // valuess['photos']
-    // }
+    
+    if (valuess.requireWarranty) {
+      values.requireWarranty = valuess.requireWarranty;
+    }
 
       if (_The_ID.length > 0) {
         // delete values.photos;
@@ -387,7 +386,6 @@ const Form = ({ children, ...props }) => {
         delete values.category;
         delete values.catChoosed;
         delete values.files;
-
         API.put("/product/" + _The_ID, JSON.stringify({ ...values }))
           .then(({ data = {} }) => {
             notify("saved");
@@ -411,6 +409,9 @@ const Form = ({ children, ...props }) => {
         if (!values.status) {
           values.status = 'draft';
         }
+        if (valuess.requireWarranty) {
+          values.requireWarranty = valuess.requireWarranty;
+        }
         API.post("/product/", JSON.stringify({ ...values }))
           .then(({ data = {} }) => {
             if (data) {
@@ -422,6 +423,7 @@ const Form = ({ children, ...props }) => {
             console.log("error", err);
           });
       }
+      
     }
   let ST = StockStatus() || [];
   ST.map(item => {
