@@ -380,6 +380,7 @@ const customFarsiMessages = {
     },
 
     customers: {
+      data: "data",
       orderCount: "تعداد سفارشات",
       date: "تاریخ",
       tasks: "کار ها",

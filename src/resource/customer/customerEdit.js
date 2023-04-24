@@ -54,6 +54,8 @@ export const customerEdit = (props) => {
                    source="source" label={translate("resources.customers.source")}/>
         <TextInput fullWidth
                    source="birthday" label={translate("resources.customers.birthday")}/>
+        <TextInput fullWidth multiline
+                   source="data" label={translate("resources.customers.data")}/>
         <ArrayInput source="address">
           <SimpleFormIterator {...props}>
             <TextInput

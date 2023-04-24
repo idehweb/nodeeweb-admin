@@ -37,6 +37,8 @@ export const customerCreate = (props) => {
 
         <TextInput fullWidth
                    source="birthday" label={translate("resources.customers.birthday")}/>
+        <TextInput defaultValue={"{}"} multiline  fullWidth
+                   source="data" label={translate("resources.customers.data")}/>
         <ReactAdminJalaliDateInput
           fullWidth
           source="birthdate" label={translate("resources.customers.birthdate")}/>
