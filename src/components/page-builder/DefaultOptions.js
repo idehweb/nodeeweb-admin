@@ -402,9 +402,10 @@ const DefaultOptions = [
     "addable": false,
     "settings": {
       "general": {
-        "fields": {"entity": "", "include": "","perPage":1,"offset":0,"limit":10,"breakpoints":{},"classess":"","customQuery":{},"populateQuery":{},...fields},
+        "fields": {"entity": "","showPriceFilter":true, "include": "","perPage":1,"offset":0,"limit":10,"breakpoints":{},"classess":"","customQuery":{},"populateQuery":{},...fields},
         "rules": [
           {"name": "entity", "type": "string"},
+          {"name": "showPriceFilter", "type": "boolean","value":true},
           {"name": "include", "type": "string","class":"ltr"},
           {"name": "perPage", "type": "number"},
           {"name": "offset", "type": "number"},
