@@ -16,7 +16,8 @@ import {
   useForm,
   useNotify,
   useRedirect,
-  useTranslate
+  useTranslate,
+  useGetList
 } from "react-admin";
 import { useFormContext } from "react-hook-form";
 import API from "@/functions/API";
@@ -334,11 +335,14 @@ const CustomToolbar = props => {
 };
 const Form = ({ children, ...props }) => {
    let _The_ID = '';
+   let DublicateProduct = false;
   const { record } = props;
-
+//   const { data, total, isLoading, error } = useGetList('product',
+//   { 
+//     pagination: { page: 1, perPage: 10000 }
+// });
   const translate = useTranslate();
   const notify = useNotify();
-  console.log('newProooooooooooopssssss',props);
   if (record && record._id) {
     _The_ID = record._id;
   }
