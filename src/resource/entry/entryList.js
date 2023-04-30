@@ -61,6 +61,7 @@ const list = (props) => {
  
   return (
 
+    <>
     <List  {...props} filters={<PostFilter/>} pagination={<PostPagination/>}>
       <Datagrid optimized>
         <TextField source="trackingCode" label={translate("resources.entry.trackingCode")}/>
@@ -97,6 +98,7 @@ const list = (props) => {
                        </div>)}/>
       </Datagrid>
     </List>
+    </>
   );
 };
 
