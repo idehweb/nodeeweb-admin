@@ -7,8 +7,10 @@ import {
   FunctionField,
   Pagination,
   TextField,
+  TextInput,
   SearchInput,
-  useTranslate
+  useTranslate,
+  SelectInput,ReferenceInput
 } from "react-admin";
 
 import API, { BASE_URL } from "@/functions/API";
@@ -48,8 +50,14 @@ const PostFilter = (props) => {
   
   return (
     <Filter {...props}>
-      <SearchInput source="Search" placeholder={translate("resources.post.search")} alwaysOn/>
-      <SearchInput source="category" placeholder={translate("resources.post.category")} alwaysOn/>
+      
+      {/* <SearchInput source="title" reference="form.title" placeholder={translate("resources.post.category")} alwaysOn/> */}
+      <SearchInput source="Search" reference="entry.form.title" placeholder={translate("resources.post.category")} alwaysOn/>
+    {/* <ReferenceInput source="id" reference="form" alwaysOn>
+      <SelectInput/>
+    </ReferenceInput> */}
+
+
     </Filter>
   );
 };
@@ -57,8 +65,8 @@ const PostFilter = (props) => {
 
 const list = (props) => {
   const translate = useTranslate();
-  // rowStyle={postRowStyle}
- 
+  
+
   return (
 
     <>

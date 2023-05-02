@@ -53,7 +53,7 @@ export default function App() {
   };
   useEffect(() => {
     // console.clear();
-    console.log("useEffect");
+    
     load();
   }, []);
   const {Action,Plugin, Attributes,Automation,CustomerGroup,Form,Entry, ProductCategory,Gateway,Template,Discount,Logout,Page,Messages, Configuration,Plugins, PrivateConfiguration, Customer,Note,Task,Document, MainDashboard, Media, Menu, Order, OrderCart, Post, Product, Settings, Notification, Transaction, User,PageBuilder} = resources;
