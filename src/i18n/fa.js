@@ -268,6 +268,7 @@ const customFarsiMessages = {
       viewsCount:"بازدید"
     },
     entry: {
+      tasks:'تغییر وضعیت',
       name: "نام و نام خانوادگی",
       device: "نام دستگاه",
       description: "توضیحات ",

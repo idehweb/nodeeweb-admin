@@ -9,8 +9,13 @@ import {
   TextField,
   TextInput,
   SearchInput,
+  DateInput ,
   useTranslate,
-  SelectInput,ReferenceInput
+  SelectInput,
+  ReferenceInput,
+  ReferenceArrayField,
+  SelectArrayInput,
+  useListContext
 } from "react-admin";
 
 import API, { BASE_URL } from "@/functions/API";
@@ -33,12 +38,15 @@ import { Button } from "@mui/material";
 
 import React from "react";
 
+import { useGetList, useList } from 'react-admin';
+
+
 
 const PostPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100]} {...props} />;
 
 
 const postRowStyle = (record, index) => {
-
+  
   return ({
     backgroundColor: "#ee811d"
   });
@@ -47,16 +55,32 @@ const postRowStyle = (record, index) => {
 
 const PostFilter = (props) => {
   const translate = useTranslate();
-  
+const { data, total, isLoading, error } = useGetList(
+  'form',
+  { pagination: { page: 1, perPage: 100 } },
+);
+if (isLoading) { return <p>Loading</p>; }
+if (error) { return <p>ERROR</p>; }
+
+
   return (
     <Filter {...props}>
-      
+          <SelectInput
+          label="انتخاب فرم"
+              source="form"
+                choices={data}
+                optionText="title.fa"
+                optionValue="_id"
+                alwaysOn 
+        />
       {/* <SearchInput source="title" reference="form.title" placeholder={translate("resources.post.category")} alwaysOn/> */}
-      <SearchInput source="Search" reference="entry.form.title" placeholder={translate("resources.post.category")} alwaysOn/>
-    {/* <ReferenceInput source="id" reference="form" alwaysOn>
+      {/* <SelectArrayInput source="entry" choices={foorm} alwaysOn/> */}
+      {/* <SearchInput  reference="trackingCode" source="trackingCode" placeholder={'کد رهگیری'}  alwaysOn/> */}
+      {/* <DateInput   source={"Search"} reference={"form.title." + translate("lan")} placeholder={'عنوان'}  alwaysOn/> */}
+      {/* <ReferenceArrayField tags="form" source="form.title" alwaysOn /> */}
+    {/* <ReferenceInput  choices={foorm} alwaysOn>
       <SelectInput/>
     </ReferenceInput> */}
-
 
     </Filter>
   );
@@ -110,4 +134,4 @@ const list = (props) => {
   );
 };
 
-export default list;
+export default React.memo(list);
