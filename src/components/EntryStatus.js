@@ -20,7 +20,7 @@ const EntryStatus = (props) => {
   const themeData = useSelector((st) => st.themeData);
   let { orders } = state;
   return <div style={{ padding: "10px" }}>
-    <div className={"label-top-table"}><span>{translate("customerStatus")}</span></div>
+    <div className={"label-top-table"}><span>{translate("resources.entry.tasks")}</span></div>
         <SubmitEntryStatus _id={_id} theStatus={status}/>
     </div>;
 };
