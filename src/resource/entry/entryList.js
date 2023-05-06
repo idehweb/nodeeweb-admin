@@ -55,24 +55,44 @@ const postRowStyle = (record, index) => {
 
 const PostFilter = (props) => {
   const translate = useTranslate();
+  const [status,setStatus] = React.useState(null);
 const { data, total, isLoading, error } = useGetList(
   'form',
   { pagination: { page: 1, perPage: 100 } },
 );
-if (isLoading) { return <p>Loading</p>; }
-if (error) { return <p>ERROR</p>; }
+API.get("/settings/customerStatus").then(({ data = {} }) => {
+  setStatus(data);
+})
 
 
   return (
     <Filter {...props}>
+      {
+        data && data.length > 0 && (
           <SelectInput
           label="انتخاب فرم"
-              source="form"
-                choices={data}
-                optionText="title.fa"
-                optionValue="_id"
+          source="form"
+          choices={data}
+          optionText="title.fa"
+          optionValue="_id"
+          alwaysOn 
+  />
+        )
+      }
+        
+
+        {
+          status && (
+            <SelectInput
+                label="انتخاب وضعیت"
+                source="status"
+                choices={status}
+                optionText="title"
+                optionValue="slug"
                 alwaysOn 
         />
+          )
+        }
       {/* <SearchInput source="title" reference="form.title" placeholder={translate("resources.post.category")} alwaysOn/> */}
       {/* <SelectArrayInput source="entry" choices={foorm} alwaysOn/> */}
       {/* <SearchInput  reference="trackingCode" source="trackingCode" placeholder={'کد رهگیری'}  alwaysOn/> */}

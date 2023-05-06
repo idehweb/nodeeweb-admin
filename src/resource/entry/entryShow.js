@@ -58,4 +58,4 @@ export const entryShow = (props) => {
   );
 };
 
-export default entryShow;
+export default React.memo(entryShow);
