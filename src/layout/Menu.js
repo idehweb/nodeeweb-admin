@@ -18,6 +18,8 @@ const {Automation, Action, Attributes, CustomerGroup, Discount, Page, Gateway, T
 const Menu = ({ onMenuClick, dense = false }) => {
   const themeData = useSelector((st) => st.themeData);
 
+  console.log('MenusThemeData',themeData);
+
   const [state, setState] = useState({
     menuProduct: false,
     menuSection: false,
@@ -44,8 +46,13 @@ const Menu = ({ onMenuClick, dense = false }) => {
   const handleToggle = (menu) => {
     setState(state => ({ ...state, [menu]: !state[menu] }));
   };
-  console.log("themeData", themeData);
-  let exclude = ["attributes", "customergroup", "entry", "form", "gateway", "discount", "template", "settings", "order", "admin", "menu", "page", "notification", "media", "post", "customer", "product", "productcategory", "transaction"];
+  let exclude = ["automation","task","note","category","document","action","attributes", "customergroup", "entry", "form", "gateway", "discount", "template", "settings", "order", "admin", "menu", "page", "notification", "media", "post", "customer", "product", "productcategory", "transaction"];
+
+
+
+
+
+  
   return (
     <div className={"the-dev-menu"}>
       <MenuItemLink
@@ -56,17 +63,7 @@ const Menu = ({ onMenuClick, dense = false }) => {
         dense={dense}
         className={"vas"}
       />
-      {/*{themeData && themeData.models && themeData.models.map((model, m) => {*/}
-      {/*if (exclude.indexOf(model.toLowerCase()) == -1)*/}
-      {/*return <MenuItemLink*/}
-      {/*to={"/"}*/}
-      {/*primaryText={translate(`${model}`)}*/}
-      {/*// leftIcon={<Dashboard/>}*/}
-      {/*exact={"true"}*/}
-      {/*dense={dense}*/}
-      {/*className={"vas"}*/}
-      {/*/>;*/}
-      {/*})}*/}
+     
 
       <SubMenu
         handleToggle={() => handleToggle("menuMedia")}
@@ -513,6 +510,11 @@ const Menu = ({ onMenuClick, dense = false }) => {
         icon={<MoreHoriz/>}
         dense={dense}
       >
+
+
+
+
+
         <MenuItemLink
           to={{
             pathname: "/plugins",
@@ -593,6 +595,31 @@ const Menu = ({ onMenuClick, dense = false }) => {
           leftIcon={<Automation.icon/>}
           dense={dense}
         />
+
+
+
+
+ {themeData && themeData.models && themeData.models.map((model, m) => {
+      if (exclude.indexOf(model.toLowerCase()) == -1)
+      return <MenuItemLink
+      to={{
+        pathname: "/"+model,
+        state: { _scrollToTop: true }
+      }}
+      primaryText={translate(`${model}`)}
+      leftIcon={<Dashboard/>}
+      exact={"true"}
+      dense={dense}
+      className={"vas"}
+      />;
+      })}
+
+
+
+
+
+
+
 
       </SubMenu>
     </div>
