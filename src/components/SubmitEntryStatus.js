@@ -108,7 +108,6 @@ const SubmitEntryStatus = (props) => {
       // });
       setChilds(data);
       console.log("data", data);
-
       // setValue("title",data.title);
       setTheData(true);
       return data;
