@@ -70,7 +70,7 @@ const list = (props) => {
                 {/*<TextField source="order" label={translate('resources.category.order')}/>*/}
 
                 <EditButton/>
-                {/*<ShowButton/>*/}
+                <ShowButton/>
                 <DeleteButton/>
             </Datagrid>
         </List>

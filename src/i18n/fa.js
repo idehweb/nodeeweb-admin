@@ -353,6 +353,10 @@ const customFarsiMessages = {
       color: "رنگ"
     },
     category: {
+      priceType:'نوع اعمال قیمت',
+      increase:'افزایش قیمت',
+      decrease:'کاهش قیمت',
+      pricePercent:'قیمت بر اساس درصد',
       metatitle: "meta title",
       metadescription: "meta description",
       description: "توضیحات",

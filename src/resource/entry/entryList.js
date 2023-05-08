@@ -60,9 +60,12 @@ const { data, total, isLoading, error } = useGetList(
   'form',
   { pagination: { page: 1, perPage: 100 } },
 );
-API.get("/settings/customerStatus").then(({ data = {} }) => {
-  setStatus(data);
-})
+React.useEffect(()=>{
+  API.get("/settings/formStatus").then(( response = {} ) => {
+    const {data} = response;
+    setStatus(data);
+  })
+},[])
 
 
   return (
@@ -82,7 +85,7 @@ API.get("/settings/customerStatus").then(({ data = {} }) => {
         
 
         {
-          status && (
+          status ? (
             <SelectInput
                 label="انتخاب وضعیت"
                 source="status"
@@ -91,6 +94,8 @@ API.get("/settings/customerStatus").then(({ data = {} }) => {
                 optionValue="slug"
                 alwaysOn 
         />
+          ):(
+              <span>Loadding...</span>
           )
         }
       {/* <SearchInput source="title" reference="form.title" placeholder={translate("resources.post.category")} alwaysOn/> */}

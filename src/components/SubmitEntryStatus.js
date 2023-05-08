@@ -87,11 +87,7 @@ const SubmitEntryStatus = (props) => {
         handleNotif("resources.settings.logoUploadedSuccessfully");
       });
   };
-  React.useEffect(() => {
-    console.log("getData", getData());
-
-    // setCombs(record);
-  }, []);
+ 
   // React.useEffect(() => {
   //   console.log("theData", theData);
 
@@ -101,7 +97,8 @@ const SubmitEntryStatus = (props) => {
     //
     // setLoading(true);
     //
-    API.get("/settings/customerStatus").then(({ data = {} }) => {
+    API.get("/settings/formStatus").then((response = {}) => {
+      const {data} = response
       setLoading(false);
       // Object.keys(data).forEach(d => {
       //   setValue(d, data[d]);
@@ -151,8 +148,14 @@ const SubmitEntryStatus = (props) => {
 
     });
   };
+
+  React.useEffect(() => {
+    getData()
+  }, []);
+
+
   const returnStatus = (st) => {
-    let rd = childs.filter(x => x.slug == st);
+    let rd = childs && childs.filter(x => x.slug == st);
     if (rd && rd[0] && rd[0].title)
       return rd[0].title;
     else
@@ -177,12 +180,19 @@ const SubmitEntryStatus = (props) => {
 
 
             <Box>
-              <SelectInput source="status"
+              {
+                childs ? (
+                          <SelectInput source="status"
                            onChange={(event) => {
                              console.log("event.target", event);
                              handleChange("status", event.target.value);
                            }}
                            choices={childs} optionText={"title"} optionValue={"slug"} allowEmpty={false}/>
+                ):(
+                  <span>Loadding...</span>
+                )
+              }
+              
               <TextInput
                 autoFocus
                 fullWidth

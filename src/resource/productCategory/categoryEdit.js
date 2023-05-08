@@ -17,7 +17,8 @@ import {
   TextField,
   TextInput,
   useResourceContext,
-  useTranslate
+  useTranslate,
+  RadioButtonGroupInput 
 } from "react-admin";
 import React, { Fragment } from "react";
 import { CustomResetViewsButton, List, SimpleForm } from "@/components";
@@ -79,7 +80,10 @@ const Form = ({ children, ...rest }) => {
   const cls = useStyles();
   const translate = useTranslate();
   const redirect = useRedirect();
-
+  const choices = [
+    { id: 'increase', name: translate("resources.category.increase") },
+    { id: 'decrease', name: translate("resources.category.decrease") }
+];
   function saveForm(values) {
     if (values.parent == "") {
       values.parent=null;
@@ -138,6 +142,24 @@ const Form = ({ children, ...rest }) => {
                  label={translate("resources.category.metatitle")}/>
       <TextInput multiline fullWidth source={"metadescription." + translate("lan")}
                  label={translate("resources.category.metadescription")}/>
+
+                 <span style={{
+                  display:'block',
+                  width:'100%',
+                  borderBottom:'2px solid #ddd'
+                 }}></span>
+                 <span style={{marginTop:'15px'}}>
+                 قیت بر دسته بندی 
+                 </span>
+                 <RadioButtonGroupInput label={translate("resources.category.priceType")} source="priceType" choices={choices} />
+                 
+                 <TextInput multiline fullWidth source={"percent." + translate("lan")}
+                 label={translate("resources.category.pricePercent")}/>
+
+
+           
+
+
 
       {/*<NumberInput*/}
       {/*source="order"*/}
