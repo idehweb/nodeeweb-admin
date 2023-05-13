@@ -30,119 +30,18 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Block } from 'notiflix/build/notiflix-block-aio';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import React, {Fragment,useState,useEffect} from 'react';
 import {useParams} from 'react-router';
 import {CategoryRounded as Icon, LibraryAdd} from '@mui/icons-material';
 import {CustomResetViewsButton, List, SimpleForm} from '@/components';
 import useStyles from '@/styles';
+import {ChangesForm} from './changesForm';
 import {Val} from '@/Utils';
 import API, {BASE_URL} from '@/functions/API';
 import {Chip} from '@mui/material';
 
-const ChangesForm = (props) => {
-    const {data} = props;
-    const { id } = useParams();
-    const translate = useTranslate();
-    let newProductPrice = [];
-    let productObj = [];
-    const getCategoryById = (values) =>{
-        if(values){
-            values.map((product)=>{
-                if(product.productCategory){
-                    product.productCategory.map((cat)=>{
-                        if(cat._id === id){
-                            productObj.push(product)
-                        }
 
-                    })
-                }
-            })
-            
-        }  
-    }
-    const getProducts = async (numberOfProduct,numberOfType) =>{
-        // Block.circle('.'+props.model);
-        await API.get(`/product/${numberOfType}/${numberOfProduct}?_order=DESC`).then(({ data = {} }) => {
-              getCategoryById(data);
-                // Block.remove('.'+props.model);
-              });
-    }
-    let numberOfType = 0;
-    let numberOfProduct = 100;
-    const  save = async (prices) => {
-        if(productObj.length !== 0){
-            console.log('Run',numberOfProduct);
-            productObj.map((product,ip)=>{
-                if(product.combinations){
-                    product.combinations.map((combinition,ic)=>{
-                        if(combinition){
-                            if(combinition.price){
-                                    if(prices.plusPercent){
-                                       let percentPlus = combinition.price + (1/100) * prices.plusPercent * combinition.price;
-                                       combinition.price = percentPlus;
-                                    }
-                                    if(prices.minusPercent){
-                                        let percentMinim = combinition.price - (1/100) * prices.plusPercent * combinition.price;
-                                        combinition.price = percentMinim;
-                                    }
-                                    if(prices.plusxp){
-                                        combinition.price +=  prices.plusxp
-                                    }
-                                    if(prices.minusxp){
-                                        combinition.price +=  prices.minusxp
-                                    }
-                            }
-                            if(combinition.salePrice){
-
-                            }
-                        }
-                    })
-                    
-                }
-                newProductPrice.push(product)
-            })
-            numberOfProduct+=99;
-            numberOfType+=99;
-            productObj = [];
-            console.log('numberOfProduct',numberOfProduct);
-            console.log('numberOfType',numberOfType);
-        }else{
-            console.log('getproduct');
-            await getProducts(numberOfProduct,numberOfType);
-        }
-    }
-
-
-
-    const update = () =>{
-        
-    }
-    return (
-        <SimpleForm onSubmit={save}>
-            <NumberInput
-                min={0}
-                source="plusPercent"
-                label={translate("resources.category.addxpercent")}
-            />
-            <NumberInput
-                min={0}
-                source="minusPercent"
-                label={translate("resources.category.minusxpercent")}
-            />
-            <NumberInput
-                min={0}
-                source="plusxp"
-                label={translate("resources.category.addxprice")}
-            />
-            <NumberInput
-                min={0}
-                source="minusxp"
-                label={translate("resources.category.minusxprice")}
-            />
-
-        </SimpleForm>
-    );
-};
 
 
 export const categoryShow = (props) => {
@@ -151,6 +50,7 @@ export const categoryShow = (props) => {
     const [category,setCategory] = useState({});
     const [products,setProducts] = useState([]);
     let productObj = [];
+    let loop =true;
   
     const getCategoryById = (values) =>{
         if(values){
@@ -159,6 +59,7 @@ export const categoryShow = (props) => {
                     product.productCategory.map((cat)=>{
                         if(cat._id === id){
                             productObj.push(product)
+                            setProducts(products => [...products,product]);
                         }
 
                     })
@@ -166,26 +67,45 @@ export const categoryShow = (props) => {
             })
             
         }  
-        setProducts(productObj)  
+        console.log('newProductPricenewProductPrice',productObj);
     }
-    const getProducts = async () =>{
-        // Block.circle('.'+props.model);
-        await API.get("/product/0/100?_order=DESC").then(({ data = {} }) => {
-              getCategoryById(data);
-                // Block.remove('.'+props.model);
+    const getProducts = async (start,end) =>{
+        
+        await API.get(`/product/${start}/${end}?_order=DESC`).then(({ data = {} }) => {
+            if(data.length !== 0){
+                // Block.circle('.productList');
+                
+                getCategoryById(data);
+            }else{
+                // Block.remove('.productList');
+                Loading.remove();
+                loop = false;
+            }
+                
               });
     }
-    useEffect(()=>{
-        getProducts();
+    React.useEffect(async ()=>{
+        Loading.pulse();
+        let start = 0;
+        let end = 99;
+        while(loop){
+               await  getProducts(start,end).then(()=>{
+                start+=100;
+                end+=100;
+               }).catch(()=>{
+                loop = false
+               });
+                
+        }
+        
     },[])
-console.log();
     return (
         [<Create {...props}>
             <ChangesForm data={products}/>
         </Create>,
     //    <List resource={'product'} >
     <Card className={"width1000"} style={{marginTop:'20px'}}>
-    <CardHeader title={'محصولات این دسته بندی'}/>
+    <CardHeader title={'  تعداد محصولات  این دسته بندی  ' +products.length + 'محصول'}/> <span>{}</span>
     <CardContent>
       <div style={{ height: "auto"}} className={"order-chart"}>
         <TableContainer component={Paper}>
@@ -198,11 +118,12 @@ console.log();
                 {/*<TableCell align="right">Protein&nbsp;(g)</TableCell>*/}
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody className='productList'>
               {
-                products && (
+                products ? (
                     products.map((row,index) => (
                       <TableRow
+                      className={'pID-'+row._id}
                         key={index}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                       >
@@ -215,6 +136,8 @@ console.log();
                         
                       </TableRow>
                     ))
+                ):(
+                    <span>Loading......</span>
                 )
               }
             </TableBody>
