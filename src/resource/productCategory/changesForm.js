@@ -56,7 +56,6 @@ export const ChangesForm = (props) => {
                 product.combinations.map((combinition,ic)=>{
                     if(combinition){
                         if(combinition.price){
-                            
                                 if(prices.plusPercent){
                                 let percentPlus = combinition.price + (1/100) * prices.plusPercent * combinition.price;
                                 combinition.price = percentPlus;
@@ -69,7 +68,7 @@ export const ChangesForm = (props) => {
                                     combinition.price +=  prices.plusxp
                                 }
                                 if(prices.minusxp){
-                                    combinition.price +=  prices.minusxp
+                                    combinition.price -=  prices.minusxp
                                 }
                         }
                         if(combinition.salePrice){
