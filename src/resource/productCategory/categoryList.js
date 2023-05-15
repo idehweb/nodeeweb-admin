@@ -68,7 +68,7 @@ const list = (props) => {
                     <TextField source={"name."+translate('lan')}/>
                 </ReferenceField>
                 {/*<TextField source="order" label={translate('resources.category.order')}/>*/}
-
+ 
                 <EditButton/>
                 <ShowButton/>
                 <DeleteButton/>

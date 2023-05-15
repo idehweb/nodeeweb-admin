@@ -46,54 +46,6 @@ export const ChangesForm = (props) => {
     const {data} = props;
     let newProductPrice = [];
     const translate = useTranslate();
-    
-    const  save = async (prices) => {
-        if(productObj.length !== 0){
-            productObj.map((product,ip)=>{
-                if(product.combinations){
-                    product.combinations.map((combinition,ic)=>{
-                        if(combinition){
-                            if(combinition.price){
-                                    if(prices.plusPercent){
-                                       let percentPlus = combinition.price + (1/100) * prices.plusPercent * combinition.price;
-                                       combinition.price = percentPlus;
-                                    }
-                                    if(prices.minusPercent){
-                                        let percentMinim = combinition.price - (1/100) * prices.plusPercent * combinition.price;
-                                        combinition.price = percentMinim;
-                                    }
-                                    if(prices.plusxp){
-                                        combinition.price +=  prices.plusxp
-                                    }
-                                    if(prices.minusxp){
-                                        combinition.price +=  prices.minusxp
-                                    }
-                            }
-                            if(combinition.salePrice){
-
-                            }
-                        }
-                    })
-                    
-                }
-                newProductPrice.push(product)
-            })
-            numberOfProduct+=99;
-            numberOfType+=99;
-            productObj = [];
-            console.log('numberOfProduct',numberOfProduct);
-            console.log('numberOfType',numberOfType);
-        }else{
-            console.log('getproduct');
-            await getProducts(numberOfProduct,numberOfType);
-        }
-    }
-
-
-    const delay = async (ms = 1000) =>{
-        new Promise(resolve => setTimeout(resolve, ms))
-        // Block.remove('.pID-'+id);
-    }
     const updateProduct=async (i,product,prices)=>{
         Block.arrows('.pID-'+product._id);
         
@@ -134,9 +86,7 @@ export const ChangesForm = (props) => {
     const update = async (prices) =>{
         if(data.length !== 0){
             data.forEach(function (product, index) {
-               
                     updateProduct(index,product,prices)
-                
             });
         }
     }

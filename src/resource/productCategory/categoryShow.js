@@ -243,4 +243,4 @@ const PriceFiled = (props) =>{
 
    
 }
-export default categoryShow;
+export default React.memo(categoryShow);
