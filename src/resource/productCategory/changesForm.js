@@ -45,6 +45,7 @@ export const ChangesForm = (props) => {
     const { id } = useParams();
     const {data} = props;
     let newProductPrice = [];
+    let failedProductPrice = [];
     const translate = useTranslate();
     const updateProduct=async (i,product,prices)=>{
         Block.arrows('.pID-'+product._id);
@@ -78,10 +79,18 @@ export const ChangesForm = (props) => {
                 })
                 
             }
-            newProductPrice.push(product)
-            setPro(product.title.fa)
-            Block.remove('.pID-'+product._id);
+            updateServer(product).then((data)=>{
+                newProductPrice.push(data)
+                setPro(product.title.fa)
+                Block.remove('.pID-'+product._id);
+            }).catch(()=>{
+                failedProductPrice.push(product)
+            })
+            
         }, 1000 * i );
+        console.log('failedProductPricefailedProductPrice',failedProductPrice);
+        console.log('newProductPricenewProductPrice',newProductPrice);
+        
     }
     const update = async (prices) =>{
         if(data.length !== 0){
@@ -89,6 +98,16 @@ export const ChangesForm = (props) => {
                     updateProduct(index,product,prices)
             });
         }
+        
+    }
+    const updateServer = async (product) =>{
+        API.put("/product/" + product._id, JSON.stringify({ ...product }))
+        .then(({ data = {} }) => {
+          return data;
+        })
+        .catch((err) => {
+          console.log("errerrerrerr", err);
+        });
     }
 
 
@@ -117,10 +136,10 @@ export const ChangesForm = (props) => {
             />
             <div style={{width:'100%'}}>
             {progress > 0 && (
-                    <LinearProgress variant="determinate" value={progress} />
+                    <LinearProgress style={{height:'20px',backgroundColor:'#257d7a'}}  variant="determinate"  value={progress} />
                 )}
             </div>
-            <span>
+            <span style={{marginTop:'20px',fontSize:'20px'}}>
                 
                 {
                 pro && (
@@ -131,7 +150,7 @@ export const ChangesForm = (props) => {
                     
                 )
                 }</span>
-
+            
         </SimpleForm>
     );
 };
