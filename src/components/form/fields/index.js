@@ -14,6 +14,7 @@ import EveryFields from './EveryFields';
 import ConditionFiled from './ConditionFiled';
 import FieldUploadMedia from './FieldUploadMedia';
 import FieldUploadDocument from './FieldUploadDocument';
+import ChatBase from './ChatBase';
 
 
 export {
@@ -32,7 +33,8 @@ export {
   FieldServer,
   ConditionFiled,
   FieldUploadDocument,
-  FieldUploadMedia
+  FieldUploadMedia,
+  ChatBase
 };
 
 import { useTranslate } from 'react-admin';

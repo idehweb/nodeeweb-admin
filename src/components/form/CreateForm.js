@@ -22,7 +22,8 @@ import {
   FieldTextarea,
   ConditionFiled,
   FieldUploadMedia,
-  FieldUploadDocument
+  FieldUploadDocument,
+  ChatBase
 } from "@/components/form/fields";
 
 function CreateForm(props) {
@@ -323,6 +324,9 @@ function CreateForm(props) {
         {/*<Button inline-block  >Choose Media</Button>*/}
 
       </Col>;
+    }
+    if (type === "chatgpt") {
+      return <ChatBase field={field}/>
     }
 
   };
