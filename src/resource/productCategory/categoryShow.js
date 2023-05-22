@@ -40,6 +40,7 @@ import {ChangesForm} from './changesForm';
 import {Val} from '@/Utils';
 import API, {BASE_URL} from '@/functions/API';
 import {Chip} from '@mui/material';
+import Checkbox from '@mui/material/Checkbox';
 
 
 
@@ -49,6 +50,7 @@ export const categoryShow = (props) => {
     const { id } = useParams();
     const [category,setCategory] = useState({});
     const [products,setProducts] = useState([]);
+    const [selectProducts,setSelectedProducts] = useState([]);
     let productObj = [];
     let loop =true;
   
@@ -84,6 +86,26 @@ export const categoryShow = (props) => {
                 
               });
     }
+    const handlerSelectProduct = (pro) =>{
+        setSelectedProducts(selectProducts =>[...selectProducts,pro])
+    }
+    const onSuccessHandler = async (value) =>{
+        if(value){
+            setProducts([]);
+            Loading.pulse();
+            let start = 0;
+            let end = 99;
+            while(loop){
+                await  getProducts(start,end).then(()=>{
+                    start+=100;
+                    end+=100;
+                }).catch(()=>{
+                    loop = false
+                });
+                    
+            }
+        }
+    }
     React.useEffect(async ()=>{
         Loading.pulse();
         let start = 0;
@@ -101,7 +123,7 @@ export const categoryShow = (props) => {
     },[])
     return (
         [<Create {...props}>
-            <ChangesForm data={products}/>
+            <ChangesForm selectedProduct={selectProducts} data={products} onSuccess={onSuccessHandler}/>
         </Create>,
     //    <List resource={'product'} >
     <Card className={"width1000"} style={{marginTop:'20px'}}>
@@ -112,6 +134,7 @@ export const categoryShow = (props) => {
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
+                <TableCell>#</TableCell>
                 <TableCell>محصول</TableCell>
                 <TableCell align="right">قیمت</TableCell>
                 {/*<TableCell align="right">Carbs&nbsp;(g)</TableCell>*/}
@@ -123,10 +146,20 @@ export const categoryShow = (props) => {
                 products ? (
                     products.map((row,index) => (
                       <TableRow
+                        style={{cursor:'pointer'}}
                       className={'pID-'+row._id}
                         key={index}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                       >
+                        <TableCell padding="checkbox">
+                            <Checkbox
+                                color="primary"
+                                inputProps={{
+                                'aria-label': 'select all desserts',
+                                }}
+                                onChange={(e)=> e.target.checked && handlerSelectProduct(row)}
+                            />
+                            </TableCell>
                         <TableCell component="th" scope="row">
                           {row.title.fa}
                         </TableCell>

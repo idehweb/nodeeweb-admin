@@ -42,8 +42,9 @@ import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgres
 export const ChangesForm = (props) => {
     const [pro,setPro] = useState('')
     const [progress,setProgress] = useState(0)
+    const [success,setSuccess] = useState(false)
     const { id } = useParams();
-    const {data} = props;
+    const {data,selectedProduct,onSuccess} = props;
     let newProductPrice = [];
     let failedProductPrice = [];
     const translate = useTranslate();
@@ -87,17 +88,24 @@ export const ChangesForm = (props) => {
             })
             
         }, 1000 * i );
+        setSuccess(true);
+        onSuccess(true)
         console.log('failedProductPricefailedProductPrice',failedProductPrice);
         console.log('newProductPricenewProductPrice',newProductPrice);
         
     }
     const update = async (prices) =>{
-        if(data.length !== 0){
-            data.forEach(function (product, index) {
-                    updateProduct(index,product,prices)
+        if(selectedProduct.length !== 0){
+            selectedProduct.forEach(function (product, index) {
+                updateProduct(index,product,prices)
             });
+        }else{
+            if(data.length !== 0){
+                data.forEach(function (product, index) {
+                        updateProduct(index,product,prices)
+                });
+            }
         }
-        
     }
     const updateServer = async (product) =>{
         API.put("/product/" + product._id, JSON.stringify({ ...product }))
@@ -108,8 +116,6 @@ export const ChangesForm = (props) => {
           console.log("errerrerrerr", err);
         });
     }
-
-
 
     return (
         <SimpleForm onSubmit={update}>
@@ -133,22 +139,36 @@ export const ChangesForm = (props) => {
                 source="minusxp"
                 label={translate("resources.category.minusxprice")}
             />
-            <div style={{width:'100%'}}>
-            {progress > 0 && (
-                    <LinearProgress style={{height:'20px',backgroundColor:'#257d7a'}}  variant="determinate"  value={progress} />
-                )}
-            </div>
-            <span style={{marginTop:'20px',fontSize:'20px'}}>
-                
-                {
-                pro && (
-                    <>
-                    
-                    {pro}
-                    </>
-                    
+            {
+                success ? (
+                    <div style={{width:'100%',color:'green'}}>
+                        بروز رسانی با موفقیت انجام شد
+                    </div>
+                ):(
+                        <>
+                            <div style={{width:'100%'}}>
+                                {progress > 0 && (
+                                        <LinearProgress style={{height:'20px',backgroundColor:'#257d7a'}}  variant="determinate"  value={progress} />
+                                    )}
+                            </div>
+                            <span style={{marginTop:'20px',fontSize:'20px'}}>
+                                
+                                {
+                                pro && (
+                                    <>
+                                    
+                                    {pro}
+                                    </>
+                                    
+                                )
+                                }</span>
+                        </>
                 )
-                }</span>
+            }
+
+
+
+            
             
         </SimpleForm>
     );
