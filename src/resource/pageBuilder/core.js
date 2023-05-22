@@ -685,7 +685,7 @@ if(pushCurrentItem){
                   })}
 <span>icon</span>
                   {/* <div ref={drop} className={"add-component element "+(isOver ? 'hover' : '')} onClick={(e) => { */}
-                    <div ref={drop} className={"add-component element "+(isOver ? 'hover' : '')} onClick={(e) => {
+                    <div ref={drop} className={"add-component newelement "+(isOver ? 'hover' : '')} onClick={(e) => {
                     setState({ ...state, sourceAddress: "new", excludeArray: [], optionBox: !state.optionBox });
                   }}>
 
