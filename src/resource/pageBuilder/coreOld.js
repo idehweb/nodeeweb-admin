@@ -33,19 +33,13 @@ import {
   savePost
 } from "./../../functions/index";
 import DefaultOptions from "./../../components/page-builder/DefaultOptions";
+import update from "immutability-helper";
+// import {useDispatch, useSelector, useStore} from 'react-redux'
 
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import { IconButton } from '@mui/material';
-
-
+// import {toast} from "react-toastify";
+// import store from "../functions/store";
 
 const Core = (props) => {
-  const [tabValue, setTabValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setTabValue(newValue);
-  };
   // const translate = useTranslate();
 
   const [c, setC] = useState(0);
@@ -617,127 +611,64 @@ if(pushCurrentItem){
         // canDrop: !!monitor.canDrop()
       })
     })
-
   return (
-   <React.Fragment>
-     <div className={"nodeeweb-page-builder-wrapper " + translate("direction")}
-      style={{
-        margin:20
-      }}
-    >
-      <div style={{
-        background:'#ffffff',
-        padding:'4px',
-        direction:'ltr',
-        border:'1px solid #ddd',
-        color:'#000000',
-        fontSize:'12px'
-      }}>
-        <span>Page Builder</span>
-      </div>
-      <Tabs value={tabValue} onChange={handleChange} aria-label=" label tabs example"
-        style={{width:'100%',direction:'ltr',margin:'10px 0px'}}
-       >
-        <Tab  label="Classic Mode" value={0} style={{background:'#464D55',color:'#ffffff',fontSize:'12px',fontWeight:'bold',border:'none !important'}} />
-        <Tab  label="Preview Mode" value={1} style={{marginLeft:'20px',background:'#464D55',color:'#ffffff',fontSize:'12px',fontWeight:'bold'}} />
-      </Tabs>
-              <div id="nodeeweb-page-builder"
-                    style={{
-                        height: "100vh",
-                        width: "100vw !important",
-                        opacity: isDragging ? 0.5 : 1,
-                        background:'#ffffff',
-                        padding:'20px'
-                        }}
-                    >
-      {
-        tabValue === 0 && (
-          <React.Fragment>
-                 
-                  {components && components.map((component, index) => {
-                    if (!component) {
-                      return <></>;
-                    }
-                    return <Component
-                      key={index}
-                      index={index}
-                      toggleOptionBox={toggleOptionBox}
-                      moveContent={moveContent}
-                      moveItem={moveItem}
-                      component={component}
-                      deleteItem={(e) => {
-                        deleteItem(e || component.id);
-                      }}
+    <div className={"nodeeweb-page-builder-wrapper " + translate("direction")}>
+        <div id="nodeeweb-page-builder" style={{ height: "100vh", width: "100vw !important", opacity: isDragging ? 0.5 : 1 }}>
+          {components && components.map((component, index) => {
+            if (!component) {
+              return <></>;
+            }
+            return <Component
+              key={index}
+              index={index}
+              toggleOptionBox={toggleOptionBox}
+              moveContent={moveContent}
+              moveItem={moveItem}
+              component={component}
+              deleteItem={(e) => {
+                deleteItem(e || component.id);
+              }}
 
-                      // setSourceAddress={(e)=>{
-                      //   console.log('e',e)
-                      //   setState({...state, sourceAddress: e});
-                      //
-                      // }}
-                      // changeComponentSetting={changeComponentSetting}
+              // setSourceAddress={(e)=>{
+              //   console.log('e',e)
+              //   setState({...state, sourceAddress: e});
+              //
+              // }}
+              // changeComponentSetting={changeComponentSetting}
 
-                      changeComponentSetting={(e, j, d) => {
-                        console.log("changeComponentSetting", e, j, d);
-                        changeComponentSetting(e, j, d);
-                      }}
-                      length={components.length}
-                    />;
-                  })}
-<span>icon</span>
-                  {/* <div ref={drop} className={"add-component element "+(isOver ? 'hover' : '')} onClick={(e) => { */}
-                    <div ref={drop} className={"add-component element "+(isOver ? 'hover' : '')} onClick={(e) => {
-                    setState({ ...state, sourceAddress: "new", excludeArray: [], optionBox: !state.optionBox });
-                  }}>
+              changeComponentSetting={(e, j, d) => {
+                console.log("changeComponentSetting", e, j, d);
+                changeComponentSetting(e, j, d);
+              }}
+              length={components.length}
+            />;
+          })}
 
-                  
-                  <IconButton
-                  color={'secondary'}
-                  size={'medium'}
+          <div ref={drop} className={"add-component element "+(isOver ? 'hover' : '')} onClick={(e) => {
+            setState({ ...state, sourceAddress: "new", excludeArray: [], optionBox: !state.optionBox });
+          }}>
 
-                  >
-                    <AddIcon/>
-                    </IconButton>
-                  </div>
-                
-                <OptionBox {...props} defaultOptions={DefaultOptions} onClose={(e) => {
-                console.log("setExcludeArray");
-                toggleOptionBox();
-              }} exclude={excludeArray} open={state.optionBox} addToComponents={addToComponents}/>
-
-                
-          </React.Fragment>
-        )
-      }
-      {
-        tabValue === 1 && (
-          <div style={{direction:'ltr',}}>
-            <h5>Preview Mode Soon.... </h5>
+           <AddIcon/>
           </div>
-        )
-      }
+        </div>
+        <OptionBox {...props} defaultOptions={DefaultOptions} onClose={(e) => {
+        console.log("setExcludeArray");
+        toggleOptionBox();
+      }} exclude={excludeArray} open={state.optionBox} addToComponents={addToComponents}/>
+        <div className={"nodeeweb-fixed-bottom-bar"}>
+        <div className={"npb-d-flex "}>
+          <label
+            style={{ direction: "ltr" }}>{data && (typeof data.title == "object") ? data.title[lan] : data.title}</label>
+          <span className={"npb-settings"}>
+            <Button onClick={save}>
+              Save
+            </Button>
+          </span>
+        </div>
       </div>
-
-
-      
-        
-
-
     </div>
-    <div className={"nodeeweb-fixed-bottom-bar"}>
-    <div className={"npb-d-flex "}>
-      <label
-        style={{ direction: "ltr" }}>{data && (typeof data.title == "object") ? data.title[lan] : data.title}</label>
-      <span className={"npb-settings"}>
-        <Button onClick={save}>
-          Save
-        </Button>
-      </span>
-    </div>
-</div>
-    </React.Fragment>
   );
 };
-
 export const PageServer = [
   {}
 ];

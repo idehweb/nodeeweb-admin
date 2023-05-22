@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState,Fragment } from "react";
 // import {withTranslation} from "react-i18next";
 import { dFormat, PriceFormat } from "@/functions/utils";
 // import "@/assets/styles/nodeeweb-page-builder.css";
@@ -132,190 +132,192 @@ const Component = (props) => {
     }
   }));
   return (
-    <div className={"element-wrapper"} id={component.id} ref={drag}>
-       {/*className={"element-wrapper"} id={component.id} >*/}
-      {/*{component.id==enterElement && <div className={component.id==enterElement ? "active" : ''}*/}
-      {/*onDragEnter={(e) => dragEnter(e, component)}*/}
-      {/*>*/}
-      {/*{component.id}*/}
-      {/*{enterElement}*/}
-      {/*</div>}*/}
-      {!componentForSetting && <div
-        // onDragEnd={(e) => {
-        //   console.log('on drop main',component.id)
-        //   onDrop(component);
-        // }}
-      >
-        <div className={" component name-" + component.name} >
-          <div className={"npb-d-flex " + (component.addable ? "border-bottom" : "")}>
-            <div style={{ direction: "ltr" }}>
-              <span className={"component-address"}>{component.name + " " + (index + 1)}</span>
-              {/*<span className={'component-address'}>{component.name + ' ' + (index+1) + ' from ' + length}</span>*/}
-              <label
-                // draggable
-                // onDragStart={(e) => dragStart(e, component)}
+    <Fragment>
+      <div className={"element-wrapper"} id={component.id} ref={drag}>
+        {/*className={"element-wrapper"} id={component.id} >*/}
+        {/*{component.id==enterElement && <div className={component.id==enterElement ? "active" : ''}*/}
+        {/*onDragEnter={(e) => dragEnter(e, component)}*/}
+        {/*>*/}
+        {/*{component.id}*/}
+        {/*{enterElement}*/}
+        {/*</div>}*/}
+        {!componentForSetting && <div
+          // onDragEnd={(e) => {
+          //   console.log('on drop main',component.id)
+          //   onDrop(component);
+          // }}
+        >
+          <div className={" component name-" + component.name} >
+            <div className={"npb-d-flex " + (component.addable ? "border-bottom" : "")}>
+              <div style={{ direction: "ltr" }}>
+                <span className={"component-address"}>{component.name + " " + (index + 1)}</span>
+                {/*<span className={'component-address'}>{component.name + ' ' + (index+1) + ' from ' + length}</span>*/}
+                <label
+                  // draggable
+                  // onDragStart={(e) => dragStart(e, component)}
+                  // onDragEnd={(e) => {
+                  //   console.log('on drop on label:',component.id)
+                  //
+                  //   onDrop(component);
+                  // }}
+                  // onDragEnter={(e) => dragEnter(e, component)}
+
+                  className={"component-id "} style={{ direction: "ltr" }}>{"#" + component.id}</label>
+                {text && <label className={"component-id"} style={{ direction: "ltr" }}>{JSON.stringify(text)}</label>}
+
+              </div>
+
+
+              <span className={"npb-settings"}>
+                    {Boolean(index) &&
+                    <Button className={"only-border"}
+                            onClick={() => moveContent(index, index - 1, address)}><ArrowUpwardIcon/></Button>}
+                {!Boolean(index === (length - 1)) &&
+                <Button className={"only-border"}
+                        onClick={() => moveContent(index, index + 1, address)}><ArrowDownwardIcon/></Button>}
+                <Button onClick={() => {
+                  console.log("click on options...");
+                  setComponentForSetting(!componentForSetting);
+                  // toggleComponentOptionsBox()
+                }}><DisplaySettingsIcon/></Button>
+                  </span>
+
+
+
+            </div>
+
+
+
+          </div>
+
+          {component.addable && <div className={"add-part p-2 name-" + component.name}>
+
+            <div className={"element-wrapper-child"}>
+              {Boolean(component.children && (component.children instanceof Array)) && component.children.map((comp, jj) => {
+
+                return (<Component
+                  key={jj}
+                  index={jj}
+                  component={comp}
+                  moveItem={moveItem}
+                  moveContent={moveContent}
+                  setComponentForSetting={setComponentForSetting}
+                  toggleComponentOptionsBox={toggleComponentOptionsBox}
+                  setExcludeArray={() => setExcludeArray([])}
+                  changeComponentSetting={(e, j, d) => changeComponentSetting(e, j, d)}
+                  deleteItem={(e) => {
+                    // e.preventDefault();
+                    console.log("delete Item e", e);
+                    setComponentForSetting(false);
+                    deleteItem(e);
+                  }}
+
+                  // setSourceAddress={()=>{
+                  //   let address = component.id + "_" + index2;
+                  //   console.log('component.id', address)
+                  //
+                  //   setSourceAddress(address)
+                  // }}
+                  toggleOptionBox={toggleOptionBox}
+                  length={component.children.length}
+                  address={component.id + "_" + jj}
+                />);
+              })
+              }
+              <div
+                ref={drop} className={"add-component element " + (isOver ? "hover" : "")}
+                // className={"add-component element"}
+                // onDragEnter={(e) => dragEnter(e, component)}
                 // onDragEnd={(e) => {
-                //   console.log('on drop on label:',component.id)
+                //   console.log('on drop in child of parent',component.id)
                 //
                 //   onDrop(component);
                 // }}
-                // onDragEnter={(e) => dragEnter(e, component)}
+                onClick={(e) => {
+                  // console.clear();
+                  // let address = component.id + "_" + index2;
+                  let address = component.id + "_";
+                  // console.log('component.id', address)
+                  let mainAddress = address.split("_");
+                  // let update = {sourceAddress: address};
+                  // console.log('component.id', component.id, index2)
 
-                className={"component-id "} style={{ direction: "ltr" }}>{"#" + component.id}</label>
-              {text && <label className={"component-id"} style={{ direction: "ltr" }}>{JSON.stringify(text)}</label>}
+                  let update = { sourceAddress: component.id };
+                  if (mainAddress[4]) {
+                    console.log("setExclude");
+                    update["excludeArray"] = ["row"];
+                  } else {
+                    update["excludeArray"] = [];
 
+                  }
+                  // setSourceAddress(address);
+                  console.log("open toggle with:", update);
+                  // setExcludeArray([]);
+
+                  toggleOptionBox(update);
+                }}>
+                <AddIcon/>
+              </div>
             </div>
+          </div>}
+        </div>}
+        {/*StartModalSetting*/}
+        {componentForSetting && <div draggable={true} className={"component-set-for-setting"} >
+          <div className={"csfs-a"}>
+            <div className={"csfs-c"}>
+              <div className={"top-bar-settings"}>
+                <Button className={"closeIcon"} onClick={() => {
+                  setComponentForSetting(!componentForSetting);
+                  // toggleComponentOptionsBox()
+                  }}><CloseIcon/>
+                </Button>
+                <Button
+                  className={"redxxx"}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    console.log("delete Item", component.id);
+                    setComponentForSetting(false);
+                    deleteItem(component.id);
+                  }}>
+                  <DeleteForeverIcon/>{("Delete")}
+                </Button>
+              </div>
+              <div className={"bottom-bar-settings"} >
+                {/*{JSON.stringify(component.settings.general.fields)}*/}
+                {component.settings && component.settings.general && <CreateForm
+                  onSubmit={(e) => {
+                    changeComponentSetting(component, "general", e);
+                    setComponentForSetting(!componentForSetting);
+                  }}
+                  rules={{ fields: component.settings.general.rules }}
+                  buttons={[]}
+                  componentType={component.name}
 
-
-            <span className={"npb-settings"}>
-                  {Boolean(index) &&
-                  <Button className={"only-border"}
-                          onClick={() => moveContent(index, index - 1, address)}><ArrowUpwardIcon/></Button>}
-              {!Boolean(index === (length - 1)) &&
-              <Button className={"only-border"}
-                      onClick={() => moveContent(index, index + 1, address)}><ArrowDownwardIcon/></Button>}
-              <Button onClick={() => {
-                console.log("click on options...");
-                setComponentForSetting(!componentForSetting);
-                // toggleComponentOptionsBox()
-              }}><DisplaySettingsIcon/></Button>
-                </span>
-
-
+                  fields={component.settings.general.fields}/>}
+              </div>
+            </div>
 
           </div>
+          <div className={"csfs-b"}>
+            {/*<Button>*/}
+            {/*<div className="buttons absolute-bottom textAlignCenter">*/}
+            {/*<Button type="submit" onClick={(e)=>{*/}
+            {/*console.log("on submit", e);*/}
+            {/*changeComponentSetting(component, "general", e);*/}
+            {/*setComponentForSetting(!componentForSetting);*/}
 
-
-
-        </div>
-
-        {component.addable && <div className={"add-part p-2 name-" + component.name}>
-
-          <div className={"element-wrapper-child"}>
-            {Boolean(component.children && (component.children instanceof Array)) && component.children.map((comp, jj) => {
-
-              return (<Component
-                key={jj}
-                index={jj}
-                component={comp}
-                moveItem={moveItem}
-                moveContent={moveContent}
-                setComponentForSetting={setComponentForSetting}
-                toggleComponentOptionsBox={toggleComponentOptionsBox}
-                setExcludeArray={() => setExcludeArray([])}
-                changeComponentSetting={(e, j, d) => changeComponentSetting(e, j, d)}
-                deleteItem={(e) => {
-                  // e.preventDefault();
-                  console.log("delete Item e", e);
-                  setComponentForSetting(false);
-                  deleteItem(e);
-                }}
-
-                // setSourceAddress={()=>{
-                //   let address = component.id + "_" + index2;
-                //   console.log('component.id', address)
-                //
-                //   setSourceAddress(address)
-                // }}
-                toggleOptionBox={toggleOptionBox}
-                length={component.children.length}
-                address={component.id + "_" + jj}
-              />);
-            })
-            }
-            <div
-              ref={drop} className={"add-component element " + (isOver ? "hover" : "")}
-              // className={"add-component element"}
-              // onDragEnter={(e) => dragEnter(e, component)}
-              // onDragEnd={(e) => {
-              //   console.log('on drop in child of parent',component.id)
-              //
-              //   onDrop(component);
-              // }}
-              onClick={(e) => {
-                // console.clear();
-                // let address = component.id + "_" + index2;
-                let address = component.id + "_";
-                // console.log('component.id', address)
-                let mainAddress = address.split("_");
-                // let update = {sourceAddress: address};
-                // console.log('component.id', component.id, index2)
-
-                let update = { sourceAddress: component.id };
-                if (mainAddress[4]) {
-                  console.log("setExclude");
-                  update["excludeArray"] = ["row"];
-                } else {
-                  update["excludeArray"] = [];
-
-                }
-                // setSourceAddress(address);
-                console.log("open toggle with:", update);
-                // setExcludeArray([]);
-
-                toggleOptionBox(update);
-              }}>
-              <AddIcon/>
-            </div>
+            {/*}*/}
+            {/*}>*/}
+            {/*{("Submit")}*/}
+            {/*</Button>*/}
+            {/*</div>*/}
+            {/*</Button>*/}
           </div>
         </div>}
-      </div>}
-      {/*StartModalSetting*/}
-      {componentForSetting && <div draggable={true} className={"component-set-for-setting"} >
-        <div className={"csfs-a"}>
-          <div className={"csfs-c"}>
-            <div className={"top-bar-settings"}>
-              <Button className={"closeIcon"} onClick={() => {
-                setComponentForSetting(!componentForSetting);
-                // toggleComponentOptionsBox()
-                }}><CloseIcon/>
-              </Button>
-              <Button
-                className={"redxxx"}
-                onClick={(e) => {
-                  e.preventDefault();
-                  console.log("delete Item", component.id);
-                  setComponentForSetting(false);
-                  deleteItem(component.id);
-                }}>
-                <DeleteForeverIcon/>{("Delete")}
-              </Button>
-            </div>
-            <div className={"bottom-bar-settings"} >
-              {/*{JSON.stringify(component.settings.general.fields)}*/}
-              {component.settings && component.settings.general && <CreateForm
-                onSubmit={(e) => {
-                  changeComponentSetting(component, "general", e);
-                  setComponentForSetting(!componentForSetting);
-                }}
-                rules={{ fields: component.settings.general.rules }}
-                buttons={[]}
-                componentType={component.name}
 
-                fields={component.settings.general.fields}/>}
-            </div>
-          </div>
-
-        </div>
-        <div className={"csfs-b"}>
-          {/*<Button>*/}
-          {/*<div className="buttons absolute-bottom textAlignCenter">*/}
-          {/*<Button type="submit" onClick={(e)=>{*/}
-          {/*console.log("on submit", e);*/}
-          {/*changeComponentSetting(component, "general", e);*/}
-          {/*setComponentForSetting(!componentForSetting);*/}
-
-          {/*}*/}
-          {/*}>*/}
-          {/*{("Submit")}*/}
-          {/*</Button>*/}
-          {/*</div>*/}
-          {/*</Button>*/}
-        </div>
-      </div>}
-
-    </div>
-
+      </div>
+      
+    </Fragment>
   );
 };
 export const PageServer = [
