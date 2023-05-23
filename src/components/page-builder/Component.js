@@ -50,7 +50,6 @@ const Component = (props) => {
   let [enterElement, setEnterElement] = useState(null);
   const [componentForSetting, setComponentForSetting] = useState(false);
   const returnArrayOfComponent = (component) => {
-    console.log("returnArrayOfComponent");
     let tempArr = [];
     let xx = 1;
     if (component.settings && component.settings.general && component.settings.general.fields && component.settings.general.fields.colCount) {

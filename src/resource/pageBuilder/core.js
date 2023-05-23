@@ -683,24 +683,18 @@ if(pushCurrentItem){
                       length={components.length}
                     />;
                   })}
-<span>icon</span>
                   {/* <div ref={drop} className={"add-component element "+(isOver ? 'hover' : '')} onClick={(e) => { */}
                     <div ref={drop} className={"add-component newelement "+(isOver ? 'hover' : '')} onClick={(e) => {
                     setState({ ...state, sourceAddress: "new", excludeArray: [], optionBox: !state.optionBox });
                   }}>
 
                   
-                  <IconButton
-                  color={'secondary'}
-                  size={'medium'}
-
-                  >
-                    <AddIcon/>
-                    </IconButton>
+                     <span style={{fontSize:'14px',padding:'10px 40px',background:'rgb(2, 111, 176)',display:'block',color:'#ffffff'}}>
+                       Add Element <AddIcon/>
+                     </span>
                   </div>
                 
                 <OptionBox {...props} defaultOptions={DefaultOptions} onClose={(e) => {
-                console.log("setExcludeArray");
                 toggleOptionBox();
               }} exclude={excludeArray} open={state.optionBox} addToComponents={addToComponents}/>
 
