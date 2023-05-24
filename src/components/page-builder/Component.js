@@ -10,6 +10,7 @@ import AddIcon from "@mui/icons-material/Add";
 import CreateForm from "@/components/form/CreateForm";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import CloseIcon from "@mui/icons-material/Close";
+import {MoveIconSvg,EditIconSvg,CloseIconSvg,AddIconSvg} from "./base/Icon";
 // import { useDrag } from 'react-dnd'
 import {
   addBookmark,
@@ -40,12 +41,14 @@ const Component = (props) => {
     moveItem,
     length,
     address = 0,
-    setExcludeArray
+    setExcludeArray,
+    child
   } = props;
   let { settings = {} } = component;
   let { general = {} } = settings;
   let { fields = {} } = general;
   let { text = "" } = fields;
+  console.log('Elementttttttttt',component);
   let [dragElement, setDragElement] = useState(null);
   let [enterElement, setEnterElement] = useState(null);
   const [componentForSetting, setComponentForSetting] = useState(false);
@@ -132,68 +135,37 @@ const Component = (props) => {
   }));
   return (
     <Fragment>
-      <div className={"element-wrapper"} id={component.id} ref={drag}>
-        {/*className={"element-wrapper"} id={component.id} >*/}
-        {/*{component.id==enterElement && <div className={component.id==enterElement ? "active" : ''}*/}
-        {/*onDragEnter={(e) => dragEnter(e, component)}*/}
-        {/*>*/}
-        {/*{component.id}*/}
-        {/*{enterElement}*/}
-        {/*</div>}*/}
+        {/* <section className={'nodeweb-element-wrapper'}>
+
+
+        </section> */}
+      <div className={"nodeweb-element-wrapper"} id={component.id}>
+        <div className={'element-header'}>
+            <span>Element:&nbsp;&nbsp; {component.name + " " + (index + 1)}</span>
+            {/* <span>Element:&nbsp;&nbsp; {component.name + " " + (index + 1)} &nbsp;&nbsp;&nbsp; Component:{"#" + component.id}</span> */}
+        </div>
+        <div className={'controller'}>
+          <span className={'move'} style={{border:'1px solid #ddd',padding:'1px 3px',cursor:'grab'}}>
+            <MoveIconSvg width="15px" height="15px" background="#464D55"/>
+          </span>
+          <span
+          onClick={()=>setComponentForSetting(!componentForSetting)}
+           className={'edit'} style={{border:'1px solid #ddd',borderTop:'none',padding:'1px 3px',cursor:'pointer'}}>
+            <EditIconSvg width="15px" height="15px" fill="none"  background="#464D55"/>
+          </span>
+        </div>
+        <div className={'content'}>
+          {/* {
+            component.addable === false &&(
+              <ShowSingleElement component={component}/>
+            )
+          } */}
         {!componentForSetting && <div
-          // onDragEnd={(e) => {
-          //   console.log('on drop main',component.id)
-          //   onDrop(component);
-          // }}
         >
-          <div className={" component name-" + component.name} >
-            <div className={"npb-d-flex " + (component.addable ? "border-bottom" : "")}>
-              <div style={{ direction: "ltr" }}>
-                <span className={"component-address"}>{component.name + " " + (index + 1)}</span>
-                {/*<span className={'component-address'}>{component.name + ' ' + (index+1) + ' from ' + length}</span>*/}
-                <label
-                  // draggable
-                  // onDragStart={(e) => dragStart(e, component)}
-                  // onDragEnd={(e) => {
-                  //   console.log('on drop on label:',component.id)
-                  //
-                  //   onDrop(component);
-                  // }}
-                  // onDragEnter={(e) => dragEnter(e, component)}
-
-                  className={"component-id "} style={{ direction: "ltr" }}>{"#" + component.id}</label>
-                {text && <label className={"component-id"} style={{ direction: "ltr" }}>{JSON.stringify(text)}</label>}
-
-              </div>
-
-
-              <span className={"npb-settings"}>
-                    {Boolean(index) &&
-                    <Button className={"only-border"}
-                            onClick={() => moveContent(index, index - 1, address)}><ArrowUpwardIcon/></Button>}
-                {!Boolean(index === (length - 1)) &&
-                <Button className={"only-border"}
-                        onClick={() => moveContent(index, index + 1, address)}><ArrowDownwardIcon/></Button>}
-                <Button onClick={() => {
-                  console.log("click on options...");
-                  setComponentForSetting(!componentForSetting);
-                  // toggleComponentOptionsBox()
-                }}><DisplaySettingsIcon/></Button>
-                  </span>
-
-
-
-            </div>
-
-
-
-          </div>
 
           {component.addable && <div className={"add-part p-2 name-" + component.name}>
-
             <div className={"element-wrapper-child"}>
               {Boolean(component.children && (component.children instanceof Array)) && component.children.map((comp, jj) => {
-
                 return (<Component
                   key={jj}
                   index={jj}
@@ -205,60 +177,22 @@ const Component = (props) => {
                   setExcludeArray={() => setExcludeArray([])}
                   changeComponentSetting={(e, j, d) => changeComponentSetting(e, j, d)}
                   deleteItem={(e) => {
-                    // e.preventDefault();
-                    console.log("delete Item e", e);
                     setComponentForSetting(false);
                     deleteItem(e);
                   }}
-
-                  // setSourceAddress={()=>{
-                  //   let address = component.id + "_" + index2;
-                  //   console.log('component.id', address)
-                  //
-                  //   setSourceAddress(address)
-                  // }}
                   toggleOptionBox={toggleOptionBox}
                   length={component.children.length}
                   address={component.id + "_" + jj}
+                  child={true}
                 />);
-              })
-              }
-              <div
-                ref={drop} className={"add-component element " + (isOver ? "hover" : "")}
-                // className={"add-component element"}
-                // onDragEnter={(e) => dragEnter(e, component)}
-                // onDragEnd={(e) => {
-                //   console.log('on drop in child of parent',component.id)
-                //
-                //   onDrop(component);
-                // }}
-                onClick={(e) => {
-                  // console.clear();
-                  // let address = component.id + "_" + index2;
-                  let address = component.id + "_";
-                  // console.log('component.id', address)
-                  let mainAddress = address.split("_");
-                  // let update = {sourceAddress: address};
-                  // console.log('component.id', component.id, index2)
-
-                  let update = { sourceAddress: component.id };
-                  if (mainAddress[4]) {
-                    console.log("setExclude");
-                    update["excludeArray"] = ["row"];
-                  } else {
-                    update["excludeArray"] = [];
-
-                  }
-                  // setSourceAddress(address);
-                  console.log("open toggle with:", update);
-                  // setExcludeArray([]);
-
-                  toggleOptionBox(update);
-                }}>
-                <AddIcon/>
-              </div>
+              })}
             </div>
           </div>}
+
+
+
+
+         
         </div>}
         {/*StartModalSetting*/}
         {componentForSetting && <div draggable={true} className={"component-set-for-setting"} >
@@ -267,14 +201,12 @@ const Component = (props) => {
               <div className={"top-bar-settings"}>
                 <Button className={"closeIcon"} onClick={() => {
                   setComponentForSetting(!componentForSetting);
-                  // toggleComponentOptionsBox()
                   }}><CloseIcon/>
                 </Button>
                 <Button
                   className={"redxxx"}
                   onClick={(e) => {
                     e.preventDefault();
-                    console.log("delete Item", component.id);
                     setComponentForSetting(false);
                     deleteItem(component.id);
                   }}>
@@ -295,30 +227,82 @@ const Component = (props) => {
                   fields={component.settings.general.fields}/>}
               </div>
             </div>
-
-          </div>
-          <div className={"csfs-b"}>
-            {/*<Button>*/}
-            {/*<div className="buttons absolute-bottom textAlignCenter">*/}
-            {/*<Button type="submit" onClick={(e)=>{*/}
-            {/*console.log("on submit", e);*/}
-            {/*changeComponentSetting(component, "general", e);*/}
-            {/*setComponentForSetting(!componentForSetting);*/}
-
-            {/*}*/}
-            {/*}>*/}
-            {/*{("Submit")}*/}
-            {/*</Button>*/}
-            {/*</div>*/}
-            {/*</Button>*/}
           </div>
         </div>}
-
+        </div>
+        <div className={'element-footer'}>
+        <div>
+          <span style={{cursor:'pointer'}}
+            onClick={(e) => {
+              e.preventDefault();
+              setComponentForSetting(false);
+              deleteItem(component.id);
+            }}
+          ><CloseIconSvg width="20px" height="20px"  background={'#464D55'}/></span>
+          <span style={{margin:'0px 10px',cursor:'pointer'}}
+            onClick={()=>setComponentForSetting(!componentForSetting)}
+          
+          ><EditIconSvg width="15px" height="15px" background={'#464D55'}/></span>
+          {
+            component.addable && (
+              <span style={{cursor:'pointer'}}
+              onClick={(e) => {
+                let address = component.id + "_";
+                let mainAddress = address.split("_");
+                let update = { sourceAddress: component.id };
+                if (mainAddress[4]) {
+                  update["excludeArray"] = ["row"];
+                } else {
+                  update["excludeArray"] = [];
+                }
+                toggleOptionBox(update);
+              }}
+              
+              ><AddIconSvg width="15px" height="15px" fill="#464D55"/></span>
+            )
+          }
+         
+        </div>
+        </div>
       </div>
       
     </Fragment>
   );
 };
+const ShowSingleElement = (props) =>{
+  const {component} = props
+  const type = component.name;
+  const {settings} = component;
+  const {general} = settings;
+  const {fields} = general;
+  switch(type){
+    case 'button':
+      return <button style={{
+        textAlign:'center',
+        padding:'8px 20px',
+        margin:'10px',
+        borderRadius:'8px'
+      }}>
+        {fields.text}
+        {/* <span style={{flexBasis: '90%',margin:'10px'}}>value: {fields.text}</span>
+        <span
+          style={{
+            flexBasis: '10%',
+            padding:'10px 12px',
+            borderRadius:'10px',
+            background:'#464C54',
+            color:'#fff'
+          }}
+        
+        ><AddIconSvg width="15px" height="15px" fill="#ffffff"/></span> */}
+      </button>
+  }
+return(
+  <>
+
+  </>
+)
+}
 export const PageServer = [
   {}
 ];

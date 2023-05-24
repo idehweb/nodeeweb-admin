@@ -19,8 +19,8 @@
 }
 .element-wrapper-child{
   width: 100%;
-  outline: 1px dashed;
-  padding: 0px;
+  /* outline: 1px dashed; */
+  padding: 10px 17px;
 }
 .element-wrapper-child .element-wrapper .npb-settings button,
 .element-wrapper-child .element-wrapper .npb-settings .btn
@@ -54,7 +54,7 @@
   width: auto !important;
   box-sizing: border-box !important;
   flex: 1 1 !important;
-  margin: 3px !important;
+  margin: 15px !important;
   /*height: 100% !important;*/
 }
 .component-address{
@@ -119,6 +119,41 @@
   align-content: space-around;
   cursor: pointer;
 }
+/*nodeweb-element-wrapper*/
+#nodeeweb-page-builder .nodeweb-element-wrapper{
+  margin:0px 10px;
+  position:relative;
+  border:1px solid #ddd;
+}
+#nodeeweb-page-builder .nodeweb-element-wrapper .element-header,
+#nodeeweb-page-builder .nodeweb-element-wrapper .element-footer{
+  background:#FAFAFA;
+  width:100%;
+  padding:4px;
+  text-align:center;
+  color:#464D55;
+  font-size: 11px;
+}
+#nodeeweb-page-builder .nodeweb-element-wrapper .element-header span,
+#nodeeweb-page-builder .nodeweb-element-wrapper .element-footer span{
+  text-align:center;
+  margin:0 auto;
+}
+
+#nodeeweb-page-builder .nodeweb-element-wrapper .controller{
+  position:absolute;
+  left: -23px;
+  display: flex;
+  flex-flow: column;
+  top: -0.8px;
+}
+
+#nodeeweb-page-builder .nodeweb-element-wrapper .content{
+  
+}
+/*nodeweb-element-wrapper*/
+
+
 #nodeeweb-page-builder .element-wrapper{
   box-sizing: border-box;
   margin: 3px;
