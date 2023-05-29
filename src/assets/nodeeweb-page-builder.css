@@ -121,7 +121,7 @@
 }
 /*nodeweb-element-wrapper*/
 #nodeeweb-page-builder .nodeweb-element-wrapper{
-  margin:0px 10px;
+  margin:10px;
   position:relative;
   border:1px solid #ddd;
 }
