@@ -14,7 +14,8 @@ import "./../../assets/shards-dashboards.1.1.0.min.css";
 import "./../../assets/globalforpagebuilder.css";
 import "./../../assets/nodeeweb-page-builder.css";
 import * as _ from "lodash";
-import { DndProvider, useDrag ,useDrop} from "react-dnd";
+import { DndProvider} from "react-dnd";
+// import { DndProvider, useDrag ,useDrop} from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { showNotification, useForm, useNotify, useTranslate } from "react-admin";
@@ -34,9 +35,7 @@ import {
 } from "./../../functions/index";
 import DefaultOptions from "./../../components/page-builder/DefaultOptions";
 
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import { IconButton } from '@mui/material';
+
 
 
 
@@ -283,149 +282,149 @@ const Core = (props) => {
   };
 
 
-  const moveContent = (thisKey, theDestinationKey, address = 0) => {
-    // console.clear();
-    console.log("moveContent.....................", thisKey, theDestinationKey, address);
-    // setLoading(true);
-    if (address === 0) {
-      let tempContent = components[theDestinationKey];
-      components[theDestinationKey] = components[thisKey];
-      components[thisKey] = tempContent;
-      // components.push(element)
-      // console.log('components', components)
-      // setComponents([...components]);
-      setState({ ...state, components: components });
+//   const moveContent = (thisKey, theDestinationKey, address = 0) => {
+//     // console.clear();
+//     console.log("moveContent.....................", thisKey, theDestinationKey, address);
+//     // setLoading(true);
+//     if (address === 0) {
+//       let tempContent = components[theDestinationKey];
+//       components[theDestinationKey] = components[thisKey];
+//       components[thisKey] = tempContent;
+//       // components.push(element)
+//       // console.log('components', components)
+//       // setComponents([...components]);
+//       setState({ ...state, components: components });
 
 
-    } else {
-      address = address.split("_");
-      if (address[0] === "component") {
-        address.shift();
-        let theNewComponents = components;
-        let mainAddress = address;
-        theNewComponents.forEach((comp, inde) => {
-          let the_id = "component_" + mainAddress[0];
+//     } else {
+//       address = address.split("_");
+//       if (address[0] === "component") {
+//         address.shift();
+//         let theNewComponents = components;
+//         let mainAddress = address;
+//         theNewComponents.forEach((comp, inde) => {
+//           let the_id = "component_" + mainAddress[0];
 
-          console.log("the_id", the_id, comp.id);
-          if (!theNewComponents[inde].children) {
-            theNewComponents[inde].children = [];
-          }
-          // if (!theNewComponents[inde]['children'][mainAddress[1]]) {
-          //   theNewComponents[inde]['children'][mainAddress[1]]={};
-          // }
-          if (comp.id === the_id) {
-            console.log(inde, " ==> ", theDestinationKey, " in:", mainAddress[1]);
-            console.log(theNewComponents[inde].children[mainAddress[1]]);
-            let tempContent = theNewComponents[inde].children[mainAddress[1]][theDestinationKey];
-            console.log("tempContent", tempContent);
-            theNewComponents[inde].children[mainAddress[1]][theDestinationKey] = theNewComponents[inde].children[mainAddress[1]][thisKey];
-            theNewComponents[inde].children[mainAddress[1]][thisKey] = tempContent;
-          }
-        });
-        setState({ ...state, components: theNewComponents });
+//           console.log("the_id", the_id, comp.id);
+//           if (!theNewComponents[inde].children) {
+//             theNewComponents[inde].children = [];
+//           }
+//           // if (!theNewComponents[inde]['children'][mainAddress[1]]) {
+//           //   theNewComponents[inde]['children'][mainAddress[1]]={};
+//           // }
+//           if (comp.id === the_id) {
+//             console.log(inde, " ==> ", theDestinationKey, " in:", mainAddress[1]);
+//             console.log(theNewComponents[inde].children[mainAddress[1]]);
+//             let tempContent = theNewComponents[inde].children[mainAddress[1]][theDestinationKey];
+//             console.log("tempContent", tempContent);
+//             theNewComponents[inde].children[mainAddress[1]][theDestinationKey] = theNewComponents[inde].children[mainAddress[1]][thisKey];
+//             theNewComponents[inde].children[mainAddress[1]][thisKey] = tempContent;
+//           }
+//         });
+//         setState({ ...state, components: theNewComponents });
 
-        // console.log('address',address);
-      }
-    }
-    // setComponents(components);
-    // setLoading(false);
+//         // console.log('address',address);
+//       }
+//     }
+//     // setComponents(components);
+//     // setLoading(false);
 
-  };
-  const moveItem = (id,dest) => {
-    console.log('source:',id,'destination:',dest)
-    console.log('Compoinentsssssssssss',components)
-    let moveCurrentItem = [];
-    let pushCurrentItem = [];
-    let completeComponent = components;
-    // let destination = _(components)
-    //   .thru(function(coll) {
-    //     return _.union(coll, _.map(coll, 'children') || []);
-    //   })
-    //   .flatten()
-    //   .find({ id: dest });
-    // let current = _(components)
-    //   .thru(function(coll) {
-    //     return _.union(coll, _.map(coll, 'children') || []);
-    //   })
-    //   .flatten()
-    //   .find({ id: id });
-    //
-    completeComponent.forEach((component)=>{
-      if(component.id === id){
-        moveCurrentItem.push(component);
-      }else if(component.children){
-        component.children.forEach((subCom)=>{
-          if(subCom.id === id){
-            moveCurrentItem.push(subCom);
-          }else if(subCom.children){
-            subCom.children.forEach((subAny)=>{
-              if(subAny.id === id){
-                moveCurrentItem.push(subAny);
-              }
-            })
-          }
-        })
-      }
-    })
-    completeComponent.forEach((component)=>{
-      if(component.id === dest){
-        pushCurrentItem.push(component)
-      }else if(component.children){
-        component.children.forEach((child)=>{
-          if(child.id === dest){
-            pushCurrentItem.push(child)
-          }else if(child.children){
-              child.children.forEach((subChild)=>{
-                if(subChild.id === dest){
-                  pushCurrentItem.push(subChild)
-                }
-              })
-          }
-        })
-      }
-    })
-    // _.find(components, el => {
-    //   if(el.id === id){
-    //     moveCurrentItem.push(el);
-    //   }
-    //   if(el.id === dest){
-    //     pushCurrentItem.push(el);
-    //   }else{
-    //     _.find(el.children,ch=>{
-    //       if(ch.id === dest){
-    //         pushCurrentItem.push(ch)
-    //       }else{
-    //         _.find(ch.children,chch=>{
-    //           if(chch.id === dest){
-    //             pushCurrentItem.push(chch)
-    //           }
-    //         })
-    //       }
-    //     })
-    //   }
+//   };
+//   const moveItem = (id,dest) => {
+//     console.log('source:',id,'destination:',dest)
+//     console.log('Compoinentsssssssssss',components)
+//     let moveCurrentItem = [];
+//     let pushCurrentItem = [];
+//     let completeComponent = components;
+//     // let destination = _(components)
+//     //   .thru(function(coll) {
+//     //     return _.union(coll, _.map(coll, 'children') || []);
+//     //   })
+//     //   .flatten()
+//     //   .find({ id: dest });
+//     // let current = _(components)
+//     //   .thru(function(coll) {
+//     //     return _.union(coll, _.map(coll, 'children') || []);
+//     //   })
+//     //   .flatten()
+//     //   .find({ id: id });
+//     //
+//     completeComponent.forEach((component)=>{
+//       if(component.id === id){
+//         moveCurrentItem.push(component);
+//       }else if(component.children){
+//         component.children.forEach((subCom)=>{
+//           if(subCom.id === id){
+//             moveCurrentItem.push(subCom);
+//           }else if(subCom.children){
+//             subCom.children.forEach((subAny)=>{
+//               if(subAny.id === id){
+//                 moveCurrentItem.push(subAny);
+//               }
+//             })
+//           }
+//         })
+//       }
+//     })
+//     completeComponent.forEach((component)=>{
+//       if(component.id === dest){
+//         pushCurrentItem.push(component)
+//       }else if(component.children){
+//         component.children.forEach((child)=>{
+//           if(child.id === dest){
+//             pushCurrentItem.push(child)
+//           }else if(child.children){
+//               child.children.forEach((subChild)=>{
+//                 if(subChild.id === dest){
+//                   pushCurrentItem.push(subChild)
+//                 }
+//               })
+//           }
+//         })
+//       }
+//     })
+//     // _.find(components, el => {
+//     //   if(el.id === id){
+//     //     moveCurrentItem.push(el);
+//     //   }
+//     //   if(el.id === dest){
+//     //     pushCurrentItem.push(el);
+//     //   }else{
+//     //     _.find(el.children,ch=>{
+//     //       if(ch.id === dest){
+//     //         pushCurrentItem.push(ch)
+//     //       }else{
+//     //         _.find(ch.children,chch=>{
+//     //           if(chch.id === dest){
+//     //             pushCurrentItem.push(chch)
+//     //           }
+//     //         })
+//     //       }
+//     //     })
+//     //   }
 
-    // });
-if(pushCurrentItem){
-  console.log('puuuush',pushCurrentItem);
-  pushCurrentItem.forEach(push=>{
-    if(push.hasOwnProperty('children')){
-      // Object.assign(push.children,moveCurrentItem)
-      // Object.push(push.children,moveCurrentItem)
-      push.children.push(moveCurrentItem[0]);
-      completeComponent.splice(completeComponent.findIndex(a => a.id === id) , 1)
-    }else{
-      Object.assign(push,{children:moveCurrentItem})
-      completeComponent.splice(completeComponent.findIndex(a => a.id === id) , 1)
-    }
-  })
+//     // });
+// if(pushCurrentItem){
+//   console.log('puuuush',pushCurrentItem);
+//   pushCurrentItem.forEach(push=>{
+//     if(push.hasOwnProperty('children')){
+//       // Object.assign(push.children,moveCurrentItem)
+//       // Object.push(push.children,moveCurrentItem)
+//       push.children.push(moveCurrentItem[0]);
+//       completeComponent.splice(completeComponent.findIndex(a => a.id === id) , 1)
+//     }else{
+//       Object.assign(push,{children:moveCurrentItem})
+//       completeComponent.splice(completeComponent.findIndex(a => a.id === id) , 1)
+//     }
+//   })
 
-}
-    console.log('moveCurrentItem:',moveCurrentItem)
-    console.log('pushCurrentItem:',pushCurrentItem)
-    console.log('completeComponent:',completeComponent)
+// }
+//     console.log('moveCurrentItem:',moveCurrentItem)
+//     console.log('pushCurrentItem:',pushCurrentItem)
+//     console.log('completeComponent:',completeComponent)
 
-    setState({ ...state, components: completeComponent });
-  };
+//     setState({ ...state, components: completeComponent });
+//   };
 
   const addToComponents = (element, extra) => {
     console.log("inside: ", sourceAddress);
@@ -601,22 +600,22 @@ if(pushCurrentItem){
 
   };
 
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: ItemTypes.KNIGHT,
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging()
-      // isDragging: monitor.isDragging()
-    })
-  }));
-  const [{ isOver, canDrop }, drop] = useDrop({
-      accept: ItemTypes.KNIGHT,
-      drop: () => ({name:'some name'}),
-      // canDrop: () => canMoveKnight(x, y),
-      collect: (monitor) => ({
-        isOver: !!monitor.isOver(),
-        // canDrop: !!monitor.canDrop()
-      })
-    })
+  // const [{ isDragging }, drag] = useDrag(() => ({
+  //   type: ItemTypes.KNIGHT,
+  //   collect: (monitor) => ({
+  //     isDragging: !!monitor.isDragging()
+  //     // isDragging: monitor.isDragging()
+  //   })
+  // }));
+  // const [{ isOver, canDrop }, drop] = useDrop({
+  //     accept: ItemTypes.KNIGHT,
+  //     drop: () => ({name:'some name'}),
+  //     // canDrop: () => canMoveKnight(x, y),
+  //     collect: (monitor) => ({
+  //       isOver: !!monitor.isOver(),
+  //       // canDrop: !!monitor.canDrop()
+  //     })
+  //   })
 
   return (
    <React.Fragment>
@@ -627,89 +626,79 @@ if(pushCurrentItem){
     >
       <div style={{
         background:'#ffffff',
-        padding:'4px',
+        padding:'4px 0px 4px 4px',
         direction:'ltr',
         border:'1px solid #ddd',
         color:'#000000',
-        fontSize:'12px'
+        fontSize:'12px',
+        display:'flex',
+        justifyContent: 'space-between'
       }}>
         <span>Page Builder</span>
+        <div >
+        <span style={{background:'#464D55',color:'#ffffff',fontSize:'12px',fontWeight:'bold',border:'none !important',cursor:'pointer',padding:'3px'}}
+           onClick={(e)=>handleChange(e,0)}>Classic Mode</span>
+        <span style={{background:'#464D55',color:'#ffffff',fontSize:'12px',fontWeight:'bold',cursor:'pointer',padding:'3px'}}
+         onClick={(e)=>handleChange(e,1)}>Preview Mode</span>
+        </div>
       </div>
-      <Tabs value={tabValue} onChange={handleChange} aria-label=" label tabs example"
-        style={{width:'100%',direction:'ltr',margin:'10px 0px'}}
-       >
-        <Tab  label="Classic Mode" value={0} style={{background:'#464D55',color:'#ffffff',fontSize:'12px',fontWeight:'bold',border:'none !important'}} />
-        <Tab  label="Preview Mode" value={1} style={{marginLeft:'20px',background:'#464D55',color:'#ffffff',fontSize:'12px',fontWeight:'bold'}} />
-      </Tabs>
-              <div id="nodeeweb-page-builder"
-                    style={{
-                        height: "100vh",
-                        width: "100vw !important",
-                        opacity: isDragging ? 0.5 : 1,
-                        background:'#ffffff',
-                        padding:'20px'
-                        }}
-                    >
-      {
-        tabValue === 0 && (
-          <React.Fragment>
-                 
-                  {components && components.map((component, index) => {
-                    if (!component) {
-                      return <></>;
-                    }
-                    return <Component
-                      key={index}
-                      index={index}
-                      toggleOptionBox={toggleOptionBox}
-                      moveContent={moveContent}
-                      moveItem={moveItem}
-                      component={component}
-                      deleteItem={(e) => {
-                        deleteItem(e || component.id);
-                      }}
-
-                      // setSourceAddress={(e)=>{
-                      //   console.log('e',e)
-                      //   setState({...state, sourceAddress: e});
-                      //
-                      // }}
-                      // changeComponentSetting={changeComponentSetting}
-
-                      changeComponentSetting={(e, j, d) => {
-                        console.log("changeComponentSetting", e, j, d);
-                        changeComponentSetting(e, j, d);
-                      }}
-                      length={components.length}
-                    />;
-                  })}
-                  {/* <div ref={drop} className={"add-component element "+(isOver ? 'hover' : '')} onClick={(e) => { */}
-                    <div ref={drop} className={"add-component newelement "+(isOver ? 'hover' : '')} onClick={(e) => {
-                    setState({ ...state, sourceAddress: "new", excludeArray: [], optionBox: !state.optionBox });
-                  }}>
-
-                  
-                     <span style={{fontSize:'14px',padding:'10px 40px',background:'rgb(2, 111, 176)',display:'block',color:'#ffffff'}}>
-                       Add Element <AddIcon/>
-                     </span>
-                  </div>
-                
-                <OptionBox {...props} defaultOptions={DefaultOptions} onClose={(e) => {
-                toggleOptionBox();
-              }} exclude={excludeArray} open={state.optionBox} addToComponents={addToComponents}/>
-
-                
-          </React.Fragment>
-        )
-      }
-      {
-        tabValue === 1 && (
-          <div style={{direction:'ltr',}}>
-            <h5>Preview Mode Soon.... </h5>
-          </div>
-        )
-      }
-      </div>
+      <DndProvider backend={HTML5Backend}>
+        <div id="nodeeweb-page-builder"
+              style={{
+                  height: "100vh",
+                  width: "100vw !important",
+                  opacity: 1,
+                  // opacity: isDragging ? 0.5 : 1,
+                  background:'#ffffff',
+                  padding:'20px'
+                  }}
+              >
+                  {
+                    tabValue === 0 && (
+                            <React.Fragment>
+                                {components && components.map((component, index) => {
+                                  if (!component) {
+                                    return <></>;
+                                  }
+                                  return <Component
+                                    key={index}
+                                    index={index}
+                                    toggleOptionBox={toggleOptionBox}
+                                    // moveContent={moveContent}
+                                    // moveItem={moveItem}
+                                    component={component}
+                                    deleteItem={(e) => {
+                                      deleteItem(e || component.id);
+                                    }}
+                                    changeComponentSetting={(e, j, d) => {
+                                      changeComponentSetting(e, j, d);
+                                    }}
+                                    length={components.length}
+                                  />;
+                                })}
+                                {/* <div ref={drop} className={"add-component element "+(isOver ? 'hover' : '')} onClick={(e) => { */}
+                                  {/* <div ref={drop} className={"add-component newelement "+(isOver ? 'hover' : '')}  */}
+                                  <div  className={"add-component newelement "} 
+                                      onClick={(e) => {
+                                        setState({ ...state, sourceAddress: "new", excludeArray: [], optionBox: !state.optionBox });
+                                        }}
+                                  >
+                                  <span style={{fontSize:'14px',padding:'10px 40px',background:'rgb(2, 111, 176)',display:'block',color:'#ffffff'}}>
+                                    Add Element <AddIcon/>
+                                  </span>
+                                </div>
+                              </React.Fragment>
+                    )
+                  }
+                  {
+                    tabValue === 1 && (
+                      <div style={{direction:'ltr',}}>
+                        <h5>Preview Mode Soon.... </h5>
+                      </div>
+                    )
+                  }
+        </div>
+      </DndProvider>
 
 
       
@@ -728,6 +717,9 @@ if(pushCurrentItem){
       </span>
     </div>
 </div>
+<OptionBox {...props} defaultOptions={DefaultOptions} onClose={(e) => {
+                          toggleOptionBox();
+                        }} exclude={excludeArray} open={state.optionBox} addToComponents={addToComponents}/>
     </React.Fragment>
   );
 };
