@@ -15,7 +15,7 @@ import "./../../assets/globalforpagebuilder.css";
 import "./../../assets/nodeeweb-page-builder.css";
 import * as _ from "lodash";
 import { DndProvider} from "react-dnd";
-// import { DndProvider, useDrag ,useDrop} from "react-dnd";
+import { useDrag ,useDrop} from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { showNotification, useForm, useNotify, useTranslate } from "react-admin";
@@ -600,13 +600,13 @@ const Core = (props) => {
 
   };
 
-  // const [{ isDragging }, drag] = useDrag(() => ({
-  //   type: ItemTypes.KNIGHT,
-  //   collect: (monitor) => ({
-  //     isDragging: !!monitor.isDragging()
-  //     // isDragging: monitor.isDragging()
-  //   })
-  // }));
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: ItemTypes.KNIGHT,
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging()
+      // isDragging: monitor.isDragging()
+    })
+  }));
   // const [{ isOver, canDrop }, drop] = useDrop({
   //     accept: ItemTypes.KNIGHT,
   //     drop: () => ({name:'some name'}),
@@ -642,7 +642,7 @@ const Core = (props) => {
          onClick={(e)=>handleChange(e,1)}>Preview Mode</span>
         </div>
       </div>
-      <DndProvider backend={HTML5Backend}>
+      {/* StartComponentDrag */}
         <div id="nodeeweb-page-builder"
               style={{
                   height: "100vh",
@@ -678,7 +678,7 @@ const Core = (props) => {
                                 })}
                                 {/* <div ref={drop} className={"add-component element "+(isOver ? 'hover' : '')} onClick={(e) => { */}
                                   {/* <div ref={drop} className={"add-component newelement "+(isOver ? 'hover' : '')}  */}
-                                  <div  className={"add-component newelement "} 
+                                  <div  className={"add-component newelement "}  
                                       onClick={(e) => {
                                         setState({ ...state, sourceAddress: "new", excludeArray: [], optionBox: !state.optionBox });
                                         }}
@@ -698,7 +698,8 @@ const Core = (props) => {
                     )
                   }
         </div>
-      </DndProvider>
+        {/* EndComponentDrag */}
+     
 
 
       

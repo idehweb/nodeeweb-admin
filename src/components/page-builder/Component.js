@@ -33,31 +33,29 @@ const Component = (props) => {
   let { text = "" } = fields;
   const [componentForSetting, setComponentForSetting] = useState(false);
   const [newComponents, setNewComponents] = useState([]);
+  const [enterElement, setEnterElement] = useState(null);
+  let [dragElement, setDragElement] = useState(null);
+
   const [{ isDragging }, dragRef] = useDrag({
     type: ItemTypes.KNIGHT,
-    item: { id:component.id },
-    // item: { id:component.id },
-    end:(item,monitor)=>{
-      let res = monitor.getDropResult();
-      if(monitor.getDropResult()){
-        console.log("end item:", item.id, res.id);
-      }
-    },
+    item: { id:component.id,component:component },
+    // end: (item, monitor) => {
+    //   let res = monitor.getDropResult();
+    //   console.log('monitor',res.id);
+    // },
     collect: (monitor) => ({
-        isDragging: monitor.isDragging()
+        isDragging: !!monitor.isDragging()
     })
-})
+  });
 const [{ isOver }, dropRef] = useDrop({
   accept: ItemTypes.KNIGHT,
-  drop: (item, monitor) => {
-    return ({ id: component.id });
-  },
-  // drop: (item) => setNewComponents((newComponents) => 
-  //   !newComponents.includes(item) ? [...newComponents, item] : newComponents),
+  drop: (item,monitor) =>  addToComponent(item.id,item.component),
   collect: (monitor) => ({
-      isOver: monitor.isOver()
+      isOver: !!monitor.isOver()
   })
 })
+const addToComponent = (id,cp) =>{
+}
 const dragStart = (e, component) => {
   console.log("dragStart: ", component.id);
   // // dragItem.current = position;
@@ -67,7 +65,14 @@ const dragStart = (e, component) => {
   //   setDragElement(component.id);
   // }
 };
-    const moveItem = (id,dest) => {
+  const dragEnter = (e, component) => {
+    console.log("dragEnterdragEnterdragEnter: ", component.id);
+    setEnterElement(component.id);
+  };
+  const onDrop = (e) => {
+
+  };
+const moveItem = (id,dest) => {
       console.log('ididididid',id);
       console.log('destdestdest',dest);
       let moveCurrentItem = [];
@@ -126,22 +131,20 @@ const dragStart = (e, component) => {
     };
   return (
     <Fragment >
-          <div className={"nodeweb-element-wrapper"} id={component.id} ref={dragRef} draggable   >
+          <div className={"nodeweb-element-wrapper"} id={component.id}   ref={dragRef}>
           
             <div className={index > 2 ? 'mtop-10 element-header' : 'element-header'} >
                 <span>Element:&nbsp;&nbsp; {component.name + " " + (index + 1)} CP:{component.id}</span>
             </div>
             <div className={'controller'}>
               <span className={'move'} style={{border:'1px solid #ddd',padding:'1px 3px',cursor:'grab'}}
-              
-                draggable
-
-                onDragStart={(e) => dragStart(e, component)}
-                onDragEnd={(e) => {
-                  console.log('on drop on label:',component.id)
-                  onDrop(component);
-                }}
-                onDragEnter={(e) => dragEnter(e, component)}
+                // draggable
+                // onDragStart={(e) => dragStart(e, component)}
+                // onDragEnd={(e) => {
+                //   console.log('on drop on label:',component.id)
+                //   onDrop(component);
+                // }}
+                // onDragEnter={(e) => dragEnter(e, component)}
               >
                 <MoveIconSvg width="15px" height="15px" background="#464D55"/>
               </span>
@@ -152,11 +155,11 @@ const dragStart = (e, component) => {
               </span>
             </div>
             <div className={'content'}>
-            {!componentForSetting && <div
+            {!componentForSetting && <div 
             >
 
-              {component.addable && <div className={"add-part p-2 name-" + component.name} >
-                <div className={"element-wrapper-child"} ref={dropRef} id={component.id}>
+              {component.addable && <div className={"add-part p-2 name-" + component.name}>
+                <div className={"element-wrapper-child"}  id={component.id} ref={dropRef} >
                   {Boolean(component.children && (component.children instanceof Array)) && component.children.map((comp, jj) => {
                     
                     return (<Component
@@ -177,16 +180,20 @@ const dragStart = (e, component) => {
                       length={component.children.length}
                       address={component.id + "_" + jj}
                       child={true}
+                      
                     />);
                   })}
-                  
                 </div>
+
               </div>}
-              {isOver && child && <div style={{width:'100%',height:'40px',border:'1px solid #ddd',background:'#ddd'}}></div>}
+              {isOver && child && <div style={{width:'100%',height:'40px',border:'1px solid #ddd',background:'#ddd'}} 
+               
+              ></div>}
+
             </div>}
-            
+
             {/*StartModalSetting*/}
-            {componentForSetting && <div draggable={true} className={"component-set-for-setting"} >
+            {componentForSetting && <div  className={"component-set-for-setting"} >
               <div className={"csfs-a"}>
                 <div className={"csfs-c"}>
                   <div className={"top-bar-settings"}>
