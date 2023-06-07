@@ -25,7 +25,8 @@ const Component = (props) => {
     length,
     address = 0,
     setExcludeArray,
-    child
+    child,
+    setDropElement
   } = props;
   let { settings = {} } = component;
   let { general = {} } = settings;
@@ -39,25 +40,26 @@ const Component = (props) => {
   const [{ isDragging }, dragRef] = useDrag({
     type: ItemTypes.KNIGHT,
     item: { id:component.id,component:component },
-    // end: (item, monitor) => {
-    //   let res = monitor.getDropResult();
-    //   console.log('monitor',res.id);
-    // },
+    end: (item, monitor) => {
+      // setDragElement(item)
+    },
     collect: (monitor) => ({
         isDragging: !!monitor.isDragging()
     })
   });
 const [{ isOver }, dropRef] = useDrop({
   accept: ItemTypes.KNIGHT,
-  drop: (item,monitor) =>  addToComponent(item.id,item.component),
+  drop: (item,monitor) =>  addToComponent(item.id,setDropElement),
   collect: (monitor) => ({
       isOver: !!monitor.isOver()
   })
 })
-const addToComponent = (id,cp) =>{
+const addToComponent = (dragID,dropID) =>{
+  console.log('drag',dragID)
+  console.log('drop',dropID)
 }
 const dragStart = (e, component) => {
-  console.log("dragStart: ", component.id);
+  // console.log('dragStart',component)
   // // dragItem.current = position;
   // if (dragElement == null) {
   //   dragElement = component.id;
@@ -69,7 +71,8 @@ const dragStart = (e, component) => {
     console.log("dragEnterdragEnterdragEnter: ", component.id);
     setEnterElement(component.id);
   };
-  const onDrop = (e) => {
+  const onDrop = (c) => {
+    // console.log('LoooooooooooDroppppp',c)
 
   };
 const moveItem = (id,dest) => {
@@ -131,13 +134,14 @@ const moveItem = (id,dest) => {
     };
   return (
     <Fragment >
-          <div className={"nodeweb-element-wrapper"} id={component.id}   ref={dragRef}>
+          <div className={"nodeweb-element-wrapper"} >
           
             <div className={index > 2 ? 'mtop-10 element-header' : 'element-header'} >
                 <span>Element:&nbsp;&nbsp; {component.name + " " + (index + 1)} CP:{component.id}</span>
             </div>
             <div className={'controller'}>
-              <span className={'move'} style={{border:'1px solid #ddd',padding:'1px 3px',cursor:'grab'}}
+              <span className={'move'} style={{border:'1px solid #ddd',padding:'1px 3px',cursor:'grab'}} id={component.id}   ref={dragRef} onDragStart={(e)=>dragStart(e,component)}
+              draggable="true"
                 // draggable
                 // onDragStart={(e) => dragStart(e, component)}
                 // onDragEnd={(e) => {
@@ -159,7 +163,7 @@ const moveItem = (id,dest) => {
             >
 
               {component.addable && <div className={"add-part p-2 name-" + component.name}>
-                <div className={"element-wrapper-child"}  id={component.id} ref={dropRef} >
+                <div className={"element-wrapper-child"}  id={component.id} ref={dropRef} onDrop={(e)=>onDrop(setDropElement)} >
                   {Boolean(component.children && (component.children instanceof Array)) && component.children.map((comp, jj) => {
                     
                     return (<Component
@@ -180,18 +184,19 @@ const moveItem = (id,dest) => {
                       length={component.children.length}
                       address={component.id + "_" + jj}
                       child={true}
+                      setDropElement={comp.id}
                       
                     />);
                   })}
                 </div>
 
               </div>}
-              {isOver && child && <div style={{width:'100%',height:'40px',border:'1px solid #ddd',background:'#ddd'}} 
-               
-              ></div>}
+              
 
             </div>}
-
+            {isOver && child && <div  style={{width:'100%',height:'40px',border:'1px solid #ddd',background:'#ddd'}} 
+               
+               ></div>}
             {/*StartModalSetting*/}
             {componentForSetting && <div  className={"component-set-for-setting"} >
               <div className={"csfs-a"}>

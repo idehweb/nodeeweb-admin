@@ -600,13 +600,13 @@ const Core = (props) => {
 
   };
 
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: ItemTypes.KNIGHT,
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging()
-      // isDragging: monitor.isDragging()
-    })
-  }));
+  // const [{ isDragging }, drag] = useDrag(() => ({
+  //   type: ItemTypes.KNIGHT,
+  //   collect: (monitor) => ({
+  //     isDragging: !!monitor.isDragging()
+  //     // isDragging: monitor.isDragging()
+  //   })
+  // }));
   // const [{ isOver, canDrop }, drop] = useDrop({
   //     accept: ItemTypes.KNIGHT,
   //     drop: () => ({name:'some name'}),
