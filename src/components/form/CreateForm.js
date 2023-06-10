@@ -72,11 +72,7 @@ function CreateForm(props) {
     if (!field) {
       return <>no field</>;
     }
-
     const { type, removeField, kind, size, className, options, disabled = false, name, label, placeholder } = field;
-    console.log('fieldfieldfieldfieldfieldfield',  field);
-    // moment(field.value, "YYYY-MM-DD[T]HH:mm:ss.SSS[Z]", true).isValid())
-
     if (type === "date") {
       console.log("date");
       return <Col
@@ -97,8 +93,10 @@ function CreateForm(props) {
       </Col>;
     }
     if (type === "string" || !type) {
-      // console.log('string')
-
+      if(componentType === "form" && name === "_id"){
+        console.log('typeInitilatypeInitila',componentType);
+         return  <FieldSelect typeInitila={'form'}  field={field}/>;
+      }
       return <Col
         sm={size ? size.sm : ""}
         lg={size ? size.lg : ""}
@@ -112,10 +110,7 @@ function CreateForm(props) {
           placeholder={placeholder || label}
           className="mb-2 form-control"
           disabled={disabled}
-
-
         />
-
       </Col>;
     }
     if (type === "price") {
@@ -232,7 +227,7 @@ function CreateForm(props) {
             console.log("props", props);
             return (
               <div className={"max-width100"}>
-                <img style={{ width: "100px" }} src={MainUrl + "/" + props.input.value}/>
+                {/* {props.input.value && <img style={{ width: "100px" }} src={MainUrl + "/" + props.input.value}/>} */}
                 {!props.input.value && <input
                   name={props.input.name}
                   onChange={(props) => {
@@ -251,7 +246,9 @@ function CreateForm(props) {
                   type={"file"}
                 />}
                 {props.input.value &&
-                <div className={"posrel"}><img src={MainUrl + "/" + props.input.value}/><Button onClick={(e) => {
+                <div className={"posrel"} style={{margin:'0 auto'}}>
+                  <img src={MainUrl + "/" + props.input.value} style={{width:'400px'}}/>
+                  <Button onClick={(e) => {
                   field.setValue(name, "");
                 }} className={"removeImage"}><RemoveCircleOutlineIcon/></Button></div>}
               </div>
@@ -371,7 +368,7 @@ const [optionInputs,setOptionInputs] = useState(null)
   };
   if (themeData)
     return (
-      <div className="fields pt-2">
+      <div className="fields pt-2" >
         <Form
           onSubmit={onSubmit}
           // validate={v => {
@@ -413,7 +410,7 @@ const [optionInputs,setOptionInputs] = useState(null)
                    }) => (
             <form onSubmit={handleSubmit} draggable={false}>
               <Container>
-                <Row>
+                <Row style={{direction:'ltr !important'}}>
 
 
                   {theRules?.fields?.map((field, index) => {
@@ -426,14 +423,14 @@ const [optionInputs,setOptionInputs] = useState(null)
                       label: field.name,
                       name: field.name,
                       size: {
-                        sm: 6,
-                        lg: 6
+                        sm: 12,
+                        lg: 12
                       },
                       onChange: (text) => {
                         // setFields([...fields,])
                         // this.state.checkOutBillingAddress.add.data[d] = text;
                       },
-                      className: "rtl",
+                      className: "",
                       placeholder: "",
                       child: [],
                       ...field
@@ -444,7 +441,7 @@ const [optionInputs,setOptionInputs] = useState(null)
                       lastObj["value"] = field.value;
                     }
                     // console.log('lastObj', lastObj, form.mutators.setValue)
-                    return (<TheField key={index} removeField={(e) => removeField(e, index)} {...lastObj}
+                    return (<TheField key={index} removeField={(e) => removeField(e, index)}  {...lastObj}
                                       setValue={form.mutators.setValue}/>);
                   })}
 
@@ -454,19 +451,22 @@ const [optionInputs,setOptionInputs] = useState(null)
 
 
 
-                  <div className="buttons absolute-bottom top-bar-settings">
-                    <Button type="submit">
-                      <SaveIcon/>{("Submit")}
-                    </Button>
+                  <div className="buttons absolute-bottom bottom-bar-settings" style={{direction:'ltr'}}>
+                    
 
-                    <div className={"d-flex ltr"}>
-                      <input className={"d-flex-inputs"} value={theF} onChange={(e)=>{setTheF(e.target.value)}}/>
+                    <div className={"d-flex ltr"} style={{marginBottom:'20px'}}>
+                      <input className={"form-control d-flex-inputs"} style={{height:'45px',padding:'0px 10px'}} value={theF} onChange={(e)=>{setTheF(e.target.value)}}/>
                       <Button type="button" className={"whitespace-nowrap"} onClick={(e) => {
                         addField(e);
                       }}>
                         <AddCircleOutlineIcon/>{("Add Field")}
                       </Button>
                     </div>
+                        <hr/>
+                    <Button type="submit">
+                      <SaveIcon/>{("Save")}
+                    </Button>
+
                   </div>
                 </Row>
               </Container>

@@ -4,31 +4,32 @@ import {Col} from 'shards-react';
 // import {MainUrl, uploadMedia} from "@/functions/index";
 import {getEntitiesForAdmin, MainUrl, uploadMedia} from "@/functions/index";
 import { useTranslate } from 'react-admin';
-
+import API, { BASE_URL } from "@/functions/API";
 function FieldSelect(props) {
-  // console.clear();
   const t=useTranslate();
-
-  let {field} = props;
-
-  // console.log('field', field);
-  // const {type, kind, size, className, name, label,options=[], placeholder,value} = field;
+  let {field,typeInitila} = props;
+  
   let {type, kind, size, className, entity, optionName, optionValue, onChange, searchbox = true, options = [], limit = 1000, name, label, placeholder, value} = field;
-
   let [theVal, setTheVal] = useState(value)
-  // console.log('field object', field)
-
   let [list, setList] = useState(options || [])
   let [search, setSearch] = useState('')
-  // console.log('field object', field)
   useEffect(() => {
     if (limit) {
       limit = parseInt(limit)
+    }
+    // ttps://parts.arvandguarantee.shop/admin/form/0/10?_order=ASC&_sort=id
+    if(typeInitila === 'form'){
+      API.get(BASE_URL + `/admin/form/0/${limit}?_order=ASC&_sort=id`).then((res)=>{
+        setList(res.data)
+      }).catch((err)=>{
+
+      })
     }
     if (entity && list.length === 0)
       getEntitiesForAdmin(entity, 0, limit).then((d) => {
         setList(d)
       }).catch((e) => {
+       
 
       })
   }, [])
@@ -37,9 +38,10 @@ function FieldSelect(props) {
     sm={size ? size.sm : ''}
     lg={size ? size.lg : ''}
     className={'MGD ' + className}>
-    <label htmlFor={name}>{label ? t(label) : t(name)}</label>
+    <label htmlFor={name}>{label && label}</label>
 
     <Field
+    style={{fontFamily:'IRANSans !importan'}}
       name={name}
       component="select"
       type="select"
@@ -72,15 +74,26 @@ function FieldSelect(props) {
       }}
     >
       <option/>
-      {list && list.map((ch, c) => {
-        return <option key={c} value={optionValue ? ch[optionValue] : ch.value}>
-          {optionName ? ch[optionName] : t(ch.label)}
-        </option>
-      })}
+      {
+        typeInitila === 'form' ? (
+          list && list.map((ch, c) => {
+            return <option key={c} value={ch._id} style={{fontFamily:'IRANSans !importan'}}>
+              {ch.slug} | {ch.title.fa}
+            </option>
+          })
+        ):(
+          list && list.map((ch, c) => {
+            return <option key={c} value={optionValue ? ch[optionValue] : ch.value}>
+              {optionName ? ch[optionName] : t(ch.label)}
+            </option>
+          })
+        )
+      }
+      
 
     </Field>
 
   </Col>
 }
 
-export default (FieldSelect);
+export default React.memo(FieldSelect);

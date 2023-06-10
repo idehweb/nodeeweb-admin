@@ -13,6 +13,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import {MoveIconSvg,EditIconSvg,CloseIconSvg,AddIconSvg} from "./base/Icon";
 import { useDrag, useDrop } from "react-dnd";
 import { ItemTypes } from "../../functions";
+import {CloseRounded} from "@mui/icons-material";
 const Component = (props) => {
   let {
     index,
@@ -26,22 +27,19 @@ const Component = (props) => {
     address = 0,
     setExcludeArray,
     child,
-    setDropElement
+    setDropElement,
+    startDestHnadler
   } = props;
   let { settings = {} } = component;
   let { general = {} } = settings;
   let { fields = {} } = general;
   let { text = "" } = fields;
   const [componentForSetting, setComponentForSetting] = useState(false);
-  const [newComponents, setNewComponents] = useState([]);
-  const [enterElement, setEnterElement] = useState(null);
-  let [dragElement, setDragElement] = useState(null);
-
   const [{ isDragging }, dragRef] = useDrag({
     type: ItemTypes.KNIGHT,
     item: { id:component.id,component:component },
     end: (item, monitor) => {
-      // setDragElement(item)
+
     },
     collect: (monitor) => ({
         isDragging: !!monitor.isDragging()
@@ -49,89 +47,24 @@ const Component = (props) => {
   });
 const [{ isOver }, dropRef] = useDrop({
   accept: ItemTypes.KNIGHT,
-  drop: (item,monitor) =>  addToComponent(item.id,setDropElement),
+  drop: (item,monitor) =>  startDestHnadler(item.id,setDropElement,component),
   collect: (monitor) => ({
       isOver: !!monitor.isOver()
   })
 })
 const addToComponent = (dragID,dropID) =>{
-  console.log('drag',dragID)
-  console.log('drop',dropID)
+  // console.log('FuckU',dropID);
+  startDestHnadler(dragID,dropID,component);
 }
 const dragStart = (e, component) => {
-  // console.log('dragStart',component)
-  // // dragItem.current = position;
-  // if (dragElement == null) {
-  //   dragElement = component.id;
-  //   console.log("dragStart: ", component.id);
-  //   setDragElement(component.id);
-  // }
+
 };
   const dragEnter = (e, component) => {
-    console.log("dragEnterdragEnterdragEnter: ", component.id);
-    setEnterElement(component.id);
-  };
-  const onDrop = (c) => {
-    // console.log('LoooooooooooDroppppp',c)
 
   };
-const moveItem = (id,dest) => {
-      console.log('ididididid',id);
-      console.log('destdestdest',dest);
-      let moveCurrentItem = [];
-      let pushCurrentItem = [];
-      let completeComponent = component;
-      // completeComponent.forEach((component)=>{
-        if(component.id === id){
-          moveCurrentItem.push(component);
-        }else if(component.children){
-          component.children.forEach((subCom)=>{
-            if(subCom.id === id){
-              moveCurrentItem.push(subCom);
-            }else if(subCom.children){
-              subCom.children.forEach((subAny)=>{
-                if(subAny.id === id){
-                  moveCurrentItem.push(subAny);
-                }
-              })
-            }
-          })
-        }
-       
-      // })
-      // completeComponent.forEach((component)=>{
-        if(component.id === dest){
-          pushCurrentItem.push(component)
-        }else if(component.children){
-          component.children.forEach((child)=>{
-            if(child.id === dest){
-              pushCurrentItem.push(child)
-            }else if(child.children){
-                child.children.forEach((subChild)=>{
-                  if(subChild.id === dest){
-                    pushCurrentItem.push(subChild)
-                  }
-                })
-            }
-          })
-        }
-       
-      // })
-  if(pushCurrentItem){
-    pushCurrentItem.forEach(push=>{
-      if(push.hasOwnProperty('children')){
-        push.children.push(moveCurrentItem[0]);
-        component.splice(component.findIndex(a => a.id === id) , 1)
-      }else{
-        Object.assign(push,{children:moveCurrentItem})
-        component.splice(component.findIndex(a => a.id === id) , 1)
-      }
-    })
-  
-  }
- 
-      // setState({ ...state, components: component });
-    };
+  const onDrop = (c) => {
+   
+  };
   return (
     <Fragment >
           <div className={"nodeweb-element-wrapper"} >
@@ -184,8 +117,8 @@ const moveItem = (id,dest) => {
                       length={component.children.length}
                       address={component.id + "_" + jj}
                       child={true}
-                      setDropElement={comp.id}
-                      
+                      setDropElement={comp && comp.id}
+                      startDestHnadler={addToComponent}
                     />);
                   })}
                 </div>
@@ -194,7 +127,7 @@ const moveItem = (id,dest) => {
               
 
             </div>}
-            {isOver && child && <div  style={{width:'100%',height:'40px',border:'1px solid #ddd',background:'#ddd'}} 
+            {isOver && child && <div  style={{width:'100%',height:'5px',border:'1px solid #ddd',background:'#ddd'}} 
                
                ></div>}
             {/*StartModalSetting*/}
@@ -202,11 +135,7 @@ const moveItem = (id,dest) => {
               <div className={"csfs-a"}>
                 <div className={"csfs-c"}>
                   <div className={"top-bar-settings"}>
-                    <Button className={"closeIcon"} onClick={() => {
-                      setComponentForSetting(!componentForSetting);
-                      }}><CloseIcon/>
-                    </Button>
-                    <Button
+                    {/* <Button
                       className={"redxxx"}
                       onClick={(e) => {
                         e.preventDefault();
@@ -214,7 +143,15 @@ const moveItem = (id,dest) => {
                         deleteItem(component.id);
                       }}>
                       <DeleteForeverIcon/>{("Delete")}
-                    </Button>
+                    </Button> */}
+                    <span style={{cursor:'pointer',color:'#ffffff',height:'40px',lineHeight:'40px',padding:'0px 10px'}}>
+                      {component.label}
+                    </span>
+                    <span style={{cursor:'pointer',color:'#ffffff',height:'40px',lineHeight:'40px',padding:'0px 10px'}}>
+                      <CloseRounded  onClick={() => {
+                        setComponentForSetting(!componentForSetting);
+                        }}/>
+                    </span>
                   </div>
                   <div className={"bottom-bar-settings"} >
                     {/*{JSON.stringify(component.settings.general.fields)}*/}
@@ -234,6 +171,7 @@ const moveItem = (id,dest) => {
             </div>}
             </div>
             <div className={'element-footer'}>
+          
             <div>
               <span style={{cursor:'pointer'}}
                 onClick={(e) => {
@@ -268,7 +206,8 @@ const moveItem = (id,dest) => {
             </div>
             </div>
           </div>
+       
     </Fragment>
   );
 };
-export default (Component);
+export default React.memo(Component);

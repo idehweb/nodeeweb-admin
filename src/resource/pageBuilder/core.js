@@ -15,7 +15,7 @@ import "./../../assets/globalforpagebuilder.css";
 import "./../../assets/nodeeweb-page-builder.css";
 import * as _ from "lodash";
 import { DndProvider} from "react-dnd";
-import { useDrag ,useDrop} from "react-dnd";
+// import { DndProvider, useDrag ,useDrop} from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { showNotification, useForm, useNotify, useTranslate } from "react-admin";
@@ -616,7 +616,79 @@ const Core = (props) => {
   //       // canDrop: !!monitor.canDrop()
   //     })
   //   })
+  const moveItemStart = (id,dest,component) => {
+    console.log('componentcomponentcomponent',component);
+    console.log('start',id);
+    console.log('End',dest);
+    let destination = dest !== 'undefined' ? dest : null;
+    let moveCurrentItem = [];
+    let pushCurrentItem = [];
+    let completeComponent = component;
+if(component){
+        if(component.id === id){
+          moveCurrentItem.push(component);
+        }else if(component.children){
+          component.children.forEach((subCom)=>{
+            if(subCom.id === id){
+              moveCurrentItem.push(subCom);
+            }else if(subCom.children){
+              subCom.children.forEach((subAny)=>{
+                if(subAny.id === id){
+                  moveCurrentItem.push(subAny);
+                }
+              })
+            }
+          })
+        }
+        if(component.id === dest){
+          pushCurrentItem.push(component)
+        }else if(component.children){
+          component.children.forEach((child)=>{
+            if(child.id === dest){
+              pushCurrentItem.push(child)
+            }else if(child.children){
+                child.children.forEach((subChild)=>{
+                  if(subChild.id === dest){
+                    pushCurrentItem.push(subChild)
+                  }
+                })
+            }
+          })
+        }
+        if(pushCurrentItem){
+            pushCurrentItem.forEach(push=>{
+                if(push.hasOwnProperty('children')){
+                  push.children.push(moveCurrentItem[0]);
+                  pushCurrentItem.findIndex((a) => {
+                    console.log('findIndex',a);
+                    // a.id === id;
+                  })
+                  // component.splice(component.children.findIndex(a => a.id === id) , 1)
+                }else{
+                  Object.assign(push,{children:moveCurrentItem})
+                  component.splice(component.children.findIndex(a => a.id === id) , 1)
+                }
+            })
+        }
 
+        if(component.addable){
+          component.children.forEach((ponent)=>{
+            if(ponent.id === destination){
+              console.log('destination',destination);
+              // if(ponent.addable){
+              //   ponent.children.forEach((nent)=>{
+                 
+              //   })
+              // }
+            }
+              
+          })
+        }
+        
+}
+
+    // setState({ ...state, components: component });
+  };
   return (
    <React.Fragment>
      <div className={"nodeeweb-page-builder-wrapper " + translate("direction")}
@@ -642,7 +714,7 @@ const Core = (props) => {
          onClick={(e)=>handleChange(e,1)}>Preview Mode</span>
         </div>
       </div>
-      {/* StartComponentDrag */}
+
         <div id="nodeeweb-page-builder"
               style={{
                   height: "100vh",
@@ -674,11 +746,12 @@ const Core = (props) => {
                                       changeComponentSetting(e, j, d);
                                     }}
                                     length={components.length}
+                                    startDestHnadler={moveItemStart}
                                   />;
                                 })}
                                 {/* <div ref={drop} className={"add-component element "+(isOver ? 'hover' : '')} onClick={(e) => { */}
                                   {/* <div ref={drop} className={"add-component newelement "+(isOver ? 'hover' : '')}  */}
-                                  <div  className={"add-component newelement "}  
+                                  <div  className={"add-component newelement "} 
                                       onClick={(e) => {
                                         setState({ ...state, sourceAddress: "new", excludeArray: [], optionBox: !state.optionBox });
                                         }}
@@ -698,13 +771,6 @@ const Core = (props) => {
                     )
                   }
         </div>
-        {/* EndComponentDrag */}
-     
-
-
-      
-        
-
 
     </div>
     <div className={"nodeeweb-fixed-bottom-bar"}>
@@ -728,4 +794,4 @@ const Core = (props) => {
 export const PageServer = [
   {}
 ];
-export default Core;
+export default React.memo(Core);
