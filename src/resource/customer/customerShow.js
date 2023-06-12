@@ -126,8 +126,14 @@ export const customerShow = (props) => {
                 </Grid>
                 <Grid item lg={4} md={6} xs={12}>
                   <Item>
-                    {translate("resources.customers.birthdate") + ": "}<TextField source="birthdate"
-                                                                                  label={translate("resources.customers.birthdate")}/>
+                    {translate("resources.customers.companyName") + ": "}<TextField source="companyName"
+                                                                                  label={translate("resources.customers.companyName")}/>
+                  </Item>
+                </Grid>
+                <Grid item lg={4} md={6} xs={12}>
+                  <Item>
+                    {translate("resources.customers.companyTelNumber") + ": "}<TextField source="companyTelNumber"
+                                                                                  label={translate("resources.customers.companyTelNumber")}/>
                   </Item>
                 </Grid>
 

@@ -31,6 +31,18 @@ export const automationEdit = (props) => {
             <Form record={record} redirect={false}>
                 <TextInput source={"_id"} label={translate("_id")}
                            className={"width100 mb-20"} fullWidth disabled/>
+                               <TextInput source={"crontab_expr"} fullWidth label={translate("resources.automation.crontab_expr")}
+                 className={"width100 mb-20"}
+                 validate={Val.req}/>
+                 <TextInput source={"query_pipe"} fullWidth label={translate("resources.automation.query_pipe")}
+                 className={"width100 mb-20"}
+                 validate={Val.req}/>
+                 <TextInput source={"aggregation_pipe"} fullWidth label={translate("resources.automation.aggregation_pipe")}
+                 className={"width100 mb-20"}
+                 validate={Val.req}/>
+                 <TextInput source={"action"} fullWidth label={translate("resources.automation.action")}
+                 className={"width100 mb-20"}
+                 validate={Val.req}/>
             </Form>
         </Edit>
     );

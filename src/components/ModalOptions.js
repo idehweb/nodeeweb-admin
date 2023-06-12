@@ -124,8 +124,41 @@ export default function ModalOptions({
   );
 }
 const ShowElementIcon = (props) =>{
-  const {type} = props;
- console.log('ShowElementIcon',type);
+const {type} = props;
+ if(type === 'input'){
+  return (
+    <span style={{
+                    display:'block',
+                    width:'40px',height:'40px',
+                    color:'#fff',
+                    background:'#464D55',
+                    borderRadius:'5px',
+                    lineHeight:'40px',
+                    textAlign:'center'
+      }}>
+<svg width="30px" height="30px"  className="svg-icon" style={{verticalAlign: 'middle',overflow: 'hidden'}} viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<path fill="#ffffff" d="M85.333333 170.666667v682.666666h853.333334V170.666667H85.333333zM0 85.333333h1024v853.333334H0V85.333333z m298.666667 640h42.666666v42.666667H213.333333v-42.666667h42.666667V298.666667H213.333333V256h128v42.666667H298.666667v426.666666z"  />
+</svg>
+    </span>
+  )
+}
+ if(type === 'login'){
+  return (
+    <span style={{
+                    display:'block',
+                    width:'40px',height:'40px',
+                    color:'#fff',
+                    background:'#464D55',
+                    borderRadius:'5px',
+                    lineHeight:'40px',
+                    textAlign:'center'
+      }}>
+      <svg width="30px" height="30px" class="svg-icon" style={{verticalAlign: 'middle',overflow: 'hidden'}} viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<path fill="#ffffff" d="M426.666667 736V597.333333H128v-170.666666h298.666667V288L650.666667 512 426.666667 736M341.333333 85.333333h384a85.333333 85.333333 0 0 1 85.333334 85.333334v682.666666a85.333333 85.333333 0 0 1-85.333334 85.333334H341.333333a85.333333 85.333333 0 0 1-85.333333-85.333334v-170.666666h85.333333v170.666666h384V170.666667H341.333333v170.666666H256V170.666667a85.333333 85.333333 0 0 1 85.333333-85.333334z"  />
+</svg>
+    </span>
+  )
+}
   if(type === 'button'){
     return (
       <span style={{

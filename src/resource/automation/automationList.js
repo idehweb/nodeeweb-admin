@@ -64,9 +64,15 @@ const list = (props) => {
       <Datagrid optimized>
 
         <TextField source={"title."+translate('lan')} label={translate("resources.automation.title")}/>
-        <TextField source="name" label={translate("resources.automation.name")}/>
-        <TextField source="trigger" label={translate("resources.automation.trigger")}/>
-        <TextField source="status" label={translate("resources.post.status")}/>
+        <TextField source={"crontab_expr"} fullWidth label={translate("resources.automation.crontab_expr")}
+                 />
+                 <TextField source={"query_pipe"} fullWidth label={translate("resources.automation.query_pipe")}
+                 />
+                 <TextField source={"aggregation_pipe"} fullWidth label={translate("resources.automation.aggregation_pipe")}
+                 />
+                 <TextField source={"action"} fullWidth label={translate("resources.automation.action")}
+                 />
+        <TextField source="action" label={translate("resources.post.action")}/>
 
 
         <FunctionField label={translate("resources.post.date")}

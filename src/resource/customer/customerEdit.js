@@ -45,6 +45,10 @@ export const customerEdit = (props) => {
         <TextInput fullWidth
                    source="email" type="email" label={translate("resources.customers.email")}/>
         <TextInput fullWidth
+                   source="companyName" type="text" label={translate("resources.customers.companyName")}/>
+        <TextInput fullWidth
+                   source="companyTelNumber" type="text" label={translate("resources.customers.companyTelNumber")}/>
+        <TextInput fullWidth
                    source="phoneNumber" label={translate("resources.customers.phoneNumber")}/>
         <TextInput fullWidth
                    source="countryCode" label={translate("resources.customers.countryCode")}/>

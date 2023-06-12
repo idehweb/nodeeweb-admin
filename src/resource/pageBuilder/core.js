@@ -659,7 +659,6 @@ if(component){
         let added;
         if(pushCurrentItem){
             pushCurrentItem.forEach(push=>{
-              console.log('push',push);
                 if(push.hasOwnProperty('children')){
                     push.children.forEach(p=>{
                       if(p.id === id){

@@ -217,14 +217,26 @@ const Form = ({ children, ...props }) => {
       <TextInput source={"name"} fullWidth label={translate("resources.automation.name")}
                  className={"width100 mb-20"}
                  validate={Val.req}/>
-
-      <TextInput source={"title." + translate("lan")} fullWidth label={translate("resources.automation.title")}
+                   <TextInput source={"crontab_expr"} fullWidth label={translate("resources.automation.crontab_expr")}
+                 className={"width100 mb-20"}
+                 validate={Val.req}/>
+                 <TextInput source={"query_pipe"} fullWidth label={translate("resources.automation.query_pipe")}
+                 className={"width100 mb-20"}
+                 validate={Val.req}/>
+                 <TextInput source={"aggregation_pipe"} fullWidth label={translate("resources.automation.aggregation_pipe")}
+                 className={"width100 mb-20"}
+                 validate={Val.req}/>
+                 <TextInput source={"action"} fullWidth label={translate("resources.automation.action")}
                  className={"width100 mb-20"}
                  validate={Val.req}/>
 
+      {/* <TextInput source={"title." + translate("lan")} fullWidth label={translate("resources.automation.title")}
+                 className={"width100 mb-20"}
+                 validate={Val.req}/> */}
+
       <div className={"mb-20"}></div>
 
-      <ReferenceInput
+      {/* <ReferenceInput
         label={translate("resources.automation.trigger")}
         source="trigger"
         reference="settings/events"
@@ -240,14 +252,14 @@ const Form = ({ children, ...props }) => {
         perPage={1000}
       >
         <SelectInput optionText={"name"} optionValue="name"/>
-      </ReferenceInput>
+      </ReferenceInput> */}
       <SelectInput
         label={translate("resources.automation.status")}
         defaultValue={"active"}
         source="status"
         choices={[
-          { id: "active", name: translate("resources.automation.active") },
-          { id: "deactive", name: translate("resources.automation.deactive") }
+          { id: "true", name: translate("resources.automation.active") },
+          { id: "false", name: translate("resources.automation.deactive") }
         ]}
       />
 

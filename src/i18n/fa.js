@@ -385,6 +385,8 @@ const customFarsiMessages = {
     },
 
     customers: {
+      companyName:'نام شرکت',
+      companyTelNumber:' تلفن شرکت',
       data: "data",
       orderCount: "تعداد سفارشات",
       date: "تاریخ",
