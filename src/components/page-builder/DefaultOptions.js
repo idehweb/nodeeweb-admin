@@ -2,6 +2,32 @@ import DefaultGeneral from './DefaultGeneral'
 let {fields,rules}=DefaultGeneral;
 const DefaultOptions = [
   {
+    "label": "Login",
+    "name": "login",
+    "addable": true,
+    "settings": {
+      "general": {
+        "fields": {
+          "active":"true",
+          "title": "",
+          "subTitle": "",
+          "width": "",
+          "height": "",
+           ...fields
+          },
+        "rules": [
+          {"name": "active", "type": "boolean"},
+          {"name": "title", "type": "string"},
+          {"name": "subTitle", "type": "string"},
+          {"name": "height", "type": "string"},
+          {"name": "width", "type": "string"},
+          ...rules
+        ]
+      },
+      "design": [],
+    }
+  },
+  {
     "label": "ChatGPT Support",
     "name": "chatgpt",
     "addable": true,

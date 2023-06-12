@@ -617,12 +617,12 @@ const Core = (props) => {
   //     })
   //   })
   const moveItemStart = (id,dest,component) => {
-    console.log('componentcomponentcomponent',component);
-    console.log('start',id);
-    console.log('End',dest);
-    let destination = dest !== 'undefined' ? dest : null;
+    console.log('id',id)    
+    console.log('dest',dest)    
     let moveCurrentItem = [];
     let pushCurrentItem = [];
+    let lastName;
+    let lastComponenet = [];
     let completeComponent = component;
 if(component){
         if(component.id === id){
@@ -640,6 +640,7 @@ if(component){
             }
           })
         }
+        
         if(component.id === dest){
           pushCurrentItem.push(component)
         }else if(component.children){
@@ -655,36 +656,53 @@ if(component){
             }
           })
         }
+        let added;
         if(pushCurrentItem){
             pushCurrentItem.forEach(push=>{
+              console.log('push',push);
                 if(push.hasOwnProperty('children')){
-                  push.children.push(moveCurrentItem[0]);
-                  pushCurrentItem.findIndex((a) => {
-                    console.log('findIndex',a);
-                    // a.id === id;
+                    push.children.forEach(p=>{
+                      if(p.id === id){
+                        added = false;
+                      }else{
+                        added=true;
+                        push.children.push(moveCurrentItem[0])
+                      }
+                    })
+                    // if(added){
+                    //   push.children.push(moveCurrentItem[0]);
+                    // }
+                    
+                  const deleteTarget =  component.children && component.children.findIndex((child) => {
+                    child.children && child.children.findIndex((chil) => {
+                      chil.children && chil.children.findIndex((chi) => {
+                         if(chi && chi.id === id){
+                          if(chil.id !== dest){
+                            chil.children.splice(chi,1)
+                          }
+                         }
+                       })
+                       if(chil && chil.id === id){
+                        if(child.id !== dest){
+                          child.children.splice(chil,1)
+                        }
+                       }
+                     })
+                   if(child && child.id === id){
+                    if(component.children.id !== dest){
+                      component.children.splice(child,1)
+                    }
+                   }
                   })
-                  // component.splice(component.children.findIndex(a => a.id === id) , 1)
+                  
                 }else{
-                  Object.assign(push,{children:moveCurrentItem})
-                  component.splice(component.children.findIndex(a => a.id === id) , 1)
+                  Object.assign(push,{children:lastComponenet})
+                  // component.splice(component.children.findIndex(a => a.id === id) , 1)
                 }
             })
         }
+       
 
-        if(component.addable){
-          component.children.forEach((ponent)=>{
-            if(ponent.id === destination){
-              console.log('destination',destination);
-              // if(ponent.addable){
-              //   ponent.children.forEach((nent)=>{
-                 
-              //   })
-              // }
-            }
-              
-          })
-        }
-        
 }
 
     // setState({ ...state, components: component });
