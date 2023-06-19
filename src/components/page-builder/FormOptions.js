@@ -2,6 +2,20 @@ import DefaultGeneral from './DefaultGeneral'
 let {fields,rules}=DefaultGeneral;
 const FormOptions = [
   {
+    "label": "Condition Row",
+    "name": "conditionRow",
+    "addable": true,
+    "settings": {
+      "general": {
+       "fields": {"condition":true},
+        "rules": [
+          {"name": "condition", "type": "boolean","value":true}
+        ]
+      },
+      "design": [{"name": "padding", "type": "string"}],
+    }
+  },
+  {
     "label": "Steps",
     "name": "steps",
     "addable": true,

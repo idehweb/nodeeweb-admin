@@ -23,11 +23,12 @@ import {
   ConditionFiled,
   FieldUploadMedia,
   FieldUploadDocument,
-  ChatBase
+  ChatBase,
+  ConditionRow
 } from "@/components/form/fields";
 
 function CreateForm(props) {
-  let { fields, rules = { fields: [] }, t ,componentType} = props;
+  let { fields, rules = { fields: [] }, t ,componentType,childrens} = props;
   const themeData = useSelector((st) => st.themeData);
   if (!themeData) {
     return;
@@ -72,9 +73,11 @@ function CreateForm(props) {
     if (!field) {
       return <>no field</>;
     }
+    
     const { type, removeField, kind, size, className, options, disabled = false, name, label, placeholder } = field;
+   
     if (type === "date") {
-      console.log("date");
+    
       return <Col
         sm={size ? size.sm : ""}
         lg={size ? size.lg : ""}
@@ -325,6 +328,9 @@ function CreateForm(props) {
     if (type === "chatgpt") {
       return <ChatBase field={field}/>
     }
+    if (type === "conditionRow") {
+      return <ConditionRow field={field} childrens={childrens}/>
+    }
 
   };
 const [optionInputs,setOptionInputs] = useState(null)
@@ -353,6 +359,9 @@ const [optionInputs,setOptionInputs] = useState(null)
     }
   };
   const saveInputOptions = (options) =>{
+    setOptionInputs(options)
+  }
+  const saveInputCondition = (options) =>{
     setOptionInputs(options)
   }
   const removeField = (e, mindex) => {
@@ -447,6 +456,7 @@ const [optionInputs,setOptionInputs] = useState(null)
 
 
                   <ConditionFiled data={fields.options} type={componentType} saveOptions={saveInputOptions}/>
+                  <ConditionRow childrens={childrens} type={componentType} saveOptions={saveInputCondition}/>
 
 
 

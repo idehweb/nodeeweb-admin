@@ -15,6 +15,7 @@ import { useDrag, useDrop } from "react-dnd";
 import { ItemTypes } from "../../functions";
 import {CloseRounded} from "@mui/icons-material";
 const Component = (props) => {
+  console.log('Cooooooooooooooooooooooooooo',props);
   let {
     index,
     component,
@@ -103,6 +104,7 @@ const dragStart = (e, component) => {
                       key={jj}
                       index={jj}
                       component={comp}
+                      childrens={component.children}
                       // moveItem={moveItem}
                       // moveContent={moveContent}
                       setComponentForSetting={setComponentForSetting}
@@ -163,6 +165,7 @@ const dragStart = (e, component) => {
                       rules={{ fields: component.settings.general.rules }}
                       buttons={[]}
                       componentType={component.name}
+                      childrens={component.children}
 
                       fields={component.settings.general.fields}/>}
                   </div>
