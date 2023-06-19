@@ -28,22 +28,9 @@ function ConditionRow(props) {
  
   if (type === "conditionRow") 
   return (
-    <React.Fragment>
-      <Form>
-      <Select
-            value={inputs}
-            label="inputs"
-            onChange={handleChange}
-        >
-    <MenuItem value={10}>Ten</MenuItem>
-    <MenuItem value={20}>Twenty</MenuItem>
-    <MenuItem value={30}>Thirty</MenuItem>
-  </Select>
-       
-      </Form>
+<>
 
-
-    </React.Fragment>
+</>
   )
 }
 

@@ -456,7 +456,6 @@ const [optionInputs,setOptionInputs] = useState(null)
 
 
                   <ConditionFiled data={fields.options} type={componentType} saveOptions={saveInputOptions}/>
-                  <ConditionRow childrens={childrens} type={componentType} saveOptions={saveInputCondition}/>
 
 
 
