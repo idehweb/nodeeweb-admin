@@ -4,7 +4,7 @@ import API from "@/functions/API";
 
 API.defaults.headers.common["Content-Type"] = "multipart/form-data";
 
-export default ({ base = "product" }) => {
+export default ({ base = "product",theSource="title" }) => {
   const record = useRecordContext();
   const translate = useTranslate();
 
@@ -12,10 +12,10 @@ export default ({ base = "product" }) => {
     <>
       {(record.path && record.slug) &&
       <a target={"_blank"} href={window.BASE_URL + (base ? (base + "") : "") + record.path + "/"}><TextField
-        source={"title." + translate("lan")} label={translate("pos.title")} sortable={false}/></a>}
+        source={theSource+"." + translate("lan")} label={translate("pos."+theSource)} sortable={false}/></a>}
       {(!record.path &&record.slug) &&
       <a target={"_blank"} href={window.SHOP_URL + (base ? (base + "/") : "") + record.slug + "/"}><TextField
-        source={"title." + translate("lan")} label={translate("pos.title")} sortable={false}/></a>}
+        source={theSource+"." + translate("lan")} label={translate("pos."+theSource)} sortable={false}/></a>}
     </>
   );
 

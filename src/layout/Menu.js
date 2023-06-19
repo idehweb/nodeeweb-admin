@@ -600,18 +600,20 @@ const Menu = ({ onMenuClick, dense = false }) => {
 
 
  {themeData && themeData.models && themeData.models.map((model, m) => {
-      if (exclude.indexOf(model.toLowerCase()) == -1)
-      return <MenuItemLink
-      to={{
-        pathname: "/"+model,
-        state: { _scrollToTop: true }
-      }}
-      primaryText={translate(`${model}`)}
-      leftIcon={<Dashboard/>}
-      exact={"true"}
-      dense={dense}
-      className={"vas"}
-      />;
+      if (exclude.indexOf(model.toLowerCase()) == -1) {
+        let modelName=model.toLowerCase()
+        return <MenuItemLink
+          to={{
+            pathname: "/" + modelName,
+            state: { _scrollToTop: true }
+          }}
+          primaryText={translate(`${modelName}`)}
+          leftIcon={<Dashboard/>}
+          exact={"true"}
+          dense={dense}
+          className={"vas"}
+        />;
+      }
       })}
 
 

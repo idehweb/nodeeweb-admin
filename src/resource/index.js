@@ -29,11 +29,12 @@ import Notification from "./notification/index";
 import Transaction from "./transaction/index";
 import User from "./user/index";
 import Settings from "./setting/index";
+import Dynamic from "./dynamic/index";
 import Gateway from "./gateway/index";
 import Template from "./template/index";
 import Logout from "./logout";
 
 
-const resources = { Attributes,Automation,Plugins,Plugin,Gateway,CustomerGroup,Document,Entry,Form,Note,Task,Action,Discount,Page,Template,ProductCategory,Configuration,Logout,PrivateConfiguration,Messages,Customer,MainDashboard,Media,Menu,Order,OrderCart,PageBuilder,Post,Product,Settings,Notification,Transaction ,User};
+const resources = { Attributes,Automation,Plugins,Plugin,Gateway,Dynamic,CustomerGroup,Document,Entry,Form,Note,Task,Action,Discount,Page,Template,ProductCategory,Configuration,Logout,PrivateConfiguration,Messages,Customer,MainDashboard,Media,Menu,Order,OrderCart,PageBuilder,Post,Product,Settings,Notification,Transaction ,User};
 
 export default resources;
