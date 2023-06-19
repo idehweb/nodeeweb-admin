@@ -2,20 +2,6 @@ import DefaultGeneral from './DefaultGeneral'
 let {fields,rules}=DefaultGeneral;
 const FormOptions = [
   {
-    "label": "Condition Row",
-    "name": "conditionRow",
-    "addable": true,
-    "settings": {
-      "general": {
-       "fields": {"condition":true},
-        "rules": [
-          {"name": "condition", "type": "boolean","value":true}
-        ]
-      },
-      "design": [{"name": "padding", "type": "string"}],
-    }
-  },
-  {
     "label": "Steps",
     "name": "steps",
     "addable": true,
@@ -138,6 +124,7 @@ const FormOptions = [
     "settings": {
       "general": {
         "fields": {
+          "condition":false,
           "label": "",
           "name": "",
           "value": "",
@@ -150,6 +137,7 @@ const FormOptions = [
           "labelClassName":"",
           ...fields},
         "rules": [
+          {"name": "condition", "type": "boolean","value":false},
           {"name": "label", "type": "string"},
           {"name": "name", "type": "string"},
           {"name": "value", "type": "string"},
@@ -173,6 +161,7 @@ const FormOptions = [
     "settings": {
       "general": {
         "fields": {
+          "condition":false,
           "label": "",
           "name": "",
           "value": "",
@@ -185,6 +174,7 @@ const FormOptions = [
           "labelClassName":"",
           ...fields},
         "rules": [
+          {"name": "condition", "type": "boolean","value":false},
           {"name": "label", "type": "string"},
           {"name": "name", "type": "string"},
           {"name": "value", "type": "string"},
@@ -207,6 +197,7 @@ const FormOptions = [
     "settings": {
       "general": {
         "fields": {
+          "condition":false,
           "placeholder": "",
           "label": "",
           "name": "",
@@ -221,6 +212,7 @@ const FormOptions = [
           "labelClassName":"",
         },
         "rules": [
+          {"name": "condition", "type": "boolean","value":false},
           {"name": "placeholder", "type": "string"},
           {"name": "label", "type": "string"},
           {"name": "name", "type": "string"},
