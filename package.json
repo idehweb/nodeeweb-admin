@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "private": true,
   "homepage": ".",
+  "files": ["build"],
   "dependencies": {
     "@date-io/date-fns-jalali": "^2.16.0",
     "@emotion/react": "^11.9.0",
