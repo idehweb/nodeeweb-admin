@@ -83,6 +83,7 @@
     "eject": "react-scripts eject",
     "deploy": "node deploy",
     "build:d": "yarn build && yarn deploy",
+    "publish" : "./publish.sh",
     "build:publish": "npm run build && ./publish.sh"
   },
   "eslintConfig": {
