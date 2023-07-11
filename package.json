@@ -1,7 +1,6 @@
 {
   "name": "nodeeweb-admin-panel",
   "version": "1.0.1",
-  "private": true,
   "homepage": ".",
   "files": ["build"],
   "dependencies": {
