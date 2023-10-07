@@ -396,6 +396,7 @@ const customEnglishMessages = {
       activeCategory: "active categories",
       siteActiveMessage: "Message for showing user that site is active/deactive",
       siteActive: "site status",
+      paymentActive: "payment status",
       title: "Title",
       theid: "_id",
       description: "description",

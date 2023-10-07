@@ -770,6 +770,15 @@ const Form = ({ children, ...props }) => {
         </SimpleFormIterator>
       </ArrayInput>
 
+      <ReferenceArrayInput
+        label={translate("resources.product.relatedProducts")}
+        perPage={10}
+        source="relatedProducts" reference="product"
+        >
+        <SelectArrayInput optionText="title.fa"/>
+      </ReferenceArrayInput>
+
+
 
       <SelectInput
         label={translate("resources.product.status")}

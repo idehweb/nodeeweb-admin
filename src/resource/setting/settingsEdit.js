@@ -91,6 +91,7 @@ const Form = ({ children, ...props }) => {
   return (
     <SimpleForm {...props} onSubmit={save}>
       <BooleanInput source="siteActive" label={translate("resources.settings.siteActive")}/>
+      <BooleanInput source="paymentActive" label={translate("resources.settings.paymentActive")}/>
       <BooleanInput source="tax" label={translate("resources.settings.tax")}/>
       <NumberInput source="taxAmount" label={translate("resources.settings.taxAmount")}/>
 

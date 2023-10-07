@@ -709,6 +709,7 @@ const customFarsiMessages = {
       siteStatus: "وضعیت سایت",
       siteActiveMessage: "پیام برای کاربر وقتی سایت غیر فعاله",
       siteActive: "وضعیت سایت",
+      paymentActive: "وضعیت پرداخت",
       title: "عنوان",
       theid: "شناسه",
       description: "توضیحات",
