@@ -10,6 +10,7 @@ import {
   SelectInput,
   showNotification,
   SimpleFormIterator,
+  AutocompleteArrayInput,
   CheckboxGroupInput,
   TextInput,
   Toolbar,
@@ -775,7 +776,10 @@ const Form = ({ children, ...props }) => {
         perPage={10}
         source="relatedProducts" reference="product"
         >
-        <SelectArrayInput optionText="title.fa"/>
+        {/*<SelectArrayInput optionText="title.fa"/>*/}
+        <AutocompleteArrayInput optionText="title.fa" format={value => {
+          console.log('value',value);
+          return value == null ? 'not defined' : value;}} />
       </ReferenceArrayInput>
 
 
